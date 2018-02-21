@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +28,6 @@ export class AppComponent implements OnInit{
       })
     };
 
-    this.http.get('v1/clans/%238Q80V2JG', httpOptions).subscribe(result => this.data = result);
+    // this.http.get('v1/clans/%238Q80V2JG', httpOptions).subscribe(result => this.data = result);
   }
 }

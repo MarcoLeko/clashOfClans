@@ -3,6 +3,7 @@ import { HomeFontPageComponent } from './home-fontpage/home-font-page.component'
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeDescriptionComponent } from './home-description/home-description.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeFontPageComponent }
@@ -11,7 +12,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     HomeFontPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeDescriptionComponent
   ],
   imports: [CommonModule,
     RouterModule.forRoot(

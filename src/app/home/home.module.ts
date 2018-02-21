@@ -1,12 +1,22 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home.component';
+import { HomeFontPageComponent } from './home-fontpage/home-font-page.component';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+
+const appRoutes: Routes = [
+  { path: '', component: HomeFontPageComponent }
+];
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeFontPageComponent,
+    NavbarComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule,
+    RouterModule.forRoot(
+      appRoutes
+    )],
   providers: [],
   exports: []
 })

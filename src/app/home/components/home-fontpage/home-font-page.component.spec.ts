@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeFontPageComponent } from './home-font-page.component';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { HomeDescriptionComponent } from '../home-description/home-description.component';
 
 describe('HomeFontPageComponent', () => {
@@ -12,7 +11,6 @@ describe('HomeFontPageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         HomeFontPageComponent,
-        NavbarComponent,
         HomeDescriptionComponent
       ]
     })

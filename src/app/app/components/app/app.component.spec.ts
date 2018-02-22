@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { APP_BASE_HREF } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,9 +12,12 @@ describe('AppComponent', () => {
         RouterTestingModule,
         HttpClientModule
       ],
-      providers: [{provide: APP_BASE_HREF, useValue: '/'}],
+      providers: [
+        {provide: APP_BASE_HREF, useValue: '/'}
+      ],
       declarations: [
-        AppComponent
+        AppComponent,
+        NavbarComponent
       ],
     }).compileComponents();
   }));

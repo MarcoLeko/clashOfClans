@@ -3,7 +3,7 @@ import { HomeFontPageComponent } from './components/home-fontpage/home-font-page
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeDescriptionComponent } from './components/home-description/home-description.component';
-import { ClanSearchComponent } from './components/clan-search/clan-search.component';
+import { PlayerSearchComponent } from './components/player-search/player-search.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeFontPageComponent }
@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   declarations: [
     HomeFontPageComponent,
     HomeDescriptionComponent,
-    ClanSearchComponent
+    PlayerSearchComponent
   ],
   imports: [CommonModule,
     RouterModule.forRoot(

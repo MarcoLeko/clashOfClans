@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeFontPageComponent } from './home-font-page.component';
 import { HomeDescriptionComponent } from '../home-description/home-description.component';
+import { PlayerSearchComponent } from '../player-search/player-search.component';
 
 describe('HomeFontPageComponent', () => {
   let component: HomeFontPageComponent;
@@ -11,7 +12,8 @@ describe('HomeFontPageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         HomeFontPageComponent,
-        HomeDescriptionComponent
+        HomeDescriptionComponent,
+        PlayerSearchComponent
       ]
     })
     .compileComponents();

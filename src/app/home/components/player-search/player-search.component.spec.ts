@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClanSearchComponent } from './clan-search.component';
+import { PlayerSearchComponent } from './player-search.component';
 
-describe('ClanSearchComponent', () => {
-  let component: ClanSearchComponent;
-  let fixture: ComponentFixture<ClanSearchComponent>;
+describe('PlayerSearchComponent', () => {
+  let component: PlayerSearchComponent;
+  let fixture: ComponentFixture<PlayerSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClanSearchComponent ]
+      declarations: [ PlayerSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClanSearchComponent);
+    fixture = TestBed.createComponent(PlayerSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

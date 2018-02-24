@@ -25,11 +25,11 @@ export interface ClansByClantagType {
   warWins: number;
   isWarLogPublic: boolean;
   description: string;
-  memberList: ClanMembersByClantagType[];
+  memberList: ClanMembersType[];
 }
 
 /**List clan members**/
-export interface ClanMembersByClantagType {
+export interface ClanMembersType {
   tag: string;
   name: string;
   expLevel: number;

@@ -1,12 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './components/app/app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HomeModule } from '../home/home.module';
-import { RouterModule, Routes } from '@angular/router';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {AppComponent} from './components/app/app.component';
+import {HomeModule} from '../home/home.module';
+import {RouterModule, Routes} from '@angular/router';
+import {NavbarComponent} from './components/navbar/navbar.component';
 
 const appRoutes: Routes = [];
 
@@ -18,7 +17,6 @@ const appRoutes: Routes = [];
   imports: [
     HomeModule,
     BrowserModule,
-    HttpClientModule,
     RouterModule.forRoot(
       appRoutes
     )

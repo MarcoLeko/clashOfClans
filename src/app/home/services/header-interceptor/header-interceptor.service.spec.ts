@@ -5,6 +5,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import {PlayerSearchService} from "../player-search/player-search.service";
 import {HashTransformerService} from "../../../shared/domain/hash-transformer.service";
+import {Mocks} from "../../../testing/mocks";
 
 describe('HeaderInterceptorService', () => {
   const testToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwM' +
@@ -36,9 +37,7 @@ describe('HeaderInterceptorService', () => {
   }));
 
   it('should add an Authorization header', () => {
-    const testPlayerTag: string = '#9P9UG92CG';
-
-    service.getPlayer(testPlayerTag).subscribe(response => {
+    service.getPlayer(Mocks.PLAYERTAG).subscribe(response => {
       expect(response).toBeTruthy();
     });
 

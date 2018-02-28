@@ -20,7 +20,7 @@ export class PlayerSearchService {
       return Observable.create(this.player);
     } else {
       return this.http.get<PlayerByPlayerTagType>(PlayerSearchService.PLAYERURL + this.hashTransformer.transformHash(playerTag)).
-        pipe((map(data => this.player = data)));
+        pipe(map(data => this.player = data));
     }
   }
 

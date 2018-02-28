@@ -15,6 +15,10 @@
   background-image: url("/assets/clashplayer.png");
   background-repeat: no-repeat;
   opacity: 0.5;
+  height: 100%;
 }
 
+.textWrapper {
+  white-space: nowrap;
+}
 

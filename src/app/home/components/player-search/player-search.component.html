@@ -2,15 +2,25 @@
   <div class="container">
     <div class="card">
       <div class="card-body customBackground">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-            dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem
-            ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">Player Search</h5>
+          <p class="card-text">If you want to search for a player we recommend you to enter the player id.
+          A possible valid Player id could be:</p>
+        <form class="form-group row">
+          <label for="staticPlayerId" class="textWrapper col-md-2 col-form-label">Player ID</label>
+          <div class="col-md-8">
+            <input type="text" readonly class="form-control-plaintext" id="staticPlayerId" value="#9YRJ89YL">
+          </div>
+        </form>
+        <p><b>Watch all kind of important stats about a player:</b></p>
+        <form class="form-inline" #validateForm="ngForm">
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="text" ngModel name="playerId"
+                   class="form-control" required minlength="7"
+                   placeholder="I want player stats...">
+          </div>
+          <button type="submit" class="btn btn-primary mb-2" [disabled]="!validateForm.form.valid"
+                  (click)="onSubmit($event)">Search</button>
+        </form>
         </div>
     </div>
   </div>

@@ -1,21 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HomeDescriptionComponent } from './home-description.component';
-import { By } from '@angular/platform-browser';
+import {JumbotronComponent} from './jumbotron.component';
+import {By} from '@angular/platform-browser';
 
-describe('HomeDescriptionComponent', () => {
-  let component: HomeDescriptionComponent;
-  let fixture: ComponentFixture<HomeDescriptionComponent>;
+describe('JumbotronComponent', () => {
+  let component: JumbotronComponent;
+  let fixture: ComponentFixture<JumbotronComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeDescriptionComponent]
+      declarations: [JumbotronComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeDescriptionComponent);
+    fixture = TestBed.createComponent(JumbotronComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

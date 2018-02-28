@@ -15,7 +15,7 @@
         <form class="form-inline" #validateForm="ngForm">
           <div class="form-group mx-sm-3 mb-2">
             <input type="text" ngModel name="playerId"
-                   class="form-control" required minlength="7"
+                   class="form-control" required
                    placeholder="I want player stats...">
           </div>
           <button type="submit" class="btn btn-primary mb-2" [disabled]="!validateForm.form.valid"

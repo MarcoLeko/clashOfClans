@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlayerSearchComponent } from './player-search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('PlayerSearchComponent', () => {
   let component: PlayerSearchComponent;
@@ -8,6 +9,10 @@ describe('PlayerSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+        FormsModule
+      ],
       declarations: [ PlayerSearchComponent ]
     })
     .compileComponents();

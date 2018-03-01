@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-player-search',
@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 })
 export class PlayerSearchComponent {
 
-  onSubmit(event) {
-    console.log(event);
+  onSubmit(value) {
+    console.log(value);
   }
 }

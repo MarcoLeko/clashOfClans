@@ -1,8 +1,9 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {HomeFontPageComponent} from './home-font-page.component';
-import {JumbotronComponent} from '../jumbotron/jumbotron.component';
-import {PlayerSearchComponent} from '../player-search/player-search.component';
+import { HomeFontPageComponent } from './home-font-page.component';
+import { JumbotronComponent } from '../jumbotron/jumbotron.component';
+import { PlayerSearchComponent } from '../player-search/player-search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('HomeFontPageComponent', () => {
   let component: HomeFontPageComponent;
@@ -10,6 +11,10 @@ describe('HomeFontPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+        FormsModule
+      ],
       declarations: [
         HomeFontPageComponent,
         JumbotronComponent,

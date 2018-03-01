@@ -1,14 +1,15 @@
-import {NgModule} from '@angular/core';
-import {HomeFontPageComponent} from './components/home-fontpage/home-font-page.component';
-import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
-import {PlayerSearchComponent} from './components/player-search/player-search.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {HeaderInterceptorService} from "./services/header-interceptor/header-interceptor.service";
-import {PlayerSearchService} from "./services/player-search/player-search.service";
-import {SharedModule} from "../shared/shared.module";
-import {FormsModule} from "@angular/forms";
+import { NgModule } from '@angular/core';
+import { HomeFontPageComponent } from './components/home-fontpage/home-font-page.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
+import { PlayerSearchComponent } from './components/player-search/player-search.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HeaderInterceptorService } from './services/header-interceptor/header-interceptor.service';
+import { PlayerSearchService } from './services/player-search/player-search.service';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PlayerHashValidationDirective } from './directives/playerHashValidation/playerHashValidation.directive';
 
 const appRoutes: Routes = [
   { path: '', component: HomeFontPageComponent }
@@ -18,12 +19,14 @@ const appRoutes: Routes = [
   declarations: [
     HomeFontPageComponent,
     JumbotronComponent,
-    PlayerSearchComponent
+    PlayerSearchComponent,
+    PlayerHashValidationDirective
   ],
   imports: [
     CommonModule,
     FormsModule,
     SharedModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes
     )],

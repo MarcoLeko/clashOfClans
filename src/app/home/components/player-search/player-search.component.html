@@ -12,14 +12,13 @@
           </div>
         </form>
         <p><b>Watch all kind of important stats about a player:</b></p>
-        <form class="form-inline" #validateForm="ngForm">
+        <form class="form-inline" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
           <div class="form-group mx-sm-3 mb-2">
             <input type="text" ngModel name="playerId"
-                   class="form-control" required
+                   class="form-control" required appHasPlayerHash
                    placeholder="I want player stats...">
           </div>
-          <button type="submit" class="btn btn-primary mb-2" [disabled]="!validateForm.form.valid"
-                  (click)="onSubmit($event)">Search</button>
+          <button type="submit" class="btn btn-primary mb-2" [disabled]="!form.form.valid">Search</button>
         </form>
         </div>
     </div>

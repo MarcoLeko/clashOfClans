@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-player-search',
@@ -7,7 +8,11 @@ import { Component } from '@angular/core';
 })
 export class PlayerSearchComponent {
 
-  onSubmit(value) {
-    console.log(value);
+  constructor(private router: Router) {
   }
+
+  onSubmit(value) {
+    this.router.navigate(['search/' + value.playerId])
+}
+
 }

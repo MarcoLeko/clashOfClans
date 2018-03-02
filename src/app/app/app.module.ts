@@ -6,6 +6,7 @@ import {AppComponent} from './components/app/app.component';
 import {HomeModule} from '../home/home.module';
 import {RouterModule, Routes} from '@angular/router';
 import {NavbarComponent} from './components/navbar/navbar.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [];
 
@@ -17,6 +18,7 @@ const appRoutes: Routes = [];
   imports: [
     HomeModule,
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes
     )

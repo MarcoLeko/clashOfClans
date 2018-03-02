@@ -1,5 +1,5 @@
-import { Directive } from '@angular/core';
-import { AbstractControl, FormControl, NG_VALIDATORS, Validator, ValidatorFn } from '@angular/forms';
+import {Directive} from '@angular/core';
+import {AbstractControl, FormControl, NG_VALIDATORS, Validator, ValidatorFn} from '@angular/forms';
 
 @Directive({
   selector: '[appHasPlayerHash] [ngModel]',
@@ -35,5 +35,6 @@ export function hasHashValueValidator(): ValidatorFn {
         };
       }
     }
+    return null;
   };
 }

@@ -4,15 +4,16 @@ import {PlayerSearchService} from "../../services/player-search/player-search.se
 import {PlayerByPlayerTagType} from "../../../../generated/types";
 
 @Component({
-  selector: 'app-playerResult',
-  templateUrl: './player-result.component.html',
-  styleUrls: ['./player-result.component.css']
+  selector: 'app-player-result',
+  templateUrl: './player-search-result.component.html',
+  styleUrls: ['./player-search-result.component.css']
 })
 export class PlayerResultComponent implements OnInit {
 
   public isLoading: boolean = true;
   public searchValue: boolean;
   public playerResult: PlayerByPlayerTagType;
+  public hasNoResultFound: boolean = false;
 
   constructor(private playerSearchService: PlayerSearchService, private activatedRoute: ActivatedRoute) {
   }
@@ -25,7 +26,10 @@ export class PlayerResultComponent implements OnInit {
     this.playerSearchService.getPlayer(this.searchValue).subscribe(player => {
         this.playerResult = player;
         console.log(this.playerResult);
-      }, () => this.isLoading = false,
+      }, () => {
+        this.hasNoResultFound = true;
+        this.isLoading = false
+      },
       () => this.isLoading = false);
   }
 }

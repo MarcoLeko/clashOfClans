@@ -7,6 +7,7 @@ import {HomeModule} from '../home/home.module';
 import {RouterModule, Routes} from '@angular/router';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 const appRoutes: Routes = [];
 
@@ -18,6 +19,7 @@ const appRoutes: Routes = [];
   imports: [
     HomeModule,
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes

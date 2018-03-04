@@ -1,11 +1,11 @@
-<div *ngIf="isLoading">
-  <app-loading-screen></app-loading-screen>
-</div>
+<!--<div *ngIf="isLoading">-->
+  <!--<app-loading-screen></app-loading-screen>-->
+<!--</div>-->
 
 <div *ngIf="hasNoResultFound">
   <app-error-search-result></app-error-search-result>
 </div>
 
 <div *ngIf="playerResult">
-  <app-player-search-stats></app-player-search-stats>
+  <app-loading-screen></app-loading-screen>
 </div>

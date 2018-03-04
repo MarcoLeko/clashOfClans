@@ -1,1 +1,4 @@
-<img src="assets/ClashLogo.png" style="width: 40%; margin-left: auto;margin-right: auto;display: block;margin-top: 5em;" >
+<!--<img class="clashLogo" [src]="imgSource">-->
+
+
+<div *ngFor="let goal of goals" [@goals]="'in'">{{goal.one}}</div>

@@ -10,14 +10,14 @@ import {PlayerSearchService} from './services/player-search/player-search.servic
 import {SharedModule} from '../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PlayerHashValidationDirective} from './directives/playerHashValidation/playerHashValidation.directive';
-import {PlayerResultComponent} from './components/player-search-result/player-search-result.component';
+import {PlayerSearchResultComponent} from './components/player-search-result/player-search-result.component';
 import {LoadingScreenComponent} from './components/loading-screen/loading-screen.component';
 import {ErrorSearchResultComponent} from './components/error-search-result/error-search-result.component';
 import {PlayerSearchStatsComponent} from './components/player-search-stats/player-search-stats.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeFontPageComponent},
-  {path: 'search/:playerId', component: PlayerResultComponent}
+  {path: 'search/:playerId', component: PlayerSearchResultComponent}
 ];
 
 @NgModule({
@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     JumbotronComponent,
     PlayerSearchComponent,
     PlayerHashValidationDirective,
-    PlayerResultComponent,
+    PlayerSearchResultComponent,
     LoadingScreenComponent,
     ErrorSearchResultComponent,
     PlayerSearchStatsComponent

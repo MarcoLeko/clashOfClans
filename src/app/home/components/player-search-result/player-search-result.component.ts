@@ -8,7 +8,7 @@ import {PlayerByPlayerTagType} from "../../../../generated/types";
   templateUrl: './player-search-result.component.html',
   styleUrls: ['./player-search-result.component.css']
 })
-export class PlayerResultComponent implements OnInit {
+export class PlayerSearchResultComponent implements OnInit {
 
   public isLoading: boolean = true;
   public searchValue: boolean;

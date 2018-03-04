@@ -1,22 +1,41 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {PlayerResultComponent} from './player-search-result.component';
+import {PlayerSearchResultComponent} from './player-search-result.component';
+import {LoadingScreenComponent} from "../loading-screen/loading-screen.component";
+import {ErrorSearchResultComponent} from "../error-search-result/error-search-result.component";
+import {PlayerSearchStatsComponent} from "../player-search-stats/player-search-stats.component";
+import {PlayerSearchService} from "../../services/player-search/player-search.service";
+import {HttpClientModule} from "@angular/common/http";
+import {HashTransformerService} from "../../../shared/domain/hash-transformer.service";
+import {ActivatedRoute} from "@angular/router";
 
-describe('PlayerResultComponent', () => {
-  let component: PlayerResultComponent;
-  let fixture: ComponentFixture<PlayerResultComponent>;
+describe('PlayerSearchResultComponent', () => {
+  let component: PlayerSearchResultComponent;
+  let fixture: ComponentFixture<PlayerSearchResultComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlayerResultComponent ]
+      imports: [
+        HttpClientModule
+      ],
+      providers: [
+        PlayerSearchService,
+        HashTransformerService,
+        {provide: ActivatedRoute}
+      ],
+      declarations: [
+        PlayerSearchResultComponent,
+        LoadingScreenComponent,
+        ErrorSearchResultComponent,
+        PlayerSearchStatsComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlayerResultComponent);
+    fixture = TestBed.createComponent(PlayerSearchResultComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

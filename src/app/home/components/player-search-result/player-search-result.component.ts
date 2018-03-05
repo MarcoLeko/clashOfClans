@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
-import {PlayerSearchService} from "../../services/player-search/player-search.service";
-import {PlayerByPlayerTagType} from "../../../../generated/types";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { PlayerSearchService } from '../../services/player-search/player-search.service';
+import { PlayerByPlayerTagType } from '../../../../generated/types';
 
 @Component({
   selector: 'app-player-result',
@@ -10,10 +10,10 @@ import {PlayerByPlayerTagType} from "../../../../generated/types";
 })
 export class PlayerSearchResultComponent implements OnInit {
 
-  public isLoading: boolean = true;
+  public isLoading = true;
   public searchValue: boolean;
   public playerResult: PlayerByPlayerTagType;
-  public hasNoResultFound: boolean = false;
+  public hasNoResultFound = false;
 
   constructor(private playerSearchService: PlayerSearchService, private activatedRoute: ActivatedRoute) {
   }
@@ -28,7 +28,7 @@ export class PlayerSearchResultComponent implements OnInit {
         console.log(this.playerResult);
       }, () => {
         this.hasNoResultFound = true;
-        this.isLoading = false
+        this.isLoading = false;
       },
       () => this.isLoading = false);
   }

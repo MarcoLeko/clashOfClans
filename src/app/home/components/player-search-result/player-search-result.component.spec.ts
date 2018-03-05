@@ -1,13 +1,13 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PlayerSearchResultComponent} from './player-search-result.component';
-import {LoadingScreenComponent} from "../loading-screen/loading-screen.component";
-import {ErrorSearchResultComponent} from "../error-search-result/error-search-result.component";
-import {PlayerSearchStatsComponent} from "../player-search-stats/player-search-stats.component";
-import {PlayerSearchService} from "../../services/player-search/player-search.service";
-import {HttpClientModule} from "@angular/common/http";
-import {HashTransformerService} from "../../../shared/domain/hash-transformer.service";
-import {ActivatedRoute} from "@angular/router";
+import { PlayerSearchResultComponent } from './player-search-result.component';
+import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
+import { ErrorSearchResultComponent } from '../error-search-result/error-search-result.component';
+import { PlayerSearchStatsComponent } from '../player-search-stats/player-search-stats.component';
+import { PlayerSearchService } from '../../services/player-search/player-search.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HashTransformerService } from '../../../shared/domain/hash-transformer.service';
+import { ActivatedRoute } from '@angular/router';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;

@@ -7,11 +7,19 @@ import { PlayerSearchStatsComponent } from '../player-search-stats/player-search
 import { PlayerSearchService } from '../../services/player-search/player-search.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HashTransformerService } from '../../../shared/domain/hash-transformer.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRouteStub } from '../../../testing/activatedroute-stub';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
   let fixture: ComponentFixture<PlayerSearchResultComponent>;
+
+  const playerSearchMock = {
+    getPlayer() {
+    }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,9 +27,9 @@ describe('PlayerSearchResultComponent', () => {
         HttpClientModule
       ],
       providers: [
-        PlayerSearchService,
         HashTransformerService,
-        {provide: ActivatedRoute}
+        {provide: PlayerSearchService, useValue: playerSearchMock},
+        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
       ],
       declarations: [
         PlayerSearchResultComponent,
@@ -40,5 +48,19 @@ describe('PlayerSearchResultComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should fetch value from the url', () => {
+    const expectedParameter = 'expectedSearchValue';
+    const route = fixture.debugElement.injector.get(ActivatedRoute);
+    const params: Params = {playerId: expectedParameter};
+    route.params = Observable.of(params);
+
+    const playerSearch = fixture.debugElement.injector.get(PlayerSearchService);
+    spyOn<any>(playerSearch, 'getPlayer').and.returnValue(Observable.of([]));
+
+    component.ngOnInit();
+
+    expect(component.searchValue).toEqual(expectedParameter);
   });
 });

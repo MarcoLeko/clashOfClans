@@ -17,7 +17,7 @@ import 'rxjs/add/observable/interval';
         transform: 'scale(1.3)'
       })),
 
-      transition('small <=> large', animate('250ms ease-in')),
+      transition('small <=> large', animate('235ms ease-in')),
     ]),
   ]
 })
@@ -29,7 +29,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
   public subscriber;
 
   ngOnInit() {
-    this.subscriber = Observable.interval(380).subscribe(() => {
+    this.subscriber = Observable.interval(300).subscribe(() => {
       this.state = (this.state === 'small' ? 'large' : 'small');
     });
   }

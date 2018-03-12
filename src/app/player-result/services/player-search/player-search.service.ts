@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import {PlayerByPlayerTagType} from "../../../../generated/types";
-import {HashTransformerService} from "../../../shared/domain/hash-transformer.service";
-import {map} from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { PlayerByPlayerTagType } from '../../../../generated/types';
+import { HashTransformerService } from '../../../shared/domain/hash-transformer.service';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PlayerSearchService {

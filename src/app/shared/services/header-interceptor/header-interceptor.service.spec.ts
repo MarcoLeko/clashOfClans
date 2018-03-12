@@ -3,8 +3,8 @@ import { inject, TestBed } from '@angular/core/testing';
 import { HeaderInterceptorService } from './header-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { PlayerSearchService } from '../player-search/player-search.service';
-import { HashTransformerService } from '../../../shared/domain/hash-transformer.service';
+import { PlayerSearchService } from '../../../player-result/services/player-search/player-search.service';
+import { HashTransformerService } from '../../domain/hash-transformer.service';
 import { Mocks } from '../../../testing/mocks';
 
 describe('HeaderInterceptorService', () => {

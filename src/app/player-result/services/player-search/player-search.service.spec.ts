@@ -1,9 +1,9 @@
-import {inject, TestBed} from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
-import {PlayerSearchService} from './player-search.service';
-import {HashTransformerService} from "../../../shared/domain/hash-transformer.service";
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {Mocks} from "../../../testing/mocks";
+import { PlayerSearchService } from './player-search.service';
+import { HashTransformerService } from '../../../shared/domain/hash-transformer.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { Mocks } from '../../../testing/mocks';
 
 describe('PlayerSearchService', () => {
 
@@ -32,7 +32,7 @@ describe('PlayerSearchService', () => {
     service.getPlayer(Mocks.PLAYERTAG).subscribe(data => {
       expect(data).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG);
     });
-    
+
     const req = httpMock.expectOne(PlayerSearchService.PLAYERURL + hashTransformer.transformHash(Mocks.PLAYERTAG));
     expect(req.request.method).toBe("GET");
     req.flush(Mocks.PLAYERSTATSBYPLAYERTAG);

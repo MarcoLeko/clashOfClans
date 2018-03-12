@@ -4,14 +4,14 @@ import { PlayerSearchResultComponent } from './player-search-result.component';
 import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
 import { ErrorSearchResultComponent } from '../error-search-result/error-search-result.component';
 import { PlayerSearchStatsComponent } from '../player-search-stats/player-search-stats.component';
-import { PlayerSearchService } from '../../services/player-search/player-search.service';
 import { HttpClientModule } from '@angular/common/http';
-import { HashTransformerService } from '../../../shared/domain/hash-transformer.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ActivatedRouteStub } from '../../../testing/activatedroute-stub';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
+import { HashTransformerService } from '../../../shared/domain/hash-transformer.service';
+import { PlayerSearchService } from '../../services/player-search/player-search.service';
+import { ActivatedRouteStub } from '../../../testing/activatedroute-stub';
 import { Mocks } from '../../../testing/mocks';
 
 describe('PlayerSearchResultComponent', () => {

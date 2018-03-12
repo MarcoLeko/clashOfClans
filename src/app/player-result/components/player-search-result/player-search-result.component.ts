@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { PlayerSearchService } from '../../services/player-search/player-search.service';
 import { PlayerByPlayerTagType } from '../../../../generated/types';
+import { PlayerSearchService } from '../../services/player-search/player-search.service';
 
 @Component({
   selector: 'app-player-result',

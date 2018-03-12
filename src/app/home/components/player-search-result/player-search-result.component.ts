@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PlayerSearchService } from '../../services/player-search/player-search.service';
 import { PlayerByPlayerTagType } from '../../../../generated/types';
@@ -8,7 +8,7 @@ import { PlayerByPlayerTagType } from '../../../../generated/types';
   templateUrl: './player-search-result.component.html',
   styleUrls: ['./player-search-result.component.css']
 })
-export class PlayerSearchResultComponent implements OnInit {
+export class PlayerSearchResultComponent implements OnInit, AfterViewInit {
 
   public isLoading = true;
   public searchValue: boolean;
@@ -22,10 +22,11 @@ export class PlayerSearchResultComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.searchValue = params['playerId'];
     });
+  }
 
+  ngAfterViewInit() {
     this.playerSearchService.getPlayer(this.searchValue).subscribe(player => {
         this.playerResult = player;
-        console.log(this.playerResult);
       }, () => {
         this.hasNoResultFound = true;
         this.isLoading = false;

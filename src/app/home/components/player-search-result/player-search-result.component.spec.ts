@@ -11,14 +11,15 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ActivatedRouteStub } from '../../../testing/activatedroute-stub';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
+import { Mocks } from '../../../testing/mocks';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
   let fixture: ComponentFixture<PlayerSearchResultComponent>;
 
   const playerSearchMock = {
-    getPlayer() {
-    }
+    getPlayer: jasmine.createSpy('getPlayer')
   };
 
   beforeEach(async(() => {
@@ -52,15 +53,36 @@ describe('PlayerSearchResultComponent', () => {
 
   it('should fetch value from the url', () => {
     const expectedParameter = 'expectedSearchValue';
-    const route = fixture.debugElement.injector.get(ActivatedRoute);
-    const params: Params = {playerId: expectedParameter};
-    route.params = Observable.of(params);
 
-    const playerSearch = fixture.debugElement.injector.get(PlayerSearchService);
-    spyOn<any>(playerSearch, 'getPlayer').and.returnValue(Observable.of([]));
+    const params: Params = {
+      playerId: expectedParameter
+    };
+    const route = fixture.debugElement.injector.get(ActivatedRoute);
+    route.params = Observable.of(params);
 
     component.ngOnInit();
 
     expect(component.searchValue).toEqual(expectedParameter);
+  });
+
+  it('should set player stats by valid webservice call', () => {
+    playerSearchMock.getPlayer.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
+    component.ngAfterViewInit();
+
+    expect(component.playerResult).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG);
+  });
+
+  it('should set loading property by false if webservice call finished', () => {
+    playerSearchMock.getPlayer.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
+    component.ngAfterViewInit();
+
+    expect(component.isLoading).toBe(false);
+  });
+
+  it('should set no result property by true if webservice call failed', () => {
+    playerSearchMock.getPlayer.and.returnValue(Observable.throw({}));
+    component.ngAfterViewInit();
+
+    expect(component.hasNoResultFound).toBe(true);
   });
 });

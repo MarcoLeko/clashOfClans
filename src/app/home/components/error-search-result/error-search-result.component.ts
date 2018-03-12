@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-error-search-result',
   templateUrl: './error-search-result.component.html',
   styleUrls: ['./error-search-result.component.css']
 })
-export class ErrorSearchResultComponent implements OnInit {
+export class ErrorSearchResultComponent {
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
-  ngOnInit() {
+  onSubmit() {
+    this.router.navigate(['/']);
   }
 
 }

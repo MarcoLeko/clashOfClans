@@ -1,9 +1,9 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PlayerSearchComponent} from './player-search.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Router} from "@angular/router";
-import {Mocks} from "../../../testing/mocks";
+import { PlayerSearchComponent } from './player-search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Mocks } from '../../../testing/mocks';
 
 describe('PlayerSearchComponent', () => {
   let component: PlayerSearchComponent;
@@ -31,6 +31,7 @@ describe('PlayerSearchComponent', () => {
     component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
+
   it('should navigate to search result', () => {
     component = fixture.componentInstance;
     const testObj: any = {

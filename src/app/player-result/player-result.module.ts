@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { PlayerSearchService } from './services/player-search/player-search.service';
+import { PlayerSearchStatsHeaderComponent } from './components/player-search-stats/player-search-stats-header/player-search-stats-header.component';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent}
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
     PlayerSearchResultComponent,
     LoadingScreenComponent,
     PlayerSearchStatsComponent,
-    ErrorSearchResultComponent
+    ErrorSearchResultComponent,
+    PlayerSearchStatsHeaderComponent
   ],
   imports: [
     CommonModule,

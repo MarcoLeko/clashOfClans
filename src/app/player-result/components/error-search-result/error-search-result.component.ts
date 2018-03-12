@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ErrorSearchResultComponent {
 
+  public imgSrc = 'assets/clash-error.png';
   constructor(private router: Router) {
   }
 

@@ -21,6 +21,5 @@ export class PlayerSearchStatsHeaderComponent implements OnInit {
     this.imgSrcForLeagueBadge = this.playerResult.league.iconUrls.medium;
     this.imgSrcForClanBadge = this.playerResult.clan.clan.badgeUrls.medium;
     this.imgSrcForTownhall = this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel);
-    console.log(this.playerResult);
   }
 }

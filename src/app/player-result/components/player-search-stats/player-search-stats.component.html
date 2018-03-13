@@ -1,5 +1,8 @@
 <div class="bodyPanel">
   <div class="container-fluid">
-    <app-player-search-stats-header [playerResult]="playerResultForHeader"></app-player-search-stats-header>
+    <app-player-search-stats-header [playerResult]="playerResultForChildComp"></app-player-search-stats-header>
   </div>
+</div>
+<div class="bodyPanel">
+  <app-player-serch-stats-body [playerResult]="playerResultForChildComp"></app-player-serch-stats-body>
 </div>

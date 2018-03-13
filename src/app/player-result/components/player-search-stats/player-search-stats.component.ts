@@ -10,10 +10,9 @@ import { Mocks } from '../../../testing/mocks';
 export class PlayerSearchStatsComponent implements OnInit {
 
   @Input() playerResult: PlayerByPlayerTagType;
-  public playerResultForHeader: any;
-  public placeholderValue = Mocks.PLAYERSTATSBYPLAYERTAG;
+  public playerResultForChildComp: PlayerByPlayerTagType;
 
   ngOnInit(): void {
-    this.playerResultForHeader = this.placeholderValue;
+    this.playerResultForChildComp = Mocks.PLAYERSTATSBYPLAYERTAG;
   }
 }

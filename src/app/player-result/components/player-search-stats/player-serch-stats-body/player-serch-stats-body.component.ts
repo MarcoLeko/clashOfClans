@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PlayerByPlayerTagType } from '../../../../../generated/types';
 
 @Component({
   selector: 'app-player-serch-stats-body',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerSerchStatsBodyComponent implements OnInit {
 
-  constructor() { }
+  @Input() playerResult: PlayerByPlayerTagType;
 
   ngOnInit() {
+    console.log(this.playerResult)
   }
 
 }

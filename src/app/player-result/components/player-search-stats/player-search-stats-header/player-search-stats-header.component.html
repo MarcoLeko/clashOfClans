@@ -2,10 +2,12 @@
   <div class="col-sm-4 pull-left">
     <div class="card cardHeader">
       <div class="card-body">
-        <img class="img-thumbnail imgSize" src="assets/ClashLogo.png">
-        <span class="font-weight-bold">{{playerResult.name}}&nbsp;</span>
-        <span class="font-weight-bold" style="white-space: nowrap">{{playerResult.tag}}&nbsp;</span>
-        <span class="font-weight-bold" style="white-space: nowrap">ExpLevel: {{playerResult.expLevel}}</span>
+        <form class="form-inline">
+          <img class="img-thumbnail imgSize" src="assets/ClashLogo.png">
+          <span class="font-weight-bold">&nbsp;{{playerResult.name}}&nbsp;</span>
+          <span class="font-weight-bold">{{playerResult.tag}}&nbsp;</span>
+          <span class="font-weight-bold">Lvl: {{playerResult.expLevel}}</span>
+        </form>
       </div>
     </div>
   </div>

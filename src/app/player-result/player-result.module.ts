@@ -4,7 +4,7 @@ import { PlayerSearchResultComponent } from './components/player-search-result/p
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { PlayerSearchStatsComponent } from './components/player-search-stats/player-search-stats.component';
 import { ErrorSearchResultComponent } from './components/error-search-result/error-search-result.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
@@ -26,6 +26,7 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(
       appRoutes

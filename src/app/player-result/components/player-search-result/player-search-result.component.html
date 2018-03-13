@@ -3,9 +3,10 @@
 </div>
 
 <div *ngIf="hasNoResultFound">
-  <app-error-search-result></app-error-search-result>
+  <!--<app-error-search-result></app-error-search-result>-->
+  <app-player-search-stats [playerResult]="playerResult"></app-player-search-stats>
 </div>
 
 <div *ngIf="playerResult">
-  <app-player-search-stats></app-player-search-stats>
+  <app-player-search-stats [playerResult]="playerResult"></app-player-search-stats>
 </div>

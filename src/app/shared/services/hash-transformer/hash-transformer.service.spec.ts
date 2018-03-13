@@ -1,6 +1,6 @@
-import {inject, TestBed} from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
-import {HashTransformerService} from "./hash-transformer.service";
+import { HashTransformerService } from './hash-transformer.service';
 
 describe('HashTransformerService', () => {
   beforeEach(() => {

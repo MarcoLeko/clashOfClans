@@ -187,7 +187,6 @@ export interface PlayerByPlayerTagType {
   trophies: number;
   versusTrophies: number;
   attacksAndDefence: AttacksAndDefenceType;
-
   clan: {
     clanLevel: number,
     clan: ClanDefaultInformationType

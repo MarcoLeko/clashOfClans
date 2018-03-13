@@ -1,10 +1,10 @@
-import {PlayerByPlayerTagType} from "../../generated/types";
+import { PlayerByPlayerTagType } from '../../generated/types';
 
 export class Mocks {
   public static PLAYERTAG: string = '#9P9UG92CG';
   public static PLAYERSTATSBYPLAYERTAG: PlayerByPlayerTagType = {
     tag: '#9P9UG92CG',
-    name: 'marco',
+    name: 'Papastadoupoulos',
     expLevel: 132,
     league: {
       id: 8,
@@ -82,8 +82,25 @@ export class Mocks {
     ],
     heroes: [
       {
+        name: 'Barbarianking',
+        level: 23,
+        maxLevel: 50,
+        village: 'kjfsölksd'
+      },
+      {
         name: 'Archerqueen',
-        level: 30,
+        level: 45,
+        maxLevel: 50,
+        village: 'kjfsölksd'
+      },
+      {
+        name: 'warden',
+        level: 18,
+        maxLevel: 50,
+        village: 'kjfsölksd'
+      }, {
+        name: 'battle-machine',
+        level: 25,
         maxLevel: 50,
         village: 'kjfsölksd'
       }

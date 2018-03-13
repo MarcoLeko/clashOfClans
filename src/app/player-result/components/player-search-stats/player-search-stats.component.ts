@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PlayerByPlayerTagType } from '../../../../generated/types';
+import { Mocks } from '../../../testing/mocks';
 
 @Component({
   selector: 'app-player-search-stats',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerSearchStatsComponent implements OnInit {
 
-  constructor() { }
+  @Input() playerResult: PlayerByPlayerTagType;
+  public playerResultForHeader: any;
+  public placeholderValue = Mocks.PLAYERSTATSBYPLAYERTAG;
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.playerResultForHeader = this.placeholderValue;
   }
-
 }

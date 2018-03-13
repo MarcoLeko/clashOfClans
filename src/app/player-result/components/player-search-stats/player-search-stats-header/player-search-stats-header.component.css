@@ -1,0 +1,17 @@
+.cardHeader {
+  height: 5.5em;
+}
+
+.card-body {
+  max-height: 100%;
+}
+
+.imgSize {
+  width: 3em;
+  height: 3em;
+}
+
+.heroLogo {
+  width: 3.5em;
+  height: 3.5em;
+}

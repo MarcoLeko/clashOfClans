@@ -14,7 +14,7 @@ import 'rxjs/add/observable/interval';
         transform: 'scale(1)'
       })),
       state('large', style({
-        transform: 'scale(1.3)'
+        transform: 'scale(1.2)'
       })),
 
       transition('small <=> large', animate('235ms ease-in')),

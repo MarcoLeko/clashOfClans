@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { HashTransformerService } from './domain/hash-transformer.service';
+import { HashTransformerService } from './services/hash-transformer/hash-transformer.service';
 import { HeaderInterceptorService } from './services/header-interceptor/header-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TownhallPictureService } from './services/get-townhall-picture/townhall-picture.service';
 
 @NgModule({
   declarations: [],
@@ -11,7 +12,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     useClass: HeaderInterceptorService,
     multi: true
   },
-    HashTransformerService
+    HashTransformerService,
+    TownhallPictureService
   ],
   exports: []
 })

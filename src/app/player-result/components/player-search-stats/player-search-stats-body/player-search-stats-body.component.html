@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-top-left card-center" tabindex="-1">
+      <div class="card-body">
+        <div class="AchievementDescription">
+          <h4 class="card-title">Achievements</h4>
+          <p>Have a look about war stars, best trophies, best trophies in versus battles, legend league statistics and
+            so on...</p>
+        </div>
+        <div class="achievementContent">
+          <p>Should only show on focus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card card-top-right" tabindex="-1">
+      <div class="card-body">
+        <div class="clanDescription">
+          <h4 class="card-title">Clan</h4>
+          <p>Overview about clan-information, -members and so on... For a detailed view go you might want to use the
+            <b>clan-search</b></p>
+        </div>
+        <div class="clanContent">
+          <p>Should only show on focus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-bottom-left card-center" tabindex="-1">
+      <div class="card-body">
+        <div class="currentSeasonDescription">
+          <h4 class="card-title">Current Season</h4>
+          <p>Are you active? Have a look about season attacks, donations and further more</p>
+        </div>
+        <div class="currentSeasonContent">
+          <div class="table-responsive">
+            <table class="table table-sm table-dark table-hover">
+              <caption>*Attacks and defenses are based on wins</caption>
+              <thead>
+              <tr>
+                <th scope="col">{{playerResult.name}}</th>
+                <th scope="col">Donations</th>
+                <th scope="col">Donations-received</th>
+                <th scope="col">Attacks</th>
+                <th scope="col">Defenses</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td>{{playerResult.donations.donations}}</td>
+                <td>{{playerResult.donations.donationsReceived}}</td>
+                <td>{{playerResult.attacksAndDefence.attackWins}}</td>
+                <td>{{playerResult.attacksAndDefence.defenseWins}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card card-bottom-right" tabindex="-1">
+      <div class="card-body">
+        <div class="troopsAndSpellsDescription">
+          <h4 class="card-title">Troops and Spells</h4>
+          <p>How is your progress going? Have a look about troops and spell stats</p>
+        </div>
+        <div class="troopsAndSpellsContent">
+          <p>Should only show on focus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

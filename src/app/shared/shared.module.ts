@@ -3,6 +3,7 @@ import { HashTransformerService } from './services/hash-transformer/hash-transfo
 import { HeaderInterceptorService } from './services/header-interceptor/header-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TownhallPictureService } from './services/get-townhall-picture/townhall-picture.service';
+import { ClanSearchService } from './services/clan-search/clan-search.service';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,8 @@ import { TownhallPictureService } from './services/get-townhall-picture/townhall
     multi: true
   },
     HashTransformerService,
-    TownhallPictureService
+    TownhallPictureService,
+    ClanSearchService
   ],
   exports: []
 })

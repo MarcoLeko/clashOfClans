@@ -2,7 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlayerSearchStatsComponent } from './player-search-stats.component';
 import { PlayerSearchStatsHeaderComponent } from './player-search-stats-header/player-search-stats-header.component';
-import { TownhallPictureService } from '../../../shared/services/get-townhall-picture/townhall-picture.service';
+import { PlayerSearchStatsBodyComponent } from './player-search-stats-body/player-search-stats-body.component';
+import { SharedModule } from '../../../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { Mocks } from '../../../testing/mocks';
 
 describe('PlayerSearchStatsComponent', () => {
   let component: PlayerSearchStatsComponent;
@@ -10,12 +13,14 @@ describe('PlayerSearchStatsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [
-        TownhallPictureService
+      imports: [
+        SharedModule,
+        HttpClientModule
       ],
       declarations: [
         PlayerSearchStatsComponent,
-        PlayerSearchStatsHeaderComponent
+        PlayerSearchStatsHeaderComponent,
+        PlayerSearchStatsBodyComponent
       ]
     })
     .compileComponents();
@@ -24,6 +29,7 @@ describe('PlayerSearchStatsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PlayerSearchStatsComponent);
     component = fixture.componentInstance;
+    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
     fixture.detectChanges();
   });
 

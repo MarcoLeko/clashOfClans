@@ -1,0 +1,88 @@
+.card-center {
+  float: right;
+}
+
+.card {
+  z-index: 0;
+  height: 15em;
+  width: 25em;
+}
+
+.card:not(focus) {
+  transition-timing-function: ease-in;
+  transition: 200ms;
+}
+
+.card:focus {
+  z-index: 1;
+  outline: none;
+  transition-timing-function: ease-out;
+  transition: 200ms;
+  transform: scale(2.2, 2.2);
+  box-shadow: 0 0 1px 1px #585858;
+}
+
+.achievementContent {
+  display: none;
+}
+
+.card-top-left:focus {
+  transform-origin: top left;
+  display: block;
+}
+
+.card-top-left:focus .achievementContent {
+  display: block;
+}
+
+.card-top-left:focus .AchievementDescription {
+  display: none;
+}
+
+.clanContent {
+  display: none;
+}
+
+.card-top-right:focus {
+  transform-origin: top right;
+}
+
+.card-top-right:focus .clanContent {
+  display: block;
+}
+
+.card-top-right:focus .clanDescription {
+  display: none;
+}
+
+.currentSeasonContent{
+  display: none;
+}
+
+.card-bottom-left:focus {
+  transform-origin: bottom left;
+}
+
+.card-bottom-left:focus .currentSeasonContent {
+  display: block;
+}
+
+.card-bottom-left:focus .currentSeasonDescription {
+  display: none;
+}
+
+.troopsAndSpellsContent {
+  display: none;
+}
+
+.card-bottom-right:focus {
+  transform-origin: bottom right;
+}
+
+.card-bottom-right:focus .troopsAndSpellsContent{
+  display: block;
+}
+
+.card-bottom-right:focus .troopsAndSpellsDescription{
+  display: none;
+}

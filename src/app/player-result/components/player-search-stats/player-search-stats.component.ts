@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PlayerByPlayerTagType } from '../../../../generated/types';
-import { Mocks } from '../../../testing/mocks';
 
 @Component({
   selector: 'app-player-search-stats',
@@ -13,6 +12,6 @@ export class PlayerSearchStatsComponent implements OnInit {
   public playerResultForChildComp: PlayerByPlayerTagType;
 
   ngOnInit(): void {
-    this.playerResultForChildComp = Mocks.PLAYERSTATSBYPLAYERTAG;
+    this.playerResultForChildComp = this.playerResult;
   }
 }

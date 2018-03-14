@@ -11,7 +11,7 @@ import { PlayerSearchService } from '../../services/player-search/player-search.
 export class PlayerSearchResultComponent implements OnInit, AfterViewInit {
 
   public isLoading = true;
-  public searchValue: boolean;
+  public searchValue: string;
   public playerResult: PlayerByPlayerTagType;
   public hasNoResultFound = false;
 
@@ -25,7 +25,7 @@ export class PlayerSearchResultComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.playerSearchService.getPlayer(this.searchValue).subscribe(player => {
+    this.playerSearchService.getPlayerByPlayerTag(this.searchValue).subscribe(player => {
         this.playerResult = player;
       }, () => {
         this.hasNoResultFound = true;

@@ -15,7 +15,7 @@ export class PlayerSearchService {
   constructor(private http: HttpClient, private hashTransformer: HashTransformerService) {
   }
 
-  public getPlayer(playerTag): Observable<PlayerByPlayerTagType> {
+  public getPlayerByPlayerTag(playerTag: string): Observable<PlayerByPlayerTagType> {
     if (this.hasCachePlayer(playerTag)) {
       return Observable.create(this.player);
     } else {
@@ -24,7 +24,7 @@ export class PlayerSearchService {
     }
   }
 
-  private hasCachePlayer(playerTag) {
+  private hasCachePlayer(playerTag: string) {
     return this.player && this.player.tag === playerTag;
   }
 }

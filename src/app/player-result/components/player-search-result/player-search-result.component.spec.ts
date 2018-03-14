@@ -14,13 +14,14 @@ import { PlayerSearchService } from '../../services/player-search/player-search.
 import { ActivatedRouteStub } from '../../../testing/activatedroute-stub';
 import { Mocks } from '../../../testing/mocks';
 import { PlayerSearchStatsHeaderComponent } from '../player-search-stats/player-search-stats-header/player-search-stats-header.component';
+import { PlayerSearchStatsBodyComponent } from '../player-search-stats/player-search-stats-body/player-search-stats-body.component';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
   let fixture: ComponentFixture<PlayerSearchResultComponent>;
 
   const playerSearchMock = {
-    getPlayer: jasmine.createSpy('getPlayer')
+    getPlayerByPlayerTag: jasmine.createSpy('getPlayerByPlayerTag')
   };
 
   beforeEach(async(() => {
@@ -38,7 +39,8 @@ describe('PlayerSearchResultComponent', () => {
         LoadingScreenComponent,
         ErrorSearchResultComponent,
         PlayerSearchStatsComponent,
-        PlayerSearchStatsHeaderComponent
+        PlayerSearchStatsHeaderComponent,
+        PlayerSearchStatsBodyComponent
       ]
     })
       .compileComponents();
@@ -68,21 +70,21 @@ describe('PlayerSearchResultComponent', () => {
   });
 
   it('should set player stats by valid webservice call', () => {
-    playerSearchMock.getPlayer.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
+    playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
     component.ngAfterViewInit();
 
     expect(component.playerResult).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG);
   });
 
   it('should set loading property by false if webservice call finished', () => {
-    playerSearchMock.getPlayer.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
+    playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
     component.ngAfterViewInit();
 
     expect(component.isLoading).toBe(false);
   });
 
   it('should set no result property by true if webservice call failed', () => {
-    playerSearchMock.getPlayer.and.returnValue(Observable.throw({}));
+    playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.throw({}));
     component.ngAfterViewInit();
 
     expect(component.hasNoResultFound).toBe(true);

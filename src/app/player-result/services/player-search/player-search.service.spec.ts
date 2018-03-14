@@ -10,7 +10,9 @@ describe('PlayerSearchService', () => {
   let httpMock: HttpTestingController;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule
+      ],
       providers: [
         PlayerSearchService,
         HashTransformerService
@@ -28,8 +30,8 @@ describe('PlayerSearchService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should return observable of PlayerByPlayerTag', inject([PlayerSearchService, HashTransformerService], (service, hashTransformer) => {
-    service.getPlayer(Mocks.PLAYERTAG).subscribe(data => {
+  it('should return observable of playerByPlayerTag', inject([PlayerSearchService, HashTransformerService], (service, hashTransformer) => {
+    service.getPlayerByPlayerTag(Mocks.PLAYERTAG).subscribe(data => {
       expect(data).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG);
     });
 

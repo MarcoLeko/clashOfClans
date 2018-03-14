@@ -19,7 +19,7 @@ export interface ClanType {
 export interface ClansByClantagType {
   clan: ClanType;
   type: string;
-  requiredTrophies: string;
+  requiredTrophies: number;
   warFrequency: string;
   warWinStreak: number;
   warWins: number;

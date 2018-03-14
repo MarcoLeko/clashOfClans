@@ -11,7 +11,11 @@
   height: 3em;
 }
 
+.townhallLogo {
+  width: 3.8em;
+  height: auto;
+}
 .heroLogo {
-  width: 3.5em;
-  height: 3.5em;
+  width: 2.5em;
+  height: auto;
 }

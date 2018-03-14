@@ -40,7 +40,7 @@ describe('HeaderInterceptorService', () => {
   }));
 
   it('should add an Authorization header', () => {
-    service.getPlayer(Mocks.PLAYERTAG).subscribe(response => {
+    service.getPlayerByPlayerTag(Mocks.PLAYERTAG).subscribe(response => {
       expect(response).toBeTruthy();
     });
 

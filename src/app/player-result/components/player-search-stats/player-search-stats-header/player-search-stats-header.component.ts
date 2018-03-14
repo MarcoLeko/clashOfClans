@@ -13,13 +13,14 @@ export class PlayerSearchStatsHeaderComponent implements OnInit {
   public imgSrcForLeagueBadge: string;
   public imgSrcForClanBadge: string;
   public imgSrcForTownhall: string;
-
   constructor(private townhallPictureService: TownhallPictureService) {
   }
 
   ngOnInit(): void {
+    console.log(this.playerResult);
     this.imgSrcForLeagueBadge = this.playerResult.league.iconUrls.medium;
-    this.imgSrcForClanBadge = this.playerResult.clan.clan.badgeUrls.medium;
+    console.log(this.imgSrcForLeagueBadge);
+    this.imgSrcForClanBadge = this.playerResult.clan.badgeUrls.medium;
     this.imgSrcForTownhall = this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel);
   }
 }

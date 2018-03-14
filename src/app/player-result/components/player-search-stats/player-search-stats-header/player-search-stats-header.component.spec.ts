@@ -36,7 +36,7 @@ describe('PlayerSearchStatsHeaderComponent', () => {
 
     fixture.detectChanges();
 
-    expect(component.imgSrcForClanBadge).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG.clan.clan.badgeUrls.medium);
+    expect(component.imgSrcForClanBadge).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG.clan.badgeUrls.medium);
     expect(component.imgSrcForLeagueBadge).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG.league.iconUrls.medium);
     expect(component.imgSrcForTownhall).toEqual(TownhallImgSrc.TOWNHALL_NINE);
   });

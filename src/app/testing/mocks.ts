@@ -17,13 +17,10 @@ export class Mocks {
     },
     trophies: 3319,
     versusTrophies: 4010,
-    attacksAndDefence: {
       attackWins: 9,
-      defenseWins: 27
-    },
+    defenseWins: 27,
     clan: {
       clanLevel: 20,
-      clan: {
         tag: '#87878989',
         name: 'Wolfsrudel',
         badgeUrls: {
@@ -31,13 +28,10 @@ export class Mocks {
           large: 'http://api.coc.badgeurl.large/',
           medium: 'http://api.coc.badgeurl.medium/'
         }
-      }
     },
     bestTrophies: 4265,
-    donations: {
       donations: 12890,
-      donationsReceived: 6000
-    },
+    donationsReceived: 6000,
     warStars: 650,
     role: 'elder',
     townHallLevel: 9,
@@ -117,16 +111,13 @@ export class Mocks {
 
   public static CLANTAG: string = '#90899878';
   public static CLANSTATSBYCLANTAG: ClansByClantagType = {
-    clan: {
-      clan: {
         tag: '#90899878',
         name: 'wolfsrudel',
         badgeUrls: {
           small: 'http://api.coc.badgeurl.small/',
           large: 'http://api.coc.badgeurl.large/',
           medium: 'http://api.coc.badgeurl.medium/'
-        }
-      },
+        },
       location: {
         id: 99,
         name: 'Germany',
@@ -135,8 +126,7 @@ export class Mocks {
       clanLevel: 20,
       clanPoints: 17600,
       clanVersusPoints: 16000,
-      members: 50
-    },
+    members: 50,
     type: 'open',
     requiredTrophies: 2200,
     warFrequency: 'always',
@@ -161,10 +151,8 @@ export class Mocks {
         role: 'leader',
         clanRank: 17,
         previousClanRank: 16,
-        donations: {
           donations: 98,
           donationsReceived: 999
-        }
       }
     }
     ]

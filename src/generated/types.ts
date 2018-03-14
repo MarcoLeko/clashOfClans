@@ -8,7 +8,9 @@
  Note that clan tags start with hash character '#' and that needs to be URL-encoded properly to work in URL, so for
  example clan tag '#2ABC' would become '%232ABC' in the URL.**/
 export interface ClanType {
-  clan: ClanDefaultInformationType;
+  tag: string;
+  name: string;
+  badgeUrls: UrlType;
   location: LocationsType;
   clanLevel: number;
   clanPoints: number;
@@ -17,7 +19,14 @@ export interface ClanType {
 }
 
 export interface ClansByClantagType {
-  clan: ClanType;
+  tag: string;
+  name: string;
+  badgeUrls: UrlType;
+  location: LocationsType;
+  clanLevel: number;
+  clanPoints: number;
+  clanVersusPoints: number;
+  members: number;
   type: string;
   requiredTrophies: number;
   warFrequency: string;
@@ -42,7 +51,8 @@ export interface ClanMembersType {
     role: string,
     clanRank: number,
     previousClanRank: number
-    donations: DonationsType;
+    donations: number;
+    donationsReceived: number;
   };
 }
 /**Retrieve clan's clan war log**/
@@ -51,7 +61,9 @@ export interface WarlogbyClantagType {
   endTime: string;
   teamSize: number;
   clan: {
-    clan: ClanDefaultInformationType,
+    tag: string;
+    name: string;
+    badgeUrls: UrlType;
     clanLevel: number,
     attacks: number,
     stars: number,
@@ -67,14 +79,20 @@ export interface CurrentWarByClantagType {
   startTime: string;
   endTime: string;
   clan: {
-    clan: ClanDefaultInformationType,
+    tag: string;
+    name: string;
+    badgeUrls: UrlType;
     clanLevelExpAttacksType: ClanLevelExpStarsAttacksType;
   };
   opponent: OpponentType;
 }
 
 export interface OpponentType {
-  clan: ClanDefaultInformationType;
+  clan: {
+    tag: string;
+    name: string;
+    badgeUrls: UrlType;
+  };
   clanLevelExpAttacksType: ClanLevelExpStarsAttacksType;
 }
 
@@ -120,7 +138,11 @@ export interface PlayerRanksByLocationType {
   versusTrophies: number;
   attackWins: number;
   defenseWins: number;
-  clan: ClanDefaultInformationType;
+  clan: {
+    tag: string;
+    name: string;
+    badgeUrls: UrlType;
+  };
   rank: number;
   previousRank: number;
 }
@@ -147,7 +169,11 @@ export interface PlayerRankingsVersusByLocation {
   rank: number;
   previousRank: number;
   versusTrophies: number;
-  clan: ClanDefaultInformationType;
+  clan: {
+    tag: string;
+    name: string;
+    badgeUrls: UrlType;
+  };
   versusBattleWins: number;
 }
 
@@ -163,20 +189,19 @@ export interface LeagueSeasonRankingsForLegendLeagueType {
   expLevel: number;
   league: LeagueType;
   trophies: TrophiesType;
-  attacksAndDefence: AttacksAndDefenceType;
-  clan: ClanDefaultInformationType;
+  attackWins: number;
+  defenseWins: number;
+  clan: {
+    tag: string;
+    name: string;
+    badgeUrls: UrlType;
+  };
   rank: number;
 }
 
 export interface TrophiesType {
   trophies: number;
   versusTrophies: number;
-}
-
-export interface ClanDefaultInformationType {
-  tag: string;
-  name: string;
-  badgeUrls: UrlType;
 }
 
 export interface PlayerByPlayerTagType {
@@ -186,13 +211,17 @@ export interface PlayerByPlayerTagType {
   league: LeagueType;
   trophies: number;
   versusTrophies: number;
-  attacksAndDefence: AttacksAndDefenceType;
+  attackWins: number;
+  defenseWins: number;
   clan: {
     clanLevel: number,
-    clan: ClanDefaultInformationType
+    tag: string;
+    name: string;
+    badgeUrls: UrlType;
   };
   bestTrophies: number;
-  donations: DonationsType;
+  donations: number;
+  donationsReceived: number;
   warStars: number;
   role: string;
   townHallLevel: number;
@@ -251,11 +280,6 @@ export interface PlayerByPlayerTagType {
       village: string
     }
     ];
-}
-
-export interface AttacksAndDefenceType {
-  attackWins: number;
-  defenseWins: number;
 }
 
 export interface DonationsType {

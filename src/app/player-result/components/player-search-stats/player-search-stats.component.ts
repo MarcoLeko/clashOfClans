@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PlayerByPlayerTagType } from '../../../../generated/types';
 
 @Component({
@@ -6,12 +6,7 @@ import { PlayerByPlayerTagType } from '../../../../generated/types';
   templateUrl: './player-search-stats.component.html',
   styleUrls: ['./player-search-stats.component.css']
 })
-export class PlayerSearchStatsComponent implements OnInit {
+export class PlayerSearchStatsComponent {
 
   @Input() playerResult: PlayerByPlayerTagType;
-  public playerResultForChildComp: PlayerByPlayerTagType;
-
-  ngOnInit(): void {
-    this.playerResultForChildComp = this.playerResult;
-  }
 }

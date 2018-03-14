@@ -57,7 +57,7 @@ describe('PlayerSerchStatsBodyComponent', () => {
     const calledSpy = clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
     fixture.detectChanges();
 
-    expect(calledSpy).toHaveBeenCalledWith(component.playerResult.clan.clan.tag);
+    expect(calledSpy).toHaveBeenCalledWith(component.playerResult.clan.tag);
     expect(component.clanInfo).toEqual(Mocks.CLANSTATSBYCLANTAG);
   });
 });

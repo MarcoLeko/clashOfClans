@@ -1,8 +1,8 @@
 <div class="bodyPanel">
-  <div class="container-fluid">
-    <app-player-search-stats-header [playerResult]="playerResultForChildComp"></app-player-search-stats-header>
+  <div class="container-fluid" *ngIf="playerResult">
+    <app-player-search-stats-header [playerResult]="playerResult"></app-player-search-stats-header>
   </div>
 </div>
-<div class="bodyPanel">
-  <app-player-search-stats-body [playerResult]="playerResultForChildComp"></app-player-search-stats-body>
+<div class="bodyPanel" *ngIf="playerResult">
+  <app-player-search-stats-body [playerResult]="playerResult"></app-player-search-stats-body>
 </div>

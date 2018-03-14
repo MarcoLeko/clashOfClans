@@ -8,16 +8,14 @@ import { HashTransformerService } from '../hash-transformer/hash-transformer.ser
 import { Mocks } from '../../../testing/mocks';
 
 describe('HeaderInterceptorService', () => {
-  const testToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6Ij' +
-    'I4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJ' +
-    'zdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImYwO' +
-    'WFlZjJlLTU5NWUtNDZhYi05NzMwLTM2YzY3ZTE4MjRiNyIsImlhdCI6MTUyMDg' +
-    '1NjA5Nywic3ViIjoiZGV2ZWxvcGVyLzFjZTE4NzU2LTNkMjAtZjlhZi1lOWVkL' +
-    'Tg2YmU4MGEzYjdlMiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InR' +
-    'pZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7I' +
-    'mNpZHJzIjpbIjYyLjI0NS4xNTYuNTgiXSwidHlwZSI6ImNsaWVudCJ9XX0.S8h' +
-    'g2_b9TTJi-kobhADqLNSsxLxU4f-1t4npb_wd4uF6DkUOauGj2cpr5Lsz0uzI9E' +
-    'JwUbBjnM_8_CusQdjZ1w';
+  const testToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMx' +
+    'OGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJh' +
+    'dWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImRkZTA0YTliLTkwY2YtNGRiNS1hMTkzL' +
+    'ThhMDgzNDU0MGUyMyIsImlhdCI6MTUyMTAzNjkzNCwic3ViIjoiZGV2ZWxvcGVyLzFjZTE4Nz' +
+    'U2LTNkMjAtZjlhZi1lOWVkLTg2YmU4MGEzYjdlMiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1' +
+    'pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7' +
+    'ImNpZHJzIjpbIjEwOS40MS4xOTUuMjE3Il0sInR5cGUiOiJjbGllbnQifV19.99EWWnAhasMwk' +
+    'BOztB3iFT_R-O5v8Iwxib-2Emax8DcHzETcI6TQ4WS6IpUMSlLM7gbDe1PxrqxStcvUAjPhcg';
 
   let service: PlayerSearchService;
   let httpMock: HttpTestingController;

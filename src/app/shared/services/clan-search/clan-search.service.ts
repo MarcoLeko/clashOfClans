@@ -23,6 +23,6 @@ export class ClanSearchService {
   }
 
   private hasCacheClan(clanTag: string) {
-    return this.clan && this.clan.clan.clan.tag === clanTag;
+    return this.clan && this.clan.tag === clanTag;
   }
 }

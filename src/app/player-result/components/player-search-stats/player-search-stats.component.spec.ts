@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayerSearchStatsComponent } from './player-search-stats.component';
-import { PlayerSearchStatsHeaderComponent } from './player-search-stats-header/player-search-stats-header.component';
-import { PlayerSearchStatsBodyComponent } from './player-search-stats-body/player-search-stats-body.component';
-import { SharedModule } from '../../../shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
-import { Mocks } from '../../../testing/mocks';
+import {PlayerSearchStatsComponent} from './player-search-stats.component';
+import {PlayerSearchStatsHeaderComponent} from './player-search-stats-header/player-search-stats-header.component';
+import {PlayerSearchStatsBodyComponent} from './player-search-stats-body/player-search-stats-body.component';
+import {SharedModule} from '../../../shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
+import {Mocks} from '../../../testing/mocks';
 
 describe('PlayerSearchStatsComponent', () => {
   let component: PlayerSearchStatsComponent;
@@ -30,7 +30,6 @@ describe('PlayerSearchStatsComponent', () => {
     fixture = TestBed.createComponent(PlayerSearchStatsComponent);
     component = fixture.componentInstance;
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

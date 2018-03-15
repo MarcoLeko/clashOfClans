@@ -10,7 +10,7 @@
 export interface ClanType {
   tag: string;
   name: string;
-  badgeUrls: UrlType;
+  badgeUrls: BadgeUrlType;
   location: LocationsType;
   clanLevel: number;
   clanPoints: number;
@@ -21,7 +21,7 @@ export interface ClanType {
 export interface ClansByClantagType {
   tag: string;
   name: string;
-  badgeUrls: UrlType;
+  badgeUrls: BadgeUrlType;
   location: LocationsType;
   clanLevel: number;
   clanPoints: number;
@@ -63,7 +63,7 @@ export interface WarlogbyClantagType {
   clan: {
     tag: string;
     name: string;
-    badgeUrls: UrlType;
+    badgeUrls: BadgeUrlType;
     clanLevel: number,
     attacks: number,
     stars: number,
@@ -81,7 +81,7 @@ export interface CurrentWarByClantagType {
   clan: {
     tag: string;
     name: string;
-    badgeUrls: UrlType;
+    badgeUrls: BadgeUrlType;
     clanLevelExpAttacksType: ClanLevelExpStarsAttacksType;
   };
   opponent: OpponentType;
@@ -91,7 +91,7 @@ export interface OpponentType {
   clan: {
     tag: string;
     name: string;
-    badgeUrls: UrlType;
+    badgeUrls: BadgeUrlType;
   };
   clanLevelExpAttacksType: ClanLevelExpStarsAttacksType;
 }
@@ -104,6 +104,12 @@ export interface ClanLevelExpStarsAttacksType {
 }
 
 export interface UrlType {
+  small: string;
+  tiny: string;
+  medium: string;
+}
+
+export interface BadgeUrlType {
   small: string;
   large: string;
   medium: string;
@@ -141,7 +147,7 @@ export interface PlayerRanksByLocationType {
   clan: {
     tag: string;
     name: string;
-    badgeUrls: UrlType;
+    badgeUrls: BadgeUrlType;
   };
   rank: number;
   previousRank: number;
@@ -152,7 +158,7 @@ export interface ClanRankingsVersusByLocation {
   tag: string;
   name: string;
   location: LocationsType;
-  badgeUrls: UrlType;
+  badgeUrls: BadgeUrlType;
   clanLevel: number;
   clanPoints: number;
   clanVersusPoints: number;
@@ -172,7 +178,7 @@ export interface PlayerRankingsVersusByLocation {
   clan: {
     tag: string;
     name: string;
-    badgeUrls: UrlType;
+    badgeUrls: BadgeUrlType;
   };
   versusBattleWins: number;
 }
@@ -194,7 +200,7 @@ export interface LeagueSeasonRankingsForLegendLeagueType {
   clan: {
     tag: string;
     name: string;
-    badgeUrls: UrlType;
+    badgeUrls: BadgeUrlType;
   };
   rank: number;
 }
@@ -217,7 +223,7 @@ export interface PlayerByPlayerTagType {
     clanLevel: number,
     tag: string;
     name: string;
-    badgeUrls: UrlType;
+    badgeUrls: BadgeUrlType;
   };
   bestTrophies: number;
   donations: number;
@@ -256,33 +262,19 @@ export interface PlayerByPlayerTagType {
       village: string
     }
     ];
-  troops: [
-    {
-      name: string,
-      level: number,
-      maxLevel: number,
-      village: string
-    }
-    ];
-  heroes: [
-    {
-      name: string,
-      level: number,
-      maxLevel: number,
-      village: string
-    }
-    ];
-  spells: [
-    {
-      name: string,
-      level: number,
-      maxLevel: number,
-      village: string
-    }
-    ];
+  troops: TroopsHeroesAndSpellType[];
+  heroes: TroopsHeroesAndSpellType[];
+  spells: TroopsHeroesAndSpellType[];
 }
 
 export interface DonationsType {
   donations: number;
   donationsReceived: number;
+}
+
+export interface TroopsHeroesAndSpellType {
+  name: string,
+  level: number,
+  maxLevel: number,
+  village: string
 }

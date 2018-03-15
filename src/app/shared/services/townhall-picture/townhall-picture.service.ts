@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { TownhallImgSrc } from './townhall-src';
+import {Injectable} from '@angular/core';
+import {TownhallImgSrc} from './townhall-src';
 
 @Injectable()
 export class TownhallPictureService {

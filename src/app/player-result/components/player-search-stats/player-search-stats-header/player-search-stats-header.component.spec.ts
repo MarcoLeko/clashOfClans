@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayerSearchStatsHeaderComponent } from './player-search-stats-header.component';
-import { Mocks } from '../../../../testing/mocks';
-import { TownhallPictureService } from '../../../../shared/services/get-townhall-picture/townhall-picture.service';
-import { TownhallImgSrc } from '../../../../shared/services/get-townhall-picture/townhall-src';
+import {PlayerSearchStatsHeaderComponent} from './player-search-stats-header.component';
+import {Mocks} from '../../../../testing/mocks';
+import {TownhallPictureService} from '../../../../shared/services/townhall-picture/townhall-picture.service';
+import {TownhallImgSrc} from '../../../../shared/services/townhall-picture/townhall-src';
 
 describe('PlayerSearchStatsHeaderComponent', () => {
   let component: PlayerSearchStatsHeaderComponent;

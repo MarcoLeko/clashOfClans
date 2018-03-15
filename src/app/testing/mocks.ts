@@ -1,4 +1,5 @@
-import { ClansByClantagType, PlayerByPlayerTagType } from '../../generated/types';
+import {ClansByClantagType, PlayerByPlayerTagType} from '../../generated/types';
+import {Heroes} from '../player-result/services/hero-mapper/heroes';
 
 export class Mocks {
   public static PLAYERTAG: string = '#9P9UG92CG';
@@ -11,7 +12,7 @@ export class Mocks {
       name: 'Champions League III',
       iconUrls: {
         small: 'http://api.coc.iconurl.small/',
-        large: 'http://api.coc.iconurl.large/',
+        tiny: 'http://api.coc.iconurl.large/',
         medium: 'http://api.coc.iconurl.medium/'
       }
     },
@@ -76,24 +77,24 @@ export class Mocks {
     ],
     heroes: [
       {
-        name: 'Barbarianking',
+        name: Heroes.BARBARIAN_KING,
         level: 23,
         maxLevel: 50,
         village: 'kjfsölksd'
       },
       {
-        name: 'Archerqueen',
+        name: Heroes.ARCHER_QUEEN,
         level: 45,
         maxLevel: 50,
         village: 'kjfsölksd'
       },
       {
-        name: 'warden',
+        name: Heroes.GRAND_WARDEN,
         level: 18,
         maxLevel: 50,
         village: 'kjfsölksd'
       }, {
-        name: 'battle-machine',
+        name: Heroes.BATTLE_MACHINE,
         level: 25,
         maxLevel: 50,
         village: 'kjfsölksd'
@@ -143,7 +144,7 @@ export class Mocks {
         name: 'Legend League',
         iconUrls: {
           small: 'http://api.coc.iconurl.small/',
-          large: 'http://api.coc.iconurl.large/',
+          tiny: 'http://api.coc.iconurl.large/',
           medium: 'http://api.coc.iconurl.medium/'
         },
         trophies: 2700,

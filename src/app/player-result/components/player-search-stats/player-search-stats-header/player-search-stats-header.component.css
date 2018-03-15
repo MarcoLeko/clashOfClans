@@ -1,21 +1,13 @@
-.cardHeader {
-  height: 5.5em;
-}
-
-.card-body {
-  max-height: 100%;
+.player-info-font {
+  font-size: 2.5ch;
 }
 
 .imgSize {
-  width: 3em;
-  height: 3em;
-}
-
-.townhallLogo {
-  width: 3.8em;
+  width: 5em;
   height: auto;
 }
+
 .heroLogo {
-  width: 2.5em;
+  width: 4em;
   height: auto;
 }

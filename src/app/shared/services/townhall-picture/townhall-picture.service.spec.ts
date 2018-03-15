@@ -1,7 +1,7 @@
-import { inject, TestBed } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { TownhallPictureService } from './townhall-picture.service';
-import { TownhallImgSrc } from './townhall-src';
+import {TownhallPictureService} from './townhall-picture.service';
+import {TownhallImgSrc} from './townhall-src';
 
 describe('TownhallPictureService', () => {
   beforeEach(() => {

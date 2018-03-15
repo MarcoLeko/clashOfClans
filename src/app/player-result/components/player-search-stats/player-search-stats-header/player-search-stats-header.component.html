@@ -1,38 +1,50 @@
 <div class="row" *ngIf="playerResult">
-  <div class="col-sm-4 pull-left">
-    <div class="card cardHeader">
-      <div class="card-body">
-        <form class="form-inline">
-          <img class="img-thumbnail imgSize" [src]="imgSrcForLeagueBadge">
-          <span class="font-weight-bold">&nbsp;{{playerResult.name}}&nbsp;</span>
-          <span class="font-weight-bold">{{playerResult.tag}}&nbsp;</span>
-          <span class="font-weight-bold">Lvl: {{playerResult.expLevel}}</span>
-        </form>
+  <div class="col-sm-7">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2">
+          <img class="imgSize" [src]="playerResult.league.iconUrls.medium">
+        </div>
+        <div class="col-sm-10">
+          <span class="player-info-font font-weight-bold">{{playerResult.name}}&emsp;</span>
+          <span class="player-info-font font-weight-bold">ExpLevel: {{playerResult.expLevel}}</span>
+          <p class="font-italic">{{playerResult.tag}}</p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-3">
-    <div class="card cardHeader">
-      <div class="card-body">
-        <img class="img-thumbnail imgSize" [src]="imgSrcForClanBadge">
-        <span class="font-weight-bold">&nbsp;{{playerResult.clan.name}}&emsp;</span>
-            <span class="font-weight-bold">Role: {{playerResult.role}}</span>
+  <div class="col-sm-5 pull-right">
+    <div class="row">
+      <div class="col-sm-2">
+        <img class="imgSize" [src]="playerResult.clan.badgeUrls.medium">
       </div>
-    </div>
-  </div>
-  <div class="col-sm-5">
-    <div class="card cardHeader">
-      <div class="card-body">
-        <img class="townhallLogo" [src]="imgSrcForTownhall">
-          <span class="font-weight-bold">&emsp;{{playerResult.heroes[0].level}}&nbsp;</span>
-          <img class="heroLogo" src="assets/barbarian_king.png">
-        <span class="font-weight-bold">&emsp;{{playerResult.heroes[1].level}}&nbsp;</span>
-        <img class="heroLogo" src="assets/archer_queen.png">
-          <span class="font-weight-bold">&emsp;{{playerResult.heroes[2].level}}&nbsp;</span>
-          <img class="heroLogo" src="assets/warden.png">
-          <span class="font-weight-bold">&emsp;{{playerResult.heroes[3].level}}&nbsp;</span>
-          <img class="heroLogo" src="assets/battle_machine.png">
+      <div class="col-sm-10">
+          <span class="player-info-font font-weight-bold">{{playerResult.clan.name}}&emsp;</span>
+          <span class="font-weight-bold">Role: {{playerResult.role}}</span>
       </div>
     </div>
   </div>
 </div>
+<div class="mt-2 col-sm-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3  text-center">
+        <img class="imgSize" [src]="imgSrcForTownhall">
+      </div>
+      <div class="col-sm-9">
+        <div class="row" *ngIf="heroes">
+          <div *ngFor="let hero of playerResult.heroes">
+            <span class="font-weight-bold">{{hero.level}}</span>
+          </div>
+        </div>
+        <div *ngIf="!heroes">
+          <span class="player-info-font font-weight-bold">
+            <i>NO HEROES AVAILABLE FOR NOW &emsp;</i><fa name="optin-monster" size="lg"></fa>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

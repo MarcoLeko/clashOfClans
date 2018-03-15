@@ -1,21 +1,22 @@
-import { inject, TestBed } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { HeaderInterceptorService } from './header-interceptor.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { PlayerSearchService } from '../../../player-result/services/player-search/player-search.service';
-import { HashTransformerService } from '../hash-transformer/hash-transformer.service';
-import { Mocks } from '../../../testing/mocks';
+import {HeaderInterceptorService} from './header-interceptor.service';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {PlayerSearchService} from '../../../player-result/services/player-search/player-search.service';
+import {HashTransformerService} from '../hash-transformer/hash-transformer.service';
+import {Mocks} from '../../../testing/mocks';
 
 describe('HeaderInterceptorService', () => {
-  const testToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMx' +
-    'OGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJh' +
-    'dWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImRkZTA0YTliLTkwY2YtNGRiNS1hMTkzL' +
-    'ThhMDgzNDU0MGUyMyIsImlhdCI6MTUyMTAzNjkzNCwic3ViIjoiZGV2ZWxvcGVyLzFjZTE4Nz' +
-    'U2LTNkMjAtZjlhZi1lOWVkLTg2YmU4MGEzYjdlMiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1' +
-    'pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7' +
-    'ImNpZHJzIjpbIjEwOS40MS4xOTUuMjE3Il0sInR5cGUiOiJjbGllbnQifV19.99EWWnAhasMwk' +
-    'BOztB3iFT_R-O5v8Iwxib-2Emax8DcHzETcI6TQ4WS6IpUMSlLM7gbDe1PxrqxStcvUAjPhcg';
+  const testToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZC' +
+    'I6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3Mi' +
+    'OiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjI' +
+    'yYTRjZjhhLTViOGYtNDAyMC05MDA5LWVhNDM0NTZjMThmZSIsImlhdCI6MTUyMTA' +
+    '5OTAwNiwic3ViIjoiZGV2ZWxvcGVyLzFjZTE4NzU2LTNkMjAtZjlhZi1lOWVkLTg' +
+    '2YmU4MGEzYjdlMiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIi' +
+    'OiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzI' +
+    'jpbIjkxLjE1LjExOC4yMyJdLCJ0eXBlIjoiY2xpZW50In1dfQ.HRX3uCEpOGvHaHl' +
+    '9RsZAZTQhYMazePUFs-voxGWD1QdLD-hhhzaUGiYq9i32bgthl6ym3DoDw1vKSFKFxTP6KA';
 
   let service: PlayerSearchService;
   let httpMock: HttpTestingController;

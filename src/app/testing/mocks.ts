@@ -1,5 +1,7 @@
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../generated/types';
 import {Heroes} from '../player-result/services/hero-mapper/heroes';
+import {HeroDisplay} from '../player-result/services/hero-mapper/hero-display';
+import {HeroesImg} from '../player-result/services/hero-mapper/heroes-img';
 
 export class Mocks {
   public static PLAYERTAG: string = '#9P9UG92CG';
@@ -158,4 +160,34 @@ export class Mocks {
     }
     ]
   };
+
+  public static DISPLAYHEROOBJ: HeroDisplay[] = [
+    {
+      name: Heroes.BARBARIAN_KING,
+      level: 23,
+      maxLevel: 50,
+      village: 'kjfsölksd',
+      heroImg: HeroesImg.BARBARIAN_KING
+    },
+    {
+      name: Heroes.ARCHER_QUEEN,
+      level: 45,
+      maxLevel: 50,
+      village: 'kjfsölksd',
+      heroImg: HeroesImg.ARCHER_QUEEN
+    },
+    {
+      name: Heroes.GRAND_WARDEN,
+      level: 18,
+      maxLevel: 50,
+      village: 'kjfsölksd',
+      heroImg: HeroesImg.GRAND_WARDEN
+    }, {
+      name: Heroes.BATTLE_MACHINE,
+      level: 25,
+      maxLevel: 50,
+      village: 'kjfsölksd',
+      heroImg: HeroesImg.BATTLE_MACHINE
+    }
+  ];
 }

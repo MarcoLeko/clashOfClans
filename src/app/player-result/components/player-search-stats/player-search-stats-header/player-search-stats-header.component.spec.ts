@@ -4,6 +4,8 @@ import {PlayerSearchStatsHeaderComponent} from './player-search-stats-header.com
 import {Mocks} from '../../../../testing/mocks';
 import {TownhallPictureService} from '../../../../shared/services/townhall-picture/townhall-picture.service';
 import {TownhallImgSrc} from '../../../../shared/services/townhall-picture/townhall-src';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.service';
 
 describe('PlayerSearchStatsHeaderComponent', () => {
   let component: PlayerSearchStatsHeaderComponent;
@@ -12,10 +14,18 @@ describe('PlayerSearchStatsHeaderComponent', () => {
   const townhallSpy = {
     getTownHallPicture: jasmine.createSpy('getTownHallPicture')
   };
-
+  const heroMapperSpy = {
+    mapHeroList: jasmine.createSpy('mapHeroList')
+  };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [{provide: TownhallPictureService, useValue: townhallSpy}],
+      imports:[
+        AngularFontAwesomeModule
+      ],
+      providers: [
+        {provide: TownhallPictureService, useValue: townhallSpy},
+        {provide: HeroMapperService, useValue: heroMapperSpy},
+      ],
       declarations: [ PlayerSearchStatsHeaderComponent ]
     })
     .compileComponents();
@@ -31,13 +41,19 @@ describe('PlayerSearchStatsHeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set images on init', () => {
+  it('should set image on init', () => {
     townhallSpy.getTownHallPicture.and.returnValue(TownhallImgSrc.TOWNHALL_NINE);
 
     fixture.detectChanges();
 
-    expect(component.imgSrcForClanBadge).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG.clan.badgeUrls.medium);
-    expect(component.imgSrcForLeagueBadge).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG.league.iconUrls.medium);
     expect(component.imgSrcForTownhall).toEqual(TownhallImgSrc.TOWNHALL_NINE);
+  });
+
+  it('should set hero array on init', () => {
+    heroMapperSpy.mapHeroList.and.returnValue(Mocks.DISPLAYHEROOBJ);
+
+    fixture.detectChanges();
+
+    expect(component.heroes).toEqual(Mocks.DISPLAYHEROOBJ);
   });
 });

@@ -4,8 +4,7 @@
       <div class="card-body">
         <div class="AchievementDescription">
           <h4 class="card-title">Achievements</h4>
-          <p>Have a look about war stars, best trophies, best trophies in versus battles, legend league statistics and
-            so on...</p>
+          <p>Have a look about war stars, best trophies and some other achievements in a nice and compact overview</p>
         </div>
         <div class="achievementContent">
           <p>Should only show on focus</p>
@@ -14,18 +13,24 @@
     </div>
   </div>
   <div class="col-sm-6">
-    <div class="card card-top-right" tabindex="-1">
-      <div class="card-body">
-        <div class="clanDescription">
-          <h4 class="card-title">Clan</h4>
-          <p>Overview about clan-information, -members and so on... For a detailed view go you might want to use the
-            <b>clan-search</b></p>
+      <div class="card card-top-right" [ngClass]="{'disabled-card': !playerResult.clan}" tabindex="-1">
+        <div class="card-body" *ngIf="playerResult.clan">
+          <div class="clanDescription">
+            <h4 class="card-title">Clan</h4>
+            <p>Have a general look on clan information like clan description, status and members.
+              For a detailed Overview like war stats, war logs, detailed player stats comparison -
+              use the clan search feature</p>
+            <button class="clanSearchButton btn btn-sm btn-warning" (click)="clanSearch()">Clan search</button>
+          </div>
+          <div class="clanContent">
+            <p>Should only show on focus</p>
+          </div>
         </div>
-        <div class="clanContent">
-          <p>Should only show on focus</p>
+        <div class="card-body" *ngIf="!playerResult.clan">
+          <h4 class="card-title">Clan</h4>
+          <p class="player-info-font font-weight-bold">THIS PLAYER IS CURRENTLY IN NO CLAN</p>
         </div>
       </div>
-    </div>
   </div>
 </div>
 <br>
@@ -35,7 +40,8 @@
       <div class="card-body">
         <div class="currentSeasonDescription">
           <h4 class="card-title">Current Season</h4>
-          <p>Are you active? Have a look about season attacks, donations and further more</p>
+          <p>Is your searched player active?<wbr>
+            Have a look about season attacks, defenses and  donations stats</p>
         </div>
         <div class="currentSeasonContent">
           <div class="table-responsive">
@@ -70,7 +76,8 @@
       <div class="card-body">
         <div class="troopsAndSpellsDescription">
           <h4 class="card-title">Troops and Spells</h4>
-          <p>How is your progress going? Have a look about troops and spell stats</p>
+          <p>How is the progress going?<wbr>
+            Have a look about troops and spell stats from the town hall- and builder hall base</p>
         </div>
         <div class="troopsAndSpellsContent">
           <p>Should only show on focus</p>

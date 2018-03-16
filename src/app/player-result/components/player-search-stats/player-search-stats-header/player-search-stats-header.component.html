@@ -2,25 +2,28 @@
   <div class="col-sm-7">
     <div class="container">
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-2" *ngIf="playerResult.league">
           <img class="imgSize" [src]="playerResult.league.iconUrls.medium">
         </div>
         <div class="col-sm-10">
           <span class="player-info-font font-weight-bold">{{playerResult.name}}&emsp;</span>
-          <span class="player-info-font font-weight-bold">ExpLevel: {{playerResult.expLevel}}</span>
+          <span class="player-info-font font-weight-bold badge badge-purple">
+            Level:
+            <span class="badge badge-dark">{{playerResult.expLevel}}</span>
+          </span>
           <p class="font-italic">{{playerResult.tag}}</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-5 pull-right">
+  <div class="col-sm-5 pull-right" *ngIf="playerResult.clan">
     <div class="row">
       <div class="col-sm-2">
         <img class="imgSize" [src]="playerResult.clan.badgeUrls.medium">
       </div>
       <div class="col-sm-10">
-          <span class="player-info-font font-weight-bold">{{playerResult.clan.name}}&emsp;</span>
-          <span class="font-weight-bold">Role: {{playerResult.role}}</span>
+        <span class="player-info-font font-weight-bold">{{playerResult.clan.name}}&emsp;</span>
+        <span class="font-weight-bold">Role: {{playerResult.role}}</span>
       </div>
     </div>
   </div>
@@ -33,8 +36,10 @@
       </div>
       <div class="col-sm-9">
         <div class="row" *ngIf="heroes">
-          <div *ngFor="let hero of playerResult.heroes">
-            <span class="font-weight-bold">{{hero.level}}</span>
+          <div *ngFor="let hero of heroes">
+            <span class="font-weight-bold">Level:{{hero.level}}&emsp;
+              <img class="heroLogo" [src]="hero.heroImg"/>&emsp;
+            </span>
           </div>
         </div>
         <div *ngIf="!heroes">

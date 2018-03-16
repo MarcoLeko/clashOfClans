@@ -45,8 +45,7 @@ describe('PlayerSerchStatsBodyComponent', () => {
 
     const debugElement = fixture.debugElement.query(By.css('p'));
 
-    const expectedTextByFirstParagraph = 'Have a look about war stars, best trophies, best trophies in versus battles, ' +
-      'legend league statistics';
+    const expectedTextByFirstParagraph = 'Have a look about war stars, best trophies';
     const nativeElement = debugElement.nativeElement;
 
     expect(nativeElement.textContent).toMatch(expectedTextByFirstParagraph);

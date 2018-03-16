@@ -17,9 +17,13 @@ export class PlayerSearchStatsBodyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) => {
-      this.clanInfo = data;
-    });
+    if (this.playerResult.clan) {
+      this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) => {
+        this.clanInfo = data;
+      });
+    }
   }
 
+  clanSearch() {
+  }
 }

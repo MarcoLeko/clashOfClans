@@ -15,6 +15,7 @@ import { ActivatedRouteStub } from '../../../testing/activatedroute-stub';
 import { Mocks } from '../../../testing/mocks';
 import { PlayerSearchStatsHeaderComponent } from '../player-search-stats/player-search-stats-header/player-search-stats-header.component';
 import { PlayerSearchStatsBodyComponent } from '../player-search-stats/player-search-stats-body/player-search-stats-body.component';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -27,7 +28,8 @@ describe('PlayerSearchResultComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientModule
+        HttpClientModule,
+        AngularFontAwesomeModule
       ],
       providers: [
         HashTransformerService,

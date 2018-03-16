@@ -6,6 +6,7 @@ import {PlayerSearchStatsBodyComponent} from './player-search-stats-body/player-
 import {SharedModule} from '../../../shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import {Mocks} from '../../../testing/mocks';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 describe('PlayerSearchStatsComponent', () => {
   let component: PlayerSearchStatsComponent;
@@ -15,7 +16,8 @@ describe('PlayerSearchStatsComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         SharedModule,
-        HttpClientModule
+        HttpClientModule,
+        AngularFontAwesomeModule
       ],
       declarations: [
         PlayerSearchStatsComponent,

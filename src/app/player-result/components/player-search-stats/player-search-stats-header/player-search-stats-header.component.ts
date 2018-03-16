@@ -21,6 +21,5 @@ export class PlayerSearchStatsHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.imgSrcForTownhall = this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel);
     this.heroes = this.heroMapperService.mapHeroList(this.playerResult.heroes);
-    console.log(this.heroes);
   }
 }

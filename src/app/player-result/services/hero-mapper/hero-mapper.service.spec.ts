@@ -20,35 +20,7 @@ describe('HeroMapperService', () => {
 
   it('should return display hero type', inject([HeroMapperService], (service: HeroMapperService) => {
     const heroList: TroopsHeroesAndSpellType[] = Mocks.PLAYERSTATSBYPLAYERTAG.heroes;
-    const expectedResult: HeroDisplay[] = [
-      {
-        name: Heroes.BARBARIAN_KING,
-        level: 23,
-        maxLevel: 50,
-        village: 'kjfsölksd',
-        heroImg: HeroesImg.BARBARIAN_KING
-      },
-      {
-        name: Heroes.ARCHER_QUEEN,
-        level: 45,
-        maxLevel: 50,
-        village: 'kjfsölksd',
-        heroImg: HeroesImg.ARCHER_QUEEN
-      },
-      {
-        name: Heroes.GRAND_WARDEN,
-        level: 18,
-        maxLevel: 50,
-        village: 'kjfsölksd',
-        heroImg: HeroesImg.GRAND_WARDEN
-      }, {
-        name: Heroes.BATTLE_MACHINE,
-        level: 25,
-        maxLevel: 50,
-        village: 'kjfsölksd',
-        heroImg: HeroesImg.BATTLE_MACHINE
-      }
-    ];
+    const expectedResult: HeroDisplay[] = Mocks.DISPLAYHEROOBJ;
     expect(service.mapHeroList(heroList)).toEqual(expectedResult);
   }));
 

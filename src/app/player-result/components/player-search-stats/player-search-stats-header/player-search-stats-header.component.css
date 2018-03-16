@@ -9,5 +9,9 @@
 
 .heroLogo {
   width: 4em;
-  height: auto;
+  height: 4.5em;
+}
+
+.badge-purple {
+  background-color: rgba(193, 88, 207, 0.5);
 }

@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayerSearchStatsBodyComponent } from './player-search-stats-body.component';
-import { Mocks } from '../../../../testing/mocks';
-import { By } from '@angular/platform-browser';
-import { ClanSearchService } from '../../../../shared/services/clan-search/clan-search.service';
-import { Observable } from 'rxjs/Observable';
-import { SharedModule } from '../../../../shared/shared.module';
+import {PlayerSearchStatsBodyComponent} from './player-search-stats-body.component';
+import {Mocks} from '../../../../testing/mocks';
+import {By} from '@angular/platform-browser';
+import {ClanSearchService} from '../../../../shared/services/clan-search/clan-search.service';
+import {Observable} from 'rxjs/Observable';
+import {SharedModule} from '../../../../shared/shared.module';
 
 describe('PlayerSerchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -58,5 +58,13 @@ describe('PlayerSerchStatsBodyComponent', () => {
 
     expect(calledSpy).toHaveBeenCalledWith(component.playerResult.clan.tag);
     expect(component.clanInfo).toEqual(Mocks.CLANSTATSBYCLANTAG);
+  });
+
+  it('should call not call clanSearch mock on init', () => {
+    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAGWITHOUTCLAN;
+    const notCalledSpy = clanSearchSpy.getClanByClanTag.and.stub();
+    fixture.detectChanges();
+
+    expect(notCalledSpy.calls.mostRecent()).not.toEqual(notCalledSpy);
   });
 });

@@ -219,7 +219,7 @@ export interface PlayerByPlayerTagType {
   versusTrophies: number;
   attackWins: number;
   defenseWins: number;
-  clan: {
+  clan?: {
     clanLevel: number,
     tag: string;
     name: string;
@@ -234,7 +234,7 @@ export interface PlayerByPlayerTagType {
   builderHallLevel: number;
   bestVersusTrophies: number;
   versusBattleWins: number;
-  legendStatistics: {
+  legendStatistics?: {
     legendTrophies: number,
     currentSeason: {
       rank: number,

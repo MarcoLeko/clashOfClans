@@ -190,4 +190,66 @@ export class Mocks {
       heroImg: HeroesImg.BATTLE_MACHINE
     }
   ];
+
+  public static PLAYERSTATSBYPLAYERTAGWITHOUTCLAN: PlayerByPlayerTagType = {
+    tag: '#9P9UG92CG',
+    name: 'Papastadoupoulos',
+    expLevel: 132,
+    league: {
+      id: 8,
+      name: 'Champions League III',
+      iconUrls: {
+        small: 'http://api.coc.iconurl.small/',
+        tiny: 'http://api.coc.iconurl.large/',
+        medium: 'http://api.coc.iconurl.medium/'
+      }
+    },
+    trophies: 3319,
+    versusTrophies: 4010,
+    attackWins: 9,
+    defenseWins: 27,
+    bestTrophies: 4265,
+    donations: 12890,
+    donationsReceived: 6000,
+    warStars: 650,
+    role: 'elder',
+    townHallLevel: 9,
+    builderHallLevel: 7,
+    bestVersusTrophies: 4700,
+    versusBattleWins: 987,
+    achievements: [
+      {
+        name: 'marco',
+        stars: 999,
+        value: 99,
+        target: 76,
+        info: 'no info',
+        village: 'xxx_master_of_desaster_xxx'
+      }
+    ],
+    troops: [
+      {
+        name: 'barbarian',
+        level: 6,
+        maxLevel: 7,
+        village: 'bludber'
+      }
+    ],
+    heroes: [
+      {
+        name: Heroes.BARBARIAN_KING,
+        level: 23,
+        maxLevel: 50,
+        village: 'kjfsölksd'
+      }
+    ],
+    spells: [
+      {
+        name: 'rage spell',
+        level: 5,
+        maxLevel: 5,
+        village: 'jfgsdf'
+      }
+    ]
+  };
 }

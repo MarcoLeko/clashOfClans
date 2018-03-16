@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ClansByClantagType, PlayerByPlayerTagType } from '../../../../../generated/types';
-import { ClanSearchService } from '../../../../shared/services/clan-search/clan-search.service';
-import { Mocks } from '../../../../testing/mocks';
+import {Component, Input, OnInit} from '@angular/core';
+import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../../generated/types';
+import {ClanSearchService} from '../../../../shared/services/clan-search/clan-search.service';
+import {Mocks} from '../../../../testing/mocks';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'app-player-search-stats-body',
@@ -17,7 +18,7 @@ export class PlayerSearchStatsBodyComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.playerResult.clan) {
+    if (!isUndefined(this.playerResult.clan)) {
       this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) => {
         this.clanInfo = data;
       });

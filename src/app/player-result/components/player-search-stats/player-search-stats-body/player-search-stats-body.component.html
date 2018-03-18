@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-6">
-    <div class="card card-top-left offset-sm-6">
+    <div class="card card offset-xl-5 offset-lg-3">
       <div class="card-body">
         <div class="AchievementDescription">
           <h4 class="card-title">Achievements</h4>
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="col-sm-6">
-      <div class="card card-top-right" [ngClass]="{'disabled-card': !playerResult.clan}">
+      <div class="card" [ngClass]="{'disabled-card': !playerResult.clan}">
         <div class="card-body" *ngIf="playerResult.clan">
           <div class="clanDescription">
             <h4 class="card-title">Clan</h4>
@@ -30,7 +30,7 @@
 <br>
 <div class="row">
   <div class="col-sm-6">
-    <div class="card card-bottom-left offset-sm-6">
+    <div class="card offset-xl-5 offset-lg-3">
       <div class="card-body">
         <div class="currentSeasonDescription">
           <h4 class="card-title">Current Season</h4>

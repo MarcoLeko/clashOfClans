@@ -13,6 +13,7 @@ import {PlayerSearchStatsHeaderComponent} from './components/player-search-stats
 import {PlayerSearchStatsBodyComponent} from './components/player-search-stats/player-search-stats-body/player-search-stats-body.component';
 import {HeroMapperService} from './services/hero-mapper/hero-mapper.service';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {ModalModule} from 'ngx-bootstrap';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent}
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
     PlayerSearchStatsBodyComponent
   ],
   imports: [
+    ModalModule.forRoot(),
     AngularFontAwesomeModule,
     CommonModule,
     SharedModule,

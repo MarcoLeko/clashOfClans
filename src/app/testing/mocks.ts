@@ -1,7 +1,7 @@
-import {ClansByClantagType, PlayerByPlayerTagType} from '../../generated/types';
-import {Heroes} from '../player-result/services/hero-mapper/heroes';
-import {HeroDisplay} from '../player-result/services/hero-mapper/hero-display';
-import {HeroesImg} from '../player-result/services/hero-mapper/heroes-img';
+import { AchievementType, ClansByClantagType, PlayerByPlayerTagType } from '../../generated/types';
+import { Heroes } from '../player-result/services/hero-mapper/heroes';
+import { HeroDisplay } from '../player-result/services/hero-mapper/hero-display';
+import { HeroesImg } from '../player-result/services/hero-mapper/heroes-img';
 
 export class Mocks {
   public static PLAYERTAG: string = '#9P9UG92CG';
@@ -252,4 +252,23 @@ export class Mocks {
       }
     ]
   };
+
+  public static ACHIEVEMENTMOCK: AchievementType[] = [
+    {
+      name: 'Donate troops chief!',
+      stars: 2,
+      value: 49000,
+      target: 50000,
+      info: 'need to donate 50.000 troops capacity',
+      village: 'home-village'
+    },
+    {
+      name: 'War master chief!',
+      stars: 3,
+      value: 1002,
+      target: 1000,
+      info: 'get 1000 war stars for your clan',
+      village: 'home-village'
+    }
+  ];
 }

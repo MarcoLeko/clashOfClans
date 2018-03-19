@@ -252,16 +252,7 @@ export interface PlayerByPlayerTagType {
       id: string
     }
   };
-  achievements: [
-    {
-      name: string,
-      stars: number,
-      value: number,
-      target: number,
-      info: string,
-      village: string
-    }
-    ];
+  achievements: AchievementType[];
   troops: TroopsHeroesAndSpellType[];
   heroes: TroopsHeroesAndSpellType[];
   spells: TroopsHeroesAndSpellType[];
@@ -276,5 +267,14 @@ export interface TroopsHeroesAndSpellType {
   name: string,
   level: number,
   maxLevel: number,
+  village: string
+}
+
+export interface AchievementType {
+  name: string,
+  stars: number,
+  value: number,
+  target: number,
+  info: string,
   village: string
 }

@@ -1,11 +1,13 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PlayerSearchStatsBodyComponent} from './player-search-stats-body.component';
-import {Mocks} from '../../../../testing/mocks';
-import {By} from '@angular/platform-browser';
-import {ClanSearchService} from '../../../../shared/services/clan-search/clan-search.service';
-import {Observable} from 'rxjs/Observable';
-import {SharedModule} from '../../../../shared/shared.module';
+import { PlayerSearchStatsBodyComponent } from './player-search-stats-body.component';
+import { Mocks } from '../../../../testing/mocks';
+import { By } from '@angular/platform-browser';
+import { ClanSearchService } from '../../../../shared/services/clan-search/clan-search.service';
+import { Observable } from 'rxjs/Observable';
+import { SharedModule } from '../../../../shared/shared.module';
+import { AchievementModalComponent } from './achievement-modal/achievement-modal/achievement-modal.component';
+import { ModalModule } from 'ngx-bootstrap';
 
 describe('PlayerSerchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -17,13 +19,15 @@ describe('PlayerSerchStatsBodyComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        SharedModule
+        SharedModule,
+        ModalModule.forRoot()
       ],
       providers: [
         {provide: ClanSearchService, useValue: clanSearchSpy}
       ],
       declarations: [
-        PlayerSearchStatsBodyComponent
+        PlayerSearchStatsBodyComponent,
+        AchievementModalComponent
       ]
     })
     .compileComponents();

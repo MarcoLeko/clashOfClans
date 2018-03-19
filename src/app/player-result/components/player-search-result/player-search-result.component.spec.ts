@@ -15,7 +15,9 @@ import { ActivatedRouteStub } from '../../../testing/activatedroute-stub';
 import { Mocks } from '../../../testing/mocks';
 import { PlayerSearchStatsHeaderComponent } from '../player-search-stats/player-search-stats-header/player-search-stats-header.component';
 import { PlayerSearchStatsBodyComponent } from '../player-search-stats/player-search-stats-body/player-search-stats-body.component';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AchievementModalComponent } from '../player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
+import { ModalModule } from 'ngx-bootstrap';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -28,6 +30,7 @@ describe('PlayerSearchResultComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        ModalModule.forRoot(),
         HttpClientModule,
         AngularFontAwesomeModule
       ],
@@ -42,7 +45,8 @@ describe('PlayerSearchResultComponent', () => {
         ErrorSearchResultComponent,
         PlayerSearchStatsComponent,
         PlayerSearchStatsHeaderComponent,
-        PlayerSearchStatsBodyComponent
+        PlayerSearchStatsBodyComponent,
+        AchievementModalComponent
       ]
     })
       .compileComponents();

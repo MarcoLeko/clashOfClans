@@ -1,31 +1,14 @@
+<app-achievement-modal></app-achievement-modal>
+
 <div class="row">
   <div class="col-sm-6">
     <div class="card card offset-xl-5 offset-lg-3">
-      <div class="card-body" (click)="staticModal.show()">
+      <div class="card-body" (click)="achievementModal.open()">
         <div class="AchievementDescription">
           <h4 class="card-title">Achievements</h4>
           <p>Have a look about war stars, best trophies and some other achievements in a nice and compact overview</p>
         </div>
       </div>
-
-      <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{animated: false, backdrop: 'static'}"
-      tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title pull-left">Static modal</h4>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            This is static modal, backdrop click will not close it.
-            Click <b>&times;</b> to close modal.
-          </div>
-        </div>
-      </div>
-    </div>
-
     </div>
   </div>
   <div class="col-sm-6">
@@ -54,7 +37,8 @@
         <div class="currentSeasonDescription">
           <h4 class="card-title">Current Season</h4>
           <p>Is your searched player active?<wbr>
-            Have a look about season attacks, defenses and  donations stats</p>
+            Have a look about season attacks, defenses, donations stats
+            and current trophies for each base</p>
         </div>
         <!--<div class="currentSeasonContent">-->
           <!--<div class="table-responsive">-->

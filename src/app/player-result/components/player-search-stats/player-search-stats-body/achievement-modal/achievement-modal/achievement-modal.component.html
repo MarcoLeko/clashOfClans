@@ -1,5 +1,4 @@
-<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
-     role="dialog" aria-hidden="true"
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
      [config]="{animated: true, backdrop: false}">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content clash-modal">
@@ -32,18 +31,18 @@
                   <div class="container">
                     <form>
                       <div class="form-group row mb-2">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                           <label class="font-weight-bold col-form-label" for="currentValue">Current Value:</label>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                           <input type="text" class="font-weight-bold form-control-plaintext" readonly
                                  value="{{achievement.value}}"
                                  id="currentValue">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                           <label class="font-weight-bold col-form-label" for="targetValue">Target Value:</label>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                           <input type="text" class="font-weight-bold form-control-plaintext" readonly
                                  value="{{achievement.target}}"
                                  id="targetValue">
@@ -56,8 +55,9 @@
                           <label class="font-weight-bold col-form-label" for="base">Base:</label>
                         </div>
                         <div class="col-md-9">
+                          <img class="buildInfo"[src]="builderInfo.imgSrc">
                           <input type="text" class="font-weight-bold form-control-plaintext" readonly
-                                 value="{{baseIdentifier(achievement.village)}}"
+                                 value="{{builderInfo.builderhall}}"
                                  id="base">
                         </div>
                       </div>

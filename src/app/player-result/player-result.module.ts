@@ -15,6 +15,7 @@ import { HeroMapperService } from './services/hero-mapper/hero-mapper.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ModalModule, ProgressbarModule } from 'ngx-bootstrap';
 import { AchievementModalComponent } from './components/player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
+import { BuilderInfoService } from './services/builder-info/builder-info.service';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent}
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
   providers: [
     HttpClientModule,
     PlayerSearchService,
-    HeroMapperService
+    HeroMapperService,
+    BuilderInfoService
   ],
   exports: []
 })

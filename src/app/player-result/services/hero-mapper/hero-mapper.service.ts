@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {TroopsHeroesAndSpellType} from '../../../../generated/types';
-import {HeroDisplay} from './hero-display';
-import {isUndefined} from 'util';
-import {Heroes} from './heroes';
-import {HeroesImg} from './heroes-img';
+import { Injectable } from '@angular/core';
+import { TroopsHeroesAndSpellType } from '../../../../generated/types';
+import { HeroDisplay } from './hero-display';
+import { isUndefined } from 'util';
+import { Heroes } from './heroes';
+import { HeroesImg } from './heroes-img';
 
 @Injectable()
 export class HeroMapperService {
@@ -18,7 +18,7 @@ export class HeroMapperService {
 
   private mapHeroTypeToDisplayHeroType(heroList: TroopsHeroesAndSpellType[]) {
     const heroesWithImgArray: HeroDisplay[] = [];
-    for (let hero of heroList) {
+    for (const hero of heroList) {
       let firstEnumCompareObj: string;
       let secondEnumCompareObj: string;
       let heroDisplayObj: HeroDisplay;

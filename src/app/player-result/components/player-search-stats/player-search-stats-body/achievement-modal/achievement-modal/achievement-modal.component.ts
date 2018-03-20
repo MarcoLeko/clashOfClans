@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { AchievementType, PlayerByPlayerTagType } from '../../../../../../../generated/types';
+import { BuilderInfoService } from '../../../../../services/builder-info/builder-info.service';
+import { BuilderInfoType } from '../../../../../services/builder-info/builder-info.type';
 
 @Component({
   selector: 'app-achievement-modal',
@@ -13,8 +15,12 @@ export class AchievementModalComponent implements OnInit {
   @Input() playerResult: PlayerByPlayerTagType;
 
   public achievement: AchievementType;
+  public builderInfo: BuilderInfoType;
 
-  ngOnInit() {
+  constructor(private builderInfoService: BuilderInfoService) {
+  }
+
+  ngOnInit(): void {
     this.chooseAchievement(this.playerResult.achievements[0].name);
   }
 
@@ -33,19 +39,12 @@ export class AchievementModalComponent implements OnInit {
     for (const achievement of this.playerResult.achievements) {
       if (name === achievement.name) {
         this.achievement = achievement;
+        this.builderInfo = this.builderInfoService.getBuilderInfoType(this.achievement.village);
       }
     }
   }
 
   calculateProgress(value, target): number {
     return (value / target) * 100;
-  }
-
-  baseIdentifier(base: string): string {
-    if (base === 'builderBase') {
-      return 'Builderhall Base';
-    } else {
-      return 'Home Base';
-    }
   }
 }

@@ -2,3 +2,8 @@
   height: 35vh;
   overflow-y: auto;
 }
+
+.buildInfo {
+  width: 150px;
+  height: auto;
+}

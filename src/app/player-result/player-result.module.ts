@@ -13,7 +13,7 @@ import { PlayerSearchStatsHeaderComponent } from './components/player-search-sta
 import { PlayerSearchStatsBodyComponent } from './components/player-search-stats/player-search-stats-body/player-search-stats-body.component';
 import { HeroMapperService } from './services/hero-mapper/hero-mapper.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, ProgressbarModule } from 'ngx-bootstrap';
 import { AchievementModalComponent } from './components/player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
 
 const appRoutes: Routes = [
@@ -32,6 +32,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     ModalModule.forRoot(),
+    ProgressbarModule.forRoot(),
     AngularFontAwesomeModule,
     CommonModule,
     SharedModule,

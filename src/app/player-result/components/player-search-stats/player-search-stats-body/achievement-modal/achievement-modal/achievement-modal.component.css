@@ -1,1 +1,4 @@
-
+.scrollable-list {
+  height: 35vh;
+  overflow-y: auto;
+}

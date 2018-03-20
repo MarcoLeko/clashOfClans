@@ -7,7 +7,7 @@ import { AchievementType, PlayerByPlayerTagType } from '../../../../../../../gen
   templateUrl: './achievement-modal.component.html',
   styleUrls: ['./achievement-modal.component.css']
 })
-export class AchievementModalComponent implements OnInit{
+export class AchievementModalComponent implements OnInit {
 
   @ViewChild('childModal') childModal: ModalDirective;
   @Input() playerResult: PlayerByPlayerTagType;
@@ -15,7 +15,7 @@ export class AchievementModalComponent implements OnInit{
   public achievement: AchievementType;
 
   ngOnInit() {
-    this.chooseAchievement(this.playerResult.achievements[0].name)
+    this.chooseAchievement(this.playerResult.achievements[0].name);
   }
 
   open() {
@@ -34,6 +34,18 @@ export class AchievementModalComponent implements OnInit{
       if (name === achievement.name) {
         this.achievement = achievement;
       }
+    }
+  }
+
+  calculateProgress(value, target): number {
+    return (value / target) * 100;
+  }
+
+  baseIdentifier(base: string): string {
+    if (base === 'builderBase') {
+      return 'Builderhall Base';
+    } else {
+      return 'Home Base';
     }
   }
 }

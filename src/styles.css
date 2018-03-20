@@ -35,6 +35,10 @@ h3 {
   border-top-right-radius: .3rem;
 }
 
+progressbar {
+  min-height: 2.5em;
+}
+
 .list-group-item-dark {
   color: #1b1e21;
   background-color: orange;

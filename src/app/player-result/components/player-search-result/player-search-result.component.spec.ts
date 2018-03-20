@@ -1,23 +1,23 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayerSearchResultComponent } from './player-search-result.component';
-import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
-import { ErrorSearchResultComponent } from '../error-search-result/error-search-result.component';
-import { PlayerSearchStatsComponent } from '../player-search-stats/player-search-stats.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import {PlayerSearchResultComponent} from './player-search-result.component';
+import {LoadingScreenComponent} from '../loading-screen/loading-screen.component';
+import {ErrorSearchResultComponent} from '../error-search-result/error-search-result.component';
+import {PlayerSearchStatsComponent} from '../player-search-stats/player-search-stats.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
-import { HashTransformerService } from '../../../shared/services/hash-transformer/hash-transformer.service';
-import { PlayerSearchService } from '../../services/player-search/player-search.service';
-import { ActivatedRouteStub } from '../../../testing/activatedroute-stub';
-import { Mocks } from '../../../testing/mocks';
-import { PlayerSearchStatsHeaderComponent } from '../player-search-stats/player-search-stats-header/player-search-stats-header.component';
-import { PlayerSearchStatsBodyComponent } from '../player-search-stats/player-search-stats-body/player-search-stats-body.component';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { AchievementModalComponent } from '../player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
-import { ModalModule } from 'ngx-bootstrap';
+import {HashTransformerService} from '../../../shared/services/hash-transformer/hash-transformer.service';
+import {PlayerSearchService} from '../../services/player-search/player-search.service';
+import {ActivatedRouteStub} from '../../../testing/activatedroute-stub';
+import {Mocks} from '../../../testing/mocks';
+import {PlayerSearchStatsHeaderComponent} from '../player-search-stats/player-search-stats-header/player-search-stats-header.component';
+import {PlayerSearchStatsBodyComponent} from '../player-search-stats/player-search-stats-body/player-search-stats-body.component';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {AchievementModalComponent} from '../player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
+import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -31,6 +31,7 @@ describe('PlayerSearchResultComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         ModalModule.forRoot(),
+        ProgressbarModule.forRoot(),
         HttpClientModule,
         AngularFontAwesomeModule
       ],

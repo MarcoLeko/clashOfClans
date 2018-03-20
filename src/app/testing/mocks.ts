@@ -1,7 +1,9 @@
-import { AchievementType, ClansByClantagType, PlayerByPlayerTagType } from '../../generated/types';
-import { Heroes } from '../player-result/services/hero-mapper/heroes';
-import { HeroDisplay } from '../player-result/services/hero-mapper/hero-display';
-import { HeroesImg } from '../player-result/services/hero-mapper/heroes-img';
+import {AchievementType, ClansByClantagType, PlayerByPlayerTagType} from '../../generated/types';
+import {Heroes} from '../player-result/services/hero-mapper/heroes';
+import {HeroDisplay} from '../player-result/services/hero-mapper/hero-display';
+import {HeroesImg} from '../player-result/services/hero-mapper/heroes-img';
+import {BuilderInfoType} from '../player-result/services/builder-info/builder-info.type';
+import {Builderhall} from '../player-result/services/builder-info/builder-hall';
 
 export class Mocks {
   public static PLAYERTAG: string = '#9P9UG92CG';
@@ -20,20 +22,20 @@ export class Mocks {
     },
     trophies: 3319,
     versusTrophies: 4010,
-      attackWins: 9,
+    attackWins: 9,
     defenseWins: 27,
     clan: {
       clanLevel: 20,
-        tag: '#87878989',
-        name: 'Wolfsrudel',
-        badgeUrls: {
-          small: 'http://api.coc.badgeurl.small/',
-          large: 'http://api.coc.badgeurl.large/',
-          medium: 'http://api.coc.badgeurl.medium/'
-        }
+      tag: '#87878989',
+      name: 'Wolfsrudel',
+      badgeUrls: {
+        small: 'http://api.coc.badgeurl.small/',
+        large: 'http://api.coc.badgeurl.large/',
+        medium: 'http://api.coc.badgeurl.medium/'
+      }
     },
     bestTrophies: 4265,
-      donations: 12890,
+    donations: 12890,
     donationsReceived: 6000,
     warStars: 650,
     role: 'elder',
@@ -114,21 +116,21 @@ export class Mocks {
 
   public static CLANTAG: string = '#90899878';
   public static CLANSTATSBYCLANTAG: ClansByClantagType = {
-        tag: '#90899878',
-        name: 'wolfsrudel',
-        badgeUrls: {
-          small: 'http://api.coc.badgeurl.small/',
-          large: 'http://api.coc.badgeurl.large/',
-          medium: 'http://api.coc.badgeurl.medium/'
-        },
-      location: {
-        id: 99,
-        name: 'Germany',
-        isCountry: true
-      },
-      clanLevel: 20,
-      clanPoints: 17600,
-      clanVersusPoints: 16000,
+    tag: '#90899878',
+    name: 'wolfsrudel',
+    badgeUrls: {
+      small: 'http://api.coc.badgeurl.small/',
+      large: 'http://api.coc.badgeurl.large/',
+      medium: 'http://api.coc.badgeurl.medium/'
+    },
+    location: {
+      id: 99,
+      name: 'Germany',
+      isCountry: true
+    },
+    clanLevel: 20,
+    clanPoints: 17600,
+    clanVersusPoints: 16000,
     members: 50,
     type: 'open',
     requiredTrophies: 2200,
@@ -154,8 +156,8 @@ export class Mocks {
         role: 'leader',
         clanRank: 17,
         previousClanRank: 16,
-          donations: 98,
-          donationsReceived: 999
+        donations: 98,
+        donationsReceived: 999
       }
     }
     ]
@@ -271,4 +273,9 @@ export class Mocks {
       village: 'home-village'
     }
   ];
+
+  public static BUILDERINFOMOCK: BuilderInfoType = {
+    builderhall: Builderhall.TOWNHALL_BASE,
+    imgSrc: 'assets/builder.png'
+  };
 }

@@ -1,13 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayerSearchStatsBodyComponent } from './player-search-stats-body.component';
-import { Mocks } from '../../../../testing/mocks';
-import { By } from '@angular/platform-browser';
-import { ClanSearchService } from '../../../../shared/services/clan-search/clan-search.service';
-import { Observable } from 'rxjs/Observable';
-import { SharedModule } from '../../../../shared/shared.module';
-import { AchievementModalComponent } from './achievement-modal/achievement-modal/achievement-modal.component';
-import { ModalModule } from 'ngx-bootstrap';
+import {PlayerSearchStatsBodyComponent} from './player-search-stats-body.component';
+import {Mocks} from '../../../../testing/mocks';
+import {By} from '@angular/platform-browser';
+import {ClanSearchService} from '../../../../shared/services/clan-search/clan-search.service';
+import {Observable} from 'rxjs/Observable';
+import {SharedModule} from '../../../../shared/shared.module';
+import {AchievementModalComponent} from './achievement-modal/achievement-modal/achievement-modal.component';
+import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
+import {BuilderInfoService} from '../../../services/builder-info/builder-info.service';
 
 describe('PlayerSerchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -16,14 +17,20 @@ describe('PlayerSerchStatsBodyComponent', () => {
   const clanSearchSpy = {
     getClanByClanTag: jasmine.createSpy('getClanByClanTag')
   };
+
+  const builderInfoSpy = {
+    getBuilderInfoType: jasmine.createSpy('getBuilderInfoType')
+  };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         SharedModule,
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        ProgressbarModule.forRoot()
       ],
       providers: [
-        {provide: ClanSearchService, useValue: clanSearchSpy}
+        {provide: ClanSearchService, useValue: clanSearchSpy},
+        {provide: BuilderInfoService, useValue: builderInfoSpy}
       ],
       declarations: [
         PlayerSearchStatsBodyComponent,
@@ -44,8 +51,6 @@ describe('PlayerSerchStatsBodyComponent', () => {
 
   it('should render card', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-    clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
-    fixture.detectChanges();
 
     const debugElement = fixture.debugElement.query(By.css('p'));
 
@@ -58,15 +63,19 @@ describe('PlayerSerchStatsBodyComponent', () => {
   it('should call clanSearch mock on init', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
     const calledSpy = clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
+    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
+
     fixture.detectChanges();
 
     expect(calledSpy).toHaveBeenCalledWith(component.playerResult.clan.tag);
     expect(component.clanInfo).toEqual(Mocks.CLANSTATSBYCLANTAG);
   });
 
-  it('should call not call clanSearch mock on init', () => {
+  it('should not call clanSearch mock on init', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAGWITHOUTCLAN;
     const notCalledSpy = clanSearchSpy.getClanByClanTag.and.stub();
+    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
+
     fixture.detectChanges();
 
     expect(notCalledSpy.calls.mostRecent()).not.toEqual(notCalledSpy);

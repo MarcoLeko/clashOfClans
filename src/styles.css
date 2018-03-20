@@ -2,10 +2,12 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/font-awesome/css/font-awesome.css';
 
-body, html {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
+body {
+  background-color: rgba(18, 13, 4, 0.71);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 p {

@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayerSearchStatsComponent } from './player-search-stats.component';
-import { PlayerSearchStatsHeaderComponent } from './player-search-stats-header/player-search-stats-header.component';
-import { PlayerSearchStatsBodyComponent } from './player-search-stats-body/player-search-stats-body.component';
-import { SharedModule } from '../../../shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
-import { Mocks } from '../../../testing/mocks';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { AchievementModalComponent } from './player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
-import { ModalModule } from 'ngx-bootstrap';
+import {PlayerSearchStatsComponent} from './player-search-stats.component';
+import {PlayerSearchStatsHeaderComponent} from './player-search-stats-header/player-search-stats-header.component';
+import {PlayerSearchStatsBodyComponent} from './player-search-stats-body/player-search-stats-body.component';
+import {SharedModule} from '../../../shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
+import {Mocks} from '../../../testing/mocks';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {AchievementModalComponent} from './player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
+import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 
 describe('PlayerSearchStatsComponent', () => {
   let component: PlayerSearchStatsComponent;
@@ -20,7 +20,8 @@ describe('PlayerSearchStatsComponent', () => {
         SharedModule,
         HttpClientModule,
         AngularFontAwesomeModule,
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        ProgressbarModule.forRoot()
       ],
       declarations: [
         PlayerSearchStatsComponent,

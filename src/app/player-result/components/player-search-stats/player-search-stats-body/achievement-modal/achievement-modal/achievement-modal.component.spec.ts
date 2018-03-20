@@ -34,4 +34,44 @@ describe('AchievementModalComponent', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
     expect(component).toBeTruthy();
   });
+
+  it('should show modal with open', () => {
+    const spy = spyOn(component.childModal, 'show').and.stub();
+    component.open();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should set achievement with first value of array', () => {
+    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
+    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
+    component.ngOnInit();
+
+    expect(component.achievement).toEqual(component.playerResult.achievements[0]);
+  });
+
+  it('should call builder info service', () => {
+    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
+    const spy = builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
+    component.ngOnInit();
+
+    expect(spy).toHaveBeenCalledWith(component.achievement.village);
+  });
+
+  it('should calculate prozentual portion', () => {
+    const value:number = 25;
+    const target:number = 40;
+    const result: number = 62.5;
+
+    expect(component.calculateProgress(value, target)).toBe(result);
+  });
+
+  it('should return bootstrap active class', () => {
+    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
+    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
+    component.ngOnInit();
+
+    const result = 'active';
+
+    expect(component.setActiveState(component.achievement.name)).toEqual(result)
+  });
 });

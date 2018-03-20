@@ -10,7 +10,7 @@ import {AchievementModalComponent} from './achievement-modal/achievement-modal/a
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {BuilderInfoService} from '../../../services/builder-info/builder-info.service';
 
-describe('PlayerSerchStatsBodyComponent', () => {
+describe('PlayerSearchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
   let fixture: ComponentFixture<PlayerSearchStatsBodyComponent>;
 
@@ -37,7 +37,7 @@ describe('PlayerSerchStatsBodyComponent', () => {
         AchievementModalComponent
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -65,7 +65,7 @@ describe('PlayerSerchStatsBodyComponent', () => {
     const calledSpy = clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
     builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
 
-    fixture.detectChanges();
+    component.ngOnInit();
 
     expect(calledSpy).toHaveBeenCalledWith(component.playerResult.clan.tag);
     expect(component.clanInfo).toEqual(Mocks.CLANSTATSBYCLANTAG);
@@ -74,9 +74,8 @@ describe('PlayerSerchStatsBodyComponent', () => {
   it('should not call clanSearch mock on init', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAGWITHOUTCLAN;
     const notCalledSpy = clanSearchSpy.getClanByClanTag.and.stub();
-    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
 
-    fixture.detectChanges();
+    component.ngOnInit();
 
     expect(notCalledSpy.calls.mostRecent()).not.toEqual(notCalledSpy);
   });

@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ClanModalComponent} from './clan-modal.component';
+import {ModalModule} from 'ngx-bootstrap';
 
 describe('ClanModalComponent', () => {
   let component: ClanModalComponent;
@@ -8,6 +9,9 @@ describe('ClanModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ModalModule.forRoot()
+      ],
       declarations: [ ClanModalComponent ]
     })
     .compileComponents();

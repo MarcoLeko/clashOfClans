@@ -18,6 +18,8 @@ import {PlayerSearchStatsBodyComponent} from '../player-search-stats/player-sear
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {AchievementModalComponent} from '../player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
+import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
+import {ClanModalComponent} from '../player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -25,6 +27,14 @@ describe('PlayerSearchResultComponent', () => {
 
   const playerSearchMock = {
     getPlayerByPlayerTag: jasmine.createSpy('getPlayerByPlayerTag')
+  };
+
+  const clanSearchSpy = {
+    getClanByClanTag: jasmine.createSpy('getClanByClanTag')
+  };
+
+  const builderInfoSpy = {
+    getBuilderInfoType: jasmine.createSpy('getBuilderInfoType')
   };
 
   beforeEach(async(() => {
@@ -37,6 +47,7 @@ describe('PlayerSearchResultComponent', () => {
       ],
       providers: [
         HashTransformerService,
+        {provide: ClanSearchService, useValue: clanSearchSpy},
         {provide: PlayerSearchService, useValue: playerSearchMock},
         {provide: ActivatedRoute, useClass: ActivatedRouteStub}
       ],
@@ -47,7 +58,8 @@ describe('PlayerSearchResultComponent', () => {
         PlayerSearchStatsComponent,
         PlayerSearchStatsHeaderComponent,
         PlayerSearchStatsBodyComponent,
-        AchievementModalComponent
+        AchievementModalComponent,
+        ClanModalComponent
       ]
     })
       .compileComponents();
@@ -78,6 +90,8 @@ describe('PlayerSearchResultComponent', () => {
 
   it('should set player stats by valid webservice call', () => {
     playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
+    clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
+
     component.ngAfterViewInit();
 
     expect(component.playerResult).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG);
@@ -95,5 +109,25 @@ describe('PlayerSearchResultComponent', () => {
     component.ngAfterViewInit();
 
     expect(component.hasNoResultFound).toBe(true);
+  });
+
+  it('should call clanSearch mock on init', () => {
+    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
+    playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
+    const calledSpy = clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
+
+    component.ngAfterViewInit();
+
+    expect(calledSpy).toHaveBeenCalledWith(component.playerResult.clan.tag);
+    expect(component.clanInfo).toEqual(Mocks.CLANSTATSBYCLANTAG);
+  });
+
+  it('should not call clanSearch mock on init', () => {
+    playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAGWITHOUTCLAN));
+    const notCalledSpy = clanSearchSpy.getClanByClanTag.and.stub();
+
+    component.ngAfterViewInit();
+
+    expect(notCalledSpy.calls.mostRecent()).not.toEqual(notCalledSpy);
   });
 });

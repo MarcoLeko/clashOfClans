@@ -1,8 +1,5 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../../generated/types';
-import {ClanSearchService} from '../../../../shared/services/clan-search/clan-search.service';
-import {Mocks} from '../../../../testing/mocks';
-import {isUndefined} from 'util';
 import {AchievementModalComponent} from './achievement-modal/achievement-modal/achievement-modal.component';
 import {ClanModalComponent} from './clan-modal/clan-modal.component';
 
@@ -11,24 +8,13 @@ import {ClanModalComponent} from './clan-modal/clan-modal.component';
   templateUrl: './player-search-stats-body.component.html',
   styleUrls: ['./player-search-stats-body.component.css']
 })
-export class PlayerSearchStatsBodyComponent implements OnInit {
+export class PlayerSearchStatsBodyComponent {
 
   @Input() playerResult: PlayerByPlayerTagType;
+  @Input() clanInfo: ClansByClantagType;
+
   @ViewChild(AchievementModalComponent) achievementModal: AchievementModalComponent;
   @ViewChild(ClanModalComponent) clanModal: ClanModalComponent;
-
-  public clanInfo: ClansByClantagType = Mocks.CLANSTATSBYCLANTAG;
-
-  constructor(private clanSearchService: ClanSearchService) {
-  }
-
-  ngOnInit() {
-    if (!isUndefined(this.playerResult.clan)) {
-      this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) => {
-        this.clanInfo = data;
-      });
-    }
-  }
 
   clanSearch() {
   }

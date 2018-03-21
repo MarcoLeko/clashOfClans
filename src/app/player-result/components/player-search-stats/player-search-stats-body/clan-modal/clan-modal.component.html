@@ -1,5 +1,5 @@
 <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
-     [config]="{animated: true, backdrop: false}">
+     [config]="{animated: true, backdrop: false}" *ngIf="clanInfo && playerResult">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content clash-modal">
       <div class="modal-header">
@@ -9,7 +9,44 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Hallo, there!</p>
+        <div class="container">
+          <div class="mb-2 row">
+            <div class="col-sm-3">
+              <img [src]="playerResult.clan.badgeUrls.small">
+            </div>
+            <div class="col-sm-5">
+              <span class="font-weight-bold">{{playerResult.clan.name}}</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="font-weight-bold">{{playerResult.clan.tag}}</span>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm table-dark table-hover">
+              <caption>For more data go to the clan search</caption>
+              <thead>
+              <tr>
+                <th scope="col">tag</th>
+                <th scope="col">name</th>
+                <th scope="col">role</th>
+                <th scope="col">ExpLvl</th>
+                <th scope="col">trophies</th>
+                <th scope="col">versus-trophies</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let member of clanInfo.memberList">
+                <td scope="row">{{member.tag}}</td>
+                <td>{{member.name}}</td>
+                <td>{{member.league.role}}</td>
+                <td>{{member.expLevel}}</td>
+                <td>{{member.league.trophies}}</td>
+                <td>{{member.league.versusTrophies}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { PlayerByPlayerTagType } from '../../../../generated/types';
+import {Component, Input} from '@angular/core';
+import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/types';
 
 @Component({
   selector: 'app-player-search-stats',
@@ -9,4 +9,5 @@ import { PlayerByPlayerTagType } from '../../../../generated/types';
 export class PlayerSearchStatsComponent {
 
   @Input() playerResult: PlayerByPlayerTagType;
+  @Input() clanInfo: ClansByClantagType;
 }

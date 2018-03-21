@@ -16,9 +16,9 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {AchievementModalComponent} from './components/player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
 import {BuilderInfoService} from './services/builder-info/builder-info.service';
-import {ClanModalComponent} from './components/player-search-stats/player-search-body/clan-modal/clan-modal.component';
 import {TroopsAndSpellsModalComponent} from './components/player-search-stats/player-search-stats-body/troops-and-spells-modal/troops-and-spells-modal.component';
 import {CurrentSeasonModalComponent} from './components/player-search-stats/player-search-stats-body/current-season-modal/current-season-modal.component';
+import {ClanModalComponent} from './components/player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent}

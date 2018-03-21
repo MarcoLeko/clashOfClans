@@ -1,4 +1,5 @@
 <app-achievement-modal [playerResult]="playerResult"></app-achievement-modal>
+<app-clan-modal [playerResult]="playerResult"></app-clan-modal>
 
 <div class="row">
   <div class="col-sm-6">
@@ -13,7 +14,7 @@
   </div>
   <div class="col-sm-6">
       <div class="card" [ngClass]="{'disabled-card': !playerResult.clan}">
-        <div class="card-body" *ngIf="playerResult.clan">
+        <div class="card-body" *ngIf="playerResult.clan" (click)="clanModal.open()">
           <div class="clanDescription">
             <h4 class="card-title">Clan</h4>
             <p>Have a general look on clan information like clan description, status and members.

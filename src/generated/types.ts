@@ -254,7 +254,7 @@ export interface PlayerByPlayerTagType {
   };
   achievements: AchievementType[];
   troops: TroopsHeroesAndSpellType[];
-  heroes: TroopsHeroesAndSpellType[];
+  heroes?: TroopsHeroesAndSpellType[];
   spells: TroopsHeroesAndSpellType[];
 }
 

@@ -2,6 +2,7 @@ import {Component, Input, ViewChild} from '@angular/core';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../../generated/types';
 import {AchievementModalComponent} from './achievement-modal/achievement-modal/achievement-modal.component';
 import {ClanModalComponent} from './clan-modal/clan-modal.component';
+import {CurrentSeasonModalComponent} from './current-season-modal/current-season-modal.component';
 
 @Component({
   selector: 'app-player-search-stats-body',
@@ -15,6 +16,7 @@ export class PlayerSearchStatsBodyComponent {
 
   @ViewChild(AchievementModalComponent) achievementModal: AchievementModalComponent;
   @ViewChild(ClanModalComponent) clanModal: ClanModalComponent;
+  @ViewChild(CurrentSeasonModalComponent) currentSeasonModal: CurrentSeasonModalComponent;
 
   clanSearch() {
   }

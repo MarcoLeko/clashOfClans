@@ -1,0 +1,18 @@
+.modal-body {
+  max-height: 65vh;
+}
+
+.trophy-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.table-fixed {
+  max-height: 45vh;
+  overflow-y: auto;
+  width: 100%;
+}
+
+td {
+  cursor: pointer;
+}

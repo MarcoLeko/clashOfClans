@@ -2,8 +2,8 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/types';
 import {PlayerSearchService} from '../../services/player-search/player-search.service';
-import {isUndefined} from 'util';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'app-player-result',

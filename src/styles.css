@@ -18,6 +18,10 @@ h3 {
   font-family: Verdana;
 }
 
+.player-info-font {
+  font-size: 2.5ch;
+}
+
 /* modified bootstrap classes for fitting the theme of clash of clans site*/
 .clash-modal {
   color: black;

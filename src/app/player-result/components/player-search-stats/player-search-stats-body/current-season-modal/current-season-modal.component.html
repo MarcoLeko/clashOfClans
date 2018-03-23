@@ -1,3 +1,33 @@
-<p>
-  current-season-modal works!
-</p>
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+     [config]="{animated: true, backdrop: false}" *ngIf="playerResult">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content clash-modal">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Current Season</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="childModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container mb-2 row">
+          <div class="col-sm-3">
+            <img class="league-icon" [src]="playerResult.league.iconUrls.small"/>
+          </div>
+          <div class="col-sm-5">
+            <img class="trophy-item" src="assets/trophy_home.png"/>
+            <div class="trophy-panel border-left-0 rounded">
+              <span class="trophy-text font-weight-bold">{{playerResult.trophies}}</span>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <img class="trophy-item" src="assets/trophy_night.png"/>
+            <div class="trophy-panel border-left-0 rounded">
+              <span class="trophy-text font-weight-bold">{{playerResult.versusTrophies}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

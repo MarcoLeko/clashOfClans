@@ -1,15 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
+import {PlayerByPlayerTagType} from '../../../../../../generated/types';
+import {ModalDirective} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-current-season-modal',
   templateUrl: './current-season-modal.component.html',
   styleUrls: ['./current-season-modal.component.css']
 })
-export class CurrentSeasonModalComponent implements OnInit {
+export class CurrentSeasonModalComponent {
 
-  constructor() { }
+  @Input() playerResult: PlayerByPlayerTagType;
+  @ViewChild('childModal') modal: ModalDirective;
 
-  ngOnInit() {
+  open(): void {
+    this.modal.show();
   }
-
 }

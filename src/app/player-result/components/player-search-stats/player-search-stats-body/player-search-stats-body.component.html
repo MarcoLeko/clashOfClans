@@ -1,31 +1,28 @@
 <app-achievement-modal [playerResult]="playerResult"></app-achievement-modal>
 <app-clan-modal [playerResult]="playerResult" [clanInfo]="clanInfo"></app-clan-modal>
+<app-current-season-modal [playerResult]="playerResult"></app-current-season-modal>
 
 <div class="row">
   <div class="col-sm-6">
     <div class="card card offset-xl-5 offset-lg-3">
       <div class="card-body" (click)="achievementModal.open()">
-        <div class="AchievementDescription">
-          <h4 class="card-title">Achievements</h4>
-          <p>Have a look about war stars, best trophies and some other achievements in a nice and compact overview</p>
-        </div>
+        <h4 class="card-title">Achievements</h4>
+        <p>Have a look about war stars, best trophies and some other achievements in a nice and compact overview</p>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card" [ngClass]="{'disabled-card': !playerResult.clan}">
       <div class="card-body" *ngIf="playerResult.clan" (click)="clanModal.open()">
-        <div class="clanDescription">
-          <h4 class="card-title">Clan</h4>
-          <p>Have a general look on clan information like clan description, status and members.
-            For a detailed Overview like war stats, war logs, detailed player stats comparison -
-            use the clan search feature</p>
-          <button class="clanSearchButton btn btn-sm btn-warning" (click)="clanSearch()">Clan search</button>
-        </div>
+        <h4 class="card-title">Clan</h4>
+        <p>Have a general look on clan information like clan description, status and members.
+          For a detailed Overview like war stats, war logs, detailed player stats comparison -
+          use the clan search feature</p>
+        <button class="clanSearchButton btn btn-sm btn-warning" (click)="clanSearch()">Clan search</button>
       </div>
       <div class="card-body" *ngIf="!playerResult.clan">
         <h4 class="card-title">Clan</h4>
-        <p class="player-info-font font-weight-bold">THIS PLAYER IS CURRENTLY IN NO CLAN</p>
+        <p class="player-info-font font-weight-bold"><i>THIS PLAYER IS CURRENTLY IN NO CLAN</i></p>
       </div>
     </div>
   </div>
@@ -34,53 +31,24 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="card offset-xl-5 offset-lg-3">
-      <div class="card-body">
-        <div class="currentSeasonDescription">
-          <h4 class="card-title">Current Season</h4>
-          <p>Is your searched player active?
-            <wbr>
-            Have a look about season attacks, defenses, donations stats
-            and current trophies for each base
-          </p>
-        </div>
-        <!--<div class="currentSeasonContent">-->
-        <!--<div class="table-responsive">-->
-        <!--<table class="table table-sm table-dark table-hover">-->
-        <!--<caption>*Attacks and defenses are based on wins</caption>-->
-        <!--<thead>-->
-        <!--<tr>-->
-        <!--<th scope="col">Player</th>-->
-        <!--<th scope="col">Donations</th>-->
-        <!--<th scope="col">Donations-received</th>-->
-        <!--<th scope="col">Attacks</th>-->
-        <!--<th scope="col">Defenses</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr>-->
-        <!--<th scope="row">{{playerResult.name}}</th>-->
-        <!--<td>{{playerResult.donations}}</td>-->
-        <!--<td>{{playerResult.donationsReceived}}</td>-->
-        <!--<td>{{playerResult.attackWins}}</td>-->
-        <!--<td>{{playerResult.defenseWins}}</td>-->
-        <!--</tr>-->
-        <!--</tbody>-->
-        <!--</table>-->
-        <!--</div>-->
-        <!--</div>-->
+      <div class="card-body" (click)="currentSeasonModal.open()">
+        <h4 class="card-title">Current Season</h4>
+        <p>Is your searched player active?
+          <wbr>
+          Have a look about season attacks, defenses, donations stats
+          and current trophies for each base
+        </p>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card card-bottom-right">
       <div class="card-body">
-        <div class="troopsAndSpellsDescription">
-          <h4 class="card-title">Troops and Spells</h4>
-          <p>How is the progress going?
-            <wbr>
-            Have a look about troops and spell stats from the town hall- and builder hall base
-          </p>
-        </div>
+        <h4 class="card-title">Troops and Spells</h4>
+        <p>How is the progress going?
+          <wbr>
+          Have a look about troops and spell stats from the town hall- and builder hall base
+        </p>
       </div>
     </div>
   </div>

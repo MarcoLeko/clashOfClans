@@ -26,6 +26,7 @@ export class ClanModalComponent {
 
   memberSearch(member) {
     this.router.navigate(['search/', this.hashTransformer.transformHash(member.tag)]);
+    window.location.href = 'search/' + this.hashTransformer.transformHash(member.tag);
   }
 
 }

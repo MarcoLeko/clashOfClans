@@ -11,7 +11,7 @@ export class CurrentSeasonModalComponent {
 
   @Input() playerResult: PlayerByPlayerTagType;
   @ViewChild('childModal') modal: ModalDirective;
-
+  
   open(): void {
     this.modal.show();
   }

@@ -6,14 +6,6 @@
   color: white;
 }
 
-.trophy-panel:hover {
-  height: 2em;
-  width: 8em;
-  border: 1px solid #1b1e21;
-  background: #343434;
-  color: white;
-}
-
 .trophy-item {
   float: left;
   margin-top: -1em;

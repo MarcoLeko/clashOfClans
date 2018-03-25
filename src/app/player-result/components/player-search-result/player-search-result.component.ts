@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/types';
 import {PlayerSearchService} from '../../services/player-search/player-search.service';
@@ -10,7 +10,7 @@ import {isUndefined} from 'util';
   templateUrl: './player-search-result.component.html',
   styleUrls: ['./player-search-result.component.css']
 })
-export class PlayerSearchResultComponent implements OnInit, AfterViewInit {
+export class PlayerSearchResultComponent implements OnInit {
 
   public isLoading = true;
   public searchValue: string;
@@ -26,21 +26,19 @@ export class PlayerSearchResultComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.searchValue = params['playerId'];
+      this.playerSearchService.getPlayerByPlayerTag(this.searchValue).subscribe(player => {
+          this.playerResult = player;
+          if (!isUndefined(this.playerResult.clan)) {
+            this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) => {
+              this.clanInfo = data;
+            });
+          }
+        }, () => {
+          this.hasNoResultFound = true;
+          this.isLoading = false;
+        },
+        () => this.isLoading = false);
     });
   }
 
-  ngAfterViewInit() {
-    this.playerSearchService.getPlayerByPlayerTag(this.searchValue).subscribe(player => {
-        this.playerResult = player;
-        if (!isUndefined(this.playerResult.clan)) {
-          this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) => {
-            this.clanInfo = data;
-          });
-        }
-      }, () => {
-        this.hasNoResultFound = true;
-        this.isLoading = false;
-      },
-      () => this.isLoading = false);
-  }
 }

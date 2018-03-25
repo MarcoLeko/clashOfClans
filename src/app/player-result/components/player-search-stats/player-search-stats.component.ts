@@ -10,4 +10,5 @@ export class PlayerSearchStatsComponent {
 
   @Input() playerResult: PlayerByPlayerTagType;
   @Input() clanInfo: ClansByClantagType;
+
 }

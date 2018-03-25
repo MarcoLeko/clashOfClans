@@ -14,6 +14,7 @@ export class PlayerSearchStatsHeaderComponent implements OnInit {
   @Input() playerResult: PlayerByPlayerTagType;
   public imgSrcForTownhall: string;
   public heroes: HeroDisplay[];
+
   constructor(private townhallPictureService: TownhallPictureService,
               private heroMapperService: HeroMapperService) {
   }

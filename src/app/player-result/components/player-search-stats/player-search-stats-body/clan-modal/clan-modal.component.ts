@@ -2,7 +2,6 @@ import {Component, Input, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../../../generated/types';
 import {Router} from '@angular/router';
-import {HashTransformerService} from '../../../../../shared/services/hash-transformer/hash-transformer.service';
 
 @Component({
   selector: 'app-clan-modal',
@@ -15,9 +14,7 @@ export class ClanModalComponent {
   @Input() playerResult: PlayerByPlayerTagType;
   @Input() clanInfo: ClansByClantagType;
 
-
-  constructor(private router: Router,
-              private hashTransformer: HashTransformerService) {
+  constructor(private router: Router) {
   }
 
   open() {
@@ -25,8 +22,8 @@ export class ClanModalComponent {
   }
 
   memberSearch(member) {
-    this.router.navigate(['search/', this.hashTransformer.transformHash(member.tag)]);
-    // window.location.href = 'search/' + this.hashTransformer.transformHash(member.tag);
+    this.childModal.hide();
+    this.router.navigate(['search/' + member.tag]);
   }
 
 }

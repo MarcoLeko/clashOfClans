@@ -45,6 +45,10 @@ export class AchievementModalComponent implements OnInit {
   }
 
   calculateProgress(value, target): number {
-    return (value / target) * 100;
+    let percentage: number = (value / target) * 100;
+    if (percentage > 100) {
+      return 100;
+    }
+    return percentage;
   }
 }

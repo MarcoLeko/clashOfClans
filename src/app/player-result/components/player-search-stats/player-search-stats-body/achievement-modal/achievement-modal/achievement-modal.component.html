@@ -24,7 +24,7 @@
               <div class="tab-pane active" id="achievement.name" role="tabpanel">
                 <h4>{{achievement.info}}</h4>
                 <div class="mb-2">
-                  <progressbar [max]="achievement.target" [value]="achievement.value"
+                  <progressbar [max]="100" [value]="calculateProgress(achievement.value, achievement.target)"
                                type="warning" [striped]="true" [animate]="true">
                     <b>{{calculateProgress(achievement.value, achievement.target)}}% </b>
                   </progressbar>
@@ -36,16 +36,14 @@
                         </div>
                         <div class="col-md-3">
                           <input type="text" class="font-weight-bold form-control-plaintext" readonly
-                                 value="{{achievement.value}}"
-                                 id="currentValue">
+                                 value="{{achievement.value}}" id="currentValue">
                         </div>
                         <div class="col-md-3">
                           <label class="font-weight-bold col-form-label" for="targetValue">Target Value:</label>
                         </div>
                         <div class="col-md-3">
                           <input type="text" class="font-weight-bold form-control-plaintext" readonly
-                                 value="{{achievement.target}}"
-                                 id="targetValue">
+                                 value="{{achievement.target}}" id="targetValue">
                         </div>
                       </div>
                     </form>

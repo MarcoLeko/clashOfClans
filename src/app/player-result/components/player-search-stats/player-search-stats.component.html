@@ -4,6 +4,6 @@
   </div>
 </div>
 <div class="container-fluid bodyPanel" *ngIf="playerResult">
-  <app-player-search-stats-body [playerResult]="playerResult"
+  <app-player-search-stats-body [playerResult]="playerResult" (searchPlayerOnClick)="memberSearch($event)"
                                 [clanInfo]="clanInfo"></app-player-search-stats-body>
 </div>

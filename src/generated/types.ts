@@ -214,7 +214,7 @@ export interface PlayerByPlayerTagType {
   tag: string;
   name: string;
   expLevel: number;
-  league: LeagueType;
+  league?: LeagueType;
   trophies: number;
   versusTrophies: number;
   attackWins: number;

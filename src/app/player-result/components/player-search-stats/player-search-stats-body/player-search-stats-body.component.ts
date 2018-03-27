@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../../generated/types';
 import {AchievementModalComponent} from './achievement-modal/achievement-modal/achievement-modal.component';
 import {ClanModalComponent} from './clan-modal/clan-modal.component';
@@ -13,11 +13,16 @@ export class PlayerSearchStatsBodyComponent {
 
   @Input() playerResult: PlayerByPlayerTagType;
   @Input() clanInfo: ClansByClantagType;
+  @Output() searchPlayerOnClick: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild(AchievementModalComponent) achievementModal: AchievementModalComponent;
   @ViewChild(ClanModalComponent) clanModal: ClanModalComponent;
   @ViewChild(CurrentSeasonModalComponent) currentSeasonModal: CurrentSeasonModalComponent;
 
   clanSearch() {
+  }
+
+  memberSearch(event) {
+    this.searchPlayerOnClick.emit(event);
   }
 }

@@ -140,7 +140,7 @@ export class Mocks {
     isWarLogPublic: true,
     description: 'Dont make it rain, make it hurricane',
     memberList: [{
-      tag: '#jdaslkjdfak',
+      tag: '#80QOVPL9C',
       name: 'placeholder',
       expLevel: 187,
       league: {

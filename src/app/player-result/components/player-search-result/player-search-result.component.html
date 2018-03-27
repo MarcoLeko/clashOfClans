@@ -8,5 +8,5 @@
 
 <div *ngIf="playerResult">
   <app-player-search-stats [playerResult]="playerResult"
-                           [clanInfo]="clanInfo"></app-player-search-stats>
+                           [clanInfo]="clanInfo" (searchPlayerOnClick)="loadPlayerData($event)"></app-player-search-stats>
 </div>

@@ -26,19 +26,25 @@ export class PlayerSearchResultComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.searchValue = params['playerId'];
-      this.playerSearchService.getPlayerByPlayerTag(this.searchValue).subscribe(player => {
-          this.playerResult = player;
-          if (!isUndefined(this.playerResult.clan)) {
-            this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) => {
-              this.clanInfo = data;
-            });
-          }
-        }, () => {
-          this.hasNoResultFound = true;
-          this.isLoading = false;
-        },
-        () => this.isLoading = false);
+      this.loadPlayerData(this.searchValue);
     });
+  }
+
+  loadPlayerData(event) {
+    this.searchValue = event;
+    this.playerSearchService.getPlayerByPlayerTag(this.searchValue).subscribe(player => {
+      this.playerResult = player;
+      console.log(this.playerResult);
+      if (!isUndefined(this.playerResult.clan)) {
+        this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) =>
+          this.clanInfo = data
+        );
+      }
+      this.isLoading = false;
+    }, () => {
+        this.hasNoResultFound = true;
+        this.isLoading = false;
+      });
   }
 
 }

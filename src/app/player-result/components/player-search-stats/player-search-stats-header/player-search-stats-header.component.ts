@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {PlayerByPlayerTagType} from '../../../../../generated/types';
 import {TownhallPictureService} from '../../../../shared/services/townhall-picture/townhall-picture.service';
 import {HeroDisplay} from '../../../services/hero-mapper/hero-display';
@@ -9,7 +9,7 @@ import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.servi
   templateUrl: './player-search-stats-header.component.html',
   styleUrls: ['./player-search-stats-header.component.css']
 })
-export class PlayerSearchStatsHeaderComponent implements OnInit {
+export class PlayerSearchStatsHeaderComponent implements OnChanges {
 
   @Input() playerResult: PlayerByPlayerTagType;
   public imgSrcForTownhall: string;
@@ -19,8 +19,8 @@ export class PlayerSearchStatsHeaderComponent implements OnInit {
               private heroMapperService: HeroMapperService) {
   }
 
-  ngOnInit(): void {
-    this.imgSrcForTownhall = this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel);
-    this.heroes = this.heroMapperService.mapHeroList(this.playerResult.heroes);
+  ngOnChanges(): void {
+      this.imgSrcForTownhall = this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel);
+      this.heroes = this.heroMapperService.mapHeroList(this.playerResult.heroes);
   }
 }

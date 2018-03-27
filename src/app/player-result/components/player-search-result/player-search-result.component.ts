@@ -3,6 +3,8 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/types';
 import {PlayerSearchService} from '../../services/player-search/player-search.service';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/zip';
 import {isUndefined} from 'util';
 
 @Component({
@@ -14,8 +16,8 @@ export class PlayerSearchResultComponent implements OnInit {
 
   public isLoading = true;
   public searchValue: string;
-  public playerResult: PlayerByPlayerTagType;
   public hasNoResultFound = false;
+  public playerResult: PlayerByPlayerTagType;
   public clanInfo: ClansByClantagType;
 
   constructor(private playerSearchService: PlayerSearchService,
@@ -27,24 +29,23 @@ export class PlayerSearchResultComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.searchValue = params['playerId'];
       this.loadPlayerData(this.searchValue);
+
     });
   }
 
   loadPlayerData(event) {
     this.searchValue = event;
-    this.playerSearchService.getPlayerByPlayerTag(this.searchValue).subscribe(player => {
-      this.playerResult = player;
-      console.log(this.playerResult);
-      if (!isUndefined(this.playerResult.clan)) {
-        this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag).subscribe((data: ClansByClantagType) =>
-          this.clanInfo = data
-        );
-      }
+    this.playerSearchService.getPlayerByPlayerTag(this.searchValue)
+      .subscribe(player => this.playerResult = player,
+        () => {
+      this.hasNoResultFound = true;
       this.isLoading = false;
     }, () => {
-        this.hasNoResultFound = true;
-        this.isLoading = false;
-      });
+      if (!isUndefined(this.playerResult.clan)) {
+        this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag)
+          .subscribe(clan => this.clanInfo = clan);
+      }
+      this.isLoading = false;
+    });
   }
-
 }

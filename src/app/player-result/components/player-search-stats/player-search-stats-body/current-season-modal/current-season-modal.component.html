@@ -13,6 +13,9 @@
           <div class="col-sm-3" *ngIf="playerResult.league">
             <img class="league-icon" [src]="playerResult.league.iconUrls.small"/>
           </div>
+          <div class="col-sm-3" *ngIf="!playerResult.league">
+            <img class="no-league league-icon" src="assets/no_league.png"/>
+          </div>
           <div class="col-sm-5">
             <img class="trophy-item" src="assets/trophy_home.png"/>
             <div class="trophy-panel border-left-0 rounded">

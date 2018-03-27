@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HashTransformerService } from '../hash-transformer/hash-transformer.service';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { ClansByClantagType } from '../../../../generated/types';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HashTransformerService} from '../hash-transformer/hash-transformer.service';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {ClansByClantagType} from '../../../../generated/types';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ClanSearchService {
@@ -16,7 +16,7 @@ export class ClanSearchService {
 
   getClanByClanTag(clanTag: string): Observable<ClansByClantagType> {
     if (this.hasCacheClan(clanTag)) {
-      return Observable.create(this.clan);
+      return Observable.of(this.clan);
     } else {
       return this.http.get<ClansByClantagType>(ClanSearchService.CLANURL + this.hashTransformer.transformHash(clanTag)).pipe(map(data => this.clan = data));
     }

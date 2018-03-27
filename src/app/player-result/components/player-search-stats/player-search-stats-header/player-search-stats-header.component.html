@@ -5,6 +5,9 @@
         <div class="col-sm-2" *ngIf="playerResult.league">
           <img class="imgSize" [src]="playerResult.league.iconUrls.medium">
         </div>
+        <div class="col-sm-2" *ngIf="!playerResult.league">
+          <img class="imgSize" src="assets/no_league.png">
+        </div>
         <div class="col-sm-10">
           <span class="player-info-font font-weight-bold">{{playerResult.name}}&emsp;</span>
           <span class="player-info-font font-weight-bold badge badge-purple">Level:

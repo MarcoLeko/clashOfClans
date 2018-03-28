@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/types';
 
 @Component({
@@ -10,9 +10,4 @@ export class PlayerSearchStatsComponent {
 
   @Input() playerResult: PlayerByPlayerTagType;
   @Input() clanInfo: ClansByClantagType;
-  @Output() searchPlayerOnClick: EventEmitter<string> = new EventEmitter<string>();
-
-  memberSearch(event) {
-    this.searchPlayerOnClick.emit(event);
-  }
 }

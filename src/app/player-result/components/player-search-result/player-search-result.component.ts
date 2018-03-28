@@ -28,13 +28,11 @@ export class PlayerSearchResultComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.searchValue = params['playerId'];
-      this.loadPlayerData(this.searchValue);
-
+      this.loadPlayerData();
     });
   }
 
-  loadPlayerData(event) {
-    this.searchValue = event;
+  loadPlayerData() {
     this.playerSearchService.getPlayerByPlayerTag(this.searchValue)
       .subscribe(player => this.playerResult = player,
         () => {

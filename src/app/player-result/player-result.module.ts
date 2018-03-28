@@ -21,7 +21,7 @@ import {CurrentSeasonModalComponent} from './components/player-search-stats/play
 import {ClanModalComponent} from './components/player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
 
 const appRoutes: Routes = [
-  {path: 'search/:playerId', component: PlayerSearchResultComponent}
+  {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2 }}
 ];
 
 @NgModule({

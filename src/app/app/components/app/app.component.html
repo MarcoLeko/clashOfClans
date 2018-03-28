@@ -1,2 +1,4 @@
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<div class="routeContainer" [@routeAnimation]="getDepth(myOutlet)">
+  <router-outlet #myOutlet="outlet"></router-outlet>
+</div>

@@ -4,7 +4,6 @@ import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/t
 import {PlayerSearchService} from '../../services/player-search/player-search.service';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
 import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/zip';
 import {isUndefined} from 'util';
 
 @Component({

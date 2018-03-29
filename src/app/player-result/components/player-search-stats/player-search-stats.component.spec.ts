@@ -10,6 +10,7 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {AchievementModalComponent} from './player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {ClanModalComponent} from './player-search-stats-body/clan-modal/clan-modal.component';
+import {CurrentSeasonModalComponent} from './player-search-stats-body/current-season-modal/current-season-modal.component';
 
 describe('PlayerSearchStatsComponent', () => {
   let component: PlayerSearchStatsComponent;
@@ -29,7 +30,8 @@ describe('PlayerSearchStatsComponent', () => {
         PlayerSearchStatsHeaderComponent,
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
-        ClanModalComponent
+        ClanModalComponent,
+        CurrentSeasonModalComponent
       ]
     })
     .compileComponents();

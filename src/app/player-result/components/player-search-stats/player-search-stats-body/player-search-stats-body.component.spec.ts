@@ -8,6 +8,8 @@ import {AchievementModalComponent} from './achievement-modal/achievement-modal/a
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {BuilderInfoService} from '../../../services/builder-info/builder-info.service';
 import {ClanModalComponent} from './clan-modal/clan-modal.component';
+import {CurrentSeasonModalComponent} from './current-season-modal/current-season-modal.component';
+import {Router} from '@angular/router';
 
 describe('PlayerSearchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -22,12 +24,14 @@ describe('PlayerSearchStatsBodyComponent', () => {
         ProgressbarModule.forRoot()
       ],
       providers: [
+        {provide: Router},
         BuilderInfoService
       ],
       declarations: [
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
-        ClanModalComponent
+        ClanModalComponent,
+        CurrentSeasonModalComponent
       ]
     })
       .compileComponents();

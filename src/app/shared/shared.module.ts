@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
-import { HashTransformerService } from './services/hash-transformer/hash-transformer.service';
-import { HeaderInterceptorService } from './services/header-interceptor/header-interceptor.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TownhallPictureService } from './services/townhall-picture/townhall-picture.service';
-import { ClanSearchService } from './services/clan-search/clan-search.service';
+import {NgModule} from '@angular/core';
+import {HashTransformerService} from './services/hash-transformer/hash-transformer.service';
+import {HeaderInterceptorService} from './services/header-interceptor/header-interceptor.service';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TownhallPictureService} from './services/townhall-picture/townhall-picture.service';
+import {ClanSearchService} from './services/clan-search/clan-search.service';
+import {LoadingScreenComponent} from './components/loading-screen/loading-screen.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoadingScreenComponent
+  ],
   imports: [],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -17,7 +20,9 @@ import { ClanSearchService } from './services/clan-search/clan-search.service';
     TownhallPictureService,
     ClanSearchService
   ],
-  exports: []
+  exports: [
+    LoadingScreenComponent
+  ]
 })
 export class SharedModule {
 }

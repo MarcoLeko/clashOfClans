@@ -44,7 +44,7 @@ describe('PlayerSearchStatsHeaderComponent', () => {
   it('should set image on init', () => {
     townhallSpy.getTownHallPicture.and.returnValue(TownhallImgSrc.TOWNHALL_NINE);
 
-    fixture.detectChanges();
+    component.ngOnChanges();
 
     expect(component.imgSrcForTownhall).toEqual(TownhallImgSrc.TOWNHALL_NINE);
   });
@@ -52,7 +52,7 @@ describe('PlayerSearchStatsHeaderComponent', () => {
   it('should set hero array on init', () => {
     heroMapperSpy.mapHeroList.and.returnValue(Mocks.DISPLAYHEROOBJ);
 
-    fixture.detectChanges();
+    component.ngOnChanges();
 
     expect(component.heroes).toEqual(Mocks.DISPLAYHEROOBJ);
   });

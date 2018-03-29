@@ -37,7 +37,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let member of clanInfo.memberList" (click)="memberSearch(member)">
+              <tr *ngFor="let member of clanInfo.memberList" (click)="memberSearch(member)" id="memberGrid">
                   <td scope="row">{{member.tag}}</td>
                   <td>{{member.name}}</td>
                   <td>{{member.role}}</td>

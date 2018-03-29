@@ -1,24 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Observable } from 'rxjs/Observable';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
+import {pulse} from '../../animations/pulse.animation';
 
 @Component({
   selector: 'app-loading-screen',
   templateUrl: './loading-screen.component.html',
   styleUrls: ['./loading-screen.component.css'],
   animations: [
-    trigger('myAwesomeAnimation', [
-
-      state('small', style({
-        transform: 'scale(1)'
-      })),
-      state('large', style({
-        transform: 'scale(1.2)'
-      })),
-
-      transition('small <=> large', animate('235ms ease-in')),
-    ]),
+    pulse
   ]
 })
 export class LoadingScreenComponent implements OnInit, OnDestroy {

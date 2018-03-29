@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PlayerSearchResultComponent} from './player-search-result.component';
-import {LoadingScreenComponent} from '../loading-screen/loading-screen.component';
+import {LoadingScreenComponent} from '../../../shared/components/loading-screen/loading-screen.component';
 import {ErrorSearchResultComponent} from '../error-search-result/error-search-result.component';
 import {PlayerSearchStatsComponent} from '../player-search-stats/player-search-stats.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -20,6 +20,7 @@ import {AchievementModalComponent} from '../player-search-stats/player-search-st
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
 import {ClanModalComponent} from '../player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
+import {CurrentSeasonModalComponent} from '../player-search-stats/player-search-stats-body/current-season-modal/current-season-modal.component';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -28,13 +29,8 @@ describe('PlayerSearchResultComponent', () => {
   const playerSearchMock = {
     getPlayerByPlayerTag: jasmine.createSpy('getPlayerByPlayerTag')
   };
-
   const clanSearchSpy = {
     getClanByClanTag: jasmine.createSpy('getClanByClanTag')
-  };
-
-  const builderInfoSpy = {
-    getBuilderInfoType: jasmine.createSpy('getBuilderInfoType')
   };
 
   beforeEach(async(() => {
@@ -59,7 +55,8 @@ describe('PlayerSearchResultComponent', () => {
         PlayerSearchStatsHeaderComponent,
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
-        ClanModalComponent
+        ClanModalComponent,
+        CurrentSeasonModalComponent
       ]
     })
       .compileComponents();
@@ -83,50 +80,68 @@ describe('PlayerSearchResultComponent', () => {
     const route = fixture.debugElement.injector.get(ActivatedRoute);
     route.params = Observable.of(params);
 
+    playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.throw({}));
+    clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
+
     component.ngOnInit();
 
     expect(component.searchValue).toEqual(expectedParameter);
   });
 
   it('should set player stats by valid webservice call', () => {
+    const route = fixture.debugElement.injector.get(ActivatedRoute);
+    route.params = Observable.of({});
+
     playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
     clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
 
-    component.ngAfterViewInit();
+    component.ngOnInit();
 
     expect(component.playerResult).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG);
   });
 
   it('should set loading property by false if webservice call finished', () => {
+    const route = fixture.debugElement.injector.get(ActivatedRoute);
+    route.params = Observable.of({});
+
     playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
-    component.ngAfterViewInit();
+    component.ngOnInit();
 
     expect(component.isLoading).toBe(false);
   });
 
   it('should set no result property by true if webservice call failed', () => {
+    const route = fixture.debugElement.injector.get(ActivatedRoute);
+    route.params = Observable.of({});
+
     playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.throw({}));
-    component.ngAfterViewInit();
+    component.ngOnInit();
 
     expect(component.hasNoResultFound).toBe(true);
   });
 
   it('should call clanSearch mock on init', () => {
+    const route = fixture.debugElement.injector.get(ActivatedRoute);
+    route.params = Observable.of({});
+
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
     playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAG));
     const calledSpy = clanSearchSpy.getClanByClanTag.and.returnValue(Observable.of(Mocks.CLANSTATSBYCLANTAG));
 
-    component.ngAfterViewInit();
+    component.ngOnInit();
 
     expect(calledSpy).toHaveBeenCalledWith(component.playerResult.clan.tag);
     expect(component.clanInfo).toEqual(Mocks.CLANSTATSBYCLANTAG);
   });
 
   it('should not call clanSearch mock on init', () => {
+    const route = fixture.debugElement.injector.get(ActivatedRoute);
+    route.params = Observable.of({});
+
     playerSearchMock.getPlayerByPlayerTag.and.returnValue(Observable.of(Mocks.PLAYERSTATSBYPLAYERTAGWITHOUTCLAN));
     const notCalledSpy = clanSearchSpy.getClanByClanTag.and.stub();
 
-    component.ngAfterViewInit();
+    component.ngOnInit();
 
     expect(notCalledSpy.calls.mostRecent()).not.toEqual(notCalledSpy);
   });

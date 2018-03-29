@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PlayerSearchResultComponent} from './components/player-search-result/player-search-result.component';
-import {LoadingScreenComponent} from './components/loading-screen/loading-screen.component';
 import {PlayerSearchStatsComponent} from './components/player-search-stats/player-search-stats.component';
 import {ErrorSearchResultComponent} from './components/error-search-result/error-search-result.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -21,13 +20,12 @@ import {CurrentSeasonModalComponent} from './components/player-search-stats/play
 import {ClanModalComponent} from './components/player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
 
 const appRoutes: Routes = [
-  {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2 }}
+  {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2}}
 ];
 
 @NgModule({
   declarations: [
     PlayerSearchResultComponent,
-    LoadingScreenComponent,
     PlayerSearchStatsComponent,
     ErrorSearchResultComponent,
     PlayerSearchStatsHeaderComponent,

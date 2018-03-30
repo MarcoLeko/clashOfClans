@@ -34,9 +34,3 @@
 .nightHeader {
   margin-left: 3.5em;
 }
-
-.rotate-to-180 {
-  background: red;
-  animation-duration: 0.5s;
-  transform: rotate(180grad);
-}

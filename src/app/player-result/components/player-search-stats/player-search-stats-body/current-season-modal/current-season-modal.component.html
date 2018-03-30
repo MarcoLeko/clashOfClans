@@ -16,18 +16,77 @@
           <div class="col-sm-3" *ngIf="!playerResult.league">
             <img class="no-league league-icon" src="assets/no_league.png"/>
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-3">
             <img class="trophy-item" src="assets/trophy_home.png"/>
             <div class="trophy-panel border-left-0 rounded">
               <span class="trophy-text font-weight-bold">{{playerResult.trophies}}</span>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <img class="trophy-item" src="assets/trophy_night.png"/>
             <div class="trophy-panel border-left-0 rounded">
               <span class="trophy-text font-weight-bold">{{playerResult.versusTrophies}}</span>
             </div>
           </div>
+          <div class="col-sm-3" *ngIf="playerResult.legendStatistics">
+            <img class="trophy-item" src="assets/trophy_legend.png"/>
+            <div class="trophy-panel border-left-0 rounded">
+              <span class="trophy-text font-weight-bold">{{playerResult.legendStatistics.legendTrophies}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="container mb-2 row">
+          <div class="col-sm-3">
+            <label class="font-weight-bold">
+              Donations
+            </label>
+          </div>
+          <div class="col-sm-9">
+            <progressbar class="progress font-weight-bold" [value]="donations"
+                         [max]="maxProgressBarValue"></progressbar>
+          </div>
+        </div>
+        <div class="container">
+          <div class="mb-2 row" style="border-bottom: 1px solid #070707">
+            <div class="col-sm-3 homeHeader"><img src="assets/builder.png" width="40px"></div>
+            <div class="col-sm-4 nightHeader"><img src="assets/builder_master.png" width="40px"></div>
+          </div>
+        </div>
+        <div class="container mb-2 row">
+          <div class="col-sm-3">
+            <label class="font-weight-bold">
+              Attacks
+            </label>
+          </div>
+          <div class="col-sm-3" style="border-right: 1px solid black">
+            <span class="font-weight-bold">{{playerResult.attackWins}}</span>
+          </div>
+          <div class="col-sm-3 offset-1">
+            <span class="font-weight-bold">{{playerResult.versusBattleWins}}</span>
+          </div>
+          <div class="col-sm-3">
+            <label class="font-weight-bold">
+              Defenses
+            </label>
+          </div>
+          <div class="col-sm-1">
+            <span class="font-weight-bold">{{playerResult.defenseWins}}</span>
+          </div>
+        </div>
+        <div class="container">
+          <accordion>
+            <accordion-group #accordion panelClass="legendLeaguePanel">
+              <div accordion-heading>
+                <img src="assets/trophy_legend.png" width="40px">
+                <span class="font-weight-bold">Legend League Statistics</span>
+                <span class="float-right pull-right">
+                    <fa *ngIf="accordion?.isOpen" [name]="'angle-up'" [size]="1"></fa>
+                    <fa *ngIf="!accordion?.isOpen" [name]="'angle-down'" [size]="1"></fa>
+                </span>
+              </div>
+              This content is straight in the template.
+            </accordion-group>
+          </accordion>
         </div>
       </div>
     </div>

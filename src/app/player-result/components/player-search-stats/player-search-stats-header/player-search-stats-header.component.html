@@ -14,7 +14,8 @@
             <span class="badge badge-dark">{{playerResult.expLevel}}</span>
           </span>
           <span class="player-info-font font-weight-bold badge badge-dark">
-            <fa name="star" size="lg"></fa><span class="badge badge-light">{{playerResult.warStars}}</span>
+            <fa [name]="'star'" [size]="1"></fa>
+            <span class="badge badge-light">{{playerResult.warStars}}</span>
           </span>
           <p class="font-italic">{{playerResult.tag}}</p>
         </div>

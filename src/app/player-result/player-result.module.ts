@@ -11,13 +11,13 @@ import {PlayerSearchService} from './services/player-search/player-search.servic
 import {PlayerSearchStatsHeaderComponent} from './components/player-search-stats/player-search-stats-header/player-search-stats-header.component';
 import {PlayerSearchStatsBodyComponent} from './components/player-search-stats/player-search-stats-body/player-search-stats-body.component';
 import {HeroMapperService} from './services/hero-mapper/hero-mapper.service';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
-import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
+import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {AchievementModalComponent} from './components/player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
 import {BuilderInfoService} from './services/builder-info/builder-info.service';
 import {TroopsAndSpellsModalComponent} from './components/player-search-stats/player-search-stats-body/troops-and-spells-modal/troops-and-spells-modal.component';
 import {CurrentSeasonModalComponent} from './components/player-search-stats/player-search-stats-body/current-season-modal/current-season-modal.component';
 import {ClanModalComponent} from './components/player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2}}
@@ -38,7 +38,8 @@ const appRoutes: Routes = [
   imports: [
     ModalModule.forRoot(),
     ProgressbarModule.forRoot(),
-    AngularFontAwesomeModule,
+    AccordionModule.forRoot(),
+    Angular2FontawesomeModule,
     CommonModule,
     SharedModule,
     FormsModule,

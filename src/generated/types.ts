@@ -251,6 +251,11 @@ export interface PlayerByPlayerTagType {
       trophies: number;
       id: string
     }
+    bestVersusSeason?: {
+      rank: number;
+      trophies: number;
+      id: string
+    }
   };
   achievements: AchievementType[];
   troops: TroopsHeroesAndSpellType[];

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {PlayerByPlayerTagType} from '../../../../../../generated/types';
 import {ModalDirective} from 'ngx-bootstrap';
 
@@ -7,12 +7,12 @@ import {ModalDirective} from 'ngx-bootstrap';
   templateUrl: './current-season-modal.component.html',
   styleUrls: ['./current-season-modal.component.css']
 })
-export class CurrentSeasonModalComponent implements OnInit {
+export class CurrentSeasonModalComponent implements OnChanges {
 
   @Input() playerResult: PlayerByPlayerTagType;
   @ViewChild('childModal') modal: ModalDirective;
 
-  public donations: any[] = [];
+  public donations: any[];
   public maxProgressBarValue: number;
 
   open(): void {
@@ -20,10 +20,24 @@ export class CurrentSeasonModalComponent implements OnInit {
     this.modal.show();
   }
 
-  ngOnInit() {
+  ngOnChanges() {
+    this.donationsComparison(this.playerResult);
+    this.maxProgressBarValue = this.playerResult.donationsReceived + this.playerResult.donations;
+  }
+
+  donationsComparison(player: PlayerByPlayerTagType): void {
+    this.donations = [];
     let types = ['success', 'danger'];
-    this.maxProgressBarValue = this.playerResult.donations + this.playerResult.donationsReceived;
-    this.donations.push({value: this.playerResult.donations, type: types[0], label: this.playerResult.donations});
-    this.donations.push({value: this.playerResult.donationsReceived, type: types[1], label: this.playerResult.donationsReceived});
+    this.donations.push({value: player.donations, type: types[0], label: player.donations});
+    this.donations.push({value: player.donationsReceived, type: types[1], label: player.donationsReceived});
+  }
+
+  hasLegendLeagueExperienced() {
+    if (this.playerResult.legendStatistics) {
+      if (this.playerResult.legendStatistics.legendTrophies > 0) {
+        return true;
+      }
+    }
+    return false;
   }
 }

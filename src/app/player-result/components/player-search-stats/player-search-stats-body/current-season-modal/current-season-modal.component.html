@@ -28,14 +28,14 @@
               <span class="trophy-text font-weight-bold">{{playerResult.versusTrophies}}</span>
             </div>
           </div>
-          <div class="col-sm-3" *ngIf="playerResult.legendStatistics">
+          <div class="col-sm-3" *ngIf="hasLegendLeagueExperienced()">
             <img class="trophy-item" src="assets/trophy_legend.png"/>
             <div class="trophy-panel border-left-0 rounded">
               <span class="trophy-text font-weight-bold">{{playerResult.legendStatistics.legendTrophies}}</span>
             </div>
           </div>
         </div>
-        <div class="container mb-2 row">
+        <div class="container mb-3 row">
           <div class="col-sm-3">
             <label class="font-weight-bold">
               Donations
@@ -47,33 +47,33 @@
           </div>
         </div>
         <div class="container">
-          <div class="mb-2 row" style="border-bottom: 1px solid #070707">
-            <div class="col-sm-3 homeHeader"><img src="assets/builder.png" width="40px"></div>
-            <div class="col-sm-4 nightHeader"><img src="assets/builder_master.png" width="40px"></div>
+          <div class="mb-2 row">
+            <div class="font-weight-bold col-sm-6 offset-sm-3">Home & Night base</div>
+            <div class="font-weight-bold col-sm-3">Home base</div>
           </div>
         </div>
-        <div class="container mb-2 row">
+        <div class="container mb-4 row">
           <div class="col-sm-3">
             <label class="font-weight-bold">
-              Attacks
+              Attacks:
             </label>
           </div>
-          <div class="col-sm-3" style="border-right: 1px solid black">
+          <div class="col-sm-3">
             <span class="font-weight-bold">{{playerResult.attackWins}}</span>
           </div>
-          <div class="col-sm-3 offset-1">
+          <div class="col-sm-3">
             <span class="font-weight-bold">{{playerResult.versusBattleWins}}</span>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <label class="font-weight-bold">
-              Defenses
+              Defenses:
             </label>
           </div>
           <div class="col-sm-1">
             <span class="font-weight-bold">{{playerResult.defenseWins}}</span>
           </div>
         </div>
-        <div class="container">
+        <div class="container" *ngIf="hasLegendLeagueExperienced(); else disabledAaccordion">
           <accordion>
             <accordion-group #accordion panelClass="legendLeaguePanel">
               <div accordion-heading>
@@ -84,10 +84,59 @@
                     <fa *ngIf="!accordion?.isOpen" [name]="'angle-down'" [size]="1"></fa>
                 </span>
               </div>
-              This content is straight in the template.
+              <div class="container row">
+                <div class="col-sm-2">
+                  <span class="font-weight-bold">Best Season:</span>
+                </div>
+                <div class="col-sm-2">
+                  <span class="badge badge-dark font-weight-bold">Home Base</span>
+                </div>
+                <div class="col-sm-3">
+                  <span class="font-weight-bold">{{playerResult.legendStatistics.bestSeason.id}}</span>
+                </div>
+                <div class="col-sm-2">
+                  <span class="font-weight-bold">Rank: #{{playerResult.legendStatistics.bestSeason.rank}}</span>
+                </div>
+                <div class="col-sm-3">
+                  <img src="assets/trophy_home.png" width="25px">
+                  <span class="font-weight-bold">{{playerResult.legendStatistics.bestSeason.trophies}}</span>
+                </div>
+                <div class="col-sm-2">
+                  <span class="font-weight-bold">Best Season:</span>
+                </div>
+                <div class="col-sm-2">
+                  <span class="badge badge-dark font-weight-bold">Night Base</span>
+                </div>
+                <div class="col-sm-3">
+                  <span class="font-weight-bold">{{playerResult.legendStatistics.bestVersusSeason.id}}</span>
+                </div>
+                <div class="col-sm-2">
+                  <span class="font-weight-bold">Rank: #{{playerResult.legendStatistics.bestVersusSeason.rank}}</span>
+                </div>
+                <div class="col-sm-3">
+                  <img src="assets/trophy_night.png" width="25px">
+                  <span class="font-weight-bold">{{playerResult.legendStatistics.bestVersusSeason.trophies}}</span>
+                </div>
+              </div>
             </accordion-group>
           </accordion>
         </div>
+        <ng-template #disabledAaccordion>
+          <div class="container">
+            <accordion>
+              <accordion-group #accordion panelClass="legendLeaguePanel disabled-accordion"
+                               [isDisabled]="!hasLegendLeagueExperienced()">
+                <div accordion-heading>
+                  <img src="assets/trophy_legend.png" width="40px">
+                  <span class="font-weight-bold"><em>Legend League Statistics&emsp;-&emsp;</em></span>
+                  <em>
+                    <small>no stats available</small>
+                  </em>
+                </div>
+              </accordion-group>
+            </accordion>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>

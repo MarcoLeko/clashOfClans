@@ -74,4 +74,19 @@ describe('AchievementModalComponent', () => {
 
     expect(component.setActiveState(component.achievement.name)).toEqual(result)
   });
+
+  it('should return bootstrap active class', () => {
+    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
+    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
+    component.ngOnInit();
+
+    const result = 'active';
+
+    expect(component.setActiveState(component.achievement.name)).toEqual(result)
+  });
+
+  it('should return completed Achievements', () => {
+    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
+    expect(component.calculateCompletedAchievements()).toBe(1);
+  });
 });

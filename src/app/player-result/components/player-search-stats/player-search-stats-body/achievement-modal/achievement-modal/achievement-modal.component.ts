@@ -51,4 +51,14 @@ export class AchievementModalComponent implements OnInit {
     }
     return percentage;
   }
+
+  calculateCompletedAchievements(): number {
+    let completedAchievements: number = 0;
+    for (let achievement of this.playerResult.achievements) {
+      if (achievement.value >= achievement.target) {
+        completedAchievements++;
+      }
+    }
+    return completedAchievements;
+  }
 }

@@ -10,13 +10,18 @@
       </div>
       <div class="modal-body">
         <!-- List group -->
-          <div class="row">
-            <div class="scrollable-list col-md-4">
-              <div  *ngFor="let achievement of playerResult.achievements" class="list-group" role="tablist">
+        <div class="row">
+          <div class="col-md-4">
+            <p class="font-weight-bold">
+              Completed:<em>&nbsp;{{calculateCompletedAchievements()}}/ {{playerResult.achievements.length}}</em>
+            </p>
+            <div class="scrollable-list">
+              <div *ngFor="let achievement of playerResult.achievements" class="list-group" role="tablist">
                 <a class="list-group-item list-group-item-action list-group-item-dark" href="#{{achievement.name}}"
-                   [class.active]="setActiveState(achievement.name)"  (click)="chooseAchievement(achievement.name)"
+                   [class.active]="setActiveState(achievement.name)" (click)="chooseAchievement(achievement.name)"
                    data-toggle="list" role="tab">{{achievement.name}}</a>
               </div>
+            </div>
           </div>
           <!-- Tab panes -->
           <div class="col-md-8">
@@ -53,7 +58,7 @@
                           <label class="font-weight-bold col-form-label" for="base">Base:</label>
                         </div>
                         <div class="col-md-9">
-                          <img class="buildInfo"[src]="builderInfo.imgSrc">
+                          <img class="buildInfo" [src]="builderInfo.imgSrc">
                           <input type="text" class="font-weight-bold form-control-plaintext" readonly
                                  value="{{builderInfo.builderhall}}"
                                  id="base">
@@ -65,7 +70,7 @@
               </div>
             </div>
           </div>
-          </div>
+        </div>
       </div>
     </div>
   </div>

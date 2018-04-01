@@ -33,7 +33,6 @@ describe('CurrentSeasonModalComponent', () => {
   });
 
   it('should open modal on click', () => {
-
     const modal: any = {
       show: function () {
       },

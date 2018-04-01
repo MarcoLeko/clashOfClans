@@ -15,12 +15,12 @@ import {ActivatedRouteStub} from '../../../testing/activatedroute-stub';
 import {Mocks} from '../../../testing/mocks';
 import {PlayerSearchStatsHeaderComponent} from '../player-search-stats/player-search-stats-header/player-search-stats-header.component';
 import {PlayerSearchStatsBodyComponent} from '../player-search-stats/player-search-stats-body/player-search-stats-body.component';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {AchievementModalComponent} from '../player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
-import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
+import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
 import {ClanModalComponent} from '../player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
 import {CurrentSeasonModalComponent} from '../player-search-stats/player-search-stats-body/current-season-modal/current-season-modal.component';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -38,8 +38,9 @@ describe('PlayerSearchResultComponent', () => {
       imports: [
         ModalModule.forRoot(),
         ProgressbarModule.forRoot(),
+        AccordionModule.forRoot(),
         HttpClientModule,
-        AngularFontAwesomeModule
+        Angular2FontawesomeModule
       ],
       providers: [
         HashTransformerService,

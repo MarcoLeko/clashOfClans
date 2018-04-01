@@ -16,20 +16,38 @@ export class CurrentSeasonModalComponent implements OnChanges {
   public maxProgressBarValue: number;
 
   open(): void {
-    console.log(this.playerResult);
     this.modal.show();
   }
 
   ngOnChanges() {
     this.donationsComparison(this.playerResult);
-    this.maxProgressBarValue = this.playerResult.donationsReceived + this.playerResult.donations;
   }
 
   donationsComparison(player: PlayerByPlayerTagType): void {
     this.donations = [];
     let types = ['success', 'danger'];
+
+    if (this.hasNoDonationsStats(player)) {
+      this.defaultDonationsValues(types, player);
+    } else {
+      this.currentDonationsValues(player, types);
+    }
+  }
+
+  private currentDonationsValues(player: PlayerByPlayerTagType, types: string[]) {
     this.donations.push({value: player.donations, type: types[0], label: player.donations});
     this.donations.push({value: player.donationsReceived, type: types[1], label: player.donationsReceived});
+    this.maxProgressBarValue = player.donationsReceived + player.donations;
+  }
+
+  private defaultDonationsValues(types: string[], player: PlayerByPlayerTagType) {
+    this.donations.push({value: 1, type: types[0], label: player.donations});
+    this.donations.push({value: 1, type: types[1], label: player.donationsReceived});
+    this.maxProgressBarValue = 2;
+  }
+
+  private hasNoDonationsStats(player: PlayerByPlayerTagType) {
+    return player.donations === 0 && player.donationsReceived === 0;
   }
 
   hasLegendLeagueExperienced() {
@@ -39,5 +57,13 @@ export class CurrentSeasonModalComponent implements OnChanges {
       }
     }
     return false;
+  }
+
+  hasVersusTrophies() {
+    return this.playerResult.versusTrophies != 0;
+  }
+
+  hasTrophies() {
+    return this.playerResult.trophies != 0;
   }
 }

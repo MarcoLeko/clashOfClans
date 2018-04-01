@@ -1,5 +1,5 @@
 <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
-     [config]="{animated: true, backdrop: false}" *ngIf="playerResult">
+     [config]="{animated: true, backdrop: false}">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content clash-modal">
       <div class="modal-header">
@@ -16,13 +16,13 @@
           <div class="col-sm-3" *ngIf="!playerResult.league">
             <img class="no-league league-icon" src="assets/no_league.png"/>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3" *ngIf="hasTrophies()">
             <img class="trophy-item" src="assets/trophy_home.png"/>
             <div class="trophy-panel border-left-0 rounded">
               <span class="trophy-text font-weight-bold">{{playerResult.trophies}}</span>
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3" *ngIf="hasVersusTrophies()">
             <img class="trophy-item" src="assets/trophy_night.png"/>
             <div class="trophy-panel border-left-0 rounded">
               <span class="trophy-text font-weight-bold">{{playerResult.versusTrophies}}</span>
@@ -48,7 +48,7 @@
         </div>
         <div class="container">
           <div class="mb-2 row">
-            <div class="font-weight-bold col-sm-6 offset-sm-3">Home & Night base</div>
+            <div class="font-weight-bold col-sm-6 offset-sm-3">Home and Night base</div>
             <div class="font-weight-bold col-sm-3">Home base</div>
           </div>
         </div>
@@ -73,47 +73,50 @@
             <span class="font-weight-bold">{{playerResult.defenseWins}}</span>
           </div>
         </div>
-        <div class="container" *ngIf="hasLegendLeagueExperienced(); else disabledAaccordion">
+        <div class="container" *ngIf="playerResult.legendStatistics; else disabledAaccordion">
           <accordion>
             <accordion-group #accordion panelClass="legendLeaguePanel">
-              <div accordion-heading>
+              <div class="text-center" accordion-heading>
                 <img src="assets/trophy_legend.png" width="40px">
-                <span class="font-weight-bold">Legend League Statistics</span>
+                <span class="font-weight-bold">Legend League Statistics and Trophy Records</span>
+                <img src="assets/trophy_night.png" width="40px">
                 <span class="float-right pull-right">
                     <fa *ngIf="accordion?.isOpen" [name]="'angle-up'" [size]="1"></fa>
                     <fa *ngIf="!accordion?.isOpen" [name]="'angle-down'" [size]="1"></fa>
                 </span>
               </div>
-              <div class="container row">
-                <div class="col-sm-2">
+              <div class="container row" *ngIf="playerResult.legendStatistics.bestSeason">
+                <div class="col-sm-3">
                   <span class="font-weight-bold">Best Season:</span>
                 </div>
                 <div class="col-sm-2">
-                  <span class="badge badge-dark font-weight-bold">Home Base</span>
-                </div>
-                <div class="col-sm-3">
-                  <span class="font-weight-bold">{{playerResult.legendStatistics.bestSeason.id}}</span>
+                  <span class="badge badge-black font-weight-bold">Home Base</span>
                 </div>
                 <div class="col-sm-2">
-                  <span class="font-weight-bold">Rank: #{{playerResult.legendStatistics.bestSeason.rank}}</span>
+                  <span class="font-weight-bold">{{playerResult.legendStatistics.bestSeason.id}}</span>
                 </div>
                 <div class="col-sm-3">
+                  <span class="font-weight-bold">Rank: #{{playerResult.legendStatistics.bestSeason.rank}}</span>
+                </div>
+                <div class="col-sm-2">
                   <img src="assets/trophy_home.png" width="25px">
                   <span class="font-weight-bold">{{playerResult.legendStatistics.bestSeason.trophies}}</span>
                 </div>
-                <div class="col-sm-2">
+              </div>
+              <div class="container row" *ngIf="playerResult.legendStatistics.bestVersusSeason">
+                <div class="col-sm-3">
                   <span class="font-weight-bold">Best Season:</span>
                 </div>
                 <div class="col-sm-2">
-                  <span class="badge badge-dark font-weight-bold">Night Base</span>
-                </div>
-                <div class="col-sm-3">
-                  <span class="font-weight-bold">{{playerResult.legendStatistics.bestVersusSeason.id}}</span>
+                  <span class="badge badge-black font-weight-bold">Night Base</span>
                 </div>
                 <div class="col-sm-2">
-                  <span class="font-weight-bold">Rank: #{{playerResult.legendStatistics.bestVersusSeason.rank}}</span>
+                  <span class="font-weight-bold">{{playerResult.legendStatistics.bestVersusSeason.id}}</span>
                 </div>
                 <div class="col-sm-3">
+                  <span class="font-weight-bold">Rank: #{{playerResult.legendStatistics.bestVersusSeason.rank}}</span>
+                </div>
+                <div class="col-sm-2">
                   <img src="assets/trophy_night.png" width="25px">
                   <span class="font-weight-bold">{{playerResult.legendStatistics.bestVersusSeason.trophies}}</span>
                 </div>
@@ -125,12 +128,13 @@
           <div class="container">
             <accordion>
               <accordion-group #accordion panelClass="legendLeaguePanel disabled-accordion"
-                               [isDisabled]="!hasLegendLeagueExperienced()">
-                <div accordion-heading>
+                               [isDisabled]="!playerResult.legendStatistics">
+                <div class="text-center" accordion-heading>
                   <img src="assets/trophy_legend.png" width="40px">
-                  <span class="font-weight-bold"><em>Legend League Statistics&emsp;-&emsp;</em></span>
+                  <span class="font-weight-bold">Legend League Statistics and Trophy Records</span>
+                  <img src="assets/trophy_night.png" width="40px">
                   <em>
-                    <small>no stats available</small>
+                    <small>&emsp;- no stats available</small>
                   </em>
                 </div>
               </accordion-group>

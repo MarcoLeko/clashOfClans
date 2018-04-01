@@ -5,11 +5,12 @@ import {Mocks} from '../../../../testing/mocks';
 import {By} from '@angular/platform-browser';
 import {SharedModule} from '../../../../shared/shared.module';
 import {AchievementModalComponent} from './achievement-modal/achievement-modal/achievement-modal.component';
-import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
+import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {BuilderInfoService} from '../../../services/builder-info/builder-info.service';
 import {ClanModalComponent} from './clan-modal/clan-modal.component';
 import {CurrentSeasonModalComponent} from './current-season-modal/current-season-modal.component';
 import {Router} from '@angular/router';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 describe('PlayerSearchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -21,7 +22,9 @@ describe('PlayerSearchStatsBodyComponent', () => {
       imports: [
         SharedModule,
         ModalModule.forRoot(),
-        ProgressbarModule.forRoot()
+        ProgressbarModule.forRoot(),
+        AccordionModule.forRoot(),
+        Angular2FontawesomeModule
       ],
       providers: [
         {provide: Router},

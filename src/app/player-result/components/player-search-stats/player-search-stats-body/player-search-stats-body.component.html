@@ -7,7 +7,7 @@
     <div class="card card offset-xl-5 offset-lg-3">
       <div class="card-body" (click)="achievementModal.open()">
         <h4 class="card-title">Achievements</h4>
-        <p>Have a look about war stars, best trophies and some other achievements in a nice and compact overview</p>
+        <p>All Achievements completed? Have a look about war stars, best trophies and some other achievements in a short overview</p>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
     <div class="card" [ngClass]="{'disabled-card': !playerResult.clan}">
       <div class="card-body" *ngIf="playerResult.clan" (click)="clanModal.open()">
         <h4 class="card-title">Clan</h4>
-        <p>Have a general look on clan information like clan description, status and members.
+        <p>Have a brief look on clan information and clan members.
           For a detailed Overview like war stats, war logs, detailed player stats comparison -
           use the clan search feature</p>
         <button class="clanSearchButton btn btn-sm btn-warning" (click)="clanSearch()">Clan search</button>
@@ -36,7 +36,7 @@
         <p>Is your searched player active?
           <wbr>
           Have a look about season attacks, defenses, donations stats
-          and current trophies for each base
+          and trophy records for night and home base
         </p>
       </div>
     </div>
@@ -47,7 +47,7 @@
         <h4 class="card-title">Troops and Spells</h4>
         <p>How is the progress going?
           <wbr>
-          Have a look about troops and spell stats from the town hall- and builder hall base
+          Have a look about troops and spell stats from home and night base
         </p>
       </div>
     </div>

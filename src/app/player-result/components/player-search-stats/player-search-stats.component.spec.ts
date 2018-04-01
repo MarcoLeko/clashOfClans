@@ -6,11 +6,11 @@ import {PlayerSearchStatsBodyComponent} from './player-search-stats-body/player-
 import {SharedModule} from '../../../shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import {Mocks} from '../../../testing/mocks';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {AchievementModalComponent} from './player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
-import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
+import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {ClanModalComponent} from './player-search-stats-body/clan-modal/clan-modal.component';
 import {CurrentSeasonModalComponent} from './player-search-stats-body/current-season-modal/current-season-modal.component';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 describe('PlayerSearchStatsComponent', () => {
   let component: PlayerSearchStatsComponent;
@@ -21,9 +21,10 @@ describe('PlayerSearchStatsComponent', () => {
       imports: [
         SharedModule,
         HttpClientModule,
-        AngularFontAwesomeModule,
+        Angular2FontawesomeModule,
         ModalModule.forRoot(),
-        ProgressbarModule.forRoot()
+        ProgressbarModule.forRoot(),
+        AccordionModule.forRoot()
       ],
       declarations: [
         PlayerSearchStatsComponent,

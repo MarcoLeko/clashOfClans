@@ -4,8 +4,8 @@ import {PlayerSearchStatsHeaderComponent} from './player-search-stats-header.com
 import {Mocks} from '../../../../testing/mocks';
 import {TownhallPictureService} from '../../../../shared/services/townhall-picture/townhall-picture.service';
 import {TownhallImgSrc} from '../../../../shared/services/townhall-picture/townhall-src';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.service';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 describe('PlayerSearchStatsHeaderComponent', () => {
   let component: PlayerSearchStatsHeaderComponent;
@@ -19,16 +19,16 @@ describe('PlayerSearchStatsHeaderComponent', () => {
   };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
-        AngularFontAwesomeModule
+      imports: [
+        Angular2FontawesomeModule
       ],
       providers: [
         {provide: TownhallPictureService, useValue: townhallSpy},
         {provide: HeroMapperService, useValue: heroMapperSpy},
       ],
-      declarations: [ PlayerSearchStatsHeaderComponent ]
+      declarations: [PlayerSearchStatsHeaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

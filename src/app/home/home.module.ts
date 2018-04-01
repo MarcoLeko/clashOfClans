@@ -10,7 +10,7 @@ import {PlayerResultModule} from '../player-result/player-result.module';
 import {SharedModule} from '../shared/shared.module';
 
 const appRoutes: Routes = [
-  {path: '', component: HomeFontPageComponent, data: {depth: 1 }}
+  {path: '', component: HomeFontPageComponent, data: {depth: 1}}
 ];
 
 @NgModule({

@@ -3,6 +3,8 @@ import {PlayerByPlayerTagType} from '../../../../../generated/types';
 import {TownhallPictureService} from '../../../../shared/services/townhall-picture/townhall-picture.service';
 import {HeroDisplay} from '../../../services/hero-mapper/hero-display';
 import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.service';
+import {Observable} from 'rxjs/Observable';
+import {AngularFireStorage} from 'angularfire2/storage';
 
 @Component({
   selector: 'app-player-search-stats-header',
@@ -15,12 +17,19 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
   public imgSrcForTownhall: string;
   public heroes: HeroDisplay[];
 
+  public clashPlayerUrl: Observable<string | null>;
+  public ref = this.storage.ref('images/clashplayer.png');
+
   constructor(private townhallPictureService: TownhallPictureService,
-              private heroMapperService: HeroMapperService) {
+              private heroMapperService: HeroMapperService,
+              private storage: AngularFireStorage) {
   }
 
   ngOnChanges(): void {
-      this.imgSrcForTownhall = this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel);
-      this.heroes = this.heroMapperService.mapHeroList(this.playerResult.heroes);
+    this.ref.getDownloadURL().subscribe(url => {
+      this.clashPlayerUrl = url;
+    });
+    this.imgSrcForTownhall = this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel);
+    this.heroes = this.heroMapperService.mapHeroList(this.playerResult.heroes);
   }
 }

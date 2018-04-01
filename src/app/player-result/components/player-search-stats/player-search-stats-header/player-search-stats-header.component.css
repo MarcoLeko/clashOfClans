@@ -11,3 +11,8 @@
 .badge-purple {
   background-color: rgba(193, 88, 207, 0.5);
 }
+
+.clashPlayerLogo {
+  width: 60px;
+  height: auto;
+}

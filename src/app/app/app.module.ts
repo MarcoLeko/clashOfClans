@@ -8,6 +8,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AngularFireModule} from 'angularfire2';
+import {database} from '../../firebase-config';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 
 const appRoutes: Routes = [];
 
@@ -19,6 +22,8 @@ const appRoutes: Routes = [];
   imports: [
     HomeModule,
     BrowserModule,
+    AngularFireModule.initializeApp(database.firebase),
+    AngularFireStorageModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(

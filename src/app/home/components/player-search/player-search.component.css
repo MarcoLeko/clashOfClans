@@ -12,8 +12,6 @@
   left: 0;
   right: 0;
   background-color: white;
-  background-image: url("/assets/clashplayer.png");
-  background-repeat: no-repeat;
   opacity: 0.5;
   height: 100%;
 }

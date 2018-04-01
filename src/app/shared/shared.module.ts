@@ -5,12 +5,15 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TownhallPictureService} from './services/townhall-picture/townhall-picture.service';
 import {ClanSearchService} from './services/clan-search/clan-search.service';
 import {LoadingScreenComponent} from './components/loading-screen/loading-screen.component';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 
 @NgModule({
   declarations: [
     LoadingScreenComponent
   ],
-  imports: [],
+  imports: [
+    AngularFireStorageModule
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: HeaderInterceptorService,

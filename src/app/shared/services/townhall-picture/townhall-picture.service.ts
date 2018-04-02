@@ -1,49 +1,54 @@
 import {Injectable} from '@angular/core';
 import {TownhallImgSrc} from './townhall-src';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class TownhallPictureService {
 
-  getTownHallPicture(townhall: number): string {
-    let townhallSrc: string;
+  public ref;
 
-    switch(townhall) {
+  constructor(private storage: AngularFireStorage) {
+  }
+
+  getTownHallPicture(townhall: number): Observable<string | null> {
+    switch (townhall) {
       case 1:
-        townhallSrc = TownhallImgSrc.TOWNHALL_ONE;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_ONE);
         break;
       case 2:
-        townhallSrc = TownhallImgSrc.TOWNHALL_TWO;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_TWO);
         break;
-        case 3:
-        townhallSrc = TownhallImgSrc.TOWNHALL_THREE;
+      case 3:
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_THREE);
         break;
       case 4:
-        townhallSrc = TownhallImgSrc.TOWNHALL_FOUR;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_FOUR);
         break;
       case 5:
-        townhallSrc = TownhallImgSrc.TOWNHALL_FIVE;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_FIVE);
         break;
       case 6:
-        townhallSrc = TownhallImgSrc.TOWNHALL_SIX;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_SIX);
         break;
       case 7:
-        townhallSrc = TownhallImgSrc.TOWNHALL_SEVEN;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_SEVEN);
         break;
       case 8:
-        townhallSrc = TownhallImgSrc.TOWNHALL_EIGHT;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_EIGHT);
         break;
       case 9:
-        townhallSrc = TownhallImgSrc.TOWNHALL_NINE;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_NINE);
         break;
       case 10:
-        townhallSrc = TownhallImgSrc.TOWNHALL_TEN;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_TEN);
         break;
       case 11:
-        townhallSrc = TownhallImgSrc.TOWNHALL_ELEVEN;
+        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_ELEVEN);
         break;
       default:
         break;
     }
-    return townhallSrc;
+    return this.ref.getDownloadURL();
   }
 }

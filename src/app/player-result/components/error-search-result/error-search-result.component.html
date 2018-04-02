@@ -1,6 +1,6 @@
-<div class="errorDescription container-fluid">
+<div class="errorDescription container-fluid" *ngIf="clashPlayerUrl">
   <h2>Ooops, Something went wrong...we will sent our trainee back to office to fix the issue!</h2>
-  <img *ngIf="clashPlayerUrl" class="errorClashLogo" [src]="clashPlayerUrl">
+  <img class="errorClashLogo" [src]="clashPlayerUrl">
   <button class="homeButton btn btn-lg btn-warning" type="button" (click)="onSubmit()">Go back!</button>
 </div>
 

@@ -35,14 +35,14 @@ export class PlayerSearchResultComponent implements OnInit {
     this.playerSearchService.getPlayerByPlayerTag(this.searchValue)
       .subscribe(player => this.playerResult = player,
         () => {
-      this.hasNoResultFound = true;
-      this.isLoading = false;
-    }, () => {
-      if (!isUndefined(this.playerResult.clan)) {
-        this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag)
-          .subscribe(clan => this.clanInfo = clan);
-      }
-      this.isLoading = false;
-    });
+          this.hasNoResultFound = true;
+          this.isLoading = false;
+        }, () => {
+          if (!isUndefined(this.playerResult.clan)) {
+            this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag)
+              .subscribe(clan => this.clanInfo = clan);
+          }
+          this.isLoading = false;
+        });
   }
 }

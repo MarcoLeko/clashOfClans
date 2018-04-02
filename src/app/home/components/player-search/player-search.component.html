@@ -1,6 +1,6 @@
-  <div class="col-md-8">
+  <div class="col-md-8" *ngIf="clashPlayerUrl">
     <div class="card">
-      <div *ngIf="clashPlayerUrl" class="card-body customBackground" [ngStyle]="{background: 'url(' + clashPlayerUrl + ') no-repeat'}">
+      <div class="card-body customBackground" [ngStyle]="{background: 'url(' + clashPlayerUrl + ') no-repeat'}">
           <h5 class="card-title">Player Search</h5>
           <p class="card-text">If you want to search for a player we recommend you to enter the player id.
           A possible valid Player id could be:</p>

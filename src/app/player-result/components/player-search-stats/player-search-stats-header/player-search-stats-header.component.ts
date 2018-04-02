@@ -29,7 +29,9 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
     this.ref.getDownloadURL().subscribe(url => {
       this.clashPlayerUrl = url;
     });
-    this.imgSrcForTownhall = this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel);
+    this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel).subscribe(
+      url => this.imgSrcForTownhall = url
+    );
     this.heroes = this.heroMapperService.mapHeroList(this.playerResult.heroes);
   }
 }

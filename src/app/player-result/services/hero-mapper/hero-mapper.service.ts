@@ -5,7 +5,6 @@ import {isUndefined} from 'util';
 import {Heroes} from './heroes';
 import {HeroesImg} from './heroes-img';
 import {AngularFireStorage} from 'angularfire2/storage';
-import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class HeroMapperService {
@@ -13,7 +12,7 @@ export class HeroMapperService {
   constructor(private storage: AngularFireStorage) {
   }
 
-  mapHeroList(heroList: TroopsHeroesAndSpellType[]): Observable<HeroDisplay[]> {
+  mapHeroList(heroList: TroopsHeroesAndSpellType[]): HeroDisplay[] {
     if (this.isArrayEmptyOrUndefined(heroList)) {
       return undefined;
     } else {
@@ -21,25 +20,25 @@ export class HeroMapperService {
     }
   }
 
-  private mapHeroTypeToDisplayHeroType(heroList: TroopsHeroesAndSpellType[]): Observable<HeroDisplay[]> {
+  private mapHeroTypeToDisplayHeroType(heroList: TroopsHeroesAndSpellType[]): HeroDisplay[] {
     const heroesWithImgArray: HeroDisplay[] = [];
     for (const hero of heroList) {
-      Object.keys(Heroes).filter(HeroesKey => {
-        if (hero.name === Heroes[HeroesKey]) {
-          Object.keys(HeroesImg).filter(HeroesImgKey => {
-            if (<Heroes>HeroesKey as string === <HeroesImg>HeroesImgKey as string) {
-              this.storage.ref(HeroesImg[HeroesImgKey]).getDownloadURL().subscribe((data: HeroesImg) => {
+      for (const heroesKey in Heroes) {
+        if (hero.name === Heroes[heroesKey]) {
+          for (const heroesImgKey in HeroesImg) {
+            if (<Heroes>heroesKey as string === <HeroesImg>heroesImgKey) {
+              this.storage.ref(HeroesImg[heroesImgKey]).getDownloadURL().subscribe((data: HeroesImg) => {
                 let heroObj = {
                   name: hero.name, level: hero.level, maxLevel: hero.maxLevel, village: hero.village, heroImg: data
                 };
                 heroesWithImgArray.push(heroObj);
               });
             }
-          });
+          }
         }
-      });
+      }
     }
-    return Observable.of(heroesWithImgArray);
+    return heroesWithImgArray;
   }
 
   private isArrayEmptyOrUndefined(heroList: TroopsHeroesAndSpellType[]) {

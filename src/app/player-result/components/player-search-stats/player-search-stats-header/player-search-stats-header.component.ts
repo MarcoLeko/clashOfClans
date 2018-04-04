@@ -32,8 +32,6 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
     this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel).subscribe(
       url => this.imgSrcForTownhall = url
     );
-    this.heroMapperService.mapHeroList(this.playerResult.heroes).subscribe(data => {
-      this.heroes = data;
-    });
+    this.heroes = this.heroMapperService.mapHeroList(this.playerResult.heroes);
   }
 }

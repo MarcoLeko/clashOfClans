@@ -5,5 +5,5 @@ export interface HeroDisplay {
   level: number,
   maxLevel: number,
   village: string
-  heroImg: HeroesImg
+  heroImg: HeroesImg | undefined
 }

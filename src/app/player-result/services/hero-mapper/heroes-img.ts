@@ -1,6 +1,6 @@
 export enum HeroesImg {
-  BARBARIAN_KING = 'assets/barbarian_king.png',
-  ARCHER_QUEEN = 'assets/archer_queen.png',
-  GRAND_WARDEN = 'assets/warden.png',
-  BATTLE_MACHINE = 'assets/battle_machine.png'
+  BARBARIAN_KING = 'images/barbarian_king.png',
+  ARCHER_QUEEN = 'images/archer_queen.png',
+  GRAND_WARDEN = 'images/warden.png',
+  BATTLE_MACHINE = 'images/battle_machine.png'
 }

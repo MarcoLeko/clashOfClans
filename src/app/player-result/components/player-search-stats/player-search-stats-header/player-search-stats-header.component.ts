@@ -1,10 +1,10 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {PlayerByPlayerTagType} from '../../../../../generated/types';
 import {TownhallPictureService} from '../../../../shared/services/townhall-picture/townhall-picture.service';
-import {HeroDisplay} from '../../../services/hero-mapper/hero-display';
 import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.service';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireStorage} from 'angularfire2/storage';
+import {HeroDisplay} from '../../../services/hero-mapper/hero-display';
 
 @Component({
   selector: 'app-player-search-stats-header',
@@ -32,6 +32,8 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
     this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel).subscribe(
       url => this.imgSrcForTownhall = url
     );
-    this.heroes = this.heroMapperService.mapHeroList(this.playerResult.heroes);
+    this.heroMapperService.mapHeroList(this.playerResult.heroes).subscribe(data => {
+      this.heroes = data;
+    });
   }
 }

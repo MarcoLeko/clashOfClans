@@ -5,6 +5,7 @@ import {isUndefined} from 'util';
 import {Heroes} from './heroes';
 import {HeroesImg} from './heroes-img';
 import {AngularFireStorage} from 'angularfire2/storage';
+import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class HeroMapperService {
@@ -12,33 +13,39 @@ export class HeroMapperService {
   constructor(private storage: AngularFireStorage) {
   }
 
-  mapHeroList(heroList: TroopsHeroesAndSpellType[]): HeroDisplay[] {
+  mapHeroList(heroList: TroopsHeroesAndSpellType[]): Observable<HeroDisplay[] | undefined> {
     if (this.isArrayEmptyOrUndefined(heroList)) {
-      return undefined;
+      return Observable.of(undefined);
     } else {
       return this.mapHeroTypeToDisplayHeroType(heroList);
     }
   }
 
-  private mapHeroTypeToDisplayHeroType(heroList: TroopsHeroesAndSpellType[]): HeroDisplay[] {
-    const heroesWithImgArray: HeroDisplay[] = [];
+  private mapHeroTypeToDisplayHeroType(heroList: TroopsHeroesAndSpellType[]): Observable<HeroDisplay[]> {
+    const observables: Observable<HeroDisplay>[] = [];
     for (const hero of heroList) {
       for (const heroesKey in Heroes) {
         if (hero.name === Heroes[heroesKey]) {
           for (const heroesImgKey in HeroesImg) {
             if (<Heroes>heroesKey as string === <HeroesImg>heroesImgKey) {
-              this.storage.ref(HeroesImg[heroesImgKey]).getDownloadURL().subscribe((data: HeroesImg) => {
-                let heroObj = {
-                  name: hero.name, level: hero.level, maxLevel: hero.maxLevel, village: hero.village, heroImg: data
-                };
-                heroesWithImgArray.push(heroObj);
-              });
+              this.fillObservableArray(heroesImgKey, hero, observables);
             }
           }
         }
       }
     }
-    return heroesWithImgArray;
+    return Observable.forkJoin(observables);
+  }
+
+  private fillObservableArray(heroesImgKey, hero, observables: Observable<HeroDisplay>[]) {
+    let heroObj: HeroDisplay;
+    const singleHeroImgObservable =
+      this.storage.ref(HeroesImg[heroesImgKey]).getDownloadURL().map((data: HeroesImg) => {
+        return heroObj = {
+          name: hero.name, level: hero.level, maxLevel: hero.maxLevel, village: hero.village, heroImg: data
+        };
+      });
+    observables.push(singleHeroImgObservable);
   }
 
   private isArrayEmptyOrUndefined(heroList: TroopsHeroesAndSpellType[]) {

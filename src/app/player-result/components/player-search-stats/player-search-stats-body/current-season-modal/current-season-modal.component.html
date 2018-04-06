@@ -14,22 +14,22 @@
             <img class="league-icon" [src]="playerResult.league.iconUrls.small"/>
           </div>
           <div class="col-sm-3" *ngIf="!playerResult.league">
-            <img class="no-league league-icon" src="assets/no_league.png"/>
+            <img class="no-league league-icon" [src]="noLeagueImg"/>
           </div>
           <div class="col-sm-3" *ngIf="hasTrophies()">
-            <img class="trophy-item" src="assets/trophy_home.png"/>
+            <img *ngIf="trophyHomeImg" class="trophy-item" [src]="trophyHomeImg"/>
             <div class="trophy-panel border-left-0 rounded">
               <span class="trophy-text font-weight-bold">{{playerResult.trophies}}</span>
             </div>
           </div>
           <div class="col-sm-3" *ngIf="hasVersusTrophies()">
-            <img class="trophy-item" src="assets/trophy_night.png"/>
+            <img *ngIf="trophyNightImg" class="trophy-item" [src]="trophyNightImg"/>
             <div class="trophy-panel border-left-0 rounded">
               <span class="trophy-text font-weight-bold">{{playerResult.versusTrophies}}</span>
             </div>
           </div>
           <div class="col-sm-3" *ngIf="hasLegendLeagueExperienced()">
-            <img class="trophy-item" src="assets/trophy_legend.png"/>
+            <img *ngIf="trophyLegendImg" class="trophy-item" [src]="trophyLegendImg"/>
             <div class="trophy-panel border-left-0 rounded">
               <span class="trophy-text font-weight-bold">{{playerResult.legendStatistics.legendTrophies}}</span>
             </div>
@@ -77,9 +77,9 @@
           <accordion>
             <accordion-group #accordion panelClass="legendLeaguePanel">
               <div class="text-center" accordion-heading>
-                <img src="assets/trophy_legend.png" width="40px">
+                <img class="accordion-panel-img" *ngIf="trophyLegendImg" [src]="trophyLegendImg">
                 <span class="font-weight-bold">Legend League Statistics and Trophy Records</span>
-                <img src="assets/trophy_night.png" width="40px">
+                <img class="accordion-panel-img" *ngIf="trophyNightImg" [src]="trophyNightImg">
                 <span class="float-right pull-right">
                     <fa *ngIf="accordion?.isOpen" [name]="'angle-up'" [size]="1"></fa>
                     <fa *ngIf="!accordion?.isOpen" [name]="'angle-down'" [size]="1"></fa>
@@ -99,7 +99,7 @@
                   <span class="font-weight-bold">Rank: #{{playerResult.legendStatistics.bestSeason.rank}}</span>
                 </div>
                 <div class="col-sm-2">
-                  <img src="assets/trophy_home.png" width="25px">
+                  <img *ngIf="trophyHomeImg" class="accordion-body-img" [src]="trophyHomeImg">
                   <span class="font-weight-bold">{{playerResult.legendStatistics.bestSeason.trophies}}</span>
                 </div>
               </div>
@@ -117,7 +117,7 @@
                   <span class="font-weight-bold">Rank: #{{playerResult.legendStatistics.bestVersusSeason.rank}}</span>
                 </div>
                 <div class="col-sm-2">
-                  <img src="assets/trophy_night.png" width="25px">
+                  <img *ngIf="trophyNightImg" class="accordion-body-img" [src]="trophyNightImg">
                   <span class="font-weight-bold">{{playerResult.legendStatistics.bestVersusSeason.trophies}}</span>
                 </div>
               </div>
@@ -130,9 +130,9 @@
               <accordion-group #accordion panelClass="legendLeaguePanel disabled-accordion"
                                [isDisabled]="!playerResult.legendStatistics">
                 <div class="text-center" accordion-heading>
-                  <img src="assets/trophy_legend.png" width="40px">
+                  <img class="accordion-panel-img" *ngIf="trophyLegendImg" [src]="trophyLegendImg">
                   <span class="font-weight-bold">Legend League Statistics and Trophy Records</span>
-                  <img src="assets/trophy_night.png" width="40px">
+                  <img class="accordion-panel-img" *ngIf="trophyNightImg" [src]="trophyNightImg">
                   <em>
                     <small>&emsp;- no stats available</small>
                   </em>

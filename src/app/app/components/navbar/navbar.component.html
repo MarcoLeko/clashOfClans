@@ -14,11 +14,11 @@
         <a class="nav-link" [routerLink]="''">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search e.g. #9Y2RJ89YL">
-      <button class="btn btn-light  my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline my-2 my-lg-0" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+      <input class="form-control mr-sm-2" type="text" ngModel name="searchAfterAll"
+             required placeholder="Search for all...">
+      <button class="btn btn-orange  my-2 my-sm-0" type="submit" [disabled]="!form.form.valid">Search</button>
     </form>
   </div>
 </nav>
-
 

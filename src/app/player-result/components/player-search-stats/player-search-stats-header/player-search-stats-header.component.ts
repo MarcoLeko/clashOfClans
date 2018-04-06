@@ -5,6 +5,7 @@ import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.servi
 import {Observable} from 'rxjs/Observable';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {HeroDisplay} from '../../../services/hero-mapper/hero-display';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'app-player-search-stats-header',
@@ -17,8 +18,10 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
   public imgSrcForTownhall: string;
   public heroes: HeroDisplay[];
 
-  public clashPlayerUrl: Observable<string | null>;
-  public ref = this.storage.ref('images/clashplayer.png');
+  public noHeroesUrl: Observable<string | null>;
+  public noLeagueUrl: Observable<string | null>;
+  public noHeroesRef = this.storage.ref('images/clashplayer.png');
+  public noLeagueRef = this.storage.ref('images/no_league.png');
 
   constructor(private townhallPictureService: TownhallPictureService,
               private heroMapperService: HeroMapperService,
@@ -26,14 +29,26 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    this.ref.getDownloadURL().subscribe(url => {
-      this.clashPlayerUrl = url;
-    });
-    this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel).subscribe(
-      url => this.imgSrcForTownhall = url
-    );
-    this.heroMapperService.mapHeroList(this.playerResult.heroes).subscribe(heroes => {
-      this.heroes = heroes;
-    });
+    if(!this.hasHeroesInArray()) {
+      this.getNoHeroImgHeader();
+    }
+    if (isUndefined(this.playerResult.league)) {
+      this.getNoLeagueImgUrl();
+    }
+    this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel)
+      .subscribe(url => this.imgSrcForTownhall = url);
+    this.heroMapperService.mapHeroList(this.playerResult.heroes).subscribe(heroes => this.heroes = heroes);
+  }
+
+  private hasHeroesInArray() {
+    return typeof this.playerResult.heroes !== undefined && this.playerResult.heroes.length > 0;
+  }
+
+  private getNoHeroImgHeader() {
+    this.noHeroesRef.getDownloadURL().subscribe(url => this.noHeroesUrl = url);
+  }
+
+  private getNoLeagueImgUrl() {
+    this.noLeagueRef.getDownloadURL().subscribe(url => this.noLeagueUrl = url);
   }
 }

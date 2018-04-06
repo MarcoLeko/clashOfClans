@@ -17,9 +17,7 @@ export class PlayerSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ref.getDownloadURL().subscribe(url => {
-      this.clashPlayerUrl = url;
-    });
+    this.ref.getDownloadURL().subscribe(url => this.clashPlayerUrl = url);
   }
 
   onSubmit(value) {

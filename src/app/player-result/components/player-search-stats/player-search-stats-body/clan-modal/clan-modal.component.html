@@ -32,8 +32,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">Role</th>
                 <th scope="col">Level</th>
-                <th scope="col"><img class="trophy-logo" src="assets/trophy_home.png"></th>
-                <th scope="col"><img class="trophy-logo" src="assets/trophy_night.png"></th>
+                <th scope="col"><img *ngIf="trophyHomeImg" class="trophy-logo" [src]="trophyHomeImg"></th>
+                <th scope="col"><img *ngIf="trophyNightImg" class="trophy-logo" [src]="trophyNightImg"></th>
               </tr>
               </thead>
               <tbody>

@@ -33,4 +33,11 @@
   padding: 0.5em;
 }
 
+.accordion-panel-img {
+  width: 40px;
+}
+
+.accordion-body-img {
+  width: 25px;
+}
 

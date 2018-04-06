@@ -40,7 +40,7 @@ export class HeroMapperService {
   private fillObservableArray(heroesImgKey, hero, observables: Observable<HeroDisplay>[]) {
     let heroObj: HeroDisplay;
     const singleHeroImgObservable =
-      this.storage.ref(HeroesImg[heroesImgKey]).getDownloadURL().map((data: HeroesImg) => {
+      this.storage.ref(HeroesImg[heroesImgKey]).getDownloadURL().map(data => {
         return heroObj = {
           name: hero.name, level: hero.level, maxLevel: hero.maxLevel, village: hero.village, heroImg: data
         };
@@ -48,7 +48,7 @@ export class HeroMapperService {
     observables.push(singleHeroImgObservable);
   }
 
-  private isArrayEmptyOrUndefined(heroList: TroopsHeroesAndSpellType[]) {
+  private isArrayEmptyOrUndefined(heroList: TroopsHeroesAndSpellType[]): boolean {
     return isUndefined(heroList) || heroList.length === 0;
   }
 }

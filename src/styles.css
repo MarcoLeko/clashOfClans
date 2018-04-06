@@ -18,6 +18,26 @@ h3 {
   font-family: Verdana;
 }
 
+
+.btn-orange {
+  background-color: #FFCC33;
+}
+
+.btn-orange[disabled] {
+  background-color: #ffea22;
+  pointer-events: none;
+}
+
+.btn-orange:hover {
+  background-color: #ff9529;
+}
+
+.form-control:focus{
+  border-color: #cccccc;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .player-info-font {
   font-size: 2.5ch;
 }

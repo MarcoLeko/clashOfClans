@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
 import {AchievementType, PlayerByPlayerTagType} from '../../../../../../../generated/types';
 import {BuilderInfoService} from '../../../../../services/builder-info/builder-info.service';
@@ -9,7 +9,7 @@ import {BuilderInfoType} from '../../../../../services/builder-info/builder-info
   templateUrl: './achievement-modal.component.html',
   styleUrls: ['./achievement-modal.component.css']
 })
-export class AchievementModalComponent implements OnInit {
+export class AchievementModalComponent implements OnChanges {
 
   @ViewChild('childModal') childModal: ModalDirective;
   @Input() playerResult: PlayerByPlayerTagType;
@@ -17,11 +17,12 @@ export class AchievementModalComponent implements OnInit {
   public achievement: AchievementType;
   public builderInfo: BuilderInfoType;
 
+
   constructor(private builderInfoService: BuilderInfoService) {
   }
 
-  ngOnInit(): void {
-    this.chooseAchievement(this.playerResult.achievements[0].name);
+  ngOnChanges(): void {
+      this.chooseAchievement(this.playerResult.achievements[0].name);
   }
 
   open(): void {
@@ -40,6 +41,7 @@ export class AchievementModalComponent implements OnInit {
       if (name === achievement.name) {
         this.achievement = achievement;
         this.builderInfo = this.builderInfoService.getBuilderInfoType(this.achievement.village);
+        console.log(this.builderInfo.imgSrc);
       }
     }
   }

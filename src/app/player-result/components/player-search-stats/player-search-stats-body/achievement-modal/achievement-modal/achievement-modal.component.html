@@ -9,7 +9,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- List group -->
         <div class="row">
           <div class="col-md-4">
             <p class="font-weight-bold">
@@ -23,7 +22,6 @@
               </div>
             </div>
           </div>
-          <!-- Tab panes -->
           <div class="col-md-8">
             <div class="tab-content">
               <div class="tab-pane active" id="achievement.name" role="tabpanel">
@@ -58,10 +56,9 @@
                           <label class="font-weight-bold col-form-label" for="base">Base:</label>
                         </div>
                         <div class="col-md-9">
-                          <img class="buildInfo" [src]="builderInfo.imgSrc">
+                          <img *ngIf="builderInfo.imgSrc" class="buildInfo" [src]="builderInfo.imgSrc">
                           <input type="text" class="font-weight-bold form-control-plaintext" readonly
-                                 value="{{builderInfo.builderhall}}"
-                                 id="base">
+                                 value="{{builderInfo.builderhall}}" id="base">
                         </div>
                       </div>
                     </form>

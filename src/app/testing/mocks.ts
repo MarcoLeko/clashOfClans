@@ -4,6 +4,7 @@ import {HeroDisplay} from '../player-result/services/hero-mapper/hero-display';
 import {HeroesImg} from '../player-result/services/hero-mapper/heroes-img';
 import {BuilderInfoType} from '../player-result/services/builder-info/builder-info.type';
 import {Builderhall} from '../player-result/services/builder-info/builder-hall';
+import {Observable} from 'rxjs/Observable';
 
 export class Mocks {
   public static PLAYERTAG: string = '#9P9UG92CG';
@@ -276,6 +277,6 @@ export class Mocks {
 
   public static BUILDERINFOMOCK: BuilderInfoType = {
     builderhall: Builderhall.TOWNHALL_BASE,
-    imgSrc: 'assets/builder.png'
+    imgSrc: Observable.of('assets/builder.png')
   };
 }

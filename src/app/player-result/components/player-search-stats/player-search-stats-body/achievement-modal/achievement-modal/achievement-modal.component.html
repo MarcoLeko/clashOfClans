@@ -1,5 +1,5 @@
-<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
-     [config]="{animated: true, backdrop: false}">
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-hidden="true" [config]="{animated: true, backdrop: false}">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content clash-modal">
       <div class="modal-header">
@@ -16,9 +16,9 @@
             </p>
             <div class="scrollable-list">
               <div *ngFor="let achievement of playerResult.achievements" class="list-group" role="tablist">
-                <a class="list-group-item list-group-item-action list-group-item-dark" href="#{{achievement.name}}"
-                   [class.active]="setActiveState(achievement.name)" (click)="chooseAchievement(achievement.name)"
-                   data-toggle="list" role="tab">{{achievement.name}}</a>
+                <a class="list-group-item list-group-item-action list-group-item-dark" data-toggle="list" role="tab"
+                   [class.active]="setActiveState(achievement.name)" (click)="chooseAchievement(achievement.name)">
+                  {{achievement.name}}</a>
               </div>
             </div>
           </div>
@@ -27,8 +27,8 @@
               <div class="tab-pane active" id="achievement.name" role="tabpanel">
                 <h4>{{achievement.info}}</h4>
                 <div class="mb-2">
-                  <progressbar [max]="100" [value]="calculateProgress(achievement.value, achievement.target)"
-                               type="warning" [striped]="true" [animate]="true">
+                  <progressbar [max]="100" type="warning" [striped]="true" [animate]="true"
+                               [value]="calculateProgress(achievement.value, achievement.target)">
                     <b>{{calculateProgress(achievement.value, achievement.target)}}% </b>
                   </progressbar>
                   <div class="container">
@@ -50,7 +50,7 @@
                         </div>
                       </div>
                     </form>
-                    <form>
+                    <form *ngIf="builderInfo">
                       <div class="form-group row mb-2">
                         <div class="col-md-3">
                           <label class="font-weight-bold col-form-label" for="base">Base:</label>

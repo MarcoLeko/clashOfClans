@@ -22,7 +22,7 @@ export class AchievementModalComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-      this.chooseAchievement(this.playerResult.achievements[0].name);
+    this.chooseAchievement(this.playerResult.achievements[0].name);
   }
 
   open(): void {
@@ -40,8 +40,7 @@ export class AchievementModalComponent implements OnChanges {
     for (const achievement of this.playerResult.achievements) {
       if (name === achievement.name) {
         this.achievement = achievement;
-        this.builderInfo = this.builderInfoService.getBuilderInfoType(this.achievement.village);
-        console.log(this.builderInfo.imgSrc);
+        this.builderInfoService.getBuilderInfoType(this.achievement.village).subscribe(data => this.builderInfo = data);
       }
     }
   }

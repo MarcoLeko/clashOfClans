@@ -11,17 +11,19 @@
       <div class="modal-body">
         <div class="container">
           <div class="mb-2 row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <img [src]="playerResult.clan.badgeUrls.small">
             </div>
             <div class="col-sm-5">
               <span class="player-info-font font-weight-bold">{{playerResult.clan.name}}</span>
               <p><i>{{playerResult.clan.tag}}</i></p>
             </div>
-            <div class="col-sm-4">
-              <span class="player-info-font font-weight-bold">Members:
-                <span class="badge badge-dark">{{clanInfo.members}}</span>
-              </span>
+            <div class="col-sm-5">
+              <h5>
+                <span class="player-info-font font-weight-bold">Members:
+                <span class="badge badge-dark">{{clanInfo.members}}</span>&nbsp;/ 50
+                </span>
+              </h5>
             </div>
           </div>
           <div class="table-fixed table-responsive">
@@ -38,12 +40,12 @@
               </thead>
               <tbody>
               <tr *ngFor="let member of clanInfo.memberList" (click)="memberSearch(member)" id="memberGrid">
-                  <td scope="row">{{member.tag}}</td>
-                  <td>{{member.name}}</td>
-                  <td>{{member.role}}</td>
-                  <td>{{member.expLevel}}</td>
-                  <td>{{member.trophies}}</td>
-                  <td>{{member.versusTrophies}}</td>
+                <td scope="row">{{member.tag}}</td>
+                <td>{{member.name}}</td>
+                <td>{{member.role}}</td>
+                <td>{{member.expLevel}}</td>
+                <td>{{member.trophies}}</td>
+                <td>{{member.versusTrophies}}</td>
               </tbody>
             </table>
           </div>

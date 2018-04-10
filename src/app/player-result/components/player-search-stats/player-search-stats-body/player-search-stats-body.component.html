@@ -1,6 +1,7 @@
 <app-achievement-modal [playerResult]="playerResult"></app-achievement-modal>
 <app-clan-modal [playerResult]="playerResult" [clanInfo]="clanInfo"></app-clan-modal>
 <app-current-season-modal [playerResult]="playerResult"></app-current-season-modal>
+<app-troops-and-spells-modal [playerResult]="playerResult"></app-troops-and-spells-modal>
 
 <div class="row">
   <div class="col-sm-6">
@@ -43,7 +44,7 @@
   </div>
   <div class="col-sm-6">
     <div class="card card-bottom-right">
-      <div class="card-body">
+      <div class="card-body" (click)="troopsAndSpellsModal.open()">
         <h4 class="card-title">Troops and Spells</h4>
         <p>How is the progress going?
           <wbr>

@@ -1,3 +1,39 @@
-<p>
-  troops-and-spells-modal works!
-</p>
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+     [config]="{animated: true, backdrop: false}">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content clash-modal">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Troops and Spells</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="childModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="mb-2 row">
+            <div class="col-sm-5">
+            </div>
+          </div>
+          <div class="table-fixed table-responsive">
+            <table class="table table-sm table-dark table-striped table-hover">
+              <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Level</th>
+                <th scope="col">Max Level</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let troop of playerResult.troops">
+                <td scope="row">{{troop.name}}</td>
+                <td>{{troop.level}}</td>
+                <td>{{troop.maxLevel}}</td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

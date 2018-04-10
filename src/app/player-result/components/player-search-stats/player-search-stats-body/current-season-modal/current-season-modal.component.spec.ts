@@ -4,6 +4,8 @@ import {CurrentSeasonModalComponent} from './current-season-modal.component';
 import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {Mocks} from '../../../../../testing/mocks';
+import {FirebaseMock} from '../../../../../testing/firebase-mock';
+import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('CurrentSeasonModalComponent', () => {
   let component: CurrentSeasonModalComponent;
@@ -17,6 +19,7 @@ describe('CurrentSeasonModalComponent', () => {
         AccordionModule.forRoot(),
         Angular2FontawesomeModule
       ],
+      providers:[{provide: AngularFireStorage, useClass: FirebaseMock}],
       declarations: [CurrentSeasonModalComponent]
     })
       .compileComponents();

@@ -1,9 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayerSearchComponent } from './player-search.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Mocks } from '../../../testing/mocks';
+import {PlayerSearchComponent} from './player-search.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Mocks} from '../../../testing/mocks';
+import {FirebaseMock} from '../../../testing/firebase-mock';
+import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('PlayerSearchComponent', () => {
   let component: PlayerSearchComponent;
@@ -19,7 +21,7 @@ describe('PlayerSearchComponent', () => {
         ReactiveFormsModule,
         FormsModule
       ],
-      providers: [{provide: Router, useValue: routerStub}],
+      providers: [{provide: Router, useValue: routerStub}, {provide: AngularFireStorage, useClass: FirebaseMock}],
       declarations: [PlayerSearchComponent]
     })
       .compileComponents();

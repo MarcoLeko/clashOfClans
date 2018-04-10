@@ -35,8 +35,7 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
     if (isUndefined(this.playerResult.league)) {
       this.getNoLeagueImgUrl();
     }
-    this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel)
-      .subscribe(url => this.imgSrcForTownhall = url);
+    this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel).subscribe(url => this.imgSrcForTownhall = url);
     this.heroMapperService.mapHeroList(this.playerResult.heroes).subscribe(heroes => this.heroes = heroes);
   }
 

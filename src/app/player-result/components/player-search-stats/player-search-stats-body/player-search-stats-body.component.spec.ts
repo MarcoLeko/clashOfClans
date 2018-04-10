@@ -11,6 +11,8 @@ import {ClanModalComponent} from './clan-modal/clan-modal.component';
 import {CurrentSeasonModalComponent} from './current-season-modal/current-season-modal.component';
 import {Router} from '@angular/router';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
+import {FirebaseMock} from '../../../../testing/firebase-mock';
+import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('PlayerSearchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -28,6 +30,7 @@ describe('PlayerSearchStatsBodyComponent', () => {
       ],
       providers: [
         {provide: Router},
+        {provide: AngularFireStorage, useClass: FirebaseMock},
         BuilderInfoService
       ],
       declarations: [

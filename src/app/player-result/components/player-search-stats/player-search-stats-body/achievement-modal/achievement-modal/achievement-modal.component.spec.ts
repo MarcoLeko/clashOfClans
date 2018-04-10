@@ -4,6 +4,9 @@ import {AchievementModalComponent} from './achievement-modal.component';
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {BuilderInfoService} from '../../../../../services/builder-info/builder-info.service';
 import {Mocks} from '../../../../../../testing/mocks';
+import {FirebaseMock} from '../../../../../../testing/firebase-mock';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {Observable} from 'rxjs/Observable';
 
 describe('AchievementModalComponent', () => {
   let component: AchievementModalComponent;
@@ -19,7 +22,10 @@ describe('AchievementModalComponent', () => {
         ModalModule.forRoot(),
         ProgressbarModule.forRoot()
       ],
-      providers: [{provide: BuilderInfoService, useValue: builderInfoSpy}],
+      providers: [
+        {provide: BuilderInfoService, useValue: builderInfoSpy},
+        {provide: AngularFireStorage, useClass: FirebaseMock}
+      ],
       declarations: [AchievementModalComponent]
     })
       .compileComponents();
@@ -43,16 +49,16 @@ describe('AchievementModalComponent', () => {
 
   it('should set achievement with first value of array', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
-    component.ngOnInit();
+    builderInfoSpy.getBuilderInfoType.and.returnValue(Observable.of(Mocks.BUILDERINFOMOCK));
+    component.ngOnChanges();
 
     expect(component.achievement).toEqual(component.playerResult.achievements[0]);
   });
 
   it('should call builder info service', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-    const spy = builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
-    component.ngOnInit();
+    const spy = builderInfoSpy.getBuilderInfoType.and.returnValue(Observable.of(Mocks.BUILDERINFOMOCK));
+    component.ngOnChanges();
 
     expect(spy).toHaveBeenCalledWith(component.achievement.village);
   });
@@ -67,8 +73,8 @@ describe('AchievementModalComponent', () => {
 
   it('should return bootstrap active class', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
-    component.ngOnInit();
+    builderInfoSpy.getBuilderInfoType.and.returnValue(Observable.of(Mocks.BUILDERINFOMOCK));
+    component.ngOnChanges();
 
     const result = 'active';
 
@@ -77,8 +83,8 @@ describe('AchievementModalComponent', () => {
 
   it('should return bootstrap active class', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-    builderInfoSpy.getBuilderInfoType.and.returnValue(Mocks.BUILDERINFOMOCK);
-    component.ngOnInit();
+    builderInfoSpy.getBuilderInfoType.and.returnValue(Observable.of(Mocks.BUILDERINFOMOCK));
+    component.ngOnChanges();
 
     const result = 'active';
 

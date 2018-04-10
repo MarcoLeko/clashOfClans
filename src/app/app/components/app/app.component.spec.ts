@@ -1,15 +1,17 @@
-import { async, TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterTestingModule } from '@angular/router/testing';
-import { APP_BASE_HREF } from '@angular/common';
-import { NavbarComponent } from '../navbar/navbar.component';
+import {async, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterTestingModule} from '@angular/router/testing';
+import {APP_BASE_HREF} from '@angular/common';
+import {NavbarComponent} from '../navbar/navbar.component';
+import {FormsModule} from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        FormsModule,
         HttpClientModule
       ],
       providers: [

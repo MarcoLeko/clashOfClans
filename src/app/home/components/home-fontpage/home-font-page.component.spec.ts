@@ -4,7 +4,9 @@ import {HomeFontPageComponent} from './home-font-page.component';
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 import {PlayerSearchComponent} from '../player-search/player-search.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {FirebaseMock} from '../../../testing/firebase-mock';
+import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('HomeFontPageComponent', () => {
   let component: HomeFontPageComponent;
@@ -17,7 +19,7 @@ describe('HomeFontPageComponent', () => {
         FormsModule
       ],
       providers: [
-        {provide: Router}
+        {provide: Router}, {provide: AngularFireStorage, useClass: FirebaseMock}
       ],
       declarations: [
         HomeFontPageComponent,

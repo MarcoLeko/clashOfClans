@@ -47,7 +47,7 @@ export class TownhallPictureService {
         this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_ELEVEN);
         break;
       default:
-        break;
+        return Observable.of(undefined);
     }
     return this.ref.getDownloadURL();
   }

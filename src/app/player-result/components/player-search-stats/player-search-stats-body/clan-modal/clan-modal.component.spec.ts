@@ -6,6 +6,8 @@ import {Params, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {By} from '@angular/platform-browser';
 import {Mocks} from '../../../../../testing/mocks';
+import {FirebaseMock} from '../../../../../testing/firebase-mock';
+import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('ClanModalComponent', () => {
   let component: ClanModalComponent;
@@ -20,7 +22,10 @@ describe('ClanModalComponent', () => {
       imports: [
         ModalModule.forRoot()
       ],
-      providers: [{provide: Router, useValue: routerStub}],
+      providers: [
+        {provide: Router, useValue: routerStub},
+        {provide: AngularFireStorage, useClass: FirebaseMock}
+      ],
       declarations: [ ClanModalComponent ]
     })
     .compileComponents();

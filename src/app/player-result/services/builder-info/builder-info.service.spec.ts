@@ -2,11 +2,13 @@ import {inject, TestBed} from '@angular/core/testing';
 
 import {BuilderInfoService} from './builder-info.service';
 import {Mocks} from '../../../testing/mocks';
+import {FirebaseMock} from '../../../testing/firebase-mock';
+import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('BuilderInfoService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BuilderInfoService]
+      providers: [BuilderInfoService, {provide: AngularFireStorage, useClass: FirebaseMock}]
     });
   });
 
@@ -16,7 +18,8 @@ describe('BuilderInfoService', () => {
 
   it('should get builderhall type', inject([BuilderInfoService], (service: BuilderInfoService) => {
     const expectedBase: string = 'home';
-
-    expect(service.getBuilderInfoType(expectedBase)).toEqual(Mocks.BUILDERINFOMOCK);
+    service.getBuilderInfoType(expectedBase).subscribe(result => {
+      expect(result).toEqual(Mocks.BUILDERINFOMOCK);
+    })
   }));
 });

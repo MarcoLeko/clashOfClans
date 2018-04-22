@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class FirebaseFirestoreMock {
-  public list(path: string): any {
+  public doc(path: string): any {
     return {
       valueChanges() {
         return Observable.of(path)

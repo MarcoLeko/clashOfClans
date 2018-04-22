@@ -21,6 +21,7 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {TroopsHomeAttackStatsService} from './services/troops-and-spells-mapper/home/troops-home-attack-stats.service';
 import {TroopsNightAttackStatsService} from './services/troops-and-spells-mapper/night/troops-night-attack-stats.service';
 import {AdvancedSpellsHomeStatsService} from './services/troops-and-spells-mapper/home/home-spells/advanced-spells-home-stats.service';
+import {TroopsHomeAttackStatsDisplayService} from './services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2}}
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
     TroopsHomeAttackStatsService,
     TroopsNightAttackStatsService,
     AdvancedSpellsHomeStatsService,
+    TroopsHomeAttackStatsDisplayService,
     HttpClientModule,
     PlayerSearchService,
     HeroMapperService,

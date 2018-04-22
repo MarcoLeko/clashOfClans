@@ -6,14 +6,14 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class TroopsHomeAttackStatsService {
 
-  private troopsStatsHome: TroopsHomeAttackStats;
+  private troopsHomeStats: TroopsHomeAttackStats;
   constructor(private afs: AngularFirestore) {
   }
 
   getTroopsStats(): Observable<TroopsHomeAttackStats> {
     return this.afs.doc<TroopsHomeAttackStats>('/troops_home/jtHhrhSDkbcqWxPinRvf').valueChanges().map((data:TroopsHomeAttackStats) => {
-      this.troopsStatsHome = data;
-      return this.troopsStatsHome;
+      this.troopsHomeStats = data;
+      return this.troopsHomeStats;
     });
   }
 }

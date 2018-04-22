@@ -1,19 +1,22 @@
-import {TestBed} from '@angular/core/testing';
-
-import {AngularFirestore} from 'angularfire2/firestore';
 import {AdvancedSpellsHomeStatsService} from './advanced-spells-home-stats.service';
 import {FirebaseFirestoreMock} from '../../../../../testing/firebase-firestore-mock';
 
-describe('AdvancedSpellsHomeStatsService', () => {
-  let service;
+describe('TroopsHomeAttackStatsService', () => {
+  let service: AdvancedSpellsHomeStatsService;
+  let mock: any;
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [AdvancedSpellsHomeStatsService, {provide: AngularFirestore, useClass: FirebaseFirestoreMock}]
-    });
-    service = TestBed.get(AdvancedSpellsHomeStatsService);
+    mock = new FirebaseFirestoreMock();
+    service = new AdvancedSpellsHomeStatsService(mock);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should return stub', () => {
+    const path: any = '/spells_home/TxBYg45aEEbujvaUfrR5';
+    service.getSpellsStats().subscribe(result => {
+      expect(result).toBe(path);
+    });
   });
 });

@@ -5,12 +5,12 @@ import {Mocks} from '../../../testing/mocks';
 import {HeroDisplay} from './hero-display';
 import {TroopsHeroesAndSpellType} from '../../../../generated/types';
 import {AngularFireStorage} from 'angularfire2/storage';
-import {FirebaseMock} from '../../../testing/firebase-mock';
+import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
 
 describe('HeroMapperService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HeroMapperService, {provide: AngularFireStorage, useClass: FirebaseMock}]
+      providers: [HeroMapperService, {provide: AngularFireStorage, useClass: FirebaseStorageMock}]
     });
   });
 

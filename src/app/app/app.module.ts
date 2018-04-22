@@ -12,6 +12,7 @@ import {AngularFireModule} from 'angularfire2';
 import {database} from '../../firebase-config';
 import {AngularFireStorageModule} from 'angularfire2/storage';
 import {FormsModule} from '@angular/forms';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 
 const appRoutes: Routes = [];
 
@@ -26,6 +27,7 @@ const appRoutes: Routes = [];
     BrowserModule,
     AngularFireModule.initializeApp(database.firebase),
     AngularFireStorageModule,
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(

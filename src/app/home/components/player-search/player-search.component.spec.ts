@@ -4,7 +4,7 @@ import {PlayerSearchComponent} from './player-search.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Mocks} from '../../../testing/mocks';
-import {FirebaseMock} from '../../../testing/firebase-mock';
+import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('PlayerSearchComponent', () => {
@@ -21,7 +21,7 @@ describe('PlayerSearchComponent', () => {
         ReactiveFormsModule,
         FormsModule
       ],
-      providers: [{provide: Router, useValue: routerStub}, {provide: AngularFireStorage, useClass: FirebaseMock}],
+      providers: [{provide: Router, useValue: routerStub}, {provide: AngularFireStorage, useClass: FirebaseStorageMock}],
       declarations: [PlayerSearchComponent]
     })
       .compileComponents();

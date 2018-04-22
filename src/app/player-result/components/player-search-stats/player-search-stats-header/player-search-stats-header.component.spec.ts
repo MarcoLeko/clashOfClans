@@ -6,7 +6,7 @@ import {TownhallPictureService} from '../../../../shared/services/townhall-pictu
 import {TownhallImgSrc} from '../../../../shared/services/townhall-picture/townhall-src';
 import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.service';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-import {FirebaseMock} from '../../../../testing/firebase-mock';
+import {FirebaseStorageMock} from '../../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {Observable} from 'rxjs/Observable';
 
@@ -26,7 +26,7 @@ describe('PlayerSearchStatsHeaderComponent', () => {
         Angular2FontawesomeModule
       ],
       providers: [
-        {provide: AngularFireStorage, useClass: FirebaseMock},
+        {provide: AngularFireStorage, useClass: FirebaseStorageMock},
         {provide: TownhallPictureService, useValue: townhallSpy},
         {provide: HeroMapperService, useValue: heroMapperSpy},
       ],

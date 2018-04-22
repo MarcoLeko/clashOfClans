@@ -18,6 +18,9 @@ import {TroopsAndSpellsModalComponent} from './components/player-search-stats/pl
 import {CurrentSeasonModalComponent} from './components/player-search-stats/player-search-stats-body/current-season-modal/current-season-modal.component';
 import {ClanModalComponent} from './components/player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
+import {TroopsHomeAttackStatsService} from './services/troops-and-spells-mapper/home/troops-home-attack-stats.service';
+import {TroopsNightAttackStatsService} from './services/troops-and-spells-mapper/night/troops-night-attack-stats.service';
+import {AdvancedSpellsHomeStatsService} from './services/troops-and-spells-mapper/home/home-spells/advanced-spells-home-stats.service';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2}}
@@ -48,6 +51,9 @@ const appRoutes: Routes = [
       appRoutes
     )],
   providers: [
+    TroopsHomeAttackStatsService,
+    TroopsNightAttackStatsService,
+    AdvancedSpellsHomeStatsService,
     HttpClientModule,
     PlayerSearchService,
     HeroMapperService,

@@ -2,13 +2,13 @@ import {inject, TestBed} from '@angular/core/testing';
 
 import {BuilderInfoService} from './builder-info.service';
 import {Mocks} from '../../../testing/mocks';
-import {FirebaseMock} from '../../../testing/firebase-mock';
+import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('BuilderInfoService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BuilderInfoService, {provide: AngularFireStorage, useClass: FirebaseMock}]
+      providers: [BuilderInfoService, {provide: AngularFireStorage, useClass: FirebaseStorageMock}]
     });
   });
 

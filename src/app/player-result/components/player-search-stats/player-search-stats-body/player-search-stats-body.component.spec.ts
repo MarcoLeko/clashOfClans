@@ -11,8 +11,10 @@ import {ClanModalComponent} from './clan-modal/clan-modal.component';
 import {CurrentSeasonModalComponent} from './current-season-modal/current-season-modal.component';
 import {Router} from '@angular/router';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-import {FirebaseMock} from '../../../../testing/firebase-mock';
+import {FirebaseStorageMock} from '../../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
+import {TroopsAndSpellsModalComponent} from './troops-and-spells-modal/troops-and-spells-modal.component';
+import {TroopsHomeAttackStatsService} from '../../../services/troops-and-spells-mapper/home/troops-home-attack-stats.service';
 
 describe('PlayerSearchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -30,14 +32,16 @@ describe('PlayerSearchStatsBodyComponent', () => {
       ],
       providers: [
         {provide: Router},
-        {provide: AngularFireStorage, useClass: FirebaseMock},
+        {provide: AngularFireStorage, useClass: FirebaseStorageMock},
+        {provide: TroopsHomeAttackStatsService},
         BuilderInfoService
       ],
       declarations: [
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
         ClanModalComponent,
-        CurrentSeasonModalComponent
+        CurrentSeasonModalComponent,
+        TroopsAndSpellsModalComponent
       ]
     })
       .compileComponents();

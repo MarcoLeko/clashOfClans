@@ -1,13 +1,13 @@
 import {TownhallPictureService} from './townhall-picture.service';
 import {TownhallImgSrc} from './townhall-src';
-import {FirebaseMock} from '../../../testing/firebase-mock';
+import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
 
 describe('TownhallPictureService', () => {
   let mock: any;
   let service: TownhallPictureService;
 
   beforeEach(() => {
-    mock = new FirebaseMock();
+    mock = new FirebaseStorageMock();
     service = new TownhallPictureService(mock);
   });
 

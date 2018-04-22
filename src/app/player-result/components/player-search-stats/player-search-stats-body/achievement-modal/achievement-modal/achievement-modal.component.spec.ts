@@ -4,7 +4,7 @@ import {AchievementModalComponent} from './achievement-modal.component';
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {BuilderInfoService} from '../../../../../services/builder-info/builder-info.service';
 import {Mocks} from '../../../../../../testing/mocks';
-import {FirebaseMock} from '../../../../../../testing/firebase-mock';
+import {FirebaseStorageMock} from '../../../../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {Observable} from 'rxjs/Observable';
 
@@ -24,7 +24,7 @@ describe('AchievementModalComponent', () => {
       ],
       providers: [
         {provide: BuilderInfoService, useValue: builderInfoSpy},
-        {provide: AngularFireStorage, useClass: FirebaseMock}
+        {provide: AngularFireStorage, useClass: FirebaseStorageMock}
       ],
       declarations: [AchievementModalComponent]
     })

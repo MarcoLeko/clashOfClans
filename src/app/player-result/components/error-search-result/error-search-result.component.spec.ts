@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ErrorSearchResultComponent} from './error-search-result.component';
 import {Router} from '@angular/router';
-import {FirebaseMock} from '../../../testing/firebase-mock';
+import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
 
 describe('ErrorSearchResultComponent', () => {
@@ -15,7 +15,7 @@ describe('ErrorSearchResultComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [{provide: Router, useValue: routerStub}, {provide: AngularFireStorage, useClass: FirebaseMock}],
+      providers: [{provide: Router, useValue: routerStub}, {provide: AngularFireStorage, useClass: FirebaseStorageMock}],
       declarations: [ ErrorSearchResultComponent ]
     })
     .compileComponents();

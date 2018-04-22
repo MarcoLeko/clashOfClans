@@ -21,6 +21,7 @@ import {ClanSearchService} from '../../../shared/services/clan-search/clan-searc
 import {ClanModalComponent} from '../player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
 import {CurrentSeasonModalComponent} from '../player-search-stats/player-search-stats-body/current-season-modal/current-season-modal.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
+import {TroopsAndSpellsModalComponent} from '../player-search-stats/player-search-stats-body/troops-and-spells-modal/troops-and-spells-modal.component';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -57,7 +58,8 @@ describe('PlayerSearchResultComponent', () => {
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
         ClanModalComponent,
-        CurrentSeasonModalComponent
+        CurrentSeasonModalComponent,
+        TroopsAndSpellsModalComponent
       ]
     })
       .compileComponents();

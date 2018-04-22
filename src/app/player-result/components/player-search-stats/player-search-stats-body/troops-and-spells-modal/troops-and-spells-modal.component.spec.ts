@@ -4,6 +4,7 @@ import {TroopsAndSpellsModalComponent} from './troops-and-spells-modal.component
 import {ModalModule} from 'ngx-bootstrap';
 import {TroopsHomeAttackStatsService} from '../../../../services/troops-and-spells-mapper/home/troops-home-attack-stats.service';
 import {BuilderInfoService} from '../../../../services/builder-info/builder-info.service';
+import {TroopsHomeAttackStatsDisplayService} from '../../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
 
 describe('TroopsAndSpellsModalComponent', () => {
   let component: TroopsAndSpellsModalComponent;
@@ -13,6 +14,7 @@ describe('TroopsAndSpellsModalComponent', () => {
     TestBed.configureTestingModule({
       imports: [ModalModule.forRoot()],
       providers: [
+        {provide: TroopsHomeAttackStatsDisplayService},
         {provide: TroopsHomeAttackStatsService},
         {provide: BuilderInfoService}],
       declarations: [ TroopsAndSpellsModalComponent ]

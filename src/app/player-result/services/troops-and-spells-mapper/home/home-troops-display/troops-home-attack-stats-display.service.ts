@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {TroopsHomeAttackStatsDisplay} from './troops-home-attack-stats-display.type';
 import {TroopsHomeAttackStatsService} from '../troops-home-attack-stats.service';
 import {TroopsHeroesAndSpellType} from '../../../../../../generated/types';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class TroopsHomeAttackStatsDisplayService {
@@ -11,9 +12,8 @@ export class TroopsHomeAttackStatsDisplayService {
   constructor(private troopsHomeAttackStatsService: TroopsHomeAttackStatsService) {
   }
 
-  getTroopsDisplayStats(troops: TroopsHeroesAndSpellType[]) {
+  getTroopsDisplayStats(troops: TroopsHeroesAndSpellType[]): Observable<TroopsHomeAttackStatsDisplay[]> {
     let advancedTroopsStats: TroopsHomeAttackStatsDisplay[] = [];
-
     return this.troopsHomeAttackStatsService.getTroopsStats().map(result => {
       for (const troop of troops) {
         let troopLvl: number;
@@ -22,13 +22,9 @@ export class TroopsHomeAttackStatsDisplayService {
             for (const level in result[dbTroop]) {
               troopLvl = parseInt(level.replace(/[^0-9\.]/g, ''), 10);
               if (troop.level === troopLvl) {
-                advancedTroopsStats.push({
-                  name: troop.name,
-                  level: troop.level,
-                  damagePerSec: result[dbTroop][level].dps,
-                  damagePerHit: result[dbTroop][level].dph,
-                  hitPoints: result[dbTroop][level].hp,
-                  isMaxLevel: troopLvl === troop.maxLevel
+                advancedTroopsStats.push({name: troop.name, level: troop.level,
+                  damagePerSec: result[dbTroop][level].dps, damagePerHit: result[dbTroop][level].dph,
+                  hitPoints: result[dbTroop][level].hp, isMaxLevel: troopLvl === troop.maxLevel
                 });
               }
             }

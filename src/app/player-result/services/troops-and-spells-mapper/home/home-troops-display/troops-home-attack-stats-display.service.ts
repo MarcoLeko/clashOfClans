@@ -17,14 +17,14 @@ export class TroopsHomeAttackStatsDisplayService {
     return this.troopsHomeAttackStatsService.getTroopsStats().map(result => {
       for (const troop of troops) {
         let troopLvl: number;
-        for (const dbTroop in result) {
-          if (troop.name.toLowerCase() === dbTroop.toLowerCase()) {
-            for (const level in result[dbTroop]) {
+        for (const troopInfo in result) {
+          if (troop.name.toLowerCase() === troopInfo.toLowerCase()) {
+            for (const level in result[troopInfo]) {
               troopLvl = parseInt(level.replace(/[^0-9\.]/g, ''), 10);
               if (troop.level === troopLvl) {
                 advancedTroopsStats.push({name: troop.name, level: troop.level,
-                  damagePerSec: result[dbTroop][level].dps, damagePerHit: result[dbTroop][level].dph,
-                  hitPoints: result[dbTroop][level].hp, isMaxLevel: troopLvl === troop.maxLevel
+                  damagePerSec: result[troopInfo][level].dps, damagePerHit: result[troopInfo][level].dph,
+                  hitPoints: result[troopInfo][level].hp, isMaxLevel: troopLvl === troop.maxLevel
                 });
               }
             }

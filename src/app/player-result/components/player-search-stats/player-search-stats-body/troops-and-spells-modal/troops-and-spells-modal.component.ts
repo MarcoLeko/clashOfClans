@@ -6,6 +6,7 @@ import {BuilderInfoType} from '../../../../services/builder-info/builder-info.ty
 import {TroopsHomeAttackStatsService} from '../../../../services/troops-and-spells-mapper/home/troops-home-attack-stats.service';
 import {TroopsHomeAttackStatsDisplayService} from '../../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
 import {TroopsHomeAttackStatsDisplay} from '../../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.type';
+import {SpellsHomeStatsDisplayService} from '../../../../services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.service';
 
 @Component({
   selector: 'app-troops-and-spells-modal',
@@ -22,7 +23,8 @@ export class TroopsAndSpellsModalComponent implements OnInit {
 
   constructor(private troopsService: TroopsHomeAttackStatsService,
               private builderInfoService: BuilderInfoService,
-              private troopsHomeAttackStatsDisplayService: TroopsHomeAttackStatsDisplayService) {
+              private troopsHomeAttackStatsDisplayService: TroopsHomeAttackStatsDisplayService,
+              private spellsHomeStatsDisplayService: SpellsHomeStatsDisplayService) {
   }
 
   ngOnInit() {
@@ -30,9 +32,10 @@ export class TroopsAndSpellsModalComponent implements OnInit {
       this.builderInfo = data;
       this.troopsHomeAttackStatsDisplayService.getTroopsDisplayStats(this.playerResult.troops).subscribe((result: TroopsHomeAttackStatsDisplay[]) => {
         this.troopsStats = result;
-        console.log(this.troopsStats);
       });
     });
+    this.spellsHomeStatsDisplayService.getSpellsDisplayHomeStats(this.playerResult.spells).subscribe(
+      result => console.log(result));
   }
 
   open() {

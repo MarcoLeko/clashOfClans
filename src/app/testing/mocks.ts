@@ -78,6 +78,11 @@ export class Mocks {
         level: 6,
         maxLevel: 7,
         village: 'home'
+      }, {
+        name: 'Raged Barbarian',
+        level: 14,
+        maxLevel: 16,
+        village: 'builderBase'
       }
     ],
     heroes: [
@@ -294,6 +299,15 @@ export class Mocks {
         damagePerHit: 12,
         hitPoints: 120
     };
+
+  public static TROOPNIGHTDISPLAYATTACKSTATS = {
+    name: 'Raged Barbarian',
+    level: 14,
+    isMaxLevel: false,
+    damagePerSec: 89,
+    damagePerHit: 71.2,
+    hitPoints: 266
+  };
 
   public static SPELLSHOMEDISPLAYSTATS = {
       name: 'Rage Spell',

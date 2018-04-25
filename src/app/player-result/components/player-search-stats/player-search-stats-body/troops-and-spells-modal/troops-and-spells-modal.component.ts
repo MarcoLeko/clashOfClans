@@ -7,6 +7,9 @@ import {TroopsHomeAttackStatsService} from '../../../../services/troops-and-spel
 import {TroopsHomeAttackStatsDisplayService} from '../../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
 import {TroopsHomeAttackStatsDisplay} from '../../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.type';
 import {SpellsHomeStatsDisplayService} from '../../../../services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.service';
+import {TroopsNightAttackStatsDisplayService} from '../../../../services/troops-and-spells-mapper/night/night-troops-display/troops-night-attack-stats-display.service';
+import {TroopsNightAttackStatsDisplay} from '../../../../services/troops-and-spells-mapper/night/night-troops-display/troops-night-attack-stats-display.type';
+import {SpellsHomeStatsDisplay} from '../../../../services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.type';
 
 @Component({
   selector: 'app-troops-and-spells-modal',
@@ -19,23 +22,29 @@ export class TroopsAndSpellsModalComponent implements OnInit {
   @ViewChild('childModal') modal: ModalDirective;
 
   public builderInfo: BuilderInfoType;
-  public troopsStats: TroopsHomeAttackStatsDisplay[];
+  public homeTroopsStats: TroopsHomeAttackStatsDisplay[];
+  public nightTroopsStats: TroopsNightAttackStatsDisplay[];
+  public homeSpellsStats: SpellsHomeStatsDisplay[];
 
   constructor(private troopsService: TroopsHomeAttackStatsService,
               private builderInfoService: BuilderInfoService,
               private troopsHomeAttackStatsDisplayService: TroopsHomeAttackStatsDisplayService,
-              private spellsHomeStatsDisplayService: SpellsHomeStatsDisplayService) {
+              private spellsHomeStatsDisplayService: SpellsHomeStatsDisplayService,
+              private troopsNightAttackStatsDisplayService: TroopsNightAttackStatsDisplayService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    console.log(this.playerResult);
     this.builderInfoService.getBuilderInfoType(this.playerResult.troops[0].village).subscribe(data => {
       this.builderInfo = data;
       this.troopsHomeAttackStatsDisplayService.getTroopsDisplayStats(this.playerResult.troops).subscribe((result: TroopsHomeAttackStatsDisplay[]) => {
-        this.troopsStats = result;
+        this.homeTroopsStats = result;
       });
     });
     this.spellsHomeStatsDisplayService.getSpellsDisplayHomeStats(this.playerResult.spells).subscribe(
-      result => console.log(result));
+      result => this.homeSpellsStats = result);
+    this.troopsNightAttackStatsDisplayService.getTroopsDisplayStats(this.playerResult.troops).subscribe(
+      result => this.nightTroopsStats = result);
   }
 
   open() {

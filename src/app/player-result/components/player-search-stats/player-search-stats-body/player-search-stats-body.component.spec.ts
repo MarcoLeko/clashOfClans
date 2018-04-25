@@ -17,6 +17,7 @@ import {TroopsAndSpellsModalComponent} from './troops-and-spells-modal/troops-an
 import {TroopsHomeAttackStatsService} from '../../../services/troops-and-spells-mapper/home/troops-home-attack-stats.service';
 import {TroopsHomeAttackStatsDisplayService} from '../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
 import {SpellsHomeStatsDisplayService} from '../../../services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.service';
+import {TroopsNightAttackStatsDisplayService} from '../../../services/troops-and-spells-mapper/night/night-troops-display/troops-night-attack-stats-display.service';
 
 describe('PlayerSearchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -37,6 +38,7 @@ describe('PlayerSearchStatsBodyComponent', () => {
         {provide: AngularFireStorage, useClass: FirebaseStorageMock},
         {provide: TroopsHomeAttackStatsService},
         {provide: TroopsHomeAttackStatsDisplayService},
+        {provide: TroopsNightAttackStatsDisplayService},
         {provide: SpellsHomeStatsDisplayService},
         BuilderInfoService
       ],

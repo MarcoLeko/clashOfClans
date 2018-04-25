@@ -1,4 +1,4 @@
-export interface SpellsHomeStatsDisplayType {
+export interface SpellsHomeStatsDisplay {
   name: string;
   level: number;
   isMaxLevel: boolean;

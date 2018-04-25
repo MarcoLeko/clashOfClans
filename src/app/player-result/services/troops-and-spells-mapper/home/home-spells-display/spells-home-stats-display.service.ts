@@ -1,20 +1,20 @@
 import {Injectable} from '@angular/core';
 import {AdvancedSpellsHomeStatsService} from '../home-spells/advanced-spells-home-stats.service';
-import {SpellsHomeStatsDisplayType} from './spells-home-stats-display.type';
+import {SpellsHomeStatsDisplay} from './spells-home-stats-display.type';
 import {TroopsHeroesAndSpellType} from '../../../../../../generated/types';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class SpellsHomeStatsDisplayService {
 
-  private spellsHomeStatsDisplayTypes: SpellsHomeStatsDisplayType[];
+  private spellsHomeStatsDisplayTypes: SpellsHomeStatsDisplay[];
   private spellAbilities = ['clone', 'damage', 'freeze', 'speed', 'healing', 'jump', 'rage', 'skeletons'];
 
   constructor(private advancedSpellsHomeStatsService: AdvancedSpellsHomeStatsService) {
   }
 
-  public getSpellsDisplayHomeStats(spells: TroopsHeroesAndSpellType[]): Observable<SpellsHomeStatsDisplayType[]> {
-    let advancedSpellStats: SpellsHomeStatsDisplayType[] = [];
+  public getSpellsDisplayHomeStats(spells: TroopsHeroesAndSpellType[]): Observable<SpellsHomeStatsDisplay[]> {
+    let advancedSpellStats: SpellsHomeStatsDisplay[] = [];
     return this.advancedSpellsHomeStatsService.getSpellsStats().map(result => {
       for (const spell of spells) {
         let spellLvl: number;

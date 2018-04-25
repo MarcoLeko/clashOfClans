@@ -4,7 +4,6 @@ import {HeroDisplay} from '../player-result/services/hero-mapper/hero-display';
 import {HeroesImg} from '../player-result/services/hero-mapper/heroes-img';
 import {BuilderInfoType} from '../player-result/services/builder-info/builder-info.type';
 import {Builderhall} from '../player-result/services/builder-info/builder-hall';
-import {TroopsHomeAttackStatsDisplay} from '../player-result/services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.type';
 import {TroopsHomeAttackStats} from '../player-result/services/troops-and-spells-mapper/home/troops-home-attack-stats.type';
 
 export class Mocks {
@@ -78,7 +77,7 @@ export class Mocks {
         name: 'barbarian',
         level: 6,
         maxLevel: 7,
-        village: 'bludber'
+        village: 'home'
       }
     ],
     heroes: [
@@ -108,10 +107,10 @@ export class Mocks {
     ],
     spells: [
       {
-        name: 'rage spell',
+        name: 'Rage Spell',
         level: 5,
         maxLevel: 5,
-        village: 'jfgsdf'
+        village: 'home'
       }
     ]
   };
@@ -287,14 +286,21 @@ export class Mocks {
     dph: 12,
     hp: 120
   };
-  public static TROOPHOMEDISPLAYATTACKSTATS: TroopsHomeAttackStatsDisplay[] = [
-    {
-      name: 'barbarian',
-      level: 6,
-      isMaxLevel: false,
-      damagePerSec: 12,
-      damagePerHit: 12,
-      hitPoints: 120
-    }
-  ];
+  public static TROOPHOMEDISPLAYATTACKSTATS = {
+        name: 'barbarian',
+        level: 6,
+        isMaxLevel: false,
+        damagePerSec: 12,
+        damagePerHit: 12,
+        hitPoints: 120
+    };
+
+  public static SPELLSHOMEDISPLAYSTATS = {
+      name: 'Rage Spell',
+      level: 5,
+      isMaxLevel: true,
+      housingSpace: 2,
+      type: 'rage',
+      rage: 170
+  };
 }

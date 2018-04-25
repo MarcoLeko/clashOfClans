@@ -21,11 +21,19 @@ describe('TroopsHomeAttackStatsDisplayService', () => {
   });
 
   it('should call spy', () => {
-    const spy = serviceMock.getTroopsStats.and.returnValue(Observable.of(Mocks.TROOPHOMEATTACKSTATS));
-    service.getTroopsDisplayStats(Mocks.PLAYERSTATSBYPLAYERTAG.troops)
-      .map(result => {
+    const spy = serviceMock.getTroopsStats.and.returnValue(Observable.of({
+      [`${'barbarian'}`]: {
+        [`${'Level: 6'}`]: {
+          dph: 26,
+          dps: 26,
+          hp: 110,
+          townhall: 9
+        }
+      }
+    }));
+    service.getTroopsDisplayStats(Mocks.PLAYERSTATSBYPLAYERTAG.troops).subscribe(result => {
       expect(spy).toHaveBeenCalled();
-      expect(result).toEqual(Mocks.TROOPHOMEDISPLAYATTACKSTATS);
+      expect(result[0].name).toEqual(Mocks.TROOPHOMEDISPLAYATTACKSTATS.name);
     });
   });
 });

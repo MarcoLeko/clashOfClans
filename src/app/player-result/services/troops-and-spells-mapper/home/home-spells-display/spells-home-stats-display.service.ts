@@ -13,10 +13,9 @@ export class SpellsHomeStatsDisplayService {
   constructor(private advancedSpellsHomeStatsService: AdvancedSpellsHomeStatsService) {
   }
 
-  getSpellsDisplayHomeStats(spells: TroopsHeroesAndSpellType[]): Observable<SpellsHomeStatsDisplayType[]> {
+  public getSpellsDisplayHomeStats(spells: TroopsHeroesAndSpellType[]): Observable<SpellsHomeStatsDisplayType[]> {
     let advancedSpellStats: SpellsHomeStatsDisplayType[] = [];
     return this.advancedSpellsHomeStatsService.getSpellsStats().map(result => {
-      console.log(result);
       for (const spell of spells) {
         let spellLvl: number;
         for (const spellInfo in result) {
@@ -39,11 +38,11 @@ export class SpellsHomeStatsDisplayService {
     });
   }
 
-  searchForSpellAbility(advancedSpellStats) {
+  public searchForSpellAbility(advancedSpellStats): string {
     for (const spellType in advancedSpellStats) {
       for (const ability of this.spellAbilities) {
         if (ability === spellType) {
-          return ability
+          return ability;
         }
       }
     }

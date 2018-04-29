@@ -6,13 +6,19 @@ import {TownhallPictureService} from './services/townhall-picture/townhall-pictu
 import {ClanSearchService} from './services/clan-search/clan-search.service';
 import {LoadingScreenComponent} from './components/loading-screen/loading-screen.component';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import {TrophiesHomeCellRendererComponent} from './components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
+import {CommonModule} from '@angular/common';
+import {TrophiesNightCellRendererComponent} from './components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
 
 @NgModule({
   declarations: [
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    TrophiesHomeCellRendererComponent,
+    TrophiesNightCellRendererComponent
   ],
   imports: [
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    CommonModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -24,7 +30,9 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     ClanSearchService
   ],
   exports: [
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    TrophiesHomeCellRendererComponent,
+    TrophiesNightCellRendererComponent
   ]
 })
 export class SharedModule {

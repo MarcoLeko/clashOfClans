@@ -1,45 +1,52 @@
 import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
-import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../../../generated/types';
+import {ClanMembersType, ClansByClantagType, PlayerByPlayerTagType} from '../../../../../../generated/types';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {AngularFireStorage} from 'angularfire2/storage';
+import {AgGridNg2} from 'ag-grid-angular';
+import {TrophiesHomeCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
+import {TrophiesNightCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
 
 @Component({
   selector: 'app-clan-modal',
   templateUrl: './clan-modal.component.html',
   styleUrls: ['./clan-modal.component.css']
 })
-export class ClanModalComponent implements OnChanges{
+export class ClanModalComponent implements OnChanges {
 
   @ViewChild('childModal') childModal: ModalDirective;
+  @ViewChild('agGrid') agGrid: AgGridNg2;
+
   @Input() playerResult: PlayerByPlayerTagType;
   @Input() clanInfo: ClansByClantagType;
 
-  public trophyHomeRef = this.storage.ref('images/trophy_home.png');
-  public trophyNightRef = this.storage.ref('images/trophy_night.png');
-  public trophyHomeImg: Observable<string | null>;
-  public trophyNightImg: Observable<string | null>;
+  public rowData: ClanMembersType[];
+  public columnDefs = [
+    {headerName: 'Tag', field: 'tag', width: 120},
+    {headerName: 'Name', field: 'name', width: 170},
+    {headerName: 'Role', field: 'role', width: 90},
+    {headerName: 'Level', field: 'expLevel', width: 80},
+    {headerName: 'Home', field: 'trophies', width: 110, headerComponentFramework: TrophiesHomeCellRendererComponent},
+    {headerName: 'Trophies Night', field: 'versusTrophies', width: 110, headerComponentFramework: TrophiesNightCellRendererComponent
+    }
+  ];
 
-  constructor(private router: Router, private storage: AngularFireStorage) {
+  constructor(private router: Router) {
   }
 
   ngOnChanges(): void {
-    this.loadTrophyImg();
-  }
-
-  private loadTrophyImg() {
-    this.trophyHomeRef.getDownloadURL().subscribe(url => this.trophyHomeImg = url);
-    this.trophyNightRef.getDownloadURL().subscribe(url => this.trophyNightImg = url);
+    if (this.clanInfo) {
+      this.rowData = this.clanInfo.memberList;
+    }
   }
 
   open() {
     this.childModal.show();
   }
 
-  memberSearch(member) {
+  memberSearch() {
+    const memberId: number = this.agGrid.api.getSelectedRows()[0].tag;
     this.childModal.hide();
-    this.router.navigate(['search/' + member.tag]);
+    this.router.navigate(['search/' + memberId]);
   }
 
 }

@@ -24,6 +24,9 @@ import {AdvancedSpellsHomeStatsService} from './services/troops-and-spells-mappe
 import {TroopsHomeAttackStatsDisplayService} from './services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
 import {SpellsHomeStatsDisplayService} from './services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.service';
 import {TroopsNightAttackStatsDisplayService} from './services/troops-and-spells-mapper/night/night-troops-display/troops-night-attack-stats-display.service';
+import {AgGridModule} from 'ag-grid-angular';
+import {TrophiesHomeCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
+import {TrophiesNightCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2}}
@@ -42,6 +45,10 @@ const appRoutes: Routes = [
     CurrentSeasonModalComponent
   ],
   imports: [
+    AgGridModule.withComponents([
+      TrophiesHomeCellRendererComponent,
+      TrophiesNightCellRendererComponent
+    ]),
     ModalModule.forRoot(),
     ProgressbarModule.forRoot(),
     AccordionModule.forRoot(),

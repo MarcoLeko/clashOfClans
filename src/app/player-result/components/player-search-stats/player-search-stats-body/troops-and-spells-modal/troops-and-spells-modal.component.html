@@ -11,25 +11,35 @@
       <div class="modal-body">
         <div class="container">
           <div class="mb-2 row">
-            <div class="col-sm-5">
+            <div class="col-sm-3" *ngIf="builderInfoHome">
+              <h4>Home <img *ngIf="builderInfoHome.imgSrc" [src]="builderInfoHome.imgSrc" width="70px" height="auto"></h4>
             </div>
-          </div>
-          <div class="table-fixed table-responsive">
-            <table class="table table-sm table-dark table-striped table-hover">
-              <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Level</th>
-                <th scope="col">Max Level</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let troop of playerResult.troops">
-                <td scope="row">{{troop.name}}</td>
-                <td>{{troop.level}}</td>
-                <td>{{troop.maxLevel}}</td>
-              </tbody>
-            </table>
+            <div class="col-sm-9" *ngIf="builderInfoHome">
+              <p>If you want to see further detailed information about Troops e.g. Lava hound explode damage per level,
+                max summoned skeletons per witch level etc. We encourage you to visit the
+                <a href="http://clashofclans.wikia.com"><em>The clash of clans wiki site</em></a></p>
+            </div>
+            <div class="col-sm-12" *ngIf="homeTroopsStats">
+              <h5>Troops</h5>
+              <ag-grid-angular
+                class="modal-grid-size ag-theme-balham-dark"
+                [enableSorting]="true"
+                [enableFilter]="true"
+                [rowData]="homeTroopsStats"
+                [columnDefs]="columnDefsForHomeTroops">
+              </ag-grid-angular>
+            </div>
+            <br>
+            <div class="mt-4 col-sm-12" *ngIf="homeSpellsStats">
+              <h5>Spells</h5>
+              <ag-grid-angular
+                class="modal-grid-size ag-theme-balham-dark"
+                [enableSorting]="true"
+                [enableFilter]="true"
+                [rowData]="homeSpellsStats"
+                [columnDefs]="columnDefsForHomeSpells">
+              </ag-grid-angular>
+            </div>
           </div>
         </div>
       </div>

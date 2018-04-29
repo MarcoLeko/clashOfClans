@@ -26,28 +26,18 @@
               </h5>
             </div>
           </div>
-          <div class="table-fixed table-responsive">
-            <table class="table table-sm table-dark table-striped table-hover">
-              <thead>
-              <tr>
-                <th scope="col">Tag</th>
-                <th scope="col">Name</th>
-                <th scope="col">Role</th>
-                <th scope="col">Level</th>
-                <th scope="col"><img *ngIf="trophyHomeImg" class="trophy-logo" [src]="trophyHomeImg"></th>
-                <th scope="col"><img *ngIf="trophyNightImg" class="trophy-logo" [src]="trophyNightImg"></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let member of clanInfo.memberList" (click)="memberSearch(member)" id="memberGrid">
-                <td scope="row">{{member.tag}}</td>
-                <td>{{member.name}}</td>
-                <td>{{member.role}}</td>
-                <td>{{member.expLevel}}</td>
-                <td>{{member.trophies}}</td>
-                <td>{{member.versusTrophies}}</td>
-              </tbody>
-            </table>
+          <div *ngIf="rowData">
+            <ag-grid-angular
+              #agGrid
+              class="modal-grid-size ag-theme-balham-dark"
+              [enableSorting]="true"
+              [enableFilter]="true"
+              [rowData]="rowData"
+              rowSelection='single'
+              [columnDefs]="columnDefs"
+              (click)="memberSearch()">
+            </ag-grid-angular>
+            <span><em>Click on a row, to see individual player stats.</em></span>
           </div>
         </div>
       </div>

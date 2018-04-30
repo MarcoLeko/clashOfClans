@@ -7,6 +7,7 @@ import {BuilderInfoService} from '../../../../services/builder-info/builder-info
 import {TroopsHomeAttackStatsDisplayService} from '../../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
 import {SpellsHomeStatsDisplayService} from '../../../../services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.service';
 import {TroopsNightAttackStatsDisplayService} from '../../../../services/troops-and-spells-mapper/night/night-troops-display/troops-night-attack-stats-display.service';
+import {AgGridModule} from 'ag-grid-angular';
 
 describe('TroopsAndSpellsModalComponent', () => {
   let component: TroopsAndSpellsModalComponent;
@@ -14,7 +15,10 @@ describe('TroopsAndSpellsModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ModalModule.forRoot()],
+      imports: [
+        ModalModule.forRoot(),
+        AgGridModule.withComponents([])
+      ],
       providers: [
         {provide: TroopsHomeAttackStatsDisplayService},
         {provide: TroopsNightAttackStatsDisplayService},

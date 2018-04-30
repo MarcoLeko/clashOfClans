@@ -2,12 +2,10 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ClanModalComponent} from './clan-modal.component';
 import {ModalModule} from 'ngx-bootstrap';
-import {Params, Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {By} from '@angular/platform-browser';
-import {Mocks} from '../../../../../testing/mocks';
+import {Router} from '@angular/router';
 import {FirebaseStorageMock} from '../../../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
+import {AgGridModule} from 'ag-grid-angular';
 
 describe('ClanModalComponent', () => {
   let component: ClanModalComponent;
@@ -20,7 +18,8 @@ describe('ClanModalComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        AgGridModule.withComponents([])
       ],
       providers: [
         {provide: Router, useValue: routerStub},
@@ -28,7 +27,7 @@ describe('ClanModalComponent', () => {
       ],
       declarations: [ ClanModalComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -38,30 +37,5 @@ describe('ClanModalComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should call navigate on memberSearch', () => {
-    const modal: any = {
-      hide: function () {}
-    };
-    component.childModal = modal;
-    const testObj = Mocks.PLAYERSTATSBYPLAYERTAG;
-    const routeParams: Params = ['search/' + testObj.tag];
-    const spy = routerStub.navigate.and.returnValue(Observable.of(routeParams));
-    component.memberSearch(testObj);
-
-    expect(spy).toHaveBeenCalledWith(routeParams);
-  });
-
-  it('should render grid', () => {
-    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-    component.clanInfo = Mocks.CLANSTATSBYCLANTAG;
-
-    fixture.detectChanges();
-
-    const debugElm = fixture.debugElement.query(By.css('td'));
-    const nativeElm = debugElm.nativeElement;
-
-    expect(nativeElm.textContent).toMatch(Mocks.CLANSTATSBYCLANTAG.memberList[0].tag)
   });
 });

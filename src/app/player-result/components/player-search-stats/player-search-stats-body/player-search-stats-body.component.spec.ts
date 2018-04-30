@@ -18,6 +18,7 @@ import {TroopsHomeAttackStatsService} from '../../../services/troops-and-spells-
 import {TroopsHomeAttackStatsDisplayService} from '../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
 import {SpellsHomeStatsDisplayService} from '../../../services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.service';
 import {TroopsNightAttackStatsDisplayService} from '../../../services/troops-and-spells-mapper/night/night-troops-display/troops-night-attack-stats-display.service';
+import {AgGridModule} from 'ag-grid-angular';
 
 describe('PlayerSearchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -31,7 +32,8 @@ describe('PlayerSearchStatsBodyComponent', () => {
         ModalModule.forRoot(),
         ProgressbarModule.forRoot(),
         AccordionModule.forRoot(),
-        Angular2FontawesomeModule
+        Angular2FontawesomeModule,
+        AgGridModule.withComponents([])
       ],
       providers: [
         {provide: Router},

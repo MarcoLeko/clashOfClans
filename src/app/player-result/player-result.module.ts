@@ -27,6 +27,11 @@ import {TroopsNightAttackStatsDisplayService} from './services/troops-and-spells
 import {AgGridModule} from 'ag-grid-angular';
 import {TrophiesHomeCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
 import {TrophiesNightCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
+import {SpellAbilityCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/spell-ability-cell-renderer.component';
+import {DamagePerSecCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/damage-per-sec-cell-renderer.component';
+import {DamagePerHitCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/damage-per-hit-cell-renderer.component';
+import {MaxValueCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/max-value-cell-renderer.component';
+import {NoValueCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/no-value-cell-renderer.component';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2}}
@@ -47,7 +52,12 @@ const appRoutes: Routes = [
   imports: [
     AgGridModule.withComponents([
       TrophiesHomeCellRendererComponent,
-      TrophiesNightCellRendererComponent
+      TrophiesNightCellRendererComponent,
+      SpellAbilityCellRendererComponent,
+      DamagePerSecCellRendererComponent,
+      DamagePerHitCellRendererComponent,
+      MaxValueCellRendererComponent,
+      NoValueCellRendererComponent
     ]),
     ModalModule.forRoot(),
     ProgressbarModule.forRoot(),

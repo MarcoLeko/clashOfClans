@@ -12,12 +12,14 @@
         <div class="container">
           <div class="mb-2 row">
             <div class="col-sm-3" *ngIf="builderInfoHome">
-              <h4>Home <img *ngIf="builderInfoHome.imgSrc" [src]="builderInfoHome.imgSrc" width="70px" height="auto"></h4>
+              <h4>Home <img *ngIf="builderInfoHome.imgSrc" [src]="builderInfoHome.imgSrc" width="70px" height="auto">
+              </h4>
             </div>
-            <div class="col-sm-9" *ngIf="builderInfoHome">
-              <p>If you want to see further detailed information about Troops e.g. Lava hound explode damage per level,
+            <div class="col-sm-9">
+              <p>If you want to see further detailed information about troops e.g. Lava hound explode damage per level,
                 max summoned skeletons per witch level etc. We encourage you to visit the
-                <a href="http://clashofclans.wikia.com"><em>The clash of clans wiki site</em></a></p>
+                <a href="http://clashofclans.wikia.com/wiki/Army"><em>The clash of clans wiki site for the home
+                  vollage</em></a></p>
             </div>
             <div class="col-sm-12" *ngIf="homeTroopsStats">
               <h5>Troops</h5>
@@ -26,7 +28,8 @@
                 [enableSorting]="true"
                 [enableFilter]="true"
                 [rowData]="homeTroopsStats"
-                [columnDefs]="columnDefsForHomeTroops">
+                [columnDefs]="columnDefsForHomeTroops"
+                [frameworkComponents]="frameworkComponents">
               </ag-grid-angular>
             </div>
             <br>
@@ -37,7 +40,32 @@
                 [enableSorting]="true"
                 [enableFilter]="true"
                 [rowData]="homeSpellsStats"
-                [columnDefs]="columnDefsForHomeSpells">
+                [columnDefs]="columnDefsForHomeSpells"
+                [frameworkComponents]="frameworkComponents">
+              </ag-grid-angular>
+            </div>
+          </div>
+          <div class="headerAligner row">
+            <div class="col-sm-3" *ngIf="builderInfoNight">
+              <h4>Night <img *ngIf="builderInfoNight.imgSrc" [src]="builderInfoNight.imgSrc" width="70px" height="auto">
+              </h4>
+            </div>
+            <div class="col-sm-9">
+              <p>If you want to see further detailed information about the night troops e.g. about unlocking special
+                abilities per level,
+                ability progess per level etc. We encourage you to visit the
+                <a href="http://clashofclans.wikia.com/wiki/Army"><em>The clash of clans wiki site for the builder
+                  base</em></a></p>
+            </div>
+            <div class="col-sm-12" *ngIf="nightTroopsStats">
+              <h5>Troops</h5>
+              <ag-grid-angular
+                class="modal-grid-size ag-theme-balham-dark"
+                [enableSorting]="true"
+                [enableFilter]="true"
+                [rowData]="nightTroopsStats"
+                [columnDefs]="columnDefsForNightTroops"
+                [frameworkComponents]="frameworkComponents">
               </ag-grid-angular>
             </div>
           </div>

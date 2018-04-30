@@ -9,12 +9,22 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
 import {TrophiesHomeCellRendererComponent} from './components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
 import {CommonModule} from '@angular/common';
 import {TrophiesNightCellRendererComponent} from './components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
+import {SpellAbilityCellRendererComponent} from './components/ag-grid-cell-renderer/spell-ability-cell-renderer.component';
+import {DamagePerSecCellRendererComponent} from './components/ag-grid-cell-renderer/damage-per-sec-cell-renderer.component';
+import {DamagePerHitCellRendererComponent} from './components/ag-grid-cell-renderer/damage-per-hit-cell-renderer.component';
+import {MaxValueCellRendererComponent} from './components/ag-grid-cell-renderer/max-value-cell-renderer.component';
+import {NoValueCellRendererComponent} from './components/ag-grid-cell-renderer/no-value-cell-renderer.component';
 
 @NgModule({
   declarations: [
     LoadingScreenComponent,
     TrophiesHomeCellRendererComponent,
-    TrophiesNightCellRendererComponent
+    TrophiesNightCellRendererComponent,
+    SpellAbilityCellRendererComponent,
+    DamagePerSecCellRendererComponent,
+    DamagePerHitCellRendererComponent,
+    MaxValueCellRendererComponent,
+    NoValueCellRendererComponent
   ],
   imports: [
     AngularFireStorageModule,
@@ -32,7 +42,12 @@ import {TrophiesNightCellRendererComponent} from './components/ag-grid-cell-rend
   exports: [
     LoadingScreenComponent,
     TrophiesHomeCellRendererComponent,
-    TrophiesNightCellRendererComponent
+    TrophiesNightCellRendererComponent,
+    SpellAbilityCellRendererComponent,
+    DamagePerSecCellRendererComponent,
+    DamagePerHitCellRendererComponent,
+    MaxValueCellRendererComponent,
+    NoValueCellRendererComponent
   ]
 })
 export class SharedModule {

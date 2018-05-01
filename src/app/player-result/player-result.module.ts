@@ -34,7 +34,7 @@ import {MaxValueCellRendererComponent} from '../shared/components/ag-grid-cell-r
 import {NoValueCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/no-value-cell-renderer.component';
 
 const appRoutes: Routes = [
-  {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 2}}
+  {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 3}}
 ];
 
 @NgModule({

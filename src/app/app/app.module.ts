@@ -13,13 +13,17 @@ import {database} from '../../firebase-config';
 import {AngularFireStorageModule} from 'angularfire2/storage';
 import {FormsModule} from '@angular/forms';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AboutComponent} from './components/about/about.component';
 
-const appRoutes: Routes = [];
+const appRoutes: Routes = [
+  {path: 'about', component: AboutComponent, data: {depth: 2}}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    AboutComponent
   ],
   imports: [
     HomeModule,

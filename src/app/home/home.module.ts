@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PlayerHashValidationDirective} from './directives/playerHashValidation/playerHashValidation.directive';
 import {PlayerResultModule} from '../player-result/player-result.module';
 import {SharedModule} from '../shared/shared.module';
+import {ClanSearchComponent} from './components/clan-search/clan-search.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeFontPageComponent, data: {depth: 1}}
@@ -19,6 +21,8 @@ const appRoutes: Routes = [
     JumbotronComponent,
     PlayerSearchComponent,
     PlayerHashValidationDirective,
+    ClanSearchComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

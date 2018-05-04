@@ -1,22 +1,26 @@
 <div class="card" *ngIf="clashPlayerUrl">
   <div class="card-body customBackground" [ngStyle]="{background: 'url(' + clashPlayerUrl + ') no-repeat'}">
     <h5 class="card-title">Player Search</h5>
-    <p class="card-text">If you want to search for a player we recommend you to enter the player id.
-      A possible valid Player id could be:</p>
+    <p class="card-text">Get information about achievements, current season trophies/ trophy records,
+      clan members and troops/ spells stats of their current level:</p>
+    <p><b>Enter a player id for the player search. A possible valid Player id could be:</b></p>
     <form class="form-group form-inline">
       <label for="staticPlayerId" class="textWrapper col-sm-2 col-form-label">Player ID</label>
       <div class="col-sm-6">
         <input type="text" readonly class="form-control-plaintext" id="staticPlayerId" value="#9Y2RJ89YL">
       </div>
     </form>
-    <p><b>Watch all kind of important stats about a player:</b></p>
-    <form class="form-inline" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
-      <div class="form-group mx-sm-1 mb-2">
-        <input type="text" ngModel name="playerId"
-               class="form-control" required appHasPlayerHash
-               placeholder="I want player stats...">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+      <div class="row">
+        <div class="col-sm-9">
+          <input type="text" ngModel name="playerId"
+                 class="form-control" required appHasPlayerHash
+                 placeholder="Enter player id...">
+        </div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-primary mb-2" [disabled]="!form.form.valid">Search</button>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary mx-sm-1 mb-2" [disabled]="!form.form.valid">Search</button>
     </form>
   </div>
 </div>

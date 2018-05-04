@@ -35,7 +35,7 @@
               [rowData]="rowData"
               rowSelection='single'
               [columnDefs]="columnDefs"
-              (click)="memberSearch()">
+              (rowClicked)="memberSearch()">
             </ag-grid-angular>
             <span><em>Click on a row, to see individual player stats.</em></span>
           </div>

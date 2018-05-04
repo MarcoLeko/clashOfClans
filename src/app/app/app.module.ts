@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 
@@ -14,6 +14,8 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
 import {FormsModule} from '@angular/forms';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AboutComponent} from './components/about/about.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {GestureConfig} from '@angular/material';
 
 const appRoutes: Routes = [
   {path: 'about', component: AboutComponent, data: {depth: 2}}
@@ -23,22 +25,23 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    AboutComponent
+    AboutComponent,
+    FooterComponent
   ],
   imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
     HomeModule,
     FormsModule,
-    BrowserModule,
     AngularFireModule.initializeApp(database.firebase),
     AngularFireStorageModule,
     AngularFirestoreModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes
     )
   ],
-  providers: [],
+  providers: [    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

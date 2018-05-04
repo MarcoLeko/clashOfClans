@@ -120,6 +120,7 @@ export interface LocationsType {
   id: number;
   name: string;
   isCountry: boolean;
+  countryCode?: string;
 }
 
 /**Get information about specific location**/

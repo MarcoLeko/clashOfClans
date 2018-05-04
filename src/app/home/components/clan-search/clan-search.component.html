@@ -1,7 +1,65 @@
 <div class="card" *ngIf="clanCastleUrl">
   <div class="card-body customBackground" [ngStyle]="{background: 'url(' + clanCastleUrl + ') no-repeat'}">
     <h5 class="card-title">Clan Search</h5>
-    <p class="card-text">If you want to search for a player we recommend you to enter the player id.
-      A possible valid Player id could be:</p>
+    <p class="card-text">Search for clans by their clan tag or
+      by filtering for name, clan level and the location:</p>
+    <form #form="ngForm">
+      <div class="row">
+        <div class="col-sm-4">
+          <label class="col-form-label" for="locationSelector">Location</label>
+        </div>
+        <div class="col-sm-8" *ngIf="locations">
+          <select class="custom-select" name="locationSelector"
+                  id="locationSelector">
+            <option value="" disabled selected hidden>Choose location...</option>
+            <option *ngFor="let location of locations">{{location.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-1 row">
+        <div class="col-sm-4">
+          <label class="col-form-label" for="locationSelector">War Frequency</label>
+        </div>
+        <div class="col-sm-8">
+          <select class="custom-select" name="warFrequencySelector"
+                  id="warFrequencySelector">
+            <option value="" disabled selected hidden>Choose war Frequency...</option>
+            <option *ngFor="let frequency of warFrequency">{{frequency | warFrequency}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <label class="col-form-label" for="locationSelector">Clan level</label>
+        </div>
+        <div class="col-sm-8">
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="auto" min="1" max="25" step="1"></mat-slider>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <label class="col-form-label" for="locationSelector">Min member</label>
+        </div>
+        <div class="col-sm-3">
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="1" min="1" max="50" step="1"></mat-slider>
+        </div>
+        <div class="col-sm-3">
+          <label class="col-form-label" for="locationSelector">Max member</label>
+        </div>
+        <div class="col-sm-3">
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="1" min="1" max="50" step="1"></mat-slider>
+        </div>
+        <div class="container row">
+          <div class="col-sm-9">
+            <input type="text" ngModel name="clan-id"
+                   class="form-control" required minlength="3"
+                   placeholder="Enter clan id or name...">
+          </div>
+          <div class="col-sm-3">
+            <button type="submit" class="btn btn-primary mb-2" [disabled]="!form.form.valid">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

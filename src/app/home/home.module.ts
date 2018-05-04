@@ -9,7 +9,9 @@ import {PlayerHashValidationDirective} from './directives/playerHashValidation/p
 import {PlayerResultModule} from '../player-result/player-result.module';
 import {SharedModule} from '../shared/shared.module';
 import {ClanSearchComponent} from './components/clan-search/clan-search.component';
-import {FooterComponent} from './components/footer/footer.component';
+import {LocationSearchService} from './services/location-search/location-search.service';
+import {MatSliderModule} from '@angular/material/slider';
+import {WarFrequencyPipe} from './pipes/war-frequency.pipe';
 
 const appRoutes: Routes = [
   {path: '', component: HomeFontPageComponent, data: {depth: 1}}
@@ -22,9 +24,10 @@ const appRoutes: Routes = [
     PlayerSearchComponent,
     PlayerHashValidationDirective,
     ClanSearchComponent,
-    FooterComponent
+    WarFrequencyPipe
   ],
   imports: [
+    MatSliderModule,
     CommonModule,
     FormsModule,
     SharedModule,
@@ -33,7 +36,9 @@ const appRoutes: Routes = [
     RouterModule.forChild(
       appRoutes
     )],
-  providers: [],
+  providers: [
+    LocationSearchService
+  ],
   exports: []
 })
 export class HomeModule {

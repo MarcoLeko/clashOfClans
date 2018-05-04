@@ -1,8 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+/* Imports */
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/font-awesome/css/font-awesome.css';
 @import "~ag-grid/dist/styles/ag-grid.css";
 @import "~ag-grid/dist/styles/ag-theme-balham-dark.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* Global styles */
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 body {
   background-color: rgba(18, 13, 4, 0.71);
@@ -10,12 +23,15 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
 }
 
 p {
   font-family: Verdana;
 }
-
 
 .btn-orange {
   background-color: #FFCC33;
@@ -100,3 +116,5 @@ button.list-group-item-dark.active:hover {
   background-color: rgba(193, 88, 207, 0.5);
   border-bottom: 2px solid rgba(45, 10, 59, 0.5);
 }
+
+mat-slider {}

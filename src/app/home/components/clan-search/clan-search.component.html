@@ -51,10 +51,14 @@
         </div>
         <div class="container row">
           <div class="col-sm-9">
+            <ng-template #clanSearchResultTamplate let-model="item">
+              <span>{{model.tag}} - {{model.name}}, Clanlevel: {{model.clanLevel}}, <em>{{model.location.name}}</em></span>
+            </ng-template>
+
             <input type="text" [(ngModel)]="searchValue" (typeaheadOnSelect)="typeaheadOnSelect($event)"
-                   class="form-control" minlength="3"  typeaheadOptionField="name" [typeahead]="dataSource"
+                   class="form-control" minlength="3"  [typeaheadItemTemplate]="clanSearchResultTamplate"
                    (typeaheadLoading)="changeTypeaheadLoading($event)" placeholder="Enter clan id or name..."
-                   [typeaheadWaitMs]="300" name="clan-id" required>
+                   [typeaheadWaitMs]="300" name="clan-id" required [typeahead]="dataSource">
           </div>
           <div class="col-sm-3">
             <button type="submit" class="btn btn-primary mb-2" [disabled]="!form.form.valid">Search</button>

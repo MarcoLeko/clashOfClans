@@ -47,7 +47,7 @@ export class ClanSearchComponent implements OnInit {
             this.searchResult.push(result);
             console.log(this.searchResult);
             observer.next(result);
-          });
+          }, err =>  console.log(err));
       }
     }).mergeMap((token: string) => this.searchForClans(token));
   }
@@ -57,7 +57,7 @@ export class ClanSearchComponent implements OnInit {
 
     return Observable.of(
       this.searchResult.filter((clan: any) => {
-        return query.test(clan.name);
+        return query.test(clan);
       })
     );
   }

@@ -51,9 +51,10 @@
         </div>
         <div class="container row">
           <div class="col-sm-9">
-            <input type="text" ngModel name="clan-id"
-                   class="form-control" required minlength="3"
-                   placeholder="Enter clan id or name...">
+            <input type="text" [(ngModel)]="searchValue" (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                   class="form-control" minlength="3"  typeaheadOptionField="name" [typeahead]="dataSource"
+                   (typeaheadLoading)="changeTypeaheadLoading($event)" placeholder="Enter clan id or name..."
+                   [typeaheadWaitMs]="300" name="clan-id" required>
           </div>
           <div class="col-sm-3">
             <button type="submit" class="btn btn-primary mb-2" [disabled]="!form.form.valid">Search</button>

@@ -15,6 +15,7 @@ import {DamagePerSecCellRendererComponent} from '../../../../../shared/component
 import {DamagePerHitCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/damage-per-hit-cell-renderer.component';
 import {MaxValueCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/max-value-cell-renderer.component';
 import {NoValueCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/no-value-cell-renderer.component';
+import {HitPointsCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
 
 @Component({
   selector: 'app-troops-and-spells-modal',
@@ -43,7 +44,7 @@ export class TroopsAndSpellsModalComponent implements OnChanges {
     {headerName: 'Progress', width: 100, field: 'isMaxLevel', cellRenderer: 'maxValueCellRendererComponent'},
     {headerName: 'Damage per sec', width: 150, field: 'damagePerSec', headerComponentFramework: DamagePerSecCellRendererComponent},
     {headerName: 'Damage per hit', width: 150, field: 'damagePerHit', headerComponentFramework: DamagePerHitCellRendererComponent},
-    {headerName: 'Hitpoints', width: 100, field: 'hitPoints'}
+    {headerName: 'Hitpoints', width: 100, field: 'hitPoints', headerComponentFramework: HitPointsCellRendererComponent}
   ];
   public columnDefsForHomeSpells = [
     {headerName: 'Name', width: 150, field: 'name'},
@@ -59,7 +60,7 @@ export class TroopsAndSpellsModalComponent implements OnChanges {
     {headerName: 'Progress', width: 100, field: 'isMaxLevel', cellRenderer: 'maxValueCellRendererComponent'},
     {headerName: 'Damage per sec', width: 150, field: 'damagePerSec', headerComponentFramework: DamagePerSecCellRendererComponent, cellRenderer: 'noValueCellRendererComponent'},
     {headerName: 'Damage per hit', width: 150, field: 'damagePerHit', headerComponentFramework: DamagePerHitCellRendererComponent, cellRenderer: 'noValueCellRendererComponent'},
-    {headerName: 'Hitpoints', width: 100, field: 'hitPoints'}
+    {headerName: 'Hitpoints', width: 100, field: 'hitPoints', headerComponentFramework: HitPointsCellRendererComponent}
   ];
   constructor(private troopsService: TroopsHomeAttackStatsService,
               private builderInfoService: BuilderInfoService,

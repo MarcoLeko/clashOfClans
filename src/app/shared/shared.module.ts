@@ -14,6 +14,7 @@ import {DamagePerSecCellRendererComponent} from './components/ag-grid-cell-rende
 import {DamagePerHitCellRendererComponent} from './components/ag-grid-cell-renderer/damage-per-hit-cell-renderer.component';
 import {MaxValueCellRendererComponent} from './components/ag-grid-cell-renderer/max-value-cell-renderer.component';
 import {NoValueCellRendererComponent} from './components/ag-grid-cell-renderer/no-value-cell-renderer.component';
+import {HitPointsCellRendererComponent} from './components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {NoValueCellRendererComponent} from './components/ag-grid-cell-renderer/n
     SpellAbilityCellRendererComponent,
     DamagePerSecCellRendererComponent,
     DamagePerHitCellRendererComponent,
+    HitPointsCellRendererComponent,
     MaxValueCellRendererComponent,
     NoValueCellRendererComponent
   ],

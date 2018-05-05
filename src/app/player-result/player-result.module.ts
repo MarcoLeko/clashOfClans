@@ -32,6 +32,7 @@ import {DamagePerSecCellRendererComponent} from '../shared/components/ag-grid-ce
 import {DamagePerHitCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/damage-per-hit-cell-renderer.component';
 import {MaxValueCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/max-value-cell-renderer.component';
 import {NoValueCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/no-value-cell-renderer.component';
+import {HitPointsCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
 
 const appRoutes: Routes = [
   {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 3}}
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     AgGridModule.withComponents([
+      HitPointsCellRendererComponent,
       TrophiesHomeCellRendererComponent,
       TrophiesNightCellRendererComponent,
       SpellAbilityCellRendererComponent,

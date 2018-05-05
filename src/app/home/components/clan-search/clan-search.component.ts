@@ -5,7 +5,6 @@ import {AngularFireStorage} from 'angularfire2/storage';
 import {LocationSearchService} from '../../services/location-search/location-search.service';
 import {ClansByClantagType, LocationsType} from '../../../../generated/types';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
-import {TypeaheadMatch} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-clan-search',
@@ -47,7 +46,7 @@ export class ClanSearchComponent implements OnInit {
             this.searchResult.push(result);
             console.log(this.searchResult);
             observer.next(result);
-          }, err =>  console.log(err));
+          }, err => console.log(err));
       }
     }).mergeMap((token: string) => this.searchForClans(token));
   }
@@ -60,10 +59,6 @@ export class ClanSearchComponent implements OnInit {
         return query.test(clan);
       })
     );
-  }
-
-  typeaheadOnSelect(e: TypeaheadMatch): void {
-    console.log('Selected value: ', e.value);
   }
 
   changeTypeaheadLoading(e: boolean): void {

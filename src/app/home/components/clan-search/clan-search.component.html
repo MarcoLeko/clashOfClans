@@ -55,7 +55,7 @@
               <span>{{model.tag}} - {{model.name}}, Clanlevel: {{model.clanLevel}}, <em>{{model.location.name}}</em></span>
             </ng-template>
 
-            <input type="text" [(ngModel)]="searchValue" (typeaheadOnSelect)="typeaheadOnSelect($event)"
+            <input type="text" [(ngModel)]="searchValue" typeaheadOptionField="tag"
                    class="form-control" minlength="3"  [typeaheadItemTemplate]="clanSearchResultTamplate"
                    (typeaheadLoading)="changeTypeaheadLoading($event)" placeholder="Enter clan id or name..."
                    [typeaheadWaitMs]="300" name="clan-id" required [typeahead]="dataSource">

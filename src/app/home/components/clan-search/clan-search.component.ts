@@ -5,6 +5,7 @@ import {AngularFireStorage} from 'angularfire2/storage';
 import {LocationSearchService} from '../../services/location-search/location-search.service';
 import {ClansByClantagType, LocationsType} from '../../../../generated/types';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
+import {FilterModel} from './filter-model';
 
 @Component({
   selector: 'app-clan-search',
@@ -19,10 +20,11 @@ export class ClanSearchComponent implements OnInit {
   public warFrequency: string[] = ['always', 'moreThanOncePerWeek', 'oncePerWeek', 'lessThanOncePerWeek',
     'never', 'unknown'];
 
-  public searchValue: string;
   public dataSource;
   public typeAheadLoading: boolean;
   public searchResult;
+
+  public filterModel: FilterModel = new FilterModel();
 
   constructor(private router: Router, private clanSearchService: ClanSearchService,
               private storage: AngularFireStorage,
@@ -39,8 +41,8 @@ export class ClanSearchComponent implements OnInit {
       }
     });
     this.dataSource = Observable.create((observer: any) => {
-      if (this.searchValue.length >= 3) {
-        this.clanSearchService.getClanByClanTag(this.searchValue).subscribe(
+      if (this.filterModel.choosedClanNameOrClanTag.length >= 3) {
+        this.clanSearchService.getClanByClanTag(this.filterModel.choosedClanNameOrClanTag).subscribe(
           (result: ClansByClantagType) => {
             this.searchResult = [];
             this.searchResult.push(result);
@@ -59,6 +61,10 @@ export class ClanSearchComponent implements OnInit {
         return query.test(clan);
       })
     );
+  }
+
+  logForm(value: any) {
+    console.log(value);
   }
 
   changeTypeaheadLoading(e: boolean): void {

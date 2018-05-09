@@ -12,7 +12,7 @@
   left: 0;
   right: 0;
   background-color: white;
-  opacity: 0.3;
+  opacity: 0.4;
   height: 100%;
 }
 
@@ -21,6 +21,6 @@
 }
 
 .card {
-  min-height: 24em;
+  min-height: 26.5em;
 }
 

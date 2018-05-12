@@ -4,13 +4,13 @@
     <p class="card-text">Search for clans by their clan tag or
       by filtering: You have to enter at least 3 characters for clan name or clan tag.
       Furthermore you can filter for clan level, war frequency, location and min and max member:</p>
-    <form #form="ngForm" (change)="logForm(form.value)">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
       <div class="row">
         <div class="col-sm-4">
           <label class="col-form-label" for="locationSelector"><b>Location</b></label>
         </div>
         <div class="col-sm-8" *ngIf="locations">
-          <select class="custom-select" id="locationSelector" name="location" [(ngModel)]="filterModel.chosedLocation">
+          <select class="custom-select" id="locationSelector" name="location" [(ngModel)]="filterModel.selectedLocationId">
             <option [ngValue]="undefined" hidden selected>Choose location...</option>
             <option *ngFor="let location of locations" [value]="location.id">{{location.name}}</option>
           </select>
@@ -21,7 +21,7 @@
           <label class="col-form-label" for="warFrequencySelector"><b>War Frequency</b></label>
         </div>
         <div class="col-sm-8">
-          <select class="custom-select" id="warFrequencySelector" name="warFrequency" [(ngModel)]="filterModel.chosedWarFrequency">
+          <select class="custom-select" id="warFrequencySelector" name="warFrequency" [(ngModel)]="filterModel.selectedWarFrequency">
             <option [ngValue]="undefined" hidden selected>Choose war Frequency...</option>
             <option *ngFor="let frequency of warFrequency" [value]="frequency">{{frequency | warFrequency}}</option>
           </select>
@@ -32,7 +32,8 @@
           <label class="col-form-label" for="locationSelector"><b>Clan level</b></label>
         </div>
         <div class="col-sm-8">
-          <mat-slider class="slider-full-width" thumbLabel tickInterval="auto" min="1" max="25" step="1"></mat-slider>
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="auto" min="1" max="25" step="1"
+                      name="clanLevel" [(ngModel)]="filterModel.selectedClanLevel"></mat-slider>
         </div>
       </div>
       <div class="row">
@@ -40,24 +41,30 @@
           <label class="col-form-label" for="locationSelector"><b>Min member</b></label>
         </div>
         <div class="col-sm-3">
-          <mat-slider class="slider-full-width" thumbLabel tickInterval="1" min="1" max="50" step="1"></mat-slider>
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="0.5" min="1" max="50" step="1"
+                      name="minMember" [(ngModel)]="filterModel.selectedMinimumMember"></mat-slider>
         </div>
         <div class="col-sm-3">
           <label class="col-form-label" for="locationSelector"><b>Max member</b></label>
         </div>
         <div class="col-sm-3">
-          <mat-slider class="slider-full-width" thumbLabel tickInterval="1" min="1" max="50" step="1"></mat-slider>
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="0.5" min="1" max="50" step="1"
+                      name="maxMember" [(ngModel)]="filterModel.selectedMaximumMember"></mat-slider>
         </div>
         <div class="container row">
           <div class="col-sm-9">
             <ng-template #clanSearchResultTamplate let-model="item">
-              <span>{{model.tag}} - {{model.name}}, Clanlevel: {{model.clanLevel}}<em *ngIf="model.location">, {{model.location.name}}</em></span>
+              <span>{{model.tag}} - <b>{{model.name}}</b> - Clan level:
+                <span class="badge badge-dark">{{model.clanLevel}}</span>
+                <em *ngIf="model.location">&nbsp;{{model.location.name}}</em>
+              </span>
             </ng-template>
 
-            <input type="text" name="nameOrTag" [(ngModel)]="filterModel.choosedClanNameOrClanTag" typeaheadOptionField="tag"
-                   class="form-control" minlength="3" [typeaheadItemTemplate]="clanSearchResultTamplate"
-                   (typeaheadLoading)="changeTypeaheadLoading($event)" placeholder="Enter clan id or name..."
-                   [typeaheadWaitMs]="300" name="clanNameOrClanTag" required [typeahead]="dataSource">
+            <input type="text" name="nameOrTag" [(ngModel)]="filterModel.selectedClanNameOrClanTag" typeaheadOptionField="tag"
+                   class="form-control" [typeaheadItemTemplate]="clanSearchResultTamplate" [typeaheadOptionsInScrollableView]="4"
+                   placeholder="Enter clan id or name..." minlength="3" [typeaheadScrollable]="true" [typeaheadAsync]="true"
+                   [typeaheadWaitMs]="500" name="clanNameOrClanTag" required [typeahead]="dataSource"
+                   [typeaheadOptionsLimit]="150">
           </div>
           <div class="col-sm-3">
             <button type="submit" class="btn btn-primary mb-2" [disabled]="!form.form.valid">Search</button>

@@ -1,10 +1,8 @@
 export class FilterModel {
-  public chosedLocation: number;
-  public chosedWarFrequency: string;
-  public choosedClanLevl: number;
-  public choosedMinimumMember: number;
-  public choosedMaximumMember: number;
-  public choosedClanNameOrClanTag: string;
-
-  constructor() {}
+  public selectedLocationId: number;
+  public selectedWarFrequency: string;
+  public selectedClanLevel: number;
+  public selectedMinimumMember: number;
+  public selectedMaximumMember: number;
+  public selectedClanNameOrClanTag: string;
 }

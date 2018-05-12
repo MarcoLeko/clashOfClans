@@ -21,9 +21,7 @@ export class ClanSearchComponent implements OnInit {
     'never', 'unknown'];
 
   public dataSource;
-  public typeAheadLoading: boolean;
   public searchResult;
-
   public filterModel: FilterModel = new FilterModel();
 
   constructor(private router: Router, private clanSearchService: ClanSearchService,
@@ -40,38 +38,30 @@ export class ClanSearchComponent implements OnInit {
         }
       }
     });
-    this.dataSource = Observable.create((observer: any) => {
-      if (this.filterModel.choosedClanNameOrClanTag.length >= 3) {
-        this.clanSearchService.getClanByClanTag(this.filterModel.choosedClanNameOrClanTag).subscribe(
-          (result: ClansByClantagType) => {
-            this.searchResult = [];
-            this.searchResult.push(result);
-            console.log(this.searchResult);
-            observer.next(result);
-          }, err => console.log(err));
-      }
-    }).mergeMap((token: string) => this.searchForClans(token));
+    this.dataSource = Observable.create((observer: any) => this.getClan(observer)).mergeMap(() => {
+      return Observable.of(this.searchResult);
+    });
   }
 
-  searchForClans(token) {
-    let query = new RegExp(token, 'ig');
-
-    return Observable.of(
-      this.searchResult.filter((clan: any) => {
-        return query.test(clan);
-      })
-    );
+  private getClan(observer: any) {
+    this.clanSearchService.getClanByClanTag(this.filterModel.selectedClanNameOrClanTag).subscribe(
+      (result: ClansByClantagType) => {
+        this.searchResult = [];
+        this.searchResult.push(result);
+        observer.next(result);
+      }, () => this.getClanByFilter(observer));
   }
 
-  logForm(value: any) {
-    console.log(value);
-  }
-
-  changeTypeaheadLoading(e: boolean): void {
-    this.typeAheadLoading = e;
+  getClanByFilter(observer: any) {
+    this.clanSearchService.getClansByFilterValues(this.filterModel).subscribe(
+      (result: ClansByClantagType[]) => {
+        this.searchResult = [];
+        this.searchResult = result;
+        observer.next(result);
+      });
   }
 
   onSubmit(value) {
-    this.router.navigate(['search/' + value.playerId]);
+    console.log(value);
   }
 }

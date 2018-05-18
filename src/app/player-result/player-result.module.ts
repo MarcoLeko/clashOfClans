@@ -35,7 +35,7 @@ import {NoValueCellRendererComponent} from '../shared/components/ag-grid-cell-re
 import {HitPointsCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
 
 const appRoutes: Routes = [
-  {path: 'search/:playerId', component: PlayerSearchResultComponent, data: {depth: 3}}
+  {path: 'playerSearch/:playerId', component: PlayerSearchResultComponent, data: {depth: 3}}
 ];
 
 @NgModule({

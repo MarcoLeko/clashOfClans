@@ -17,7 +17,10 @@ export class LocationSearchService {
     if (this.hasCacheClan()) {
       return Observable.of(this.location);
     } else {
-      return this.http.get(LocationSearchService.LOCATIONURL).pipe(map((data: any) => this.location = data.items));
+      return this.http.get<any>(LocationSearchService.LOCATIONURL).pipe(map((data: any) => {
+          this.location = data.items.filter(location => location.name !== '');
+          return this.location;
+        }));
     }
   }
 

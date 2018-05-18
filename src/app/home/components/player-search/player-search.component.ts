@@ -21,6 +21,6 @@ export class PlayerSearchComponent implements OnInit {
   }
 
   onSubmit(value) {
-    this.router.navigate(['search/' + value.playerId]);
+    this.router.navigate(['playerSearch/' + value.playerId]);
   }
 }

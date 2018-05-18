@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from 'angularfire2/storage';
@@ -20,9 +20,10 @@ export class ClanSearchComponent implements OnInit {
   public warFrequency: string[] = ['always', 'moreThanOncePerWeek', 'oncePerWeek', 'lessThanOncePerWeek',
     'never', 'unknown'];
 
-  public dataSource;
-  public searchResult;
+  public dataSource: Observable<ClansByClantagType[]>;
+  public searchResult: ClansByClantagType[] = [];
   public filterModel: FilterModel = new FilterModel();
+  public formChanges: EventEmitter<FilterModel> = new EventEmitter<FilterModel>();
 
   constructor(private router: Router, private clanSearchService: ClanSearchService,
               private storage: AngularFireStorage,
@@ -31,25 +32,22 @@ export class ClanSearchComponent implements OnInit {
 
   ngOnInit() {
     this.ref.getDownloadURL().subscribe(url => this.clanCastleUrl = url);
-    this.locationService.getLocations().subscribe(locations => {
-      for (const location of locations) {
-        if (location.name !== '') {
-          this.locations.push(location);
-        }
-      }
-    });
-    this.dataSource = Observable.create((observer: any) => this.getClan(observer)).mergeMap(() => {
+    this.locationService.getLocations().subscribe(locations => this.locations = locations);
+    this.dataSource = Observable.create((observer: any) => this.formChanges.debounceTime(300)
+      .subscribe(() => this.getClan(observer))).mergeMap(() => {
       return Observable.of(this.searchResult);
     });
   }
 
   private getClan(observer: any) {
-    this.clanSearchService.getClanByClanTag(this.filterModel.selectedClanNameOrClanTag).subscribe(
-      (result: ClansByClantagType) => {
-        this.searchResult = [];
-        this.searchResult.push(result);
-        observer.next(result);
-      }, () => this.getClanByFilter(observer));
+    if (this.filterModel.selectedClanNameOrClanTag.length >= 3) {
+      this.clanSearchService.getClanByClanTag(this.filterModel.selectedClanNameOrClanTag).subscribe(
+        (result: ClansByClantagType) => {
+          this.searchResult = [];
+          this.searchResult.push(result);
+          observer.next(result);
+        }, () => this.getClanByFilter(observer));
+    }
   }
 
   getClanByFilter(observer: any) {
@@ -63,5 +61,9 @@ export class ClanSearchComponent implements OnInit {
 
   onSubmit(value) {
     console.log(value);
+  }
+
+  formChange(value) {
+    this.formChanges.emit(value);
   }
 }

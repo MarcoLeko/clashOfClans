@@ -4,7 +4,7 @@
     <p class="card-text">Search for clans by their clan tag or
       by filtering: You have to enter at least 3 characters for clan name or clan tag.
       Furthermore you can filter for clan level, war frequency, location and min and max member:</p>
-    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+    <form #clanForm="ngForm" (change)="formChange(clanForm.value)" (ngSubmit)="onSubmit(clanForm.value)">
       <div class="row">
         <div class="col-sm-4">
           <label class="col-form-label" for="locationSelector"><b>Location</b></label>
@@ -29,11 +29,11 @@
       </div>
       <div class="row">
         <div class="col-sm-4">
-          <label class="col-form-label" for="locationSelector"><b>Clan level</b></label>
+          <label class="col-form-label" for="locationSelector"><b>Min clan level</b></label>
         </div>
         <div class="col-sm-8">
-          <mat-slider class="slider-full-width" thumbLabel tickInterval="auto" min="1" max="25" step="1"
-                      name="clanLevel" [(ngModel)]="filterModel.selectedClanLevel"></mat-slider>
+          <mat-slider class="slider-full-width" (change)="formChange(clanForm.value)" thumbLabel tickInterval="auto"
+                      min="1" max="25" step="1" name="clanLevel" [(ngModel)]="filterModel.selectedClanLevel"></mat-slider>
         </div>
       </div>
       <div class="row">
@@ -41,14 +41,16 @@
           <label class="col-form-label" for="locationSelector"><b>Min member</b></label>
         </div>
         <div class="col-sm-3">
-          <mat-slider class="slider-full-width" thumbLabel tickInterval="0.5" min="1" max="50" step="1"
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="0.5"
+                      (change)="formChange(clanForm.value)" min="1" max="50" step="1"
                       name="minMember" [(ngModel)]="filterModel.selectedMinimumMember"></mat-slider>
         </div>
         <div class="col-sm-3">
           <label class="col-form-label" for="locationSelector"><b>Max member</b></label>
         </div>
         <div class="col-sm-3">
-          <mat-slider class="slider-full-width" thumbLabel tickInterval="0.5" min="1" max="50" step="1"
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="0.5"
+                      (change)="formChange(clanForm.value)" min="1" max="50" step="1"
                       name="maxMember" [(ngModel)]="filterModel.selectedMaximumMember"></mat-slider>
         </div>
         <div class="container row">
@@ -63,11 +65,11 @@
             <input type="text" name="nameOrTag" [(ngModel)]="filterModel.selectedClanNameOrClanTag" typeaheadOptionField="tag"
                    class="form-control" [typeaheadItemTemplate]="clanSearchResultTamplate" [typeaheadOptionsInScrollableView]="4"
                    placeholder="Enter clan id or name..." minlength="3" [typeaheadScrollable]="true" [typeaheadAsync]="true"
-                   [typeaheadWaitMs]="500" name="clanNameOrClanTag" required [typeahead]="dataSource"
-                   [typeaheadOptionsLimit]="150">
+                   name="clanNameOrClanTag" required [typeahead]="dataSource" [typeaheadOptionsLimit]="150"
+                  (keyup)="formChange(clanForm.value)">
           </div>
           <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary mb-2" [disabled]="!form.form.valid">Search</button>
+            <button type="submit" class="btn btn-primary mb-2" [disabled]="!clanForm.form.valid">Search</button>
           </div>
         </div>
       </div>

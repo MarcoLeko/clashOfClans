@@ -17,11 +17,13 @@ export class ClanSearchService {
   constructor(private http: HttpClient, private hashTransformer: HashTransformerService) {
   }
 
-  getClanByClanTag(clanTag: string) {
+  getClanByClanTag(clanTag: string): Observable<ClansByClantagType> {
     if (this.hasClanInCache(clanTag)) {
       return Observable.of(this.clan);
     } else {
-      return this.http.get<ClansByClantagType>(ClanSearchService.CLANURL + this.hashTransformer.transformHash(clanTag)).pipe(map(data => this.clan = data));
+      if (this.isClanNameValid(clanTag)) {
+        return this.http.get<ClansByClantagType>(ClanSearchService.CLANURL + this.hashTransformer.transformHash(clanTag)).pipe(map(data => this.clan = data));
+      }
     }
   }
 
@@ -41,11 +43,11 @@ export class ClanSearchService {
     }
   }
 
-  private hasClanInCache(clanTag: string) {
+  private hasClanInCache(clanTag: string): boolean {
     return this.clan && this.clan.tag === clanTag;
   }
 
-  private isClanNameValid(name: string) {
+  private isClanNameValid(name: string): boolean {
     return name && name.length >= 3;
   }
 }

@@ -46,7 +46,7 @@ export class ClanModalComponent implements OnChanges {
   memberSearch() {
     const memberId: number = this.agGrid.api.getSelectedRows()[0].tag;
     this.childModal.hide();
-    this.router.navigate(['search/' + memberId]);
+    this.router.navigate(['playerSearch/' + memberId]);
   }
 
 }

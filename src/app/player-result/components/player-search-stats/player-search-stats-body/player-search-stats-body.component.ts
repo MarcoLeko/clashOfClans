@@ -4,6 +4,7 @@ import {AchievementModalComponent} from './achievement-modal/achievement-modal/a
 import {ClanModalComponent} from './clan-modal/clan-modal.component';
 import {CurrentSeasonModalComponent} from './current-season-modal/current-season-modal.component';
 import {TroopsAndSpellsModalComponent} from './troops-and-spells-modal/troops-and-spells-modal.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-player-search-stats-body',
@@ -20,7 +21,9 @@ export class PlayerSearchStatsBodyComponent {
   @ViewChild(CurrentSeasonModalComponent) currentSeasonModal: CurrentSeasonModalComponent;
   @ViewChild(TroopsAndSpellsModalComponent) troopsAndSpellsModal: TroopsAndSpellsModalComponent;
 
-  clanSearch() {
-  }
+  constructor(private router: Router) {}
 
+  clanSearch() {
+    this.router.navigate(['clanSearch/' + this.playerResult.clan.tag]);
+  }
 }

@@ -60,7 +60,7 @@ export class ClanSearchComponent implements OnInit {
   }
 
   onSubmit(value) {
-    console.log(value);
+    this.router.navigate(['clanSearch/' + value.clanNameOrClanTag]);
   }
 
   formChange(value) {

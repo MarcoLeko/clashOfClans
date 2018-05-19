@@ -13,6 +13,7 @@ import {LocationSearchService} from './services/location-search/location-search.
 import {MatSliderModule} from '@angular/material/slider';
 import {WarFrequencyPipe} from './pipes/war-frequency.pipe';
 import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
+import {ClanResultModule} from '../clan-result/clan-result.module';
 
 const appRoutes: Routes = [
   {path: '', component: HomeFontPageComponent, data: {depth: 1}}
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     SharedModule,
     ReactiveFormsModule,
     PlayerResultModule,
+    ClanResultModule,
     TypeaheadModule.forRoot(),
     RouterModule.forChild(
       appRoutes

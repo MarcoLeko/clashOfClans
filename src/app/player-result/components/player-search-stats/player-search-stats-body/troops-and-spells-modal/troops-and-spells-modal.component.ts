@@ -40,7 +40,7 @@ export class TroopsAndSpellsModalComponent implements OnChanges {
 
   public columnDefsForHomeTroops = [
     {headerName: 'Name', width: 100, field: 'name'},
-    {headerName: 'Level', width: 80, field: 'level'},
+    {headerName: 'Level', width: 100, field: 'level'},
     {headerName: 'Progress', width: 100, field: 'isMaxLevel', cellRenderer: 'maxValueCellRendererComponent'},
     {headerName: 'Damage per sec', width: 150, field: 'damagePerSec', headerComponentFramework: DamagePerSecCellRendererComponent},
     {headerName: 'Damage per hit', width: 150, field: 'damagePerHit', headerComponentFramework: DamagePerHitCellRendererComponent},
@@ -48,7 +48,7 @@ export class TroopsAndSpellsModalComponent implements OnChanges {
   ];
   public columnDefsForHomeSpells = [
     {headerName: 'Name', width: 150, field: 'name'},
-    {headerName: 'Level', width: 80, field: 'level'},
+    {headerName: 'Level', width: 100, field: 'level'},
     {headerName: 'Progress', width: 100, field: 'isMaxLevel', cellRenderer: 'maxValueCellRendererComponent'},
     {headerName: 'Housing space', width: 130, field: 'housingSpace'},
     {headerName: 'Spell effect', width: 120, field: 'type'},
@@ -56,7 +56,7 @@ export class TroopsAndSpellsModalComponent implements OnChanges {
   ];
   public columnDefsForNightTroops = [
     {headerName: 'Name', width: 100, field: 'name'},
-    {headerName: 'Level', width: 80, field: 'level'},
+    {headerName: 'Level', width: 100, field: 'level'},
     {headerName: 'Progress', width: 100, field: 'isMaxLevel', cellRenderer: 'maxValueCellRendererComponent'},
     {headerName: 'Damage per sec', width: 150, field: 'damagePerSec', headerComponentFramework: DamagePerSecCellRendererComponent, cellRenderer: 'noValueCellRendererComponent'},
     {headerName: 'Damage per hit', width: 150, field: 'damagePerHit', headerComponentFramework: DamagePerHitCellRendererComponent, cellRenderer: 'noValueCellRendererComponent'},

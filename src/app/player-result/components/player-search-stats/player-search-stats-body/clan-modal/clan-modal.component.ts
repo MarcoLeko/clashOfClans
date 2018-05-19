@@ -23,8 +23,8 @@ export class ClanModalComponent implements OnChanges {
   public columnDefs = [
     {headerName: 'Tag', field: 'tag', width: 120},
     {headerName: 'Name', field: 'name', width: 170},
-    {headerName: 'Role', field: 'role', width: 90},
-    {headerName: 'Level', field: 'expLevel', width: 80},
+    {headerName: 'Role', field: 'role', width: 100},
+    {headerName: 'Level', field: 'expLevel', width: 90},
     {headerName: 'Home', field: 'trophies', width: 110, headerComponentFramework: TrophiesHomeCellRendererComponent},
     {headerName: 'Trophies Night', field: 'versusTrophies', width: 110, headerComponentFramework: TrophiesNightCellRendererComponent
     }

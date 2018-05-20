@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PlayerSearchResultComponent} from './components/player-search-result/player-search-result.component';
 import {PlayerSearchStatsComponent} from './components/player-search-stats/player-search-stats.component';
-import {ErrorSearchResultComponent} from './components/error-search-result/error-search-result.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
@@ -42,7 +41,6 @@ const appRoutes: Routes = [
   declarations: [
     PlayerSearchResultComponent,
     PlayerSearchStatsComponent,
-    ErrorSearchResultComponent,
     PlayerSearchStatsHeaderComponent,
     PlayerSearchStatsBodyComponent,
     AchievementModalComponent,

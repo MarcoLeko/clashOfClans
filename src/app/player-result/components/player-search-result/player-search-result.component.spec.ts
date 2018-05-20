@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PlayerSearchResultComponent} from './player-search-result.component';
 import {LoadingScreenComponent} from '../../../shared/components/loading-screen/loading-screen.component';
-import {ErrorSearchResultComponent} from '../error-search-result/error-search-result.component';
+import {ErrorSearchResultComponent} from '../../../shared/components/error-search-result/error-search-result.component';
 import {PlayerSearchStatsComponent} from '../player-search-stats/player-search-stats.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ActivatedRoute, Params} from '@angular/router';

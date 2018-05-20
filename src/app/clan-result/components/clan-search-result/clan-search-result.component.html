@@ -1,3 +1,11 @@
-<p>
-  clan-search-result works!
-</p>
+<div *ngIf="isLoading">
+  <app-loading-screen></app-loading-screen>
+</div>
+
+<div *ngIf="hasNoResultFound">
+  <app-error-search-result></app-error-search-result>
+</div>
+
+<div *ngIf="clanResult">
+  <p>Clan Result found!</p>
+</div>

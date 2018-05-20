@@ -15,6 +15,7 @@ import {DamagePerHitCellRendererComponent} from './components/ag-grid-cell-rende
 import {MaxValueCellRendererComponent} from './components/ag-grid-cell-renderer/max-value-cell-renderer.component';
 import {NoValueCellRendererComponent} from './components/ag-grid-cell-renderer/no-value-cell-renderer.component';
 import {HitPointsCellRendererComponent} from './components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
+import {ErrorSearchResultComponent} from './components/error-search-result/error-search-result.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {HitPointsCellRendererComponent} from './components/ag-grid-cell-renderer
     DamagePerHitCellRendererComponent,
     HitPointsCellRendererComponent,
     MaxValueCellRendererComponent,
-    NoValueCellRendererComponent
+    NoValueCellRendererComponent,
+    ErrorSearchResultComponent
   ],
   imports: [
     AngularFireStorageModule,
@@ -49,7 +51,8 @@ import {HitPointsCellRendererComponent} from './components/ag-grid-cell-renderer
     DamagePerSecCellRendererComponent,
     DamagePerHitCellRendererComponent,
     MaxValueCellRendererComponent,
-    NoValueCellRendererComponent
+    NoValueCellRendererComponent,
+    ErrorSearchResultComponent
   ]
 })
 export class SharedModule {

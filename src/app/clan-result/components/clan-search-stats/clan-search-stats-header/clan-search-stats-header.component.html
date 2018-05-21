@@ -1,7 +1,7 @@
-<div class="row" *ngIf="clanResult">
+<div class="container-fluid row" *ngIf="clanResult">
   <div class="col-md-2">
     <div class="text-center">
-      <img [src]="clanResult.badgeUrls.medium" alt="Clan Badge" width="180">
+      <img [src]="clanResult.badgeUrls.medium" alt="Clan Badge" width="160">
       <p class="font-weight-bold"><i>{{clanResult.location.name}}</i></p>
     </div>
   </div>
@@ -9,17 +9,34 @@
     <div class="container">
       <span><i>{{clanResult.tag}}</i></span>
       <p class="font-weight-bold">{{clanResult.name}}</p>
-      <div>
-        <label class="col-form-label" for="isWarPublicValue">Is warlog public:</label>
-        <span class="font-weight-bold" id="isWarPublicValue">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
-      </div>
-      <div class="stats-line-height">
-        <label class="col-form-label" for="warFrequencyValue">War frequency:</label>
-        <span class="font-weight-bold" id="warFrequencyValue">&emsp;{{clanResult.warFrequency | capitalizeFirstPipe}}</span>
-      </div>
+      <label class="col-form-label" for="isWarPublic">Is warlog public:</label>
+      <span class="font-weight-bold" id="isWarPublic">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
+      <label class="col-form-label" for="warFrequency">War frequency:</label>
+      <span class="font-weight-bold" id="warFrequency">&emsp;{{clanResult.warFrequency | warFrequency}}</span>
     </div>
   </div>
   <div class="stats-body-panel col-md-3">
+    <div class="container">
+      <div>
+        <label class="col-form-label" for="trophiesRequired">Trophies required:</label>
+        <span *ngIf="trophyHomeImg" class="font-weight-bold" id="trophiesRequired">
+          &emsp;{{clanResult.requiredTrophies}} <img [src]="trophyHomeImg" width="25"></span>
+      </div>
+      <div>
+        <label class="col-form-label" for="entryType">Entry type:</label>
+        <span class="font-weight-bold" id="entryType">&emsp;{{clanResult.type | capitalizeFirstPipe}}</span>
+      </div>
+      <div>
+        <label class="col-form-label" for="clanPoints">Clan points:</label>
+        <span *ngIf="trophyHomeImg" class="font-weight-bold" id="clanPoints">
+          &emsp;{{clanResult.clanPoints}} <img [src]="trophyHomeImg" width="25"></span>
+      </div>
+      <div>
+        <label class="col-form-label" for="clanVersusPoints">Clan versus points:</label>
+        <span *ngIf="trophyNightImg" class="font-weight-bold" id="clanVersusPoints">
+          &emsp;{{clanResult.clanVersusPoints}} <img [src]="trophyNightImg" width="25"></span>
+      </div>
+    </div>
   </div>
   <div class="col-md-4">
   </div>

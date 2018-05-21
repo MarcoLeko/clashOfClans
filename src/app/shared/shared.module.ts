@@ -16,6 +16,7 @@ import {MaxValueCellRendererComponent} from './components/ag-grid-cell-renderer/
 import {NoValueCellRendererComponent} from './components/ag-grid-cell-renderer/no-value-cell-renderer.component';
 import {HitPointsCellRendererComponent} from './components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
 import {ErrorSearchResultComponent} from './components/error-search-result/error-search-result.component';
+import {WarFrequencyPipe} from './pipes/war-frequency.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ErrorSearchResultComponent} from './components/error-search-result/error
     HitPointsCellRendererComponent,
     MaxValueCellRendererComponent,
     NoValueCellRendererComponent,
-    ErrorSearchResultComponent
+    ErrorSearchResultComponent,
+    WarFrequencyPipe
   ],
   imports: [
     AngularFireStorageModule,
@@ -52,7 +54,8 @@ import {ErrorSearchResultComponent} from './components/error-search-result/error
     DamagePerHitCellRendererComponent,
     MaxValueCellRendererComponent,
     NoValueCellRendererComponent,
-    ErrorSearchResultComponent
+    ErrorSearchResultComponent,
+    WarFrequencyPipe
   ]
 })
 export class SharedModule {

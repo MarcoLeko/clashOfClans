@@ -11,7 +11,6 @@ import {SharedModule} from '../shared/shared.module';
 import {ClanSearchComponent} from './components/clan-search/clan-search.component';
 import {LocationSearchService} from './services/location-search/location-search.service';
 import {MatSliderModule} from '@angular/material/slider';
-import {WarFrequencyPipe} from './pipes/war-frequency.pipe';
 import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import {ClanResultModule} from '../clan-result/clan-result.module';
 
@@ -26,7 +25,6 @@ const appRoutes: Routes = [
     PlayerSearchComponent,
     PlayerHashValidationDirective,
     ClanSearchComponent,
-    WarFrequencyPipe
   ],
   imports: [
     MatSliderModule,

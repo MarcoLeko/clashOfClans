@@ -1,7 +1,7 @@
-.stats-line-height {
-  margin-top: -1em;
-}
-
 .stats-body-panel {
   border-right: 1px solid #000;
+}
+
+.container-fluid {
+  height: 27vh;
 }

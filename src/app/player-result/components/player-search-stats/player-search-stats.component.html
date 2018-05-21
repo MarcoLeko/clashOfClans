@@ -1,8 +1,6 @@
-<div class="headerPanel">
-  <div class="container-fluid" *ngIf="playerResult">
-    <app-player-search-stats-header [playerResult]="playerResult"></app-player-search-stats-header>
-  </div>
+<div class="headerPanel container-fluid" *ngIf="playerResult">
+  <app-player-search-stats-header [playerResult]="playerResult"></app-player-search-stats-header>
 </div>
-<div class="container-fluid bodyPanel" *ngIf="playerResult">
+<div class="bodyPanel container-fluid" *ngIf="playerResult">
   <app-player-search-stats-body [playerResult]="playerResult" [clanInfo]="clanInfo"></app-player-search-stats-body>
 </div>

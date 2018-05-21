@@ -1,0 +1,26 @@
+<div class="row" *ngIf="clanResult">
+  <div class="col-md-2">
+    <div class="text-center">
+      <img [src]="clanResult.badgeUrls.medium" alt="Clan Badge" width="180">
+      <p class="font-weight-bold"><i>{{clanResult.location.name}}</i></p>
+    </div>
+  </div>
+  <div class="stats-body-panel col-md-3">
+    <div class="container">
+      <span><i>{{clanResult.tag}}</i></span>
+      <p class="font-weight-bold">{{clanResult.name}}</p>
+      <div>
+        <label class="col-form-label" for="isWarPublicValue">Is warlog public:</label>
+        <span class="font-weight-bold" id="isWarPublicValue">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
+      </div>
+      <div class="stats-line-height">
+        <label class="col-form-label" for="warFrequencyValue">War frequency:</label>
+        <span class="font-weight-bold" id="warFrequencyValue">&emsp;{{clanResult.warFrequency | capitalizeFirstPipe}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="stats-body-panel col-md-3">
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>

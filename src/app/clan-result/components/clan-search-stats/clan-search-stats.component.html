@@ -1,3 +1,6 @@
-<p>
-  clan-search-stats works!
-</p>
+<div class="headerPanel container-fluid" *ngIf="clanResult">
+  <app-clan-search-stats-header [clanResult]="clanResult"></app-clan-search-stats-header>
+</div>
+<div class="bodyPanel container-fluid" *ngIf="clanResult">
+  <app-clan-search-stats-body [clanResult]="clanResult"></app-clan-search-stats-body>
+</div>

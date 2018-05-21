@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ClansByClantagType} from '../../../../generated/types';
 
 @Component({
   selector: 'app-clan-search-stats',
@@ -7,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ClanSearchStatsComponent implements OnInit {
 
+  @Input()clanResult: ClansByClantagType;
   constructor() {
   }
 

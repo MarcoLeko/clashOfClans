@@ -8,8 +8,7 @@ import {isUndefined} from 'util';
 
 @Component({
   selector: 'app-player-result',
-  templateUrl: './player-search-result.component.html',
-  styleUrls: ['./player-search-result.component.css']
+  templateUrl: './player-search-result.component.html'
 })
 export class PlayerSearchResultComponent implements OnInit {
 

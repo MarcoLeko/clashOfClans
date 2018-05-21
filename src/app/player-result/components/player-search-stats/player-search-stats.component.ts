@@ -3,8 +3,7 @@ import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/t
 
 @Component({
   selector: 'app-player-search-stats',
-  templateUrl: './player-search-stats.component.html',
-  styleUrls: ['./player-search-stats.component.css']
+  templateUrl: './player-search-stats.component.html'
 })
 export class PlayerSearchStatsComponent {
 

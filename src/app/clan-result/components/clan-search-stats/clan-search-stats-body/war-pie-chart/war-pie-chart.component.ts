@@ -30,12 +30,13 @@ export class WarPieChartComponent implements OnInit {
     legend: {
       position: 'right',
       labels: {
-        padding: 40,
+        padding: 20,
         fontSize: 20,
         fontColor: '#212529'
       }
     }
   };
+
 
   ngOnInit() {
     this.pieChartLabels = ['Wins: ' + `${this.clanResult.warWins}`, 'Losses: ' + `${this.clanResult.warLosses}`,

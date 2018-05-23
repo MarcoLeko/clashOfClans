@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-7">
+    <div *ngIf="clanResult">
+      <canvas  id='pieChart' width="350" height="auto"
+              [data]="pieChartData" [labels]="pieChartLabels"
+              [chartType]="pieChartType" [options]="pieChartOptions"
+              [colors]="pieChartColors" baseChart></canvas>
+    </div>
+  </div>
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>

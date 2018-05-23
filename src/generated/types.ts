@@ -32,6 +32,8 @@ export interface ClansByClantagType {
   warFrequency: string;
   warWinStreak: number;
   warWins: number;
+  warLosses?: number;
+  warTies?: number;
   isWarLogPublic: boolean;
   description: string;
   memberList: ClanMembersType[];

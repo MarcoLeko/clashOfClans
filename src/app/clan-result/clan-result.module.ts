@@ -9,6 +9,9 @@ import {ClanSearchStatsBodyComponent} from './components/clan-search-stats/clan-
 import {FormsModule} from '@angular/forms';
 import {IsWarLogPublicPipe} from './pipes/is-war-log-public/is-war-log-public.pipe';
 import {EnterTypePipe} from './pipes/enter-type/enter-type.pipe';
+import {WarPieChartComponent} from './components/clan-search-stats/clan-search-stats-body/war-pie-chart/war-pie-chart.component';
+import {ClanMemberOverviewComponent} from './components/clan-search-stats/clan-search-stats-body/clan-member-overview/clan-member-overview.component';
+import {ChartsModule} from 'ng2-charts';
 
 const appRoutes: Routes = [
   {path: 'clanSearch/:clanId', component: ClanSearchResultComponent, data: {depth: 3}}
@@ -21,12 +24,15 @@ const appRoutes: Routes = [
     ClanSearchStatsHeaderComponent,
     ClanSearchStatsBodyComponent,
     IsWarLogPublicPipe,
-    EnterTypePipe
+    EnterTypePipe,
+    WarPieChartComponent,
+    ClanMemberOverviewComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
+    ChartsModule,
     RouterModule.forChild(
       appRoutes
     )

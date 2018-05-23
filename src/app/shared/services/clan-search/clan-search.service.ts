@@ -28,8 +28,9 @@ export class ClanSearchService {
   }
 
   getClansByFilterValues(filterValues: FilterModel): Observable<any> {
-    if (this.isClanNameValid(filterValues.selectedClanNameOrClanTag)) {
-      let url: string = 'v1/clans?';
+    let url: string = 'v1/clans?';
+    if (this.isClanNameValid(filterValues.selectedClanNameOrClanTag) &&
+      !filterValues.selectedClanNameOrClanTag.includes('#')) {
       for (const value in filterValues) {
         for (const parameter in ClanSearchParameters) {
           let firstOperator: string = value;
@@ -40,6 +41,8 @@ export class ClanSearchService {
         }
       }
       return this.http.get<any>(url).pipe(map(data => this.clans = data.items));
+    } else {
+      return Observable.of([]);
     }
   }
 

@@ -5,7 +5,7 @@
       <p class="font-weight-bold"><i>{{clanResult.location.name}}</i></p>
     </div>
   </div>
-  <div class="stats-body-panel col-md-3">
+  <div class="stats-right-border-panel col-md-3">
     <div class="container">
       <span><i>{{clanResult.tag}}</i></span>
       <p class="font-weight-bold">{{clanResult.name}}</p>
@@ -15,7 +15,7 @@
       <span class="font-weight-bold" id="warFrequency">&emsp;{{clanResult.warFrequency | warFrequency}}</span>
     </div>
   </div>
-  <div class="stats-body-panel col-md-3">
+  <div class="stats-right-border-panel col-md-3">
     <div class="container">
       <div>
         <label class="col-form-label" for="trophiesRequired">Trophies required:</label>
@@ -24,7 +24,7 @@
       </div>
       <div>
         <label class="col-form-label" for="entryType">Entry type:</label>
-        <span class="font-weight-bold" id="entryType">&emsp;{{clanResult.type | capitalizeFirstPipe}}</span>
+        <span class="font-weight-bold" id="entryType">&emsp;{{clanResult.type | enterTypePipe}}</span>
       </div>
       <div>
         <label class="col-form-label" for="clanPoints">Clan points:</label>
@@ -39,5 +39,9 @@
     </div>
   </div>
   <div class="col-md-4">
+    <label class="col-form-label" for="clanVersusPoints">Description:</label>
+    <div>
+      <span>{{clanResult.description}}</span>
+    </div>
   </div>
 </div>

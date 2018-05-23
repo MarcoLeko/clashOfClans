@@ -8,7 +8,7 @@ import {ClanSearchStatsHeaderComponent} from './components/clan-search-stats/cla
 import {ClanSearchStatsBodyComponent} from './components/clan-search-stats/clan-search-stats-body/clan-search-stats-body.component';
 import {FormsModule} from '@angular/forms';
 import {IsWarLogPublicPipe} from './pipes/is-war-log-public/is-war-log-public.pipe';
-import {CapitalizeFirstPipe} from './pipes/capitalize-first/capitalize-first.pipe';
+import {EnterTypePipe} from './pipes/enter-type/enter-type.pipe';
 
 const appRoutes: Routes = [
   {path: 'clanSearch/:clanId', component: ClanSearchResultComponent, data: {depth: 3}}
@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     ClanSearchStatsHeaderComponent,
     ClanSearchStatsBodyComponent,
     IsWarLogPublicPipe,
-    CapitalizeFirstPipe
+    EnterTypePipe
   ],
   imports: [
     CommonModule,

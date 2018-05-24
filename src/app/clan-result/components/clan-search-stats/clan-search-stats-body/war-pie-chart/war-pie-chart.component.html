@@ -1,14 +1,24 @@
-<div class="row">
-  <div class="col-md-7">
-    <div *ngIf="clanResult">
-      <canvas  id='pieChart' width="350" height="auto"
+<div class="row" *ngIf="clanResult">
+  <div class="col-md-5">
+    <div>
+      <canvas id='pieChart' width="300" height="auto"
               [data]="pieChartData" [labels]="pieChartLabels"
               [chartType]="pieChartType" [options]="pieChartOptions"
-              [colors]="pieChartColors" baseChart></canvas>
+              [colors]="backgroundOnChanges()" baseChart></canvas>
     </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 text-center align-center">
+      <span class="player-info-font">Current win streak: <span class="player-info-font font-weight-bold">
+        {{clanResult.warWinStreak}}</span>
+      </span>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-4">
+    <h5>Activate the color blindness-mode</h5>
+    <span>add some patterns to the chart:</span>
+    <ui-switch [(ngModel)]="isColorBlindnessActivated" switchColor="#c7c4c5"
+               (change)="isColorBlindnessActivated = !isColorBlindnessActivated"></ui-switch>
+    <div *ngIf="isColorBlindnessActivated">
+      <small><em>Color blindness-mode is activated!</em></small>
+    </div>
   </div>
 </div>

@@ -124,3 +124,8 @@ button.list-group-item-dark.active:hover {
 .headerPanel {
   margin: 1em auto;
 }
+
+span.switch.switch-medium {
+  vertical-align: middle;
+  margin-left: 0.5em;
+}

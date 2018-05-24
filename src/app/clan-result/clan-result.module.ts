@@ -12,6 +12,7 @@ import {EnterTypePipe} from './pipes/enter-type/enter-type.pipe';
 import {WarPieChartComponent} from './components/clan-search-stats/clan-search-stats-body/war-pie-chart/war-pie-chart.component';
 import {ClanMemberOverviewComponent} from './components/clan-search-stats/clan-search-stats-body/clan-member-overview/clan-member-overview.component';
 import {ChartsModule} from 'ng2-charts';
+import {UiSwitchModule} from 'angular2-ui-switch';
 
 const appRoutes: Routes = [
   {path: 'clanSearch/:clanId', component: ClanSearchResultComponent, data: {depth: 3}}
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     SharedModule,
     FormsModule,
     ChartsModule,
+    UiSwitchModule,
     RouterModule.forChild(
       appRoutes
     )

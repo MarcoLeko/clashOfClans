@@ -1,24 +1,24 @@
-<div class="row" *ngIf="clanResult">
-  <div class="col-md-5">
-    <div>
-      <canvas id='pieChart' width="300" height="auto"
-              [data]="pieChartData" [labels]="pieChartLabels"
-              [chartType]="pieChartType" [options]="pieChartOptions"
-              [colors]="backgroundOnChanges()" baseChart></canvas>
+<div class="row" *ngIf="pieChartConfig && clanResult">
+  <div class="col-md-4">
+    <div class="mt-5 pull-right">
+      <h5>Activate the color blindness-mode</h5>
+      <span>Add some patterns to the chart:</span>
+      <ui-switch switchColor="#c7c4c5" [(ngModel)]="pieChartConfig.isColorBlindnessActivated"
+                 (change)="pieChartConfig.isColorBlindnessActivated != pieChartConfig.isColorBlindnessActivated"></ui-switch>
+      <div *ngIf="pieChartConfig.isColorBlindnessActivated">
+        <small><em>Color blindness-mode is activated!</em></small>
+      </div>
     </div>
+  </div>
+  <div class="col-md-5">
+    <canvas id='pieChart' width="300" height="auto"
+            [data]="pieChartConfig.getData()" [labels]="pieChartConfig.getLabels()"
+            [chartType]="pieChartConfig.getType()" [options]="pieChartConfig.getChartOptions()"
+            [colors]="backgroundOnChanges()" baseChart></canvas>
   </div>
   <div class="col-md-3 text-center align-center">
-      <span class="player-info-font">Current win streak: <span class="player-info-font font-weight-bold">
+    <span class="player-info-font">Current win streak: <span class="player-info-font font-weight-bold">
         {{clanResult.warWinStreak}}</span>
-      </span>
-  </div>
-  <div class="col-md-4">
-    <h5>Activate the color blindness-mode</h5>
-    <span>add some patterns to the chart:</span>
-    <ui-switch [(ngModel)]="isColorBlindnessActivated" switchColor="#c7c4c5"
-               (change)="isColorBlindnessActivated = !isColorBlindnessActivated"></ui-switch>
-    <div *ngIf="isColorBlindnessActivated">
-      <small><em>Color blindness-mode is activated!</em></small>
-    </div>
+    </span>
   </div>
 </div>

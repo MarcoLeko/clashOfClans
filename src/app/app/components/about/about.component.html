@@ -1,27 +1,27 @@
-<div class="content-padding">
+<div class="content-padding" *ngIf="autorUrl">
   <div class="container row">
     <div class="col-md-9">
       <p class="aboutMeFontStyle">I can proudly announce my first Angular project.
       This application sacrificed a loot of blood, sweat and tears until it was finished. It was 100% intended
-      for <b>learning purposes</b> and has therefore no <b>commercial income</b>. This application uses images from
+      for <b>learning purposes</b> and has therefore no <b>commercial income</b>. This application uses images from the
       <a href="http://www.clashofclans.wikia.com/wiki/Clash_of_Clans_Wiki">clash of clans wiki site</a>.
       </p>
     </div>
-    <div class="col-md-3" *ngIf="autorUrl">
+    <div class="col-md-3">
       <img class="rounded" [src]="autorUrl" width="220">
     </div>
     <div class="col-md-12">
       <h3><img src="assets/ClashLogo.png" width="50">&nbsp;For the love of Clash of Clans ❤</h3>
-      <p class="aboutMeFontStyle">
+      <p>
         Why a Clash app? I'm for several year a passionate Clash of Clans player with a maxed townhall 9 account. My focus
         are clan wars. It keeps me playing constantly to progress alongside with my friends. Thanks on Clash for providing
-        with their API Clash of Clans in game data.
+        us with in game data.
       </p>
       <br>
-      <p class="aboutMeFontStyle">
+      <p>
         This project integrates great libraries and frontend frameworks such as Chart.js, Bootstrap, Ag-grid, Firebase and many more.
         Furthermore this application process with complex data structure, async data flow and was a great practise for me in my
-        pretty young frontend career. If u have any questions don't hesitate to contact me on: <b><em>L.__marco@hotmail.de</em></b>.
+        pretty young frontend career. If you have any questions don't hesitate to contact me on: <b><em>L.__marco@hotmail.de</em></b>.
       </p>
     </div>
   </div>

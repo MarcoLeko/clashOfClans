@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {PlayerByPlayerTagType} from '../../../../generated/types';
-import {HashTransformerService} from '../../../shared/services/hash-transformer/hash-transformer.service';
-import {map} from 'rxjs/operators';
+import {HashTransformerService} from '../hash-transformer/hash-transformer.service';
 
 @Injectable()
 export class PlayerSearchService {
@@ -19,8 +18,8 @@ export class PlayerSearchService {
     if (this.hasCachePlayer(playerTag)) {
       return Observable.of(this.player);
     } else {
-      return this.http.get<PlayerByPlayerTagType>(PlayerSearchService.PLAYERURL + this.hashTransformer.transformHash(playerTag)).
-        pipe(map(data => this.player = data));
+      return this.http.get<PlayerByPlayerTagType>(PlayerSearchService.PLAYERURL + this.hashTransformer.transformHash(playerTag))
+        .map(data => this.player = data);
     }
   }
 

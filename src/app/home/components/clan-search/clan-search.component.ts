@@ -34,7 +34,7 @@ export class ClanSearchComponent implements OnInit {
     this.ref.getDownloadURL().subscribe(url => this.clanCastleUrl = url);
     this.locationService.getLocations().subscribe(locations => this.locations = locations);
     this.dataSource = Observable.create((observer: any) => this.formChanges.debounceTime(300)
-      .subscribe(() => this.getClan(observer))).mergeMap(() => {
+      .subscribe(() => this.getClan(observer))).switchMap(() => {
       return Observable.of(this.searchResult);
     });
   }
@@ -49,6 +49,7 @@ export class ClanSearchComponent implements OnInit {
         }, () => this.getClanByFilter(observer));
     }
   }
+
 
   getClanByFilter(observer: any) {
     this.clanSearchService.getClansByFilterValues(this.filterModel).subscribe(

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/types';
-import {PlayerSearchService} from '../../services/player-search/player-search.service';
+import {PlayerSearchService} from '../../../shared/services/player-search/player-search.service';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
 import 'rxjs/add/observable/of';
 import {isUndefined} from 'util';

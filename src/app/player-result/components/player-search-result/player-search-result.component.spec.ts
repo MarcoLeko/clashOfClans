@@ -10,7 +10,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 import {HashTransformerService} from '../../../shared/services/hash-transformer/hash-transformer.service';
-import {PlayerSearchService} from '../../services/player-search/player-search.service';
+import {PlayerSearchService} from '../../../shared/services/player-search/player-search.service';
 import {ActivatedRouteStub} from '../../../testing/activatedroute-stub';
 import {Mocks} from '../../../testing/mocks';
 import {PlayerSearchStatsHeaderComponent} from '../player-search-stats/player-search-stats-header/player-search-stats-header.component';

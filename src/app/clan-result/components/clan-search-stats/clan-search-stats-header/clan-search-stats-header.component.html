@@ -7,12 +7,20 @@
   </div>
   <div class="stats-right-border-panel col-md-3">
     <div class="container">
-      <span><i>{{clanResult.tag}}</i></span>
+      <p><i>{{clanResult.tag}}</i></p>
       <p class="font-weight-bold">{{clanResult.name}}</p>
-      <label class="col-form-label" for="isWarPublic">Is warlog public:</label>
-      <span class="font-weight-bold" id="isWarPublic">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
-      <label class="col-form-label" for="warFrequency">War frequency:</label>
-      <span class="font-weight-bold" id="warFrequency">&emsp;{{clanResult.warFrequency | warFrequency}}</span>
+      <div>
+        <label class="col-form-label" for="isWarPublic">Is warlog public:</label>
+        <span class="font-weight-bold" id="isWarPublic">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
+      </div>
+      <div>
+        <label class="col-form-label" for="warFrequency">War frequency:</label>
+        <span class="font-weight-bold" id="warFrequency">&emsp;{{clanResult.warFrequency | warFrequency}}</span>
+      </div>
+      <div>
+        <label class="col-form-label" for="memberCount">Member:</label>
+        <span class="font-weight-bold" id="memberCount">&emsp;{{clanResult.members}}</span>
+      </div>
     </div>
   </div>
   <div class="stats-right-border-panel col-md-3">

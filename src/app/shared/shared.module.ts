@@ -16,7 +16,9 @@ import {MaxValueCellRendererComponent} from './components/ag-grid-cell-renderer/
 import {NoValueCellRendererComponent} from './components/ag-grid-cell-renderer/no-value-cell-renderer.component';
 import {HitPointsCellRendererComponent} from './components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
 import {ErrorSearchResultComponent} from './components/error-search-result/error-search-result.component';
-import {WarFrequencyPipe} from './pipes/war-frequency.pipe';
+import {WarFrequencyPipe} from './pipes/war-frequency/war-frequency.pipe';
+import {PlayerSearchService} from './services/player-search/player-search.service';
+import {RoleTypePipe} from './pipes/role-type/role-type.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {WarFrequencyPipe} from './pipes/war-frequency.pipe';
     MaxValueCellRendererComponent,
     NoValueCellRendererComponent,
     ErrorSearchResultComponent,
-    WarFrequencyPipe
+    WarFrequencyPipe,
+    RoleTypePipe
   ],
   imports: [
     AngularFireStorageModule,
@@ -43,6 +46,7 @@ import {WarFrequencyPipe} from './pipes/war-frequency.pipe';
   },
     HashTransformerService,
     TownhallPictureService,
+    PlayerSearchService,
     ClanSearchService
   ],
   exports: [
@@ -55,7 +59,8 @@ import {WarFrequencyPipe} from './pipes/war-frequency.pipe';
     MaxValueCellRendererComponent,
     NoValueCellRendererComponent,
     ErrorSearchResultComponent,
-    WarFrequencyPipe
+    WarFrequencyPipe,
+    RoleTypePipe
   ]
 })
 export class SharedModule {

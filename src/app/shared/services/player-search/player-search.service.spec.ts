@@ -1,9 +1,9 @@
-import { inject, TestBed } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { PlayerSearchService } from './player-search.service';
-import { HashTransformerService } from '../../../shared/services/hash-transformer/hash-transformer.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Mocks } from '../../../testing/mocks';
+import {PlayerSearchService} from './player-search.service';
+import {HashTransformerService} from '../hash-transformer/hash-transformer.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {Mocks} from '../../../testing/mocks';
 
 describe('PlayerSearchService', () => {
 

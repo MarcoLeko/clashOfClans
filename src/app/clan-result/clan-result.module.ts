@@ -13,6 +13,10 @@ import {WarPieChartComponent} from './components/clan-search-stats/clan-search-s
 import {ClanMemberOverviewComponent} from './components/clan-search-stats/clan-search-stats-body/clan-member-overview/clan-member-overview.component';
 import {ChartsModule} from 'ng2-charts';
 import {UiSwitchModule} from 'angular2-ui-switch';
+import {CompleteClanMemberStatsService} from './services/complete-clan-member-stats/complete-clan-member-stats.service';
+import {TrophiesNightCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
+import {TrophiesHomeCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
+import {AgGridModule} from 'ag-grid-angular';
 
 const appRoutes: Routes = [
   {path: 'clanSearch/:clanId', component: ClanSearchResultComponent, data: {depth: 3}}
@@ -30,6 +34,10 @@ const appRoutes: Routes = [
     ClanMemberOverviewComponent
   ],
   imports: [
+    AgGridModule.withComponents([
+      TrophiesHomeCellRendererComponent,
+      TrophiesNightCellRendererComponent
+    ]),
     CommonModule,
     SharedModule,
     FormsModule,
@@ -38,6 +46,9 @@ const appRoutes: Routes = [
     RouterModule.forChild(
       appRoutes
     )
+  ],
+  providers: [
+    CompleteClanMemberStatsService
   ]
 })
 

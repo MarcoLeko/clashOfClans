@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
-import {ClanMembersType, ClansByClantagType, PlayerByPlayerTagType} from '../../../../../../generated/types';
+import {ClansByClantagType, PlayerByMemberListType, PlayerByPlayerTagType} from '../../../../../../generated/types';
 import {Router} from '@angular/router';
 import {AgGridNg2} from 'ag-grid-angular';
 import {TrophiesHomeCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
@@ -19,14 +19,14 @@ export class ClanModalComponent implements OnChanges {
   @Input() playerResult: PlayerByPlayerTagType;
   @Input() clanInfo: ClansByClantagType;
 
-  public rowData: ClanMembersType[];
+  public rowData: PlayerByMemberListType[];
   public columnDefs = [
     {headerName: 'Tag', field: 'tag', width: 120},
     {headerName: 'Name', field: 'name', width: 170},
     {headerName: 'Role', field: 'role', width: 100},
     {headerName: 'Level', field: 'expLevel', width: 90},
     {headerName: 'Home', field: 'trophies', width: 110, headerComponentFramework: TrophiesHomeCellRendererComponent},
-    {headerName: 'Trophies Night', field: 'versusTrophies', width: 110, headerComponentFramework: TrophiesNightCellRendererComponent
+    {headerName: 'Night', field: 'versusTrophies', width: 110, headerComponentFramework: TrophiesNightCellRendererComponent
     }
   ];
 

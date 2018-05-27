@@ -3,12 +3,12 @@ import {inject, TestBed} from '@angular/core/testing';
 import {HeaderInterceptorService} from './header-interceptor.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {PlayerSearchService} from '../../../player-result/services/player-search/player-search.service';
+import {PlayerSearchService} from '../player-search/player-search.service';
 import {HashTransformerService} from '../hash-transformer/hash-transformer.service';
 import {Mocks} from '../../../testing/mocks';
 
 describe('HeaderInterceptorService', () => {
-  const testToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImYwZjAxYWNkLWY4ZGEtNDYxMy1hMWVlLWZkMTM4ZmZjZjZhMSIsImlhdCI6MTUyNzI1MjY3Miwic3ViIjoiZGV2ZWxvcGVyLzFjZTE4NzU2LTNkMjAtZjlhZi1lOWVkLTg2YmU4MGEzYjdlMiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjEzOC4yNDYuMi4xNjkiXSwidHlwZSI6ImNsaWVudCJ9XX0.U6vmspJwEdK5KYQvQmhVYaUle-DEfIGDTm_M2zirgcUNYhFO3ZqYI6qFAcQu49IEm56tz3gPl_O_b_gNdFiCSw';
+  const testToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImU5YzE0MTU1LWMwYWUtNDBiMC1hY2Q5LTdhMmYwMGYzNzg3MSIsImlhdCI6MTUyNzM1MjAwNSwic3ViIjoiZGV2ZWxvcGVyLzFjZTE4NzU2LTNkMjAtZjlhZi1lOWVkLTg2YmU4MGEzYjdlMiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjE3OC4xMC4xMDYuOSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.Uqo4Qac6NAVRagYJ9WxvLKnjHYoVtyVlNajerHrQUvqC7oAXbRZC0fiPCAK1vuFaGpdh3SeuAxe0RBlLpIOQnQ';
 
   let service: PlayerSearchService;
   let httpMock: HttpTestingController;

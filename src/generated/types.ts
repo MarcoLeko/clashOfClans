@@ -36,27 +36,9 @@ export interface ClansByClantagType {
   warTies?: number;
   isWarLogPublic: boolean;
   description: string;
-  memberList: ClanMembersType[];
+  memberList: PlayerByMemberListType[];
 }
 
-/**List clan members**/
-export interface ClanMembersType {
-  tag: string;
-  name: string;
-  expLevel: number;
-  league: {
-    id: number,
-    name: string,
-    iconUrls: UrlType,
-    trophies: number,
-    versusTrophies: number,
-    role: string,
-    clanRank: number,
-    previousClanRank: number
-    donations: number;
-    donationsReceived: number;
-  };
-}
 /**Retrieve clan's clan war log**/
 export interface WarlogbyClantagType {
   result: string;
@@ -266,6 +248,19 @@ export interface PlayerByPlayerTagType {
   spells: TroopsHeroesAndSpellType[];
 }
 
+export interface PlayerByMemberListType {
+  clanRank: number;
+  donations: number;
+  donationsReceived: number;
+  expLevel: number;
+  league: LeagueType;
+  name: string;
+  previousClanRank: number;
+  role: string;
+  tag: string;
+  trophies: number;
+  versusTrophies: number;
+}
 export interface DonationsType {
   donations: number;
   donationsReceived: number;

@@ -6,7 +6,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {SharedModule} from '../shared/shared.module';
-import {PlayerSearchService} from './services/player-search/player-search.service';
 import {PlayerSearchStatsHeaderComponent} from './components/player-search-stats/player-search-stats-header/player-search-stats-header.component';
 import {PlayerSearchStatsBodyComponent} from './components/player-search-stats/player-search-stats-body/player-search-stats-body.component';
 import {HeroMapperService} from './services/hero-mapper/hero-mapper.service';
@@ -78,7 +77,6 @@ const appRoutes: Routes = [
     SpellsHomeStatsDisplayService,
     TroopsNightAttackStatsDisplayService,
     HttpClientModule,
-    PlayerSearchService,
     HeroMapperService,
     BuilderInfoService
   ],

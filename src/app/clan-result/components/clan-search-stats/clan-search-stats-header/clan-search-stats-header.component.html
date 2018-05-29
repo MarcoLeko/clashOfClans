@@ -9,17 +9,20 @@
     <div class="container">
       <p><i>{{clanResult.tag}}</i></p>
       <p class="font-weight-bold">{{clanResult.name}}</p>
-      <div>
-        <label class="col-form-label" for="isWarPublic">Is warlog public:</label>
-        <span class="font-weight-bold" id="isWarPublic">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
-      </div>
-      <div>
-        <label class="col-form-label" for="warFrequency">War frequency:</label>
-        <span class="font-weight-bold" id="warFrequency">&emsp;{{clanResult.warFrequency | warFrequency}}</span>
-      </div>
-      <div>
-        <label class="col-form-label" for="memberCount">Member:</label>
-        <span class="font-weight-bold" id="memberCount">&emsp;{{clanResult.members}}</span>
+      <div class="content-aligner">
+        <div>
+          <label class="col-form-label" for="isWarPublic">Is warlog public:</label>
+          <span class="font-weight-bold"
+                id="isWarPublic">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
+        </div>
+        <div>
+          <label class="col-form-label" for="warFrequency">War frequency:</label>
+          <span class="font-weight-bold" id="warFrequency">&emsp;{{clanResult.warFrequency | warFrequency}}</span>
+        </div>
+        <div>
+          <label class="col-form-label" for="memberCount">Member:</label>
+          <span class="font-weight-bold" id="memberCount">&emsp;{{clanResult.members}}</span>
+        </div>
       </div>
     </div>
   </div>

@@ -31,6 +31,7 @@ import {DamagePerHitCellRendererComponent} from '../shared/components/ag-grid-ce
 import {MaxValueCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/max-value-cell-renderer.component';
 import {NoValueCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/no-value-cell-renderer.component';
 import {HitPointsCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
+import {RoleCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/role-cell-renderer-component';
 
 const appRoutes: Routes = [
   {path: 'playerSearch/:playerId', component: PlayerSearchResultComponent, data: {depth: 3}}
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
       DamagePerSecCellRendererComponent,
       DamagePerHitCellRendererComponent,
       MaxValueCellRendererComponent,
-      NoValueCellRendererComponent
+      NoValueCellRendererComponent,
+      RoleCellRendererComponent
     ]),
     ModalModule.forRoot(),
     ProgressbarModule.forRoot(),

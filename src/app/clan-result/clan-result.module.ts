@@ -17,6 +17,10 @@ import {CompleteClanMemberStatsService} from './services/complete-clan-member-st
 import {TrophiesNightCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
 import {TrophiesHomeCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
 import {AgGridModule} from 'ag-grid-angular';
+import {LeagueBadgeCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/league-badge-cell-renderer.component';
+import {RoleCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/role-cell-renderer-component';
+import {TownhallPictureCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/townhall-picture-cell-renderer.component';
+import {WarStarsCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/war-stars-cell-renderer.component';
 
 const appRoutes: Routes = [
   {path: 'clanSearch/:clanId', component: ClanSearchResultComponent, data: {depth: 3}}
@@ -36,7 +40,11 @@ const appRoutes: Routes = [
   imports: [
     AgGridModule.withComponents([
       TrophiesHomeCellRendererComponent,
-      TrophiesNightCellRendererComponent
+      TrophiesNightCellRendererComponent,
+      LeagueBadgeCellRendererComponent,
+      RoleCellRendererComponent,
+      TownhallPictureCellRendererComponent,
+      WarStarsCellRendererComponent
     ]),
     CommonModule,
     SharedModule,

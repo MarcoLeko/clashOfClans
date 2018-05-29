@@ -5,3 +5,7 @@
 .container-fluid {
   height: 27vh;
 }
+
+.content-aligner {
+  margin-top: -1em;
+}

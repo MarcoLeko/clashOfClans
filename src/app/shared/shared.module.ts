@@ -19,6 +19,11 @@ import {ErrorSearchResultComponent} from './components/error-search-result/error
 import {WarFrequencyPipe} from './pipes/war-frequency/war-frequency.pipe';
 import {PlayerSearchService} from './services/player-search/player-search.service';
 import {RoleTypePipe} from './pipes/role-type/role-type.pipe';
+import {LeagueBadgeCellRendererComponent} from './components/ag-grid-cell-renderer/league-badge-cell-renderer.component';
+import {RoleCellRendererComponent} from './components/ag-grid-cell-renderer/role-cell-renderer-component';
+import {TownhallPictureCellRendererComponent} from './components/ag-grid-cell-renderer/townhall-picture-cell-renderer.component';
+import {WarStarsCellRendererComponent} from './components/ag-grid-cell-renderer/war-stars-cell-renderer.component';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 @NgModule({
   declarations: [
@@ -33,11 +38,16 @@ import {RoleTypePipe} from './pipes/role-type/role-type.pipe';
     NoValueCellRendererComponent,
     ErrorSearchResultComponent,
     WarFrequencyPipe,
-    RoleTypePipe
+    RoleTypePipe,
+    LeagueBadgeCellRendererComponent,
+    RoleCellRendererComponent,
+    TownhallPictureCellRendererComponent,
+    WarStarsCellRendererComponent
   ],
   imports: [
     AngularFireStorageModule,
-    CommonModule
+    CommonModule,
+    Angular2FontawesomeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -60,7 +70,11 @@ import {RoleTypePipe} from './pipes/role-type/role-type.pipe';
     NoValueCellRendererComponent,
     ErrorSearchResultComponent,
     WarFrequencyPipe,
-    RoleTypePipe
+    RoleTypePipe,
+    LeagueBadgeCellRendererComponent,
+    RoleCellRendererComponent,
+    TownhallPictureCellRendererComponent,
+    WarStarsCellRendererComponent
   ]
 })
 export class SharedModule {

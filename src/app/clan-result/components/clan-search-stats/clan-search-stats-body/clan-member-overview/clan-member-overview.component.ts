@@ -1,9 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CompleteClanMemberStatsService} from '../../../../services/complete-clan-member-stats/complete-clan-member-stats.service';
 import {ClansByClantagType} from '../../../../../../generated/types';
 import {TrophiesNightCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
 import {TrophiesHomeCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
 import {CompleteClanMemberStatsType} from '../../../../services/complete-clan-member-stats/complete-clan-member-stats.types';
+import {LeagueBadgeCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/league-badge-cell-renderer.component';
+import {RoleCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/role-cell-renderer-component';
+import {TownhallPictureCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/townhall-picture-cell-renderer.component';
+import {WarStarsCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/war-stars-cell-renderer.component';
+import {AgGridNg2} from 'ag-grid-angular';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-clan-member-overview',
@@ -13,28 +19,49 @@ import {CompleteClanMemberStatsType} from '../../../../services/complete-clan-me
 export class ClanMemberOverviewComponent implements OnInit {
 
   @Input() clanResult: ClansByClantagType;
-  playerStats: CompleteClanMemberStatsType[];
+  @ViewChild('agGrid') agGrid: AgGridNg2;
 
+  public playerStats: CompleteClanMemberStatsType[];
+  public frameworkComponents = {
+    leagueBadgeCellRendererComponent: LeagueBadgeCellRendererComponent,
+    roleCellRendererComponent: RoleCellRendererComponent,
+    townhallPictureCellRendererComponent: TownhallPictureCellRendererComponent,
+    warStarsCellRendererComponent: WarStarsCellRendererComponent
+  };
   public columnDefs = [
     {headerName: 'Tag', field: 'tag', width: 120},
     {headerName: 'Name', field: 'name', width: 170},
-    {headerName: 'War Stars', field: 'warStars', width: 150},
-    {headerName: 'Townhall', field: 'townhall', width: 150},
-    {headerName: 'Level', field: 'level', width: 120},
-    {headerName: 'Role', field: 'role', width: 150},
-    {headerName: 'League', field: 'league', width: 150},
-    {headerName: 'Trophies', field: 'trophies', width: 150, headerComponentFramework: TrophiesHomeCellRendererComponent},
-    {headerName: 'Night', field: 'versusTrophies', width: 150, headerComponentFramework: TrophiesNightCellRendererComponent
+    {headerName: 'War Stars', field: 'warStars', width: 150, cellRenderer: 'warStarsCellRendererComponent'},
+    {headerName: 'Townhall', field: 'townhall', width: 150, cellRenderer: 'townhallPictureCellRendererComponent'},
+    {headerName: 'Level', field: 'level', width: 100},
+    {headerName: 'Role', field: 'role', width: 150, cellRenderer: 'roleCellRendererComponent'},
+    {headerName: 'League', field: 'league.iconUrls.tiny', width: 100, cellRenderer: 'leagueBadgeCellRendererComponent'},
+    {
+      headerName: 'Trophies',
+      field: 'trophies',
+      width: 140,
+      headerComponentFramework: TrophiesHomeCellRendererComponent
+    },
+    {
+      headerName: 'Night',
+      field: 'trophiesNightBase',
+      width: 140,
+      headerComponentFramework: TrophiesNightCellRendererComponent
     }
   ];
-  constructor(private completeClanMemberStatsService:CompleteClanMemberStatsService) { }
+
+  constructor(private router: Router,
+              private completeClanMemberStatsService: CompleteClanMemberStatsService) {
+  }
 
   ngOnInit() {
     this.completeClanMemberStatsService.getStats(this.clanResult.tag).subscribe((result: CompleteClanMemberStatsType[]) => {
-      console.log(result);
       this.playerStats = result;
     });
   }
 
-  memberSearch(){}
+  memberSearch() {
+    const memberId: number = this.agGrid.api.getSelectedRows()[0].tag;
+    this.router.navigate(['playerSearch/' + memberId]);
+  }
 }

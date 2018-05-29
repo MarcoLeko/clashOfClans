@@ -16,6 +16,7 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AboutComponent} from './components/about/about.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {GestureConfig} from '@angular/material';
+import {SearchForAllModule} from '../search-for-all/search-for-all.module';
 
 const appRoutes: Routes = [
   {path: 'about', component: AboutComponent, data: {depth: 2}}
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HomeModule,
     FormsModule,
+    SearchForAllModule,
     AngularFireModule.initializeApp(database.firebase),
     AngularFireStorageModule,
     AngularFirestoreModule,

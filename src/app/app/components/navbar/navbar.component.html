@@ -3,7 +3,7 @@
     <img src="/assets/ClashLogo.png" width="30" height="30" class="d-inline-block align-top">
     All-about-clash.de
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#customNavbar"
+  <button class="navbar-toggler" type="button" data-should print yippiehtoggle="collapse" data-target="#customNavbar"
           aria-controls="customNavbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,8 +14,8 @@
         <a class="nav-link" [routerLink]="''">Home</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
-      <input class="form-control mr-sm-2" type="text" ngModel name="searchAfterAll"
+    <form class="form-inline my-2 my-lg-0" #form="ngForm" (ngSubmit)="searchForAll(form.value)">
+      <input class="form-control mr-sm-2" type="text" ngModel name="searchValue"
              required placeholder="Search for all...">
       <button class="btn btn-orange  my-2 my-sm-0" type="submit" [disabled]="!form.form.valid">Search</button>
     </form>

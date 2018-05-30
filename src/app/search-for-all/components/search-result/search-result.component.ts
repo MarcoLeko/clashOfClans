@@ -10,7 +10,7 @@ import {ClansByClantagType, PlayerByPlayerTagType} from '../../../../generated/t
 export class SearchResultComponent implements OnInit {
 
   public searchValue: string;
-  public searchResult: PlayerByPlayerTagType | ClansByClantagType | ClansByClantagType[];
+  public searchResult: PlayerByPlayerTagType[] | ClansByClantagType[];
   public hasNoResultFound: boolean;
   public isLoading: boolean = true;
 

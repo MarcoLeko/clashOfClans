@@ -5,7 +5,7 @@ import {AngularFireStorage} from 'angularfire2/storage';
 @Component({
   selector: 'app-league-badge',
   template: `
-    <div *ngIf="value" class="text-center"><img style="padding: 0.1rem" [src]="value" width="30" height="28"></div>`
+    <div *ngIf="value" class="text-center"><img style="padding: 0.1rem" [src]="value" width="35" height="auto"></div>`
 })
 export class LeagueBadgeCellRendererComponent implements ICellRendererAngularComp {
 

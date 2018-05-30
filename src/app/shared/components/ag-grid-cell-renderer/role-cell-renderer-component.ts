@@ -3,8 +3,10 @@ import {ICellRendererAngularComp} from 'ag-grid-angular';
 
 @Component({
   selector: 'app-max-value',
-  template: `<div *ngIf="value === 'leader'">
-    <span class="badge badge-warning">{{value | roleType}}</span></div>
+  template: `
+    <div *ngIf="value === 'leader'">
+    <p class="badge badge-warning">{{value | roleType}}</p>
+    </div>
     <div><span>{{value | roleType}}</span></div>`
 })
 export class RoleCellRendererComponent implements ICellRendererAngularComp {

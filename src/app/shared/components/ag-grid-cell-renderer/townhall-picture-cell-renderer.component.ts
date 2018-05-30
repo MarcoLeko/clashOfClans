@@ -6,7 +6,7 @@ import {TownhallPictureService} from '../../services/townhall-picture/townhall-p
   selector: 'app-league-badge',
   template: `
     <div *ngIf="value" class="text-center">
-      <img style="padding: 0.1rem" [src]="value" width="32" height="28">
+      <img style="padding: 0.1rem" [src]="value" width="35" height="auto">
     </div>`
 })
 export class TownhallPictureCellRendererComponent implements ICellRendererAngularComp {

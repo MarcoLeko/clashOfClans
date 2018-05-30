@@ -5,10 +5,10 @@ import {ICellRendererAngularComp} from 'ag-grid-angular';
   selector: 'app-max-value',
   template: `
     <div *ngIf="value" class="text-center">
-      <span class="badge badge-dark">
+      <p class="badge badge-dark">
             <fa [name]="'star'" [size]="1"></fa>
             {{value}}
-          </span>
+          </p>
     </div>`
 })
 export class WarStarsCellRendererComponent implements ICellRendererAngularComp {

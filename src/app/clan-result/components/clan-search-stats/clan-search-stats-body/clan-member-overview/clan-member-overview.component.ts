@@ -10,6 +10,7 @@ import {TownhallPictureCellRendererComponent} from '../../../../../shared/compon
 import {WarStarsCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/war-stars-cell-renderer.component';
 import {AgGridNg2} from 'ag-grid-angular';
 import {Router} from '@angular/router';
+import {GridOptions} from 'ag-grid';
 
 @Component({
   selector: 'app-clan-member-overview',
@@ -21,6 +22,9 @@ export class ClanMemberOverviewComponent implements OnInit {
   @Input() clanResult: ClansByClantagType;
   @ViewChild('agGrid') agGrid: AgGridNg2;
 
+  public gridOptions: GridOptions = <GridOptions> {
+    rowHeight: 40
+  };
   public playerStats: CompleteClanMemberStatsType[];
   public frameworkComponents = {
     leagueBadgeCellRendererComponent: LeagueBadgeCellRendererComponent,
@@ -64,4 +68,5 @@ export class ClanMemberOverviewComponent implements OnInit {
     const memberId: number = this.agGrid.api.getSelectedRows()[0].tag;
     this.router.navigate(['playerSearch/' + memberId]);
   }
+
 }

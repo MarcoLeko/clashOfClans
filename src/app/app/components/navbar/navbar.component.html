@@ -16,7 +16,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0" #form="ngForm" (ngSubmit)="searchForAll(form.value)">
       <input class="form-control mr-sm-2" type="text" ngModel name="searchValue"
-             required placeholder="Search for all...">
+             required placeholder="Search for all..." minlength="3">
       <button class="btn btn-orange  my-2 my-sm-0" type="submit" [disabled]="!form.form.valid">Search</button>
     </form>
   </div>

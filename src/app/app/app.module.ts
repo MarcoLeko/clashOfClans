@@ -43,7 +43,9 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
+  providers: [
+    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,3 +1,14 @@
-<p>
-  search-result-body works!
-</p>
+<div class="container" *ngIf="searchResult">
+  <div class="content-middle">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body" (click)="goToDetailedStats()">
+          <div class="card-text">
+          <div *ngIf="isPlayer">It's a player!</div>
+          <div *ngIf="!isPlayer">It's a clan!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

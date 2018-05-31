@@ -1,0 +1,46 @@
+.card {
+  z-index: 0;
+  height: auto;
+  width: 40em;
+  cursor: pointer;
+  background: rgba(0,0,0, 0.1);
+  box-shadow: 0 0 1px 1px rgba(0,0,0, 0.5);
+}
+
+.card:not(focus) {
+  transition-timing-function: ease-in;
+  transition: 200ms;
+}
+
+.card:focus {
+  z-index: 1;
+  outline: none;
+  transition-timing-function: ease-out;
+  transition: 200ms;
+  transform: scale(2.2, 2.2);
+  box-shadow: 0 0 1px 1px rgba(0,0,0, 0.5);
+  background: rgb(70, 70, 70);
+}
+
+.disabled-card {
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card:hover:not(:focus) {
+  outline: none;
+  transition-timing-function: ease-out;
+  transition: 200ms;
+  background-color: rgba(193, 88, 207, 0.5);
+}
+
+.card:not(hover) {
+  transition-timing-function: ease-in;
+  transition: 200ms;
+}
+
+.content-middle {
+  display: block;
+  padding: 4em;
+}

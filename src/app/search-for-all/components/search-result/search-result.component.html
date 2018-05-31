@@ -6,8 +6,8 @@
   <app-error-search-result></app-error-search-result>
 </div>
 
-<div *ngIf="searchResult">
-  <app-search-result-body></app-search-result-body>
+<div *ngIf="searchResult.length !== 0">
+  <app-search-result-body [searchResult]="searchResult[0]"></app-search-result-body>
 </div>
 
 

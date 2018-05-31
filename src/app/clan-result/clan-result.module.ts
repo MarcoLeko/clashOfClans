@@ -8,7 +8,6 @@ import {ClanSearchStatsHeaderComponent} from './components/clan-search-stats/cla
 import {ClanSearchStatsBodyComponent} from './components/clan-search-stats/clan-search-stats-body/clan-search-stats-body.component';
 import {FormsModule} from '@angular/forms';
 import {IsWarLogPublicPipe} from './pipes/is-war-log-public/is-war-log-public.pipe';
-import {EnterTypePipe} from './pipes/enter-type/enter-type.pipe';
 import {WarPieChartComponent} from './components/clan-search-stats/clan-search-stats-body/war-pie-chart/war-pie-chart.component';
 import {ClanMemberOverviewComponent} from './components/clan-search-stats/clan-search-stats-body/clan-member-overview/clan-member-overview.component';
 import {ChartsModule} from 'ng2-charts';
@@ -33,7 +32,6 @@ const appRoutes: Routes = [
     ClanSearchStatsHeaderComponent,
     ClanSearchStatsBodyComponent,
     IsWarLogPublicPipe,
-    EnterTypePipe,
     WarPieChartComponent,
     ClanMemberOverviewComponent
   ],
@@ -57,6 +55,9 @@ const appRoutes: Routes = [
   ],
   providers: [
     CompleteClanMemberStatsService
+  ],
+  exports: [
+    IsWarLogPublicPipe
   ]
 })
 

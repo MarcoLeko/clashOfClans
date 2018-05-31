@@ -24,6 +24,7 @@ import {RoleCellRendererComponent} from './components/ag-grid-cell-renderer/role
 import {TownhallPictureCellRendererComponent} from './components/ag-grid-cell-renderer/townhall-picture-cell-renderer.component';
 import {WarStarsCellRendererComponent} from './components/ag-grid-cell-renderer/war-stars-cell-renderer.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
+import {EnterTypePipe} from './pipes/enter-type/enter-type.pipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
     LeagueBadgeCellRendererComponent,
     RoleCellRendererComponent,
     TownhallPictureCellRendererComponent,
-    WarStarsCellRendererComponent
+    WarStarsCellRendererComponent,
+    EnterTypePipe
   ],
   imports: [
     AngularFireStorageModule,
@@ -74,7 +76,8 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
     LeagueBadgeCellRendererComponent,
     RoleCellRendererComponent,
     TownhallPictureCellRendererComponent,
-    WarStarsCellRendererComponent
+    WarStarsCellRendererComponent,
+    EnterTypePipe
   ]
 })
 export class SharedModule {

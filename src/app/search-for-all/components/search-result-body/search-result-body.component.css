@@ -5,6 +5,7 @@
   cursor: pointer;
   background: rgba(0,0,0, 0.1);
   box-shadow: 0 0 1px 1px rgba(0,0,0, 0.5);
+  margin-bottom: 2em;
 }
 
 .card:not(focus) {
@@ -40,7 +41,6 @@
   transition: 200ms;
 }
 
-.content-middle {
-  display: block;
-  padding: 4em;
+.negative-mt {
+  margin-top: -0.5em;
 }

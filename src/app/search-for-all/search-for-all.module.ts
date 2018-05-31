@@ -5,6 +5,8 @@ import {SearchResultComponent} from './components/search-result/search-result.co
 import {RouterModule, Routes} from '@angular/router';
 import {SearchResultBodyComponent} from './components/search-result-body/search-result-body.component';
 import {PlayerOrClanResultService} from './services/player-or-clan-result/player-or-clan-result.service';
+import {AngularFireStorageModule} from 'angularfire2/storage';
+import {ClanResultModule} from '../clan-result/clan-result.module';
 
 const appRoutes: Routes = [
   {path: 'searchAll/:searchValue', component: SearchResultComponent, data: {depth: 3}}
@@ -17,7 +19,9 @@ const appRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(
       appRoutes
-    )
+    ),
+    AngularFireStorageModule,
+    ClanResultModule
   ],
   providers: [
     PlayerOrClanResultService

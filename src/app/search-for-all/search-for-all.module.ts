@@ -7,6 +7,7 @@ import {SearchResultBodyComponent} from './components/search-result-body/search-
 import {PlayerOrClanResultService} from './services/player-or-clan-result/player-or-clan-result.service';
 import {AngularFireStorageModule} from 'angularfire2/storage';
 import {ClanResultModule} from '../clan-result/clan-result.module';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 const appRoutes: Routes = [
   {path: 'searchAll/:searchValue', component: SearchResultComponent, data: {depth: 3}}
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
       appRoutes
     ),
     AngularFireStorageModule,
-    ClanResultModule
+    ClanResultModule,
+    Angular2FontawesomeModule
   ],
   providers: [
     PlayerOrClanResultService

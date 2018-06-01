@@ -42,7 +42,7 @@
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "^2.5.41",
     "@types/node": "~6.0.60",
-    "angular2-fontawesome": "^5.2.0",
+    "angular2-fontawesome": "^5.2.1",
     "bootstrap": "^4.0.0-beta.3",
     "codelyzer": "^4.0.1",
     "font-awesome": "^4.7.0",

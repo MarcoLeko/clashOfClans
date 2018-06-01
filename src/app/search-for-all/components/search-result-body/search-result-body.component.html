@@ -1,48 +1,100 @@
 <div class="container">
-    <div class="col-sm-12">
-      <div class="card" *ngIf="searchResult">
-        <div class="card-body" (click)="goToDetailedStats()">
-          <div class="card-text">
-            <div *ngIf="isPlayer">It's a player!</div>
-            <div *ngIf="!isPlayer">
-              <div class="row">
-                <div class="col-md-3">
-                  <img [src]="searchResult.badgeUrls.medium" width="100" height="auto">
+  <div class="col-sm-12">
+    <div class="card" *ngIf="searchResult">
+      <div class="card-body" (click)="goToDetailedStats()">
+        <div class="card-text">
+          <div *ngIf="isPlayer">
+            <div class="row">
+              <div class="col-md-3">
+                <div *ngIf="searchResult.league">
+                  <img [src]="searchResult.league.iconUrls.medium" width="100" height="auto">
                 </div>
-                <div class="col-md-4">
-                  <div>
-                    <span><em>{{searchResult.tag}}</em></span>
-                  </div>
-                  <div>
-                    <span class="font-weight-bold">{{searchResult.name}}</span>
-                  </div>
-                  <div *ngIf="searchResult.location">
-                    <label class="col-form-label" for="location">Location:</label>
-                    <span class="font-weight-bold" id="location">{{searchResult.location.name}}</span>
-                  </div>
-                  <div class="negative-mt-1">
-                    <label class="col-form-label" for="inviteType">Type:</label>
-                    <span class="font-weight-bold" id="inviteType">{{searchResult.type | enterTypePipe}}</span>
-                  </div>
+                <div *ngIf="!searchResult.league && noLeagueImg">
+                  <img [src]="noLeagueImg" width="100" height="auto">
                 </div>
-                <div class="col-md-5">
-                  <div>
-                    <label class="col-form-label" for="requiredTrophies">Required Trophies:</label>
-                    <span class="font-weight-bold" id="requiredTrophies">{{searchResult.requiredTrophies}}
+              </div>
+              <div class="col-md-4">
+                <div>
+                  <span><em>{{searchResult.tag}}</em></span>
+                </div>
+                <div>
+                  <span class="font-weight-bold">{{searchResult.name}}</span>
+                </div>
+                <div>
+                  <label class="col-form-label" for="expLevel">Level:</label>
+                  <span class="font-weight-bold" id="expLevel">{{searchResult.expLevel}}</span>
+                </div>
+                <div class="negative-mt">
+                  <label class="col-form-label" for="townhall">Townhall:</label>
+                  <span class="font-weight-bold" id="townhall">{{searchResult.townHallLevel}}</span>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div>
+                  <label class="col-form-label" for="warStars">War stars:</label>
+                  <span class="player-info-font font-weight-bold badge badge-dark">
+                  <fa [name]="'star'" [size]="1"></fa>
+                  <span id="warStars">{{searchResult.warStars}}</span>
+                  </span>
+                </div>
+                <div class="negative-mt">
+                  <label class="col-form-label" for="trophiesHome">Trophies:</label>
+                  <span class="font-weight-bold" id="trophiesHome">{{searchResult.trophies}}
                       <img *ngIf="trophyHomeImg" [src]="trophyHomeImg" width="25"></span>
-                  </div>
-                  <div class="negative-mt">
-                    <label class="col-form-label" for="members">Members:</label>
-                    <span class="font-weight-bold" id="members">{{searchResult.members}}</span>
-                  </div>
-                  <div class="negative-mt">
-                    <label class="col-form-label" for="warWins">War wins:</label>
-                    <span class="font-weight-bold" id="warWins">{{searchResult.warWins}}</span>
-                  </div>
-                  <div class="negative-mt">
-                    <label class="col-form-label" for="isWarLogPubluc">Is warlog public:</label>
-                    <span class="font-weight-bold" id="isWarLogPubluc">{{searchResult.isWarLogPublic | isWarLogPublicPipe}}</span>
-                  </div>
+                </div>
+                <div class="negative-mt">
+                  <label class="col-form-label" for="trophiesNight">Trophies builder-base:</label>
+                  <span class="font-weight-bold" id="trophiesNight">{{searchResult.versusTrophies}}
+                      <img *ngIf="trophyNightImg" [src]="trophyNightImg" width="25"></span>
+                </div>
+                <div class="negative-mt" *ngIf="searchResult.clan">
+                  <label class="col-form-label" for="builderHall">Clan:</label>
+                  <span class="font-weight-bold" id="builderHall">{{searchResult.clan.name}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div *ngIf="!isPlayer">
+            <div class="row">
+              <div class="col-md-3">
+                <img [src]="searchResult.badgeUrls.medium" width="100" height="auto">
+              </div>
+              <div class="col-md-4">
+                <div>
+                  <span><em>{{searchResult.tag}}</em></span>
+                </div>
+                <div>
+                  <span class="font-weight-bold">{{searchResult.name}}</span>
+                </div>
+                <div *ngIf="searchResult.location">
+                  <label class="col-form-label" for="location">Location:</label>
+                  <span class="font-weight-bold" id="location">{{searchResult.location.name}}</span>
+                </div>
+                <div class="negative-mt">
+                  <label class="col-form-label" for="inviteType">Type:</label>
+                  <span class="font-weight-bold" id="inviteType">{{searchResult.type | enterTypePipe}}</span>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div>
+                  <label class="col-form-label" for="requiredTrophies">Required Trophies:</label>
+                  <span class="font-weight-bold" id="requiredTrophies">{{searchResult.requiredTrophies}}
+                      <img *ngIf="trophyHomeImg" [src]="trophyHomeImg" width="25"></span>
+                </div>
+                <div class="negative-mt">
+                  <label class="col-form-label" for="members">Members:</label>
+                  <span class="font-weight-bold" id="members">{{searchResult.members}}</span>
+                </div>
+                <div class="negative-mt">
+                  <label class="col-form-label" for="warWins">War wins:</label>
+                  <span class="font-weight-bold" id="warWins">{{searchResult.warWins}}</span>
+                </div>
+                <div class="negative-mt">
+                  <label class="col-form-label" for="isWarLogPubluc">Is warlog public:</label>
+                  <span class="font-weight-bold" id="isWarLogPubluc">{{searchResult.isWarLogPublic | isWarLogPublicPipe}}</span>
                 </div>
               </div>
             </div>
@@ -50,4 +102,5 @@
         </div>
       </div>
     </div>
+  </div>
 </div>

@@ -45,9 +45,13 @@ export class ChartConfig {
           label(tooltipItem, data) {
             let label: string = data.labels[tooltipItem.index];
             if (label) {
-              label = label.slice(0, label.indexOf(':') + 1).toString();
-              const percentage: string = ((data.datasets[0].data[tooltipItem.index] * 100) / totalValue).toFixed(2);
-              label += percentage + '%';
+              if (totalValue === 0) {
+                label +=  '%';
+              } else {
+                label = label.slice(0, label.indexOf(':') + 1).toString();
+                const percentage: string = ((data.datasets[0].data[tooltipItem.index] * 100) / totalValue).toFixed(2);
+                label += percentage + '%';
+              }
             }
             return label;
           }

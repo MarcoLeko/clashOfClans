@@ -2,7 +2,9 @@
   <div class="col-md-2">
     <div class="text-center">
       <img [src]="clanResult.badgeUrls.medium" alt="Clan Badge" width="160">
-      <p class="font-weight-bold"><i>{{clanResult.location.name}}</i></p>
+      <p *ngIf="clanResult.location && clanResult.location.name" class="font-weight-bold">
+        <i>{{clanResult.location.name}}</i>
+      </p>
     </div>
   </div>
   <div class="stats-right-border-panel col-md-3">

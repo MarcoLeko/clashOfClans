@@ -23,6 +23,13 @@ export class WarPieChartComponent implements OnInit {
     if (!this.clanResult.isWarLogPublic) {
       this.pieChartConfig.setData([this.clanResult.warWins, 0, 0]);
     }
+    if (!this.clanResult.warWins) {
+      if (!this.clanResult.warLosses && !this.clanResult.warTies || !this.clanResult.isWarLogPublic) {
+        this.pieChartConfig.setData([1, 1, 1]);
+      } else {
+        this.pieChartConfig.setData([0, this.clanResult.warLosses, this.clanResult.warTies]);
+      }
+    }
     else {
       this.pieChartConfig.setData([this.clanResult.warWins, this.clanResult.warLosses, this.clanResult.warTies]);
     }

@@ -12,16 +12,8 @@ import {HeroMapperService} from './services/hero-mapper/hero-mapper.service';
 import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {AchievementModalComponent} from './components/player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
 import {BuilderInfoService} from './services/builder-info/builder-info.service';
-import {TroopsAndSpellsModalComponent} from './components/player-search-stats/player-search-stats-body/troops-and-spells-modal/troops-and-spells-modal.component';
-import {CurrentSeasonModalComponent} from './components/player-search-stats/player-search-stats-body/current-season-modal/current-season-modal.component';
 import {ClanModalComponent} from './components/player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-import {TroopsHomeAttackStatsService} from './services/troops-and-spells-mapper/home/troops-home-attack-stats.service';
-import {TroopsNightAttackStatsService} from './services/troops-and-spells-mapper/night/troops-night-attack-stats.service';
-import {AdvancedSpellsHomeStatsService} from './services/troops-and-spells-mapper/home/home-spells/advanced-spells-home-stats.service';
-import {TroopsHomeAttackStatsDisplayService} from './services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
-import {SpellsHomeStatsDisplayService} from './services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.service';
-import {TroopsNightAttackStatsDisplayService} from './services/troops-and-spells-mapper/night/night-troops-display/troops-night-attack-stats-display.service';
 import {AgGridModule} from 'ag-grid-angular';
 import {TrophiesHomeCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-home-cell-renderer.component';
 import {TrophiesNightCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';
@@ -44,9 +36,7 @@ const appRoutes: Routes = [
     PlayerSearchStatsHeaderComponent,
     PlayerSearchStatsBodyComponent,
     AchievementModalComponent,
-    ClanModalComponent,
-    TroopsAndSpellsModalComponent,
-    CurrentSeasonModalComponent
+    ClanModalComponent
   ],
   imports: [
     AgGridModule.withComponents([
@@ -72,12 +62,6 @@ const appRoutes: Routes = [
       appRoutes
     )],
   providers: [
-    TroopsHomeAttackStatsService,
-    TroopsNightAttackStatsService,
-    AdvancedSpellsHomeStatsService,
-    TroopsHomeAttackStatsDisplayService,
-    SpellsHomeStatsDisplayService,
-    TroopsNightAttackStatsDisplayService,
     HttpClientModule,
     HeroMapperService,
     BuilderInfoService

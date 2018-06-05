@@ -1,5 +1,5 @@
-<div class="card" *ngIf="clanCastleUrl">
-  <div class="card-body customBackground" [ngStyle]="{background: 'url(' + clanCastleUrl + ') no-repeat'}">
+<div class="card">
+  <div *ngIf="clanCastleUrl" class="card-body customBackground" [ngStyle]="{background: 'url(' + clanCastleUrl + ') no-repeat'}">
     <h5 class="card-title">Clan Search</h5>
     <p class="card-text">Search for clans by their clan tag or
       by filtering: You have to enter at least 3 characters for clan name or clan tag.

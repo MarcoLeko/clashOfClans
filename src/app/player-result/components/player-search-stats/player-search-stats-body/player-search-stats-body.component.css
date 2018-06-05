@@ -16,16 +16,6 @@
   transition: 200ms;
 }
 
-.card:focus {
-  z-index: 1;
-  outline: none;
-  transition-timing-function: ease-out;
-  transition: 200ms;
-  transform: scale(2.2, 2.2);
-  box-shadow: 0 0 1px 1px rgba(0,0,0, 0.5);
-  background: rgb(70, 70, 70);
-}
-
 .disabled-card {
   opacity: 0.6;
   pointer-events: none;
@@ -55,4 +45,60 @@
 
 .clanSearchButton {
   float: right;
+}
+
+.trophy-panel {
+  height: 2em;
+  width: 8em;
+  border: 1px solid rgba(41, 41, 41, 0.7);
+  background-color: #343a40;
+  color: white;
+}
+
+.trophy-item {
+  float: left;
+  margin-top: -1em;
+  margin-left: -1.2em;
+  height: 50px;
+  width: 50px;
+}
+
+.league-icon {
+  margin-top: -1.5em;
+}
+
+.trophy-text {
+  margin-left: 1em;
+}
+
+.angle-up, .angle-down {
+  cursor: pointer;
+}
+
+.angle-up:not(focus), .angle-down:not(focus) {
+  transition-timing-function: ease-in;
+  transition: 200ms;
+}
+
+.angle-up:hover:not(:focus), .angle-down:hover:not(:focus) {
+  outline: none;
+  transition-timing-function: ease-out;
+  transition: 200ms;
+  color: rgba(27, 128, 141, 0.78);
+}
+
+.angle-up:not(hover), .angle-down:not(hover) {
+  transition-timing-function: ease-in;
+  transition: 200ms;
+}
+
+.center-arrows {
+  display: table;
+  margin: 0 auto;
+}
+
+.disabled-angle-up, .disabled-angle-down {
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
 }

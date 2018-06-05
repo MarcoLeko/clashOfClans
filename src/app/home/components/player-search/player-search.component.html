@@ -1,8 +1,8 @@
-<div class="card" *ngIf="clashPlayerUrl">
-  <div class="card-body customBackground" [ngStyle]="{background: 'url(' + clashPlayerUrl + ') no-repeat'}">
+<div class="card">
+  <div *ngIf="clashPlayerUrl" class="card-body customBackground" [ngStyle]="{background: 'url(' + clashPlayerUrl + ') no-repeat'}">
     <h5 class="card-title">Player Search</h5>
-    <p class="card-text">Get information about achievements, current season trophies/ trophy records,
-      clan members and troops/ spells stats of their current level:</p>
+    <p class="card-text">Get information about achievements and basic clan member stats.
+      Compare the progress between clan members easily!</p>
     <p><b>Enter a player id for the player search. A possible valid Player id could be:</b></p>
     <form class="form-group form-inline">
       <label for="staticPlayerId" class="textWrapper col-sm-2 col-form-label">Player ID</label>

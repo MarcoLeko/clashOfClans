@@ -1,18 +1,44 @@
 <app-achievement-modal [playerResult]="playerResult"></app-achievement-modal>
 <app-clan-modal [playerResult]="playerResult" [clanInfo]="clanInfo"></app-clan-modal>
-<app-current-season-modal [playerResult]="playerResult"></app-current-season-modal>
-<app-troops-and-spells-modal [playerResult]="playerResult"></app-troops-and-spells-modal>
 
 <div class="row">
-  <div class="col-sm-6">
-    <div class="card offset-xl-5 offset-lg-3">
-      <div class="card-body" (click)="achievementModal.open()">
-        <h4 class="card-title">Achievements</h4>
-        <p id="cardDescriptionAchievements">All Achievements completed? Have a look about war stars, best trophies and some other achievements in a short overview</p>
+  <div class="col-sm-3" *ngIf="hasTrophies()">
+    <div class="offset-xl-9 offset-lg-10 offset-md-10 offset-sm-10">
+      <img *ngIf="trophyHomeImg" class="trophy-item" [src]="trophyHomeImg"/>
+      <div class="trophy-panel border-left-0 rounded">
+        <span class="trophy-text font-weight-bold">{{playerResult.trophies}}</span>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-3" *ngIf="hasVersusTrophies()">
+    <div class="offset-xl-9 offset-lg-10 offset-md-10 offset-sm-10">
+      <img *ngIf="trophyNightImg" class="trophy-item" [src]="trophyNightImg"/>
+      <div class="trophy-panel border-left-0 rounded">
+        <span class="trophy-text font-weight-bold">{{playerResult.versusTrophies}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3" *ngIf="hasLegendLeagueExperienced()">
+    <div class="offset-xl-9 offset-lg-10 offset-md-10 offset-sm-10">
+      <img *ngIf="trophyLegendImg" class="trophy-item" [src]="trophyLegendImg"/>
+      <div class="trophy-panel border-left-0 rounded">
+        <span class="trophy-text font-weight-bold">{{playerResult.legendStatistics.legendTrophies}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5 row">
+  <div class="col-sm-5">
+    <div class="card offset-xl-3 offset-lg-1">
+      <div class="card-body" (click)="achievementModal.open()">
+        <h4 class="card-title">Achievements</h4>
+        <p id="cardDescriptionAchievements">All Achievements completed? Have a look about war stars, best trophies and
+          some other achievements in a short overview</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-5">
     <div class="card" [ngClass]="{'disabled-card': !playerResult.clan}">
       <div class="card-body" *ngIf="playerResult.clan" (click)="clanModal.open()">
         <h4 class="card-title">Clan</h4>
@@ -27,29 +53,20 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card offset-xl-5 offset-lg-3">
-      <div class="card-body" (click)="currentSeasonModal.open()">
-        <h4 class="card-title">Current Season</h4>
-        <p>Is your searched player active?
-          <wbr>
-          Have a look about season attacks, defenses, donations stats
-          and trophy records for night and home base
-        </p>
+  <div class="col-sm-2">
+    <div class="text-center mt-2">
+      <div>
+        <span *ngIf="playerBefore" class="font-weight-bold">{{playerBefore.name}}</span>
       </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card card-bottom-right">
-      <div class="card-body" (click)="troopsAndSpellsModal.open()">
-        <h4 class="card-title">Troops and Spells</h4>
-        <p>How is the progress going?
-          <wbr>
-          Have a look about troops and spell stats from home and night base
-        </p>
+      <div class="center-arrows">
+      <i fa class="angle-up" [name]="'angle-up'" [size]="5" (click)="routeToPlayerBefore()"
+         [ngClass]="{'disabled-angle-up': !playerResult.clan}"></i>
+      <br>
+      <i fa class="angle-down" [name]="'angle-down'" [size]="5" (click)="routeToPlayerNext()"
+         [ngClass]="{'disabled-angle-down': !playerResult.clan}"></i>
+      </div>
+      <div>
+        <span *ngIf="playerNext" class="font-weight-bold">{{playerNext.name}}</span>
       </div>
     </div>
   </div>

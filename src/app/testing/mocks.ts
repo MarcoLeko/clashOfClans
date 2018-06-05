@@ -4,7 +4,6 @@ import {HeroDisplay} from '../player-result/services/hero-mapper/hero-display';
 import {HeroesImg} from '../player-result/services/hero-mapper/heroes-img';
 import {BuilderInfoType} from '../player-result/services/builder-info/builder-info.type';
 import {Builderhall} from '../player-result/services/builder-info/builder-hall';
-import {TroopsHomeAttackStats} from '../player-result/services/troops-and-spells-mapper/home/troops-home-attack-stats.type';
 
 export class Mocks {
   public static PLAYERTAG: string = '#9P9UG92CG';
@@ -284,38 +283,5 @@ export class Mocks {
   public static BUILDERINFOMOCK: BuilderInfoType = {
     builderhall: Builderhall.TOWNHALL_BASE,
     imgSrc: 'images/builder.png'
-  };
-
-  public static TROOPHOMEATTACKSTATS: TroopsHomeAttackStats = {
-    townhall: 9,
-    dps: 12,
-    dph: 12,
-    hp: 120
-  };
-  public static TROOPHOMEDISPLAYATTACKSTATS = {
-        name: 'barbarian',
-        level: 6,
-        isMaxLevel: false,
-        damagePerSec: 12,
-        damagePerHit: 12,
-        hitPoints: 120
-    };
-
-  public static TROOPNIGHTDISPLAYATTACKSTATS = {
-    name: 'Raged Barbarian',
-    level: 14,
-    isMaxLevel: false,
-    damagePerSec: 89,
-    damagePerHit: 71.2,
-    hitPoints: 266
-  };
-
-  public static SPELLSHOMEDISPLAYSTATS = {
-      name: 'Rage Spell',
-      level: 5,
-      isMaxLevel: true,
-      housingSpace: 2,
-      type: 'rage',
-      rage: 170
   };
 }

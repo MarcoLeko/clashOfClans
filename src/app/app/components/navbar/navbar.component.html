@@ -1,14 +1,14 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" [routerLink]="''">
     <img src="/assets/ClashLogo.png" width="30" height="30" class="d-inline-block align-top">
     All-about-clash.de
   </a>
-  <button class="navbar-toggler" type="button" data-should print yippiehtoggle="collapse" data-target="#customNavbar"
-          aria-controls="customNavbar" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="customNavbar">
+  <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
         <a class="nav-link" [routerLink]="''">Home</a>

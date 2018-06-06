@@ -35,21 +35,21 @@ export class ClanMemberOverviewComponent implements OnInit {
   public columnDefs = [
     {headerName: 'Tag', field: 'tag', width: 120},
     {headerName: 'Name', field: 'name', width: 170},
-    {headerName: 'War Stars', field: 'warStars', width: 150, cellRenderer: 'warStarsCellRendererComponent'},
-    {headerName: 'Townhall', field: 'townhall', width: 150, cellRenderer: 'townhallPictureCellRendererComponent'},
+    {headerName: 'War Stars', field: 'warStars', width: 130, cellRenderer: 'warStarsCellRendererComponent'},
+    {headerName: 'Townhall', field: 'townhall', width: 120, cellRenderer: 'townhallPictureCellRendererComponent'},
     {headerName: 'Level', field: 'level', width: 100},
-    {headerName: 'Role', field: 'role', width: 150, cellRenderer: 'roleCellRendererComponent'},
+    {headerName: 'Role', field: 'role', width: 120, cellRenderer: 'roleCellRendererComponent'},
     {headerName: 'League', field: 'league.iconUrls.tiny', width: 100, cellRenderer: 'leagueBadgeCellRendererComponent'},
     {
       headerName: 'Trophies',
       field: 'trophies',
-      width: 140,
+      width: 120,
       headerComponentFramework: TrophiesHomeCellRendererComponent
     },
     {
       headerName: 'Night',
       field: 'trophiesNightBase',
-      width: 140,
+      width: 120,
       headerComponentFramework: TrophiesNightCellRendererComponent
     }
   ];

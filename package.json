@@ -43,7 +43,7 @@
     "@types/jasmine": "^2.5.41",
     "@types/node": "~6.0.60",
     "angular2-fontawesome": "^5.2.1",
-    "bootstrap": "^4.0.0-beta.3",
+    "bootstrap": "^4.1.1",
     "codelyzer": "^4.0.1",
     "font-awesome": "^4.7.0",
     "jasmine-core": "~2.8.0",
@@ -57,7 +57,6 @@
     "ngx-bootstrap": "^2.0.3",
     "popper.js": "^1.12.9",
     "protractor": "~5.1.2",
-    "tether": "^1.4.3",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"

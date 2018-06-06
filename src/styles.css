@@ -4,6 +4,17 @@
 @import "~ag-grid/dist/styles/ag-theme-balham-dark.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+box-sizing: inherit;
+}
+
 body {
   background-color: rgba(18, 13, 4, 0.71);
   -webkit-background-size: cover;
@@ -11,6 +22,8 @@ body {
   -o-background-size: cover;
   background-size: cover;
   position: relative;
+  margin: 0;
+  min-height: 100%;
 }
 
 p {

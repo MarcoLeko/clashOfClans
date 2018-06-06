@@ -11,7 +11,6 @@ export class NavbarComponent {
   @ViewChild('form') form: HTMLFormElement;
 
   constructor(private router: Router) {
-    // override the route reuse strategy
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
       return false;
     };

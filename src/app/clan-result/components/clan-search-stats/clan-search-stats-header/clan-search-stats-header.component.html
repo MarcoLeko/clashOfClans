@@ -8,53 +8,49 @@
     </div>
   </div>
   <div class="stats-right-border-panel col-md-3">
-    <div class="container">
-      <p><i>{{clanResult.tag}}</i></p>
-      <p class="font-weight-bold">{{clanResult.name}}</p>
-      <div class="content-aligner">
-        <div>
-          <label class="col-form-label" for="isWarPublic">Is warlog public:</label>
-          <span class="font-weight-bold"
-                id="isWarPublic">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
-        </div>
-        <div>
-          <label class="col-form-label" for="warFrequency">War frequency:</label>
-          <span class="font-weight-bold" id="warFrequency">&emsp;{{clanResult.warFrequency | warFrequency}}</span>
-        </div>
-        <div>
-          <label class="col-form-label" for="memberCount">Member:</label>
-          <span class="font-weight-bold" id="memberCount">&emsp;{{clanResult.members}}</span>
-        </div>
+    <p><i>{{clanResult.tag}}</i></p>
+    <p class="font-weight-bold">{{clanResult.name}}</p>
+    <div class="content-aligner">
+      <div>
+        <label class="col-form-label" for="isWarPublic">Is warlog public:</label>
+        <span class="font-weight-bold"
+              id="isWarPublic">&emsp;{{clanResult.isWarLogPublic | isWarLogPublicPipe}}</span>
+      </div>
+      <div>
+        <label class="col-form-label" for="warFrequency">War frequency:</label>
+        <span class="font-weight-bold" id="warFrequency">&emsp;{{clanResult.warFrequency | warFrequency}}</span>
+      </div>
+      <div>
+        <label class="col-form-label" for="memberCount">Member:</label>
+        <span class="font-weight-bold" id="memberCount">&emsp;{{clanResult.members}}</span>
       </div>
     </div>
   </div>
   <div class="stats-right-border-panel col-md-3">
-    <div class="container">
-      <div>
-        <label class="col-form-label" for="trophiesRequired">Trophies required:</label>
-        <span *ngIf="trophyHomeImg" class="font-weight-bold" id="trophiesRequired">
+    <div>
+      <label class="col-form-label" for="trophiesRequired">Trophies required:</label>
+      <span *ngIf="trophyHomeImg" class="font-weight-bold" id="trophiesRequired">
           &emsp;{{clanResult.requiredTrophies}} <img [src]="trophyHomeImg" width="25"></span>
-      </div>
-      <div>
-        <label class="col-form-label" for="entryType">Entry type:</label>
-        <span class="font-weight-bold" id="entryType">&emsp;{{clanResult.type | enterTypePipe}}</span>
-      </div>
-      <div>
-        <label class="col-form-label" for="clanPoints">Clan points:</label>
-        <span *ngIf="trophyHomeImg" class="font-weight-bold" id="clanPoints">
+    </div>
+    <div>
+      <label class="col-form-label" for="entryType">Entry type:</label>
+      <span class="font-weight-bold" id="entryType">&emsp;{{clanResult.type | enterTypePipe}}</span>
+    </div>
+    <div>
+      <label class="col-form-label" for="clanPoints">Clan points:</label>
+      <span *ngIf="trophyHomeImg" class="font-weight-bold" id="clanPoints">
           &emsp;{{clanResult.clanPoints}} <img [src]="trophyHomeImg" width="25"></span>
-      </div>
-      <div>
-        <label class="col-form-label" for="clanVersusPoints">Clan versus points:</label>
-        <span *ngIf="trophyNightImg" class="font-weight-bold" id="clanVersusPoints">
+    </div>
+    <div>
+      <label class="col-form-label" for="clanVersusPoints">Clan versus points:</label>
+      <span *ngIf="trophyNightImg" class="font-weight-bold" id="clanVersusPoints">
           &emsp;{{clanResult.clanVersusPoints}} <img [src]="trophyNightImg" width="25"></span>
-      </div>
     </div>
   </div>
   <div class="col-md-4">
-    <label class="col-form-label" for="clanVersusPoints">Description:</label>
+    <label class="col-form-label" for="clanDescription">Description:</label>
     <div>
-      <span>{{clanResult.description}}</span>
+      <span id="clanDescription">{{clanResult.description}}</span>
     </div>
   </div>
 </div>

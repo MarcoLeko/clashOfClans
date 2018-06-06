@@ -23,6 +23,7 @@ export class ChartConfig {
 
   constructor(totalValue: number) {
     this.chartOptions = {
+      responsive: true,
       cutoutPercentage: 40,
       layout: {
         padding: {

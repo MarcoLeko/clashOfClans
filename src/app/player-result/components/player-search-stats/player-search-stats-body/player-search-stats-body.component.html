@@ -28,7 +28,13 @@
   </div>
 </div>
 
-<div class="mt-5 row">
+<div class="mt-4">
+  <div *ngIf="playerResult">
+    <app-troops-and-spells [playerResult]="playerResult"></app-troops-and-spells>
+  </div>
+</div>
+
+<div class="mt-4 row">
   <div class="col-sm-5">
     <div class="card offset-xl-3 offset-lg-1">
       <div class="card-body" (click)="achievementModal.open()">
@@ -59,11 +65,11 @@
         <span *ngIf="playerBefore" class="font-weight-bold">{{playerBefore.name}}</span>
       </div>
       <div class="center-arrows">
-      <i fa class="angle-up" [name]="'angle-up'" [size]="5" (click)="routeToPlayerBefore()"
-         [ngClass]="{'disabled-angle-up': !playerResult.clan}"></i>
-      <br>
-      <i fa class="angle-down" [name]="'angle-down'" [size]="5" (click)="routeToPlayerNext()"
-         [ngClass]="{'disabled-angle-down': !playerResult.clan}"></i>
+        <i fa class="angle-up" [name]="'angle-up'" [size]="5" (click)="routeToPlayerBefore()"
+           [ngClass]="{'disabled-angle-up': !playerResult.clan}"></i>
+        <br>
+        <i fa class="angle-down" [name]="'angle-down'" [size]="5" (click)="routeToPlayerNext()"
+           [ngClass]="{'disabled-angle-down': !playerResult.clan}"></i>
       </div>
       <div>
         <span *ngIf="playerNext" class="font-weight-bold">{{playerNext.name}}</span>

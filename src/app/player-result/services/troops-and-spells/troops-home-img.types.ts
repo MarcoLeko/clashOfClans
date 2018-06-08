@@ -1,0 +1,21 @@
+export enum TroopsHomeImg {
+  BARBARIAN = 'Barbarian',
+  ARCHER = 'Archer',
+  GOBLIN = 'Goblin',
+  GIANT = 'Giant',
+  WALL_BREAKER = 'Wall Breaker',
+  BALLOON = 'Balloon',
+  WIZARD = 'Wizard',
+  HEALER = 'Healer',
+  DRAGON = 'Dragon',
+  PEKKA = 'PEKKA',
+  MINION = 'Minion',
+  HOG_RIDER = 'Hog Rider',
+  VALKYRIE = 'Valkyrie',
+  GOLEM = 'Golem',
+  WITCH = 'Witch',
+  LAVA_HOUND = 'Lava Hound',
+  BABY_DRAGON = 'Baby Dragon',
+  MINER = 'Miner',
+  BOWLER = 'Bowler'
+}

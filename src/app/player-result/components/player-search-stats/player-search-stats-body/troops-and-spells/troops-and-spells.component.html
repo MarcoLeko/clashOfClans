@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-5">
+    <div class="container row" *ngIf="troops">
+      <div *ngFor="let troop of troops">
+        <div class="icon-container">
+          <img class="rounded" [src]="troop.url" width="40" height="40"
+               [ngStyle]="{'filter' : troop.isUnlocked ? '' : 'grayScale(100%)'}">
+          <span class="badge troop-level-badge"
+                [ngClass]="isSpellOrTroopMax(troop) ? 'badge-warning': 'badge-dark'">{{troop.level}}</span>&nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="container row" *ngIf="spells">
+      <div *ngFor="let spell of spells">
+        <div class="icon-container">
+          <img class="rounded" [src]="spell.url" width="40" height="40"
+               [ngStyle]="{'filter' : spell.isUnlocked ? '' : 'grayScale(100%)'}">
+          <span class="badge troop-level-badge"
+                [ngClass]="isSpellOrTroopMax(spell) ? 'badge-warning': 'badge-dark'">{{spell.level}}</span>&nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+  </div>
+</div>

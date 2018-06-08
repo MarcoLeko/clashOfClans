@@ -39,8 +39,8 @@ export class PlayerSearchStatsBodyComponent implements OnInit, OnChanges {
 
   public ngOnChanges() {
     if (this.clanInfo) {
-      const playerIndexCurrent = this.clanInfo.memberList.map(x => {
-        return x.name;
+      const playerIndexCurrent = this.clanInfo.memberList.map(member => {
+        return member.name;
       }).indexOf(this.playerResult.name);
       if (playerIndexCurrent > 0) {
         this.playerBefore = this.clanInfo.memberList[playerIndexCurrent - 1];

@@ -24,6 +24,8 @@ import {MaxValueCellRendererComponent} from '../shared/components/ag-grid-cell-r
 import {NoValueCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/no-value-cell-renderer.component';
 import {HitPointsCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
 import {RoleCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/role-cell-renderer-component';
+import {TroopsAndSpellsComponent} from './components/player-search-stats/player-search-stats-body/troops-and-spells/troops-and-spells.component';
+import {TroopsAndSpellsService} from './services/troops-and-spells/troops-and-spells.service';
 
 const appRoutes: Routes = [
   {path: 'playerSearch/:playerId', component: PlayerSearchResultComponent, data: {depth: 3}}
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     PlayerSearchStatsHeaderComponent,
     PlayerSearchStatsBodyComponent,
     AchievementModalComponent,
-    ClanModalComponent
+    ClanModalComponent,
+    TroopsAndSpellsComponent
   ],
   imports: [
     AgGridModule.withComponents([
@@ -64,7 +67,8 @@ const appRoutes: Routes = [
   providers: [
     HttpClientModule,
     HeroMapperService,
-    BuilderInfoService
+    BuilderInfoService,
+    TroopsAndSpellsService
   ],
   exports: []
 })

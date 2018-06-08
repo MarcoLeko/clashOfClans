@@ -25,7 +25,10 @@ import {NoValueCellRendererComponent} from '../shared/components/ag-grid-cell-re
 import {HitPointsCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/hit-points-cell-renderer.component';
 import {RoleCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/role-cell-renderer-component';
 import {TroopsAndSpellsComponent} from './components/player-search-stats/player-search-stats-body/troops-and-spells/troops-and-spells.component';
-import {TroopsAndSpellsService} from './services/troops-and-spells/troops-and-spells.service';
+import {TroopsAndSpellsResolveHelperService} from './services/troops-and-spells/troops-and-spells-resolve-helper.service';
+import {TroopsNightResolverService} from './services/troops-and-spells/troops-night/troops-night-resolver.service';
+import {TroopsHomeResolverService} from './services/troops-and-spells/troops-home/troops-home-resolver.service';
+import {SpellsHomeResolverService} from './services/troops-and-spells/spells-home/spells-home-resolver.service';
 
 const appRoutes: Routes = [
   {path: 'playerSearch/:playerId', component: PlayerSearchResultComponent, data: {depth: 3}}
@@ -68,7 +71,10 @@ const appRoutes: Routes = [
     HttpClientModule,
     HeroMapperService,
     BuilderInfoService,
-    TroopsAndSpellsService
+    TroopsAndSpellsResolveHelperService,
+    TroopsNightResolverService,
+    TroopsHomeResolverService,
+    SpellsHomeResolverService
   ],
   exports: []
 })

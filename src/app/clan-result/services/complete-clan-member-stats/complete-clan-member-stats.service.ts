@@ -9,8 +9,6 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class CompleteClanMemberStatsService {
 
-  private clan: ClansByClantagType;
-  private completeMemberStats: CompleteClanMemberStatsType[] = [];
 
   constructor(private http: HttpClient,
               private clanSearchService: ClanSearchService,
@@ -18,30 +16,24 @@ export class CompleteClanMemberStatsService {
   }
 
   getStats(tag: string) {
-    if (this.clan && tag === this.clan.tag) {
-      return Observable.of(this.completeMemberStats);
-    } else {
-      return this.clanSearchService.getClanByClanTag(tag)
-        .mergeMap(clan => {
-          this.clan = clan;
-          return clan.memberList;
-        })
-        .mergeMap(member => this.playerSearchService.getPlayerByPlayerTag(member.tag),
-          (member, player) => {
-            const singlePlayerStats: CompleteClanMemberStatsType = {
-              tag: member.tag,
-              name: member.name,
-              warStars: player.warStars,
-              townhall: player.townHallLevel,
-              level: player.expLevel,
-              role: member.role,
-              league: player.league,
-              trophies: member.trophies,
-              trophiesNightBase: member.versusTrophies
-            };
-            this.completeMemberStats.push(singlePlayerStats);
-            return singlePlayerStats;
-          }).toArray();
-    }
+    return this.clanSearchService.getClanByClanTag(tag)
+      .mergeMap(clan => {
+        return clan.memberList;
+      })
+      .mergeMap(member => this.playerSearchService.getPlayerByPlayerTag(member.tag),
+        (member, player) => {
+          const singlePlayerStats: CompleteClanMemberStatsType = {
+            tag: member.tag,
+            name: member.name,
+            warStars: player.warStars,
+            townhall: player.townHallLevel,
+            level: player.expLevel,
+            role: member.role,
+            league: player.league,
+            trophies: member.trophies,
+            trophiesNightBase: member.versusTrophies
+          };
+          return singlePlayerStats;
+        }).toArray();
   }
 }

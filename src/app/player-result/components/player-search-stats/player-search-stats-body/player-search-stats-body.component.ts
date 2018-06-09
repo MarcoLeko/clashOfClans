@@ -60,11 +60,11 @@ export class PlayerSearchStatsBodyComponent implements OnInit, OnChanges {
   }
 
   public hasVersusTrophies(): boolean {
-    return this.playerResult.versusTrophies != 0;
+    return this.playerResult.versusTrophies !== 0;
   }
 
   public hasTrophies(): boolean {
-    return this.playerResult.trophies != 0;
+    return this.playerResult.trophies !== 0;
   }
 
   private getTrophiesUrl(): void {

@@ -66,10 +66,10 @@
       </div>
       <div class="center-arrows">
         <i fa class="angle-up" [name]="'angle-up'" [size]="5" (click)="routeToPlayerBefore()"
-           [ngClass]="{'disabled-angle-up': !playerResult.clan}"></i>
+           [ngClass]="(!playerResult.clan || !playerBefore) ? 'disabled-angle-up': ''"></i>
         <br>
         <i fa class="angle-down" [name]="'angle-down'" [size]="5" (click)="routeToPlayerNext()"
-           [ngClass]="{'disabled-angle-down': !playerResult.clan}"></i>
+           [ngClass]="(!playerResult.clan || !playerNext) ? 'disabled-angle-down': ''"></i>
       </div>
       <div>
         <span *ngIf="playerNext" class="font-weight-bold">{{playerNext.name}}</span>

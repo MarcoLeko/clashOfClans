@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CompleteClanMemberStatsService} from '../../../../services/complete-clan-member-stats/complete-clan-member-stats.service';
 import {ClansByClantagType} from '../../../../../../generated/types';
 import {TrophiesNightCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/trophies-night-cell-renderer.component';

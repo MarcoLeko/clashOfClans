@@ -62,11 +62,11 @@
               </span>
             </ng-template>
 
-            <input type="text" name="nameOrTag" [(ngModel)]="filterModel.selectedClanNameOrClanTag" typeaheadOptionField="tag"
+            <input type="text" [(ngModel)]="filterModel.selectedClanNameOrClanTag" typeaheadOptionField="tag"
                    class="form-control" [typeaheadItemTemplate]="clanSearchResultTamplate" [typeaheadOptionsInScrollableView]="4"
                    placeholder="Enter clan id or name..." minlength="3" [typeaheadScrollable]="true" [typeaheadAsync]="true"
                    name="clanNameOrClanTag" required [typeahead]="dataSource" [typeaheadOptionsLimit]="150"
-                  (keyup)="formChange(clanForm.value)">
+                  (keyup)="formChange(clanForm.value)" (ngModelChange)="formChange(clanForm.value)">
           </div>
           <div class="col-sm-3">
             <button type="submit" class="btn btn-primary mb-2" [disabled]="!clanForm.form.valid">Search</button>

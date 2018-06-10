@@ -25,7 +25,7 @@ export class SearchResultBodyComponent implements OnInit {
   constructor(private rotuer: Router,
               private storage: AngularFireStorage) { }
 
-  public ngOnInit():void {
+  public ngOnInit(): void {
     this.isPlayer = this.isPlayerTagType(this.searchResult);
     this.trophyHomeRef.getDownloadURL().subscribe(url => this.trophyHomeImg = url);
     this.trophyNightRef.getDownloadURL().subscribe(url => this.trophyNightImg = url);
@@ -35,9 +35,9 @@ export class SearchResultBodyComponent implements OnInit {
   public goToDetailedStats(): void {
     let moduleUrl: string;
     if (this.isPlayer) {
-      moduleUrl = 'playerSearch/'
+      moduleUrl = 'playerSearch/';
     } else {
-      moduleUrl = 'clanSearch/'
+      moduleUrl = 'clanSearch/';
     }
     this.rotuer.navigate([moduleUrl, this.searchResult.tag]);
   }

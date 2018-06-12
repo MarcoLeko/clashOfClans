@@ -6,9 +6,8 @@ import {LocationSearchService} from '../../services/location-search/location-sea
 import {ClansByClantagType, LocationsType} from '../../../../generated/types';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
 import {FilterModel} from './filter-model';
-import {FormBuilder} from '@angular/forms';
-import {debounceTime} from 'rxjs/operator/debounceTime';
-import {switchMap} from 'rxjs/operators';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {debounceTime, map, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-clan-search',
@@ -17,7 +16,7 @@ import {switchMap} from 'rxjs/operators';
 })
 export class ClanSearchComponent implements OnInit {
 
-  public clanForm;
+  public clanForm: FormGroup;
   public clanCastleUrl: Observable<string | null>;
   public ref = this.storage.ref('images/clan_castle.png');
   public locations: LocationsType[] = [];
@@ -40,30 +39,34 @@ export class ClanSearchComponent implements OnInit {
   ngOnInit() {
     this.ref.getDownloadURL().subscribe(url => this.clanCastleUrl = url);
     this.locationService.getLocations().subscribe(locations => this.locations = locations);
-    this.dataSource = this.clanForm.valueChanges.map((value: FilterModel) => {
-        this.getClan(value);
-      })
-      .mergeMap(() => {
+    this.clanForm.valueChanges.subscribe((value: FilterModel) => {
+      console.log(value);
+      debounceTime(500),
+      this.dataSource = Observable.create(observer => this.getClan(value, observer)), switchMap(() => {
+        console.log(this.searchResult);
         return Observable.of(this.searchResult);
       });
-  }
+    });
+}
 
-  private getClan(value: FilterModel) {
+  private getClan(value: FilterModel, observer) {
     if (ClanSearchService.hasMinLength(value.selectedClanNameOrClanTag)) {
-      return this.clanSearchService.getClanByClanTag(value.selectedClanNameOrClanTag).subscribe(
+      this.clanSearchService.getClanByClanTag(value.selectedClanNameOrClanTag).subscribe(
         (result: ClansByClantagType) => {
           this.searchResult = [];
           this.searchResult.push(result);
-        }, () => this.getClanByFilter(value));
+          observer.next(result);
+        }, () => this.getClanByFilter(value, observer));
     }
   }
 
 
-  public getClanByFilter(value: FilterModel) {
-    return this.clanSearchService.getClansByFilterValues(value).subscribe(
+  public getClanByFilter(value: FilterModel, observer) {
+    this.clanSearchService.getClansByFilterValues(value).subscribe(
       (result: ClansByClantagType[]) => {
         this.searchResult = [];
         this.searchResult = result;
+        observer.next(result);
       });
   }
 
@@ -73,5 +76,6 @@ export class ClanSearchComponent implements OnInit {
 
   public changeTypeaheadLoading(e: boolean): void {
     this.typeaheadLoading = e;
+    setTimeout(() => this.typeaheadLoading = false, 3000);
   }
 }

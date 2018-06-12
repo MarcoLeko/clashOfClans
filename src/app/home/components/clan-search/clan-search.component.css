@@ -24,6 +24,28 @@
   min-height: 26.5em;
 }
 
-.slider-full-width {
-  width: 100%;
+.mat-slider-horizontal {
+  min-width: 100%;
 }
+
+.loading-card {
+  position: relative;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.loading-body {
+  padding: 0.5em;
+}
+

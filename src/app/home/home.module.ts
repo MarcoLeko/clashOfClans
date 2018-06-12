@@ -13,6 +13,7 @@ import {LocationSearchService} from './services/location-search/location-search.
 import {MatSliderModule} from '@angular/material/slider';
 import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import {ClanResultModule} from '../clan-result/clan-result.module';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 const appRoutes: Routes = [
   {path: '', component: HomeFontPageComponent, data: {depth: 1}}
@@ -29,8 +30,9 @@ const appRoutes: Routes = [
   imports: [
     MatSliderModule,
     CommonModule,
-    FormsModule,
     SharedModule,
+    FormsModule,
+    Angular2FontawesomeModule,
     ReactiveFormsModule,
     PlayerResultModule,
     ClanResultModule,

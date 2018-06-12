@@ -14,8 +14,9 @@ export class PlayerOrClanResultService {
 
   getPlayerOrClanStats(searchValue: string): Observable<any> {
     let arrResult = [];
-    const value: FilterModel = new FilterModel();
-    value.selectedClanNameOrClanTag = searchValue;
+    const value: FilterModel
+      = new FilterModel(undefined, undefined, undefined,
+      undefined, undefined, searchValue);
 
     return this.playerSearchService.getPlayerByPlayerTag(value.selectedClanNameOrClanTag).map((result: PlayerByPlayerTagType) => {
       arrResult.push(result);

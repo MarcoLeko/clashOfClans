@@ -6,6 +6,7 @@ import {ClansByClantagType} from '../../../../generated/types';
 import {map} from 'rxjs/operators';
 import {FilterModel} from '../../../home/components/clan-search/filter-model';
 import {ClanSearchParameters} from './clan-search-parameters';
+import {isUndefined} from 'util';
 
 @Injectable()
 export class ClanSearchService {
@@ -17,26 +18,33 @@ export class ClanSearchService {
   constructor(private http: HttpClient, private hashTransformer: HashTransformerService) {
   }
 
+  public static hasMinLength(name: string): boolean {
+    return name && name.length >= 3;
+  }
+
   getClanByClanTag(clanTag: string): Observable<ClansByClantagType> {
     if (this.hasClanInCache(clanTag)) {
       return Observable.of(this.clan);
     } else {
-      if (this.isClanNameValid(clanTag)) {
-        return this.http.get<ClansByClantagType>(ClanSearchService.CLANURL + this.hashTransformer.transformHash(clanTag)).pipe(map(data => this.clan = data));
+      if (ClanSearchService.hasMinLength(clanTag)) {
+        return this.http.get<ClansByClantagType>(ClanSearchService.CLANURL + this.hashTransformer.transformHash(clanTag))
+          .pipe(map(data => this.clan = data));
       }
     }
   }
 
   getClansByFilterValues(filterValues: FilterModel): Observable<any> {
-    let url: string = 'v1/clans?';
-    if (this.isClanNameValid(filterValues.selectedClanNameOrClanTag) &&
+    let url = 'v1/clans?';
+    if (ClanSearchService.hasMinLength(filterValues.selectedClanNameOrClanTag) &&
       !filterValues.selectedClanNameOrClanTag.includes('#')) {
       for (const value in filterValues) {
-        for (const parameter in ClanSearchParameters) {
-          let firstOperator: string = value;
-          let secondOperator: string = parameter;
-          if (firstOperator.toUpperCase().includes(secondOperator.toUpperCase())) {
-            url += ClanSearchParameters[parameter] + filterValues[value] + '&';
+        if (this.hasUndefinedValue(filterValues, value)) {
+          for (const parameter in ClanSearchParameters) {
+            const firstOperator = value;
+            const secondOperator = parameter;
+            if (firstOperator.toUpperCase().includes(secondOperator.toUpperCase())) {
+              url += ClanSearchParameters[parameter] + filterValues[value] + '&';
+            }
           }
         }
       }
@@ -46,11 +54,12 @@ export class ClanSearchService {
     }
   }
 
-  private hasClanInCache(clanTag: string): boolean {
-    return this.clan && this.clan.tag === clanTag;
+  private hasUndefinedValue(filterValues: FilterModel, value) {
+    return !isUndefined(filterValues[value]) && filterValues[value] !== null && filterValues[value] !== ''
+      && filterValues[value] !== 0;
   }
 
-  private isClanNameValid(name: string): boolean {
-    return name && name.length >= 3;
+  private hasClanInCache(clanTag: string): boolean {
+    return this.clan && this.clan.tag === clanTag;
   }
 }

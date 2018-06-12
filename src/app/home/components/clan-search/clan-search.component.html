@@ -1,17 +1,19 @@
 <div class="card">
-  <div *ngIf="clanCastleUrl" class="card-body customBackground" [ngStyle]="{background: 'url(' + clanCastleUrl + ') no-repeat'}">
+  <div *ngIf="clanCastleUrl" class="card-body customBackground"
+       [ngStyle]="{background: 'url(' + clanCastleUrl + ') no-repeat'}">
     <h5 class="card-title">Clan Search</h5>
     <p class="card-text">Search for clans by their clan tag or
       by filtering: You have to enter at least 3 characters for clan name or clan tag.
       Furthermore you can filter for clan level, war frequency, location and min and max member:</p>
-    <form #clanForm="ngForm" (change)="formChange(clanForm.value)" (ngSubmit)="onSubmit(clanForm.value)">
+    <form [formGroup]="clanForm" novalidate (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-sm-4">
           <label class="col-form-label" for="locationSelector"><b>Location</b></label>
         </div>
         <div class="col-sm-8" *ngIf="locations">
-          <select class="custom-select" id="locationSelector" name="location" [(ngModel)]="filterModel.selectedLocationId">
-            <option [ngValue]="undefined" hidden selected>Choose location...</option>
+          <select class="custom-select" id="locationSelector" [(ngModel)]="filterModel.selectedLocationId"
+                  formControlName="selectedLocationId">
+            <option hidden="true" [ngValue]="null">Choose location...</option>
             <option *ngFor="let location of locations" [value]="location.id">{{location.name}}</option>
           </select>
         </div>
@@ -21,8 +23,9 @@
           <label class="col-form-label" for="warFrequencySelector"><b>War Frequency</b></label>
         </div>
         <div class="col-sm-8">
-          <select class="custom-select" id="warFrequencySelector" name="warFrequency" [(ngModel)]="filterModel.selectedWarFrequency">
-            <option [ngValue]="undefined" hidden selected>Choose war Frequency...</option>
+          <select class="custom-select" id="warFrequencySelector"
+                  [(ngModel)]="filterModel.selectedWarFrequency" formControlName="selectedWarFrequency">
+            <option hidden="true" [ngValue]="null">Choose war Frequency...</option>
             <option *ngFor="let frequency of warFrequency" [value]="frequency">{{frequency | warFrequency}}</option>
           </select>
         </div>
@@ -32,8 +35,9 @@
           <label class="col-form-label" for="locationSelector"><b>Min clan level</b></label>
         </div>
         <div class="col-sm-8">
-          <mat-slider class="slider-full-width" (change)="formChange(clanForm.value)" thumbLabel tickInterval="auto"
-                      min="1" max="25" step="1" name="clanLevel" [(ngModel)]="filterModel.selectedClanLevel"></mat-slider>
+          <mat-slider class="slider-full-width" thumbLabel tickInterval="0.1"
+                      [(ngModel)]="filterModel.selectedClanLevel"
+                      min="2" max="25" step="1" formControlName="selectedClanLevel"></mat-slider>
         </div>
       </div>
       <div class="row">
@@ -42,34 +46,49 @@
         </div>
         <div class="col-sm-3">
           <mat-slider class="slider-full-width" thumbLabel tickInterval="0.5"
-                      (change)="formChange(clanForm.value)" min="1" max="50" step="1"
-                      name="minMember" [(ngModel)]="filterModel.selectedMinimumMember"></mat-slider>
+                      [(ngModel)]="filterModel.selectedMinimumMember"
+                      min="2" max="50" step="1" formControlName="selectedMinimumMember"></mat-slider>
         </div>
         <div class="col-sm-3">
           <label class="col-form-label" for="locationSelector"><b>Max member</b></label>
         </div>
         <div class="col-sm-3">
           <mat-slider class="slider-full-width" thumbLabel tickInterval="0.5"
-                      (change)="formChange(clanForm.value)" min="1" max="50" step="1"
-                      name="maxMember" [(ngModel)]="filterModel.selectedMaximumMember"></mat-slider>
+                      [(ngModel)]="filterModel.selectedMaximumMember"
+                      min="1" max="50" step="1" formControlName="selectedMaximumMember"></mat-slider>
         </div>
         <div class="container row">
           <div class="col-sm-9">
             <ng-template #clanSearchResultTamplate let-model="item">
-              <span>{{model.tag}} - <b>{{model.name}}</b> - Clan level:
-                <span class="badge badge-dark">{{model.clanLevel}}</span>
-                <em *ngIf="model.location">&nbsp;{{model.location.name}}</em>
+              <span>{{model.tag}} - <img [src]="model.badgeUrls.small" width="30" height="auto"><b>{{model.name}}</b>
+                <em *ngIf="model.location"><span>&nbsp;- Location:</span>&nbsp;{{model.location.name}}</em>
               </span>
             </ng-template>
 
-            <input type="text" [(ngModel)]="filterModel.selectedClanNameOrClanTag" typeaheadOptionField="tag"
-                   class="form-control" [typeaheadItemTemplate]="clanSearchResultTamplate" [typeaheadOptionsInScrollableView]="4"
-                   placeholder="Enter clan id or name..." minlength="3" [typeaheadScrollable]="true" [typeaheadAsync]="true"
-                   name="clanNameOrClanTag" required [typeahead]="dataSource" [typeaheadOptionsLimit]="150"
-                  (keyup)="formChange(clanForm.value)" (ngModelChange)="formChange(clanForm.value)">
+            <input type="text"
+                   class="form-control"
+                   required minlength="3"
+                   name="selectedClanNameOrClanTag"
+                   placeholder="Enter clan id or name..."
+                   formControlName="selectedClanNameOrClanTag"
+                   [(ngModel)]="filterModel.selectedClanNameOrClanTag"
+                   typeaheadOptionField="tag"
+                   [typeaheadItemTemplate]="clanSearchResultTamplate"
+                   [typeaheadOptionsInScrollableView]="2"
+                   [typeahead]="dataSource"
+                   [typeaheadOptionsLimit]="100"
+                   [typeaheadScrollable]="true"
+                   [typeaheadAsync]="true"
+                   (typeaheadLoading)="changeTypeaheadLoading($event)">
+            <div *ngIf="typeaheadLoading && clanForm.controls['selectedClanNameOrClanTag'].valid"
+                 class="loading-card card-body loading-body">
+              <span>Loading <fa [name]="'spinner'" [spin]="true" [size]="1"></fa></span>
+            </div>
           </div>
           <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary mb-2" [disabled]="!clanForm.form.valid">Search</button>
+            <button type="submit" class="btn btn-primary mb-2"
+                    [disabled]="clanForm.controls['selectedClanNameOrClanTag'].invalid">Search
+            </button>
           </div>
         </div>
       </div>

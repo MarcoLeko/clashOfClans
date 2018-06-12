@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from 'angularfire2/storage';
@@ -6,6 +6,9 @@ import {LocationSearchService} from '../../services/location-search/location-sea
 import {ClansByClantagType, LocationsType} from '../../../../generated/types';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
 import {FilterModel} from './filter-model';
+import {FormBuilder} from '@angular/forms';
+import {debounceTime} from 'rxjs/operator/debounceTime';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-clan-search',
@@ -14,6 +17,7 @@ import {FilterModel} from './filter-model';
 })
 export class ClanSearchComponent implements OnInit {
 
+  public clanForm;
   public clanCastleUrl: Observable<string | null>;
   public ref = this.storage.ref('images/clan_castle.png');
   public locations: LocationsType[] = [];
@@ -21,50 +25,53 @@ export class ClanSearchComponent implements OnInit {
     'never', 'unknown'];
 
   public dataSource: Observable<ClansByClantagType[]>;
+  public typeaheadLoading: boolean;
   public searchResult: ClansByClantagType[] = [];
-  public filterModel: FilterModel = new FilterModel();
-  public formChanges: EventEmitter<FilterModel> = new EventEmitter<FilterModel>();
+  public filterModel
+    = new FilterModel(null, null, null,
+    null, null, null);
 
   constructor(private router: Router, private clanSearchService: ClanSearchService,
-              private storage: AngularFireStorage,
+              private storage: AngularFireStorage, private forms: FormBuilder,
               private locationService: LocationSearchService) {
+    this.clanForm = this.forms.group(this.filterModel);
   }
 
   ngOnInit() {
     this.ref.getDownloadURL().subscribe(url => this.clanCastleUrl = url);
     this.locationService.getLocations().subscribe(locations => this.locations = locations);
-    this.dataSource = Observable.create((observer: any) => this.formChanges.debounceTime(300)
-      .subscribe(() => this.getClan(observer))).switchMap(() => {
-      return Observable.of(this.searchResult);
-    });
+    this.dataSource = this.clanForm.valueChanges.map((value: FilterModel) => {
+        this.getClan(value);
+      })
+      .mergeMap(() => {
+        return Observable.of(this.searchResult);
+      });
   }
 
-  private getClan(observer: any) {
-    if (this.filterModel.selectedClanNameOrClanTag.length >= 3) {
-      this.clanSearchService.getClanByClanTag(this.filterModel.selectedClanNameOrClanTag).subscribe(
+  private getClan(value: FilterModel) {
+    if (ClanSearchService.hasMinLength(value.selectedClanNameOrClanTag)) {
+      return this.clanSearchService.getClanByClanTag(value.selectedClanNameOrClanTag).subscribe(
         (result: ClansByClantagType) => {
           this.searchResult = [];
           this.searchResult.push(result);
-          observer.next(result);
-        }, () => this.getClanByFilter(observer));
+        }, () => this.getClanByFilter(value));
     }
   }
 
 
-  getClanByFilter(observer: any) {
-    this.clanSearchService.getClansByFilterValues(this.filterModel).subscribe(
+  public getClanByFilter(value: FilterModel) {
+    return this.clanSearchService.getClansByFilterValues(value).subscribe(
       (result: ClansByClantagType[]) => {
         this.searchResult = [];
         this.searchResult = result;
-        observer.next(result);
       });
   }
 
-  onSubmit(value) {
-    this.router.navigate(['clanSearch/' + value.clanNameOrClanTag]);
+  public onSubmit() {
+    this.router.navigate(['clanSearch/' + this.filterModel.selectedClanNameOrClanTag]);
   }
 
-  formChange(value) {
-    this.formChanges.emit(value);
+  public changeTypeaheadLoading(e: boolean): void {
+    this.typeaheadLoading = e;
   }
 }

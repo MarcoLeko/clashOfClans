@@ -17,5 +17,6 @@ export enum TroopsHomeImg {
   LAVA_HOUND = 'Lava Hound',
   BABY_DRAGON = 'Baby Dragon',
   MINER = 'Miner',
-  BOWLER = 'Bowler'
+  BOWLER = 'Bowler',
+  ELECTRO_DRAGON = 'Electro Dragon'
 }

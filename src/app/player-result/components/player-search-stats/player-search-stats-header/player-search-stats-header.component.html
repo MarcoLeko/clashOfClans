@@ -10,8 +10,9 @@
         </div>
         <div class="col-sm-10">
           <span class="player-info-font font-weight-bold">{{playerResult.name}}&emsp;</span>
-          <span class="player-info-font font-weight-bold badge badge-purple">Level:
-            <span class="badge badge-dark">{{playerResult.expLevel}}</span>
+          <span class="icon-container" *ngIf="expBadgeUrl">
+            <img [src]="expBadgeUrl" width="60" height="auto">
+            <span class="player-info-font font-weight-bold exp-level">{{playerResult.expLevel}}</span>
           </span>
           <span class="player-info-font font-weight-bold badge badge-dark">
             <fa [name]="'star'" [size]="1"></fa>

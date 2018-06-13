@@ -1,11 +1,5 @@
-.icon-container {
-  display: inline-block;
-  position: relative;
-}
-
-.troop-level-badge {
+.level-badge {
   position: absolute;
   bottom: 0;
   left: 0;
 }
-

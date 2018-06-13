@@ -22,8 +22,10 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
 
   public noHeroesUrl: Observable<string | null>;
   public noLeagueUrl: Observable<string | null>;
+  public expBadgeUrl: Observable<string | null>;
   public noHeroesRef = this.storage.ref('images/clashplayer.png');
   public noLeagueRef = this.storage.ref('images/no_league.png');
+  public expBadgeRef = this.storage.ref('images/level_badge.png');
 
   constructor(private townhallHomePictureService: TownhallHomePictureService,
               private townhallNightPictureService: TownhallNightPictureService,
@@ -38,6 +40,7 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
     if (isUndefined(this.playerResult.league)) {
       this.getNoLeagueImgUrl();
     }
+    this.getExpBadgeUrl();
     this.townhallHomePictureService.getTownHallPicture(this.playerResult.townHallLevel).subscribe(url => this.imgSrcForTownhallHome = url);
     this.townhallNightPictureService.getTownHallPicture(this.playerResult.builderHallLevel).subscribe(url => this.imgSrcForTownhallNight = url);
     this.heroMapperService.mapHeroList(this.playerResult.heroes).subscribe(heroes => this.heroes = heroes);
@@ -53,5 +56,9 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
 
   private getNoLeagueImgUrl() {
     this.noLeagueRef.getDownloadURL().subscribe(url => this.noLeagueUrl = url);
+  }
+
+  private getExpBadgeUrl() {
+    this.expBadgeRef.getDownloadURL().subscribe(url => this.expBadgeUrl = url);
   }
 }

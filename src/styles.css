@@ -50,7 +50,7 @@ p {
 }
 
 .player-info-font {
-  font-size: 2.5ch;
+  font-size: 2ch;
 }
 
 .clash-modal {
@@ -114,3 +114,16 @@ span.switch.switch-medium {
   vertical-align: middle;
   margin-left: 0.5em;
 }
+
+.icon-container {
+  display: inline-block;
+  position: relative;
+}
+
+.exp-level {
+  position: absolute;
+  bottom: 0;
+  left: 7px;
+  top: 7px;
+}
+

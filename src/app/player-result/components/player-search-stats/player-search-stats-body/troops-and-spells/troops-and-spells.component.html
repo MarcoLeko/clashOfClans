@@ -5,7 +5,7 @@
         <div class="icon-container">
           <img class="rounded" [src]="troop.url" width="40" height="40"
                [ngStyle]="{'filter' : troop.isUnlocked ? '' : 'grayScale(100%)'}">
-          <span class="badge troop-level-badge"
+          <span class="badge level-badge"
                 [ngClass]="isSpellOrTroopMax(troop) ? 'badge-warning': 'badge-dark'">{{troop.level}}</span>&nbsp;
         </div>
       </div>
@@ -18,7 +18,7 @@
         <div class="icon-container">
           <img class="rounded" [src]="spell.url" width="40" height="40"
                [ngStyle]="{'filter' : spell.isUnlocked ? '' : 'grayScale(100%)'}">
-          <span class="badge troop-level-badge"
+          <span class="badge level-badge"
                 [ngClass]="isSpellOrTroopMax(spell) ? 'badge-warning': 'badge-dark'">{{spell.level}}</span>&nbsp;
         </div>
       </div>
@@ -31,7 +31,7 @@
         <div class="icon-container">
           <img class="rounded" [src]="troop.url" width="40" height="40"
                [ngStyle]="{'filter' : troop.isUnlocked ? '' : 'grayScale(100%)'}">
-          <span class="badge troop-level-badge"
+          <span class="badge level-badge"
                 [ngClass]="isSpellOrTroopMax(troop) ? 'badge-warning': 'badge-dark'">{{troop.level}}</span>&nbsp;
         </div>
       </div>

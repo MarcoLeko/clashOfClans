@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {TownhallImgSrc} from './townhall-src';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {Observable} from 'rxjs/Observable';
+import {isUndefined} from 'util';
 
 @Injectable()
 export class TownhallPictureService {
@@ -12,43 +13,26 @@ export class TownhallPictureService {
   }
 
   getTownHallPicture(townhall: number): Observable<string | null> {
-    switch (townhall) {
-      case 1:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_ONE);
-        break;
-      case 2:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_TWO);
-        break;
-      case 3:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_THREE);
-        break;
-      case 4:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_FOUR);
-        break;
-      case 5:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_FIVE);
-        break;
-      case 6:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_SIX);
-        break;
-      case 7:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_SEVEN);
-        break;
-      case 8:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_EIGHT);
-        break;
-      case 9:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_NINE);
-        break;
-      case 10:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_TEN);
-        break;
-      case 11:
-        this.ref = this.storage.ref(TownhallImgSrc.TOWNHALL_ELEVEN);
-        break;
-      default:
-        return Observable.of(undefined);
+    let url;
+    url = this.reolveTownhallNumberToImg(townhall, url);
+    if (isUndefined((url))) {
+      return Observable.of(url);
+    } else {
+      this.ref = this.storage.ref(url);
+      return this.ref.getDownloadURL();
     }
-    return this.ref.getDownloadURL();
+  }
+
+  private reolveTownhallNumberToImg(townhall: number, url) {
+    const urlPrefix = 'townhalls/';
+    const urlSuffix = '.png';
+
+    for (const townhallPic in TownhallImgSrc) {
+      const townhallNumber = TownhallImgSrc[townhallPic].replace(/\D+/g, '');
+      if (townhall.toString() === townhallNumber) {
+        url = urlPrefix + TownhallImgSrc[townhallPic] + urlSuffix;
+      }
+    }
+    return url;
   }
 }

@@ -37,7 +37,6 @@ export class PlayerSearchResultComponent implements OnInit {
           this.hasNoResultFound = true;
           this.isLoading = false;
         }, () => {
-        console.log(this.playerResult);
           if (!isUndefined(this.playerResult.clan)) {
             this.clanSearchService.getClanByClanTag(this.playerResult.clan.tag)
               .subscribe(clan => this.clanInfo = clan);

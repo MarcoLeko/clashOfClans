@@ -8,9 +8,6 @@ import {ClanSearchService} from '../../../shared/services/clan-search/clan-searc
 import {FilterModel} from './filter-model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {debounceTime, map, mergeMap, switchMap} from 'rxjs/operators';
-import {from} from 'rxjs/observable/from';
-import {empty} from 'rxjs/observable/empty';
-import {pipe} from 'rxjs/util/pipe';
 
 @Component({
   selector: 'app-clan-search',
@@ -48,7 +45,7 @@ export class ClanSearchComponent implements OnInit {
         console.log('should hop into mergeMap');
         return this.getClan(form);
       })
-  );
+    );
   }
 
   private getClan(value: FilterModel) {

@@ -75,7 +75,7 @@
                    typeaheadOptionField="tag"
                    [typeaheadItemTemplate]="clanSearchResultTamplate"
                    [typeaheadOptionsInScrollableView]="2"
-                   [typeahead]="dataSource"
+                   [typeahead]="dataSource | async"
                    [typeaheadOptionsLimit]="100"
                    [typeaheadScrollable]="true"
                    [typeaheadAsync]="true"

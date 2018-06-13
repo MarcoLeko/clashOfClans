@@ -7,7 +7,10 @@ import {ClansByClantagType, LocationsType} from '../../../../generated/types';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
 import {FilterModel} from './filter-model';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {debounceTime, map, switchMap} from 'rxjs/operators';
+import {debounceTime, map, mergeMap, switchMap} from 'rxjs/operators';
+import {from} from 'rxjs/observable/from';
+import {empty} from 'rxjs/observable/empty';
+import {pipe} from 'rxjs/util/pipe';
 
 @Component({
   selector: 'app-clan-search',
@@ -23,7 +26,7 @@ export class ClanSearchComponent implements OnInit {
   public warFrequency: string[] = ['always', 'moreThanOncePerWeek', 'oncePerWeek', 'lessThanOncePerWeek',
     'never', 'unknown'];
 
-  public dataSource: Observable<ClansByClantagType[]>;
+  public dataSource;
   public typeaheadLoading: boolean;
   public searchResult: ClansByClantagType[] = [];
   public filterModel
@@ -39,34 +42,37 @@ export class ClanSearchComponent implements OnInit {
   ngOnInit() {
     this.ref.getDownloadURL().subscribe(url => this.clanCastleUrl = url);
     this.locationService.getLocations().subscribe(locations => this.locations = locations);
-    this.clanForm.valueChanges.subscribe((value: FilterModel) => {
-      console.log(value);
+    this.dataSource = this.clanForm.valueChanges.pipe(
       debounceTime(500),
-      this.dataSource = Observable.create(observer => this.getClan(value, observer)), switchMap(() => {
-        console.log(this.searchResult);
-        return Observable.of(this.searchResult);
-      });
-    });
-}
+      switchMap((form) => {
+        console.log('should hop into mergeMap');
+        return this.getClan(form);
+      })
+  );
+  }
 
-  private getClan(value: FilterModel, observer) {
+  private getClan(value: FilterModel) {
     if (ClanSearchService.hasMinLength(value.selectedClanNameOrClanTag)) {
-      this.clanSearchService.getClanByClanTag(value.selectedClanNameOrClanTag).subscribe(
+      return this.clanSearchService.getClanByClanTag(value.selectedClanNameOrClanTag).map(
         (result: ClansByClantagType) => {
+          console.log(result);
           this.searchResult = [];
           this.searchResult.push(result);
-          observer.next(result);
-        }, () => this.getClanByFilter(value, observer));
+          return this.searchResult;
+        }).catch(() => this.getClanByFilter(value));
+    } else {
+      return Observable.of([]);
     }
   }
 
 
-  public getClanByFilter(value: FilterModel, observer) {
-    this.clanSearchService.getClansByFilterValues(value).subscribe(
+  public getClanByFilter(value: FilterModel) {
+    return this.clanSearchService.getClansByFilterValues(value).map(
       (result: ClansByClantagType[]) => {
+        console.log(result);
         this.searchResult = [];
         this.searchResult = result;
-        observer.next(result);
+        return this.searchResult;
       });
   }
 

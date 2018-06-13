@@ -9,25 +9,17 @@ import {TroopsHomeImg} from './troops-home-img.types';
 @Injectable()
 export class TroopsHomeResolverService {
 
-  public troopHomeCache: TroopsHomeDisplayTypes[] = [];
-  public playerTag: string;
-
   constructor(private storage: AngularFireStorage, private troopsAndSpellsService: TroopsAndSpellsResolveHelperService) {
   }
 
   public getTroopsHome(player: PlayerByPlayerTagType): Observable<TroopsHomeDisplayTypes[]> {
-    if (this.playerTag === player.tag && this.troopHomeCache.length !== 0) {
-      return Observable.of(this.troopHomeCache);
-    } else {
-      this.playerTag = player.tag;
       const homeTroops = this.troopsAndSpellsService.convertTroopsHome(player.troops, 'home');
-      const urlPrefix: string = 'troops/';
-      const imageSuffix: string = '.png';
+      const urlPrefix = 'troops/';
+      const imageSuffix = '.png';
       const observables = [];
-      this.troopsAndSpellsService.extractUnlockedTroopsOrSpells(urlPrefix, homeTroops, imageSuffix, observables, this.troopHomeCache, TroopsHomeImg);
-      this.troopsAndSpellsService.extractedLockedTroopsOrSpells(urlPrefix, homeTroops, imageSuffix, observables, this.troopHomeCache, TroopsHomeImg);
+      this.troopsAndSpellsService.extractUnlockedTroopsOrSpells(urlPrefix, homeTroops, imageSuffix, observables, TroopsHomeImg);
+      this.troopsAndSpellsService.extractedLockedTroopsOrSpells(urlPrefix, homeTroops, imageSuffix, observables, TroopsHomeImg);
 
       return Observable.forkJoin(observables);
-    }
   }
 }

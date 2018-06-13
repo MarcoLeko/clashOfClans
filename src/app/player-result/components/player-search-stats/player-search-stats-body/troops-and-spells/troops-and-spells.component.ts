@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PlayerByPlayerTagType} from '../../../../../../generated/types';
 import {TroopsHomeDisplayTypes} from '../../../../services/troops-and-spells/troops-home/troops-home-display.types';
 import {SpellsHomeDisplayTypes} from '../../../../services/troops-and-spells/spells-home/spells-home-display.types';
@@ -12,7 +12,7 @@ import {SpellsHomeResolverService} from '../../../../services/troops-and-spells/
   templateUrl: './troops-and-spells.component.html',
   styleUrls: ['./troops-and-spells.component.css']
 })
-export class TroopsAndSpellsComponent implements OnInit, OnDestroy {
+export class TroopsAndSpellsComponent implements OnInit {
 
   @Input() playerResult: PlayerByPlayerTagType;
   public troopsHome: TroopsHomeDisplayTypes[];
@@ -28,12 +28,6 @@ export class TroopsAndSpellsComponent implements OnInit, OnDestroy {
     this.troopsHomeResolverService.getTroopsHome(this.playerResult).subscribe(troops => this.troopsHome = troops);
     this.spellsHomeResolverService.getSpellsHome(this.playerResult).subscribe(spells => this.spells = spells);
     this.troopsNightResolverService.getTroopsNight(this.playerResult).subscribe(troops => this.troopsNight = troops);
-  }
-
-  ngOnDestroy() {
-    this.troopsHome = undefined;
-    this.troopsNight = undefined;
-    this.spells = undefined;
   }
 
   isSpellOrTroopMax(troop: any): boolean {

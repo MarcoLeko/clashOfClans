@@ -1,14 +1,14 @@
-import {TownhallPictureService} from './townhall-picture.service';
-import {TownhallImgSrc} from './townhall-src';
-import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
+import {TownhallHomePictureService} from './townhall-home-picture.service';
+import {TownhallHomeImgSrc} from './townhall-home-img-src';
+import {FirebaseStorageMock} from '../../../../testing/firebase-storage-mock';
 
-describe('TownhallPictureService', () => {
+describe('TownhallHomePictureService', () => {
   let mock: any;
-  let service: TownhallPictureService;
+  let service: TownhallHomePictureService;
 
   beforeEach(() => {
     mock = new FirebaseStorageMock();
-    service = new TownhallPictureService(mock);
+    service = new TownhallHomePictureService(mock);
   });
 
   it('should be created', () => {
@@ -17,7 +17,7 @@ describe('TownhallPictureService', () => {
 
   it('should return townhall level by valid input', () => {
     const expectedTownhall: number = 9;
-    const expectedPicture: string = TownhallImgSrc.TOWNHALL_NINE;
+    const expectedPicture: string = TownhallHomeImgSrc.TOWNHALL_NINE;
 
     service.getTownHallPicture(expectedTownhall).subscribe(result => {
       expect(result).toBe(expectedPicture);

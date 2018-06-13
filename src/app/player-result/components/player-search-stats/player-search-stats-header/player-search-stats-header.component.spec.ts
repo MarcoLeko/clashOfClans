@@ -2,8 +2,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PlayerSearchStatsHeaderComponent} from './player-search-stats-header.component';
 import {Mocks} from '../../../../testing/mocks';
-import {TownhallPictureService} from '../../../../shared/services/townhall-picture/townhall-picture.service';
-import {TownhallImgSrc} from '../../../../shared/services/townhall-picture/townhall-src';
+import {TownhallHomePictureService} from '../../../../shared/services/townhall-picture/home/townhall-home-picture.service';
+import {TownhallHomeImgSrc} from '../../../../shared/services/townhall-picture/home/townhall-home-img-src';
 import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.service';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {FirebaseStorageMock} from '../../../../testing/firebase-storage-mock';
@@ -27,7 +27,7 @@ describe('PlayerSearchStatsHeaderComponent', () => {
       ],
       providers: [
         {provide: AngularFireStorage, useClass: FirebaseStorageMock},
-        {provide: TownhallPictureService, useValue: townhallSpy},
+        {provide: TownhallHomePictureService, useValue: townhallSpy},
         {provide: HeroMapperService, useValue: heroMapperSpy},
       ],
       declarations: [PlayerSearchStatsHeaderComponent]
@@ -46,16 +46,16 @@ describe('PlayerSearchStatsHeaderComponent', () => {
   });
 
   it('should set image on init', () => {
-    townhallSpy.getTownHallPicture.and.returnValue(Observable.of(TownhallImgSrc.TOWNHALL_NINE));
+    townhallSpy.getTownHallPicture.and.returnValue(Observable.of(TownhallHomeImgSrc.TOWNHALL_NINE));
     heroMapperSpy.mapHeroList.and.returnValue(Observable.of(Mocks.DISPLAYHEROOBJ));
 
     component.ngOnChanges();
 
-    expect(component.imgSrcForTownhall).toEqual(TownhallImgSrc.TOWNHALL_NINE);
+    expect(component.imgSrcForTownhall).toEqual(TownhallHomeImgSrc.TOWNHALL_NINE);
   });
 
   it('should set hero array on init', () => {
-    townhallSpy.getTownHallPicture.and.returnValue(Observable.of(TownhallImgSrc.TOWNHALL_NINE));
+    townhallSpy.getTownHallPicture.and.returnValue(Observable.of(TownhallHomeImgSrc.TOWNHALL_NINE));
     heroMapperSpy.mapHeroList.and.returnValue(Observable.of(Mocks.DISPLAYHEROOBJ));
 
     component.ngOnChanges();

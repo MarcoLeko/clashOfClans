@@ -35,12 +35,15 @@
   </div>
 </div>
 <div class="mt-2 col-sm-12">
-  <div class="container" *ngIf="imgSrcForTownhall">
+  <div class="container">
     <div class="row">
-      <div class="col-sm-3  text-center">
-        <img class="imgSize" [src]="imgSrcForTownhall">
+      <div class="col-sm-2" *ngIf="imgSrcForTownhallHome">
+        <img class="imgSize" [src]="imgSrcForTownhallHome">
       </div>
-      <div class="col-sm-9">
+      <div class="col-sm-2" *ngIf="imgSrcForTownhallNight">
+        <img class="imgSize" [src]="imgSrcForTownhallNight">
+      </div>
+      <div class="col-sm-8">
         <div class="row" *ngIf="heroes">
           <div *ngFor="let hero of heroes">
             <span class="font-weight-bold">Level:{{hero.level}}&emsp;

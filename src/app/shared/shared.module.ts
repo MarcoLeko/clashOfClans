@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {HashTransformerService} from './services/hash-transformer/hash-transformer.service';
 import {HeaderInterceptorService} from './services/header-interceptor/header-interceptor.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {TownhallPictureService} from './services/townhall-picture/townhall-picture.service';
+import {TownhallHomePictureService} from './services/townhall-picture/home/townhall-home-picture.service';
 import {ClanSearchService} from './services/clan-search/clan-search.service';
 import {LoadingScreenComponent} from './components/loading-screen/loading-screen.component';
 import {AngularFireStorageModule} from 'angularfire2/storage';
@@ -25,6 +25,7 @@ import {TownhallPictureCellRendererComponent} from './components/ag-grid-cell-re
 import {WarStarsCellRendererComponent} from './components/ag-grid-cell-renderer/war-stars-cell-renderer.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {EnterTypePipe} from './pipes/enter-type/enter-type.pipe';
+import {TownhallNightPictureService} from './services/townhall-picture/night/townhall-night-picture.service';
 
 @NgModule({
   declarations: [
@@ -57,9 +58,10 @@ import {EnterTypePipe} from './pipes/enter-type/enter-type.pipe';
     multi: true
   },
     HashTransformerService,
-    TownhallPictureService,
+    TownhallHomePictureService,
     PlayerSearchService,
-    ClanSearchService
+    ClanSearchService,
+    TownhallNightPictureService
   ],
   exports: [
     LoadingScreenComponent,

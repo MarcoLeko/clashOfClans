@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {TownhallImgSrc} from './townhall-src';
+import {TownhallHomeImgSrc} from './townhall-home-img-src';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {Observable} from 'rxjs/Observable';
 import {isUndefined} from 'util';
 
 @Injectable()
-export class TownhallPictureService {
+export class TownhallHomePictureService {
 
   public ref;
 
@@ -14,7 +14,7 @@ export class TownhallPictureService {
 
   getTownHallPicture(townhall: number): Observable<string | null> {
     let url;
-    url = this.reolveTownhallNumberToImg(townhall, url);
+    url = this.reolveTownhallNumberToImg(townhall);
     if (isUndefined((url))) {
       return Observable.of(url);
     } else {
@@ -23,14 +23,15 @@ export class TownhallPictureService {
     }
   }
 
-  private reolveTownhallNumberToImg(townhall: number, url) {
-    const urlPrefix = 'townhalls/';
+  private reolveTownhallNumberToImg(townhall: number) {
+    let url;
+    const urlPrefix = 'townhall-home/';
     const urlSuffix = '.png';
 
-    for (const townhallPic in TownhallImgSrc) {
-      const townhallNumber = TownhallImgSrc[townhallPic].replace(/\D+/g, '');
+    for (const townhallPic in TownhallHomeImgSrc) {
+      const townhallNumber = TownhallHomeImgSrc[townhallPic].replace(/\D+/g, '');
       if (townhall.toString() === townhallNumber) {
-        url = urlPrefix + TownhallImgSrc[townhallPic] + urlSuffix;
+        url = urlPrefix + TownhallHomeImgSrc[townhallPic] + urlSuffix;
       }
     }
     return url;

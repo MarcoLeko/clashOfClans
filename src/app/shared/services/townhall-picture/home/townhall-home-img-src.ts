@@ -1,4 +1,4 @@
-export enum TownhallImgSrc {
+export enum TownhallHomeImgSrc {
     TOWNHALL_ONE = 'townhall_1',
     TOWNHALL_TWO = 'townhall_2',
     TOWNHALL_THREE = 'townhall_3',

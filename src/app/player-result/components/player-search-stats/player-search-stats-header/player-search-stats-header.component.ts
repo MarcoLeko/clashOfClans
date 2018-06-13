@@ -1,11 +1,12 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {PlayerByPlayerTagType} from '../../../../../generated/types';
-import {TownhallPictureService} from '../../../../shared/services/townhall-picture/townhall-picture.service';
+import {TownhallHomePictureService} from '../../../../shared/services/townhall-picture/home/townhall-home-picture.service';
 import {HeroMapperService} from '../../../services/hero-mapper/hero-mapper.service';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {HeroDisplay} from '../../../services/hero-mapper/hero-display';
 import {isUndefined} from 'util';
+import {TownhallNightPictureService} from '../../../../shared/services/townhall-picture/night/townhall-night-picture.service';
 
 @Component({
   selector: 'app-player-search-stats-header',
@@ -15,7 +16,8 @@ import {isUndefined} from 'util';
 export class PlayerSearchStatsHeaderComponent implements OnChanges {
 
   @Input() playerResult: PlayerByPlayerTagType;
-  public imgSrcForTownhall: string;
+  public imgSrcForTownhallHome: string;
+  public imgSrcForTownhallNight: string;
   public heroes: HeroDisplay[];
 
   public noHeroesUrl: Observable<string | null>;
@@ -23,19 +25,21 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
   public noHeroesRef = this.storage.ref('images/clashplayer.png');
   public noLeagueRef = this.storage.ref('images/no_league.png');
 
-  constructor(private townhallPictureService: TownhallPictureService,
+  constructor(private townhallHomePictureService: TownhallHomePictureService,
+              private townhallNightPictureService: TownhallNightPictureService,
               private heroMapperService: HeroMapperService,
               private storage: AngularFireStorage) {
   }
 
   ngOnChanges(): void {
-    if(!this.hasHeroesInArray()) {
+    if (!this.hasHeroesInArray()) {
       this.getNoHeroImgHeader();
     }
     if (isUndefined(this.playerResult.league)) {
       this.getNoLeagueImgUrl();
     }
-    this.townhallPictureService.getTownHallPicture(this.playerResult.townHallLevel).subscribe(url => this.imgSrcForTownhall = url);
+    this.townhallHomePictureService.getTownHallPicture(this.playerResult.townHallLevel).subscribe(url => this.imgSrcForTownhallHome = url);
+    this.townhallNightPictureService.getTownHallPicture(this.playerResult.builderHallLevel).subscribe(url => this.imgSrcForTownhallNight = url);
     this.heroMapperService.mapHeroList(this.playerResult.heroes).subscribe(heroes => this.heroes = heroes);
   }
 

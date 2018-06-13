@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ICellRendererAngularComp} from 'ag-grid-angular';
-import {TownhallPictureService} from '../../services/townhall-picture/townhall-picture.service';
+import {TownhallHomePictureService} from '../../services/townhall-picture/home/townhall-home-picture.service';
 
 @Component({
   selector: 'app-league-badge',
@@ -13,7 +13,7 @@ export class TownhallPictureCellRendererComponent implements ICellRendererAngula
 
   public value: string;
 
-  constructor(private townHallPictureService: TownhallPictureService) {
+  constructor(private townHallPictureService: TownhallHomePictureService) {
   }
 
   agInit(params): void {

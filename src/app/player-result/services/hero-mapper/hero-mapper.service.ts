@@ -38,9 +38,10 @@ export class HeroMapperService {
   }
 
   private fillObservableArray(heroesImgKey, hero, observables: Observable<HeroDisplay>[]) {
+    const url = 'heroes/' + HeroesImg[heroesImgKey] + '.png';
     let heroObj: HeroDisplay;
     const singleHeroImgObservable =
-      this.storage.ref(HeroesImg[heroesImgKey]).getDownloadURL().map(data => {
+      this.storage.ref(url).getDownloadURL().map(data => {
         return heroObj = {
           name: hero.name, level: hero.level, maxLevel: hero.maxLevel, village: hero.village, heroImg: data
         };

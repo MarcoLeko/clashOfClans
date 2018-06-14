@@ -46,7 +46,7 @@ export class PlayerSearchStatsHeaderComponent implements OnChanges {
     this.heroMapperService.mapHeroList(this.playerResult.heroes).subscribe(heroes => this.heroes = heroes);
   }
 
-  private hasHeroesInArray() {
+  public hasHeroesInArray() {
     return typeof this.playerResult.heroes !== undefined && this.playerResult.heroes.length > 0;
   }
 

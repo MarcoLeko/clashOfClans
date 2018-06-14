@@ -30,13 +30,13 @@ describe('PlayerSearchService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should return observable of playerByPlayerTag', inject([PlayerSearchService, HashTransformerService], (service, hashTransformer) => {
+  it('should return clanEmitter of playerByPlayerTag', inject([PlayerSearchService, HashTransformerService], (service, hashTransformer) => {
     service.getPlayerByPlayerTag(Mocks.PLAYERTAG).subscribe(data => {
       expect(data).toEqual(Mocks.PLAYERSTATSBYPLAYERTAG);
     });
 
     const req = httpMock.expectOne(PlayerSearchService.PLAYERURL + hashTransformer.transformHash(Mocks.PLAYERTAG));
-    expect(req.request.method).toBe("GET");
+    expect(req.request.method).toBe('GET');
     req.flush(Mocks.PLAYERSTATSBYPLAYERTAG);
   }));
 });

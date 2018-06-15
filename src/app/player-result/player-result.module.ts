@@ -29,6 +29,7 @@ import {TroopsAndSpellsResolveHelperService} from './services/troops-and-spells/
 import {TroopsNightResolverService} from './services/troops-and-spells/troops-night/troops-night-resolver.service';
 import {TroopsHomeResolverService} from './services/troops-and-spells/troops-home/troops-home-resolver.service';
 import {SpellsHomeResolverService} from './services/troops-and-spells/spells-home/spells-home-resolver.service';
+import {SiegeMachinesResolverService} from './services/troops-and-spells/siege-machines/siege-machines-resolver.service';
 
 const appRoutes: Routes = [
   {path: 'playerSearch/:playerId', component: PlayerSearchResultComponent, data: {depth: 3}}
@@ -74,7 +75,8 @@ const appRoutes: Routes = [
     TroopsAndSpellsResolveHelperService,
     TroopsNightResolverService,
     TroopsHomeResolverService,
-    SpellsHomeResolverService
+    SpellsHomeResolverService,
+    SiegeMachinesResolverService
   ],
   exports: []
 })

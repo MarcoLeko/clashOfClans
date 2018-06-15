@@ -6,6 +6,8 @@ import {TroopsNightDisplayTypes} from '../../../../services/troops-and-spells/tr
 import {TroopsNightResolverService} from '../../../../services/troops-and-spells/troops-night/troops-night-resolver.service';
 import {TroopsHomeResolverService} from '../../../../services/troops-and-spells/troops-home/troops-home-resolver.service';
 import {SpellsHomeResolverService} from '../../../../services/troops-and-spells/spells-home/spells-home-resolver.service';
+import {SiegeMachinesResolverService} from '../../../../services/troops-and-spells/siege-machines/siege-machines-resolver.service';
+import {SiegeMachinesDisplayTypes} from '../../../../services/troops-and-spells/siege-machines/siege-machines-display.types';
 
 @Component({
   selector: 'app-troops-and-spells',
@@ -18,16 +20,19 @@ export class TroopsAndSpellsComponent implements OnInit {
   public troopsHome: TroopsHomeDisplayTypes[];
   public troopsNight: TroopsNightDisplayTypes[];
   public spells: SpellsHomeDisplayTypes[];
+  public siegeMachines: SiegeMachinesDisplayTypes[];
 
   constructor(private troopsNightResolverService: TroopsNightResolverService,
               private troopsHomeResolverService: TroopsHomeResolverService,
-              private spellsHomeResolverService: SpellsHomeResolverService) {
+              private spellsHomeResolverService: SpellsHomeResolverService,
+              private siegeMachinesResolverService: SiegeMachinesResolverService) {
   }
 
   ngOnInit() {
     this.troopsHomeResolverService.getTroopsHome(this.playerResult).subscribe(troops => this.troopsHome = troops);
     this.spellsHomeResolverService.getSpellsHome(this.playerResult).subscribe(spells => this.spells = spells);
     this.troopsNightResolverService.getTroopsNight(this.playerResult).subscribe(troops => this.troopsNight = troops);
+    this.siegeMachinesResolverService.getSiegeMachines(this.playerResult).subscribe(troops => this.siegeMachines = troops);
   }
 
   isSpellOrTroopMax(troop: any): boolean {

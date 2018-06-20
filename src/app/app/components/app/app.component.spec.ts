@@ -5,6 +5,9 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {APP_BASE_HREF} from '@angular/common';
 import {NavbarComponent} from '../navbar/navbar.component';
 import {FormsModule} from '@angular/forms';
+import {FooterComponent} from '../footer/footer.component';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -15,11 +18,13 @@ describe('AppComponent', () => {
         HttpClientModule
       ],
       providers: [
-        {provide: APP_BASE_HREF, useValue: '/'}
+        {provide: APP_BASE_HREF, useValue: '/'},
+        {provide: AngularFireStorage, useClass: FirebaseStorageMock}
       ],
       declarations: [
         AppComponent,
-        NavbarComponent
+        NavbarComponent,
+        FooterComponent
       ],
     }).compileComponents();
   }));

@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AboutComponent} from './about.component';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -8,6 +10,7 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [{provide: AngularFireStorage, useClass: FirebaseStorageMock}],
       declarations: [ AboutComponent ]
     })
     .compileComponents();

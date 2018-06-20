@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {WarPieChartComponent} from './war-pie-chart.component';
+import {ChartsModule} from 'ng2-charts';
+import {UiSwitchModule} from 'ngx-ui-switch';
 
 describe('WarPieChartComponent', () => {
   let component: WarPieChartComponent;
@@ -8,6 +10,10 @@ describe('WarPieChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        UiSwitchModule,
+        ChartsModule
+      ],
       declarations: [ WarPieChartComponent ]
     })
     .compileComponents();
@@ -16,7 +22,6 @@ describe('WarPieChartComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WarPieChartComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

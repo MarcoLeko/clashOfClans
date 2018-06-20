@@ -41,6 +41,6 @@ describe('PlayerSearchComponent', () => {
     };
     component.onSubmit(testObj);
 
-    expect(routerStub.navigate).toHaveBeenCalledWith(['search/' + Mocks.PLAYERTAG]);
+    expect(routerStub.navigate).toHaveBeenCalledWith(['playerSearch/' + Mocks.PLAYERTAG]);
   });
 });

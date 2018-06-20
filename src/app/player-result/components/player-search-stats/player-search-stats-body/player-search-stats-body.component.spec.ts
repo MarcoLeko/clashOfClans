@@ -56,7 +56,6 @@ describe('PlayerSearchStatsBodyComponent', () => {
 
   it('should render card', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-
     const debugElement = fixture.debugElement.query(By.css('#cardDescriptionAchievements'));
 
     const expectedTextByFirstParagraph = 'Have a look about war stars, best trophies';

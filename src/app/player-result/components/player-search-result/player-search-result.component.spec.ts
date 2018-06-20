@@ -22,6 +22,7 @@ import {ClanModalComponent} from '../player-search-stats/player-search-stats-bod
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {AgGridModule} from 'ag-grid-angular';
 import {RoleTypePipe} from '../../../shared/pipes/role-type/role-type.pipe';
+import {TroopsAndSpellsComponent} from '../player-search-stats/player-search-stats-body/troops-and-spells/troops-and-spells.component';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -58,6 +59,7 @@ describe('PlayerSearchResultComponent', () => {
         PlayerSearchStatsHeaderComponent,
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
+        TroopsAndSpellsComponent,
         ClanModalComponent,
         RoleTypePipe
       ]

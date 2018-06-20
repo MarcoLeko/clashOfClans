@@ -19,7 +19,7 @@ import {LeagueBadgeCellRendererComponent} from '../shared/components/ag-grid-cel
 import {RoleCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/role-cell-renderer-component';
 import {TownhallPictureCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/townhall-picture-cell-renderer.component';
 import {WarStarsCellRendererComponent} from '../shared/components/ag-grid-cell-renderer/war-stars-cell-renderer.component';
-import {UiSwitchModule} from 'angular2-ui-switch';
+import {UiSwitchModule} from 'ngx-ui-switch';
 
 const appRoutes: Routes = [
   {path: 'clanSearch/:clanId', component: ClanSearchResultComponent, data: {depth: 3}}

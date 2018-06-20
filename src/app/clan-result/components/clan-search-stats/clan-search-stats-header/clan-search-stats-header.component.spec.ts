@@ -1,6 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ClanSearchStatsHeaderComponent} from './clan-search-stats-header.component';
+import {EnterTypePipe} from '../../../../shared/pipes/enter-type/enter-type.pipe';
+import {WarFrequencyPipe} from '../../../../shared/pipes/war-frequency/war-frequency.pipe';
+import {IsWarLogPublicPipe} from '../../../pipes/is-war-log-public/is-war-log-public.pipe';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {FirebaseStorageMock} from '../../../../testing/firebase-storage-mock';
 
 describe('ClanSearchStatsHeaderComponent', () => {
   let component: ClanSearchStatsHeaderComponent;
@@ -8,7 +13,15 @@ describe('ClanSearchStatsHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClanSearchStatsHeaderComponent ]
+      providers: [
+        {provide: AngularFireStorage, useClass: FirebaseStorageMock}
+        ],
+      declarations: [
+        ClanSearchStatsHeaderComponent,
+        EnterTypePipe,
+        WarFrequencyPipe,
+        IsWarLogPublicPipe
+      ]
     })
     .compileComponents();
   }));

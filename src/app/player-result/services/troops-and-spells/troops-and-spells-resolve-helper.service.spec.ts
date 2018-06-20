@@ -1,11 +1,15 @@
 import {inject, TestBed} from '@angular/core/testing';
 
 import {TroopsAndSpellsResolveHelperService} from './troops-and-spells-resolve-helper.service';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {FirebaseStorageMock} from '../../../testing/firebase-storage-mock';
 
 describe('TroopsAndSpellsResolveHelperService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TroopsAndSpellsResolveHelperService]
+      providers: [
+        {provide: AngularFireStorage, useClass: FirebaseStorageMock},
+        TroopsAndSpellsResolveHelperService]
     });
   });
 

@@ -9,9 +9,7 @@ import {Mocks} from '../../../testing/mocks';
 import {AchievementModalComponent} from './player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
 import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {ClanModalComponent} from './player-search-stats-body/clan-modal/clan-modal.component';
-import {CurrentSeasonModalComponent} from './player-search-stats-body/current-season-modal/current-season-modal.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-import {TroopsAndSpellsModalComponent} from './player-search-stats-body/troops-and-spells-modal/troops-and-spells-modal.component';
 import {AgGridModule} from 'ag-grid-angular';
 
 describe('PlayerSearchStatsComponent', () => {
@@ -34,9 +32,7 @@ describe('PlayerSearchStatsComponent', () => {
         PlayerSearchStatsHeaderComponent,
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
-        ClanModalComponent,
-        CurrentSeasonModalComponent,
-        TroopsAndSpellsModalComponent
+        ClanModalComponent
       ]
     })
     .compileComponents();

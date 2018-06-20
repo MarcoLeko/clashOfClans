@@ -7,8 +7,8 @@ export class FirebaseStorageMock {
   public ref(path: string) {
       return {
         getDownloadURL() {
-          return Observable.of(path)
+          return Observable.of(path);
         }
-      }
+      };
   }
 }

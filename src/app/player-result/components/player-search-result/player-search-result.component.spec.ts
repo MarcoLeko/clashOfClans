@@ -19,10 +19,9 @@ import {AchievementModalComponent} from '../player-search-stats/player-search-st
 import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
 import {ClanModalComponent} from '../player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
-import {CurrentSeasonModalComponent} from '../player-search-stats/player-search-stats-body/current-season-modal/current-season-modal.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-import {TroopsAndSpellsModalComponent} from '../player-search-stats/player-search-stats-body/troops-and-spells-modal/troops-and-spells-modal.component';
 import {AgGridModule} from 'ag-grid-angular';
+import {RoleTypePipe} from '../../../shared/pipes/role-type/role-type.pipe';
 
 describe('PlayerSearchResultComponent', () => {
   let component: PlayerSearchResultComponent;
@@ -60,8 +59,7 @@ describe('PlayerSearchResultComponent', () => {
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
         ClanModalComponent,
-        CurrentSeasonModalComponent,
-        TroopsAndSpellsModalComponent
+        RoleTypePipe
       ]
     })
       .compileComponents();

@@ -20,7 +20,7 @@ describe('TownhallHomePictureService', () => {
     const expectedPicture: string = TownhallHomeImgSrc.TOWNHALL_NINE;
 
     service.getTownHallPicture(expectedTownhall).subscribe(result => {
-      expect(result).toBe(expectedPicture);
+      expect(result).toMatch(expectedPicture);
     });
   });
 

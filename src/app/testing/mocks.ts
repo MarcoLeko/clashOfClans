@@ -1,4 +1,4 @@
-import {AchievementType, PlayerByPlayerTagType} from '../../generated/types';
+import {AchievementType, ClansByClantagType, PlayerByPlayerTagType} from '../../generated/types';
 import {Heroes} from '../player-result/services/hero-mapper/heroes';
 import {HeroDisplay} from '../player-result/services/hero-mapper/hero-display';
 import {HeroesImg} from '../player-result/services/hero-mapper/heroes-img';
@@ -121,53 +121,55 @@ export class Mocks {
 
   public static CLANTAG: string = '#90899878';
 
-  // public static CLANSTATSBYCLANTAG: ClansByClantagType = {
-  //   tag: '#90899878',
-  //   name: 'wolfsrudel',
-  //   badgeUrls: {
-  //     small: 'http://api.coc.badgeurl.small/',
-  //     large: 'http://api.coc.badgeurl.large/',
-  //     medium: 'http://api.coc.badgeurl.medium/'
-  //   },
-  //   location: {
-  //     id: 99,
-  //     name: 'Germany',
-  //     isCountry: true
-  //   },
-  //   clanLevel: 20,
-  //   clanPoints: 17600,
-  //   clanVersusPoints: 16000,
-  //   members: 50,
-  //   type: 'open',
-  //   requiredTrophies: 2200,
-  //   warFrequency: 'always',
-  //   warWinStreak: 16,
-  //   warWins: 387,
-  //   isWarLogPublic: true,
-  //   description: 'Dont make it rain, make it hurricane',
-  //   memberList: [{
-  //     tag: '#80QOVPL9C',
-  //     name: 'placeholder',
-  //     expLevel: 187,
-  //     league: {
-  //       id: 88,
-  //       name: 'Legend League',
-  //       iconUrls: {
-  //         small: 'http://api.coc.iconurl.small/',
-  //         tiny: 'http://api.coc.iconurl.large/',
-  //         medium: 'http://api.coc.iconurl.medium/'
-  //       },
-  //       trophies: 2700,
-  //       versusTrophies: 4000,
-  //       role: 'leader',
-  //       clanRank: 17,
-  //       previousClanRank: 16,
-  //       donations: 98,
-  //       donationsReceived: 999
-  //     }
-  //   }
-  //   ]
-  // };
+  public static CLANSTATSBYCLANTAG: ClansByClantagType = {
+    tag: '#90899878',
+    name: 'wolfsrudel',
+    badgeUrls: {
+      small: 'http://api.coc.badgeurl.small/',
+      large: 'http://api.coc.badgeurl.large/',
+      medium: 'http://api.coc.badgeurl.medium/'
+    },
+    location: {
+      id: 99,
+      name: 'Germany',
+      isCountry: true
+    },
+    clanLevel: 20,
+    clanPoints: 17600,
+    clanVersusPoints: 16000,
+    members: 50,
+    type: 'open',
+    requiredTrophies: 2200,
+    warFrequency: 'always',
+    warWinStreak: 16,
+    warWins: 387,
+    warLosses: 12,
+    warTies: 120,
+    isWarLogPublic: true,
+    description: 'Dont make it rain, make it hurricane',
+    memberList: [{
+      clanRank: 1,
+      donations: 98,
+      donationsReceived: 999,
+      expLevel: 187,
+      league: {
+        id: 88,
+        name: 'Legend League',
+        iconUrls: {
+          small: 'http://api.coc.iconurl.small/',
+          tiny: 'http://api.coc.iconurl.large/',
+          medium: 'http://api.coc.iconurl.medium/'
+        }
+      },
+      name: 'placeholder',
+      previousClanRank: 16,
+      role: 'leader',
+      tag: '#80QOVPL9C',
+      trophies: 2700,
+      versusTrophies: 4000,
+    }
+    ]
+  };
 
   public static DISPLAYHEROOBJ: HeroDisplay[] = [
     {

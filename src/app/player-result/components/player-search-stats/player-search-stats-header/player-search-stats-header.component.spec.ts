@@ -51,7 +51,7 @@ describe('PlayerSearchStatsHeaderComponent', () => {
 
     component.ngOnChanges();
 
-    expect(component.imgSrcForTownhall).toEqual(TownhallHomeImgSrc.TOWNHALL_NINE);
+    expect(component.imgSrcForTownhallHome).toEqual(TownhallHomeImgSrc.TOWNHALL_NINE);
   });
 
   it('should set hero array on init', () => {

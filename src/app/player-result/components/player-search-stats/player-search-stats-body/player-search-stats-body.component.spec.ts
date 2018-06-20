@@ -8,17 +8,12 @@ import {AchievementModalComponent} from './achievement-modal/achievement-modal/a
 import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {BuilderInfoService} from '../../../services/builder-info/builder-info.service';
 import {ClanModalComponent} from './clan-modal/clan-modal.component';
-import {CurrentSeasonModalComponent} from './current-season-modal/current-season-modal.component';
 import {Router} from '@angular/router';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {FirebaseStorageMock} from '../../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
-import {TroopsAndSpellsModalComponent} from './troops-and-spells-modal/troops-and-spells-modal.component';
-import {TroopsHomeAttackStatsService} from '../../../services/troops-and-spells-mapper/home/troops-home-attack-stats.service';
-import {TroopsHomeAttackStatsDisplayService} from '../../../services/troops-and-spells-mapper/home/home-troops-display/troops-home-attack-stats-display.service';
-import {SpellsHomeStatsDisplayService} from '../../../services/troops-and-spells-mapper/home/home-spells-display/spells-home-stats-display.service';
-import {TroopsNightAttackStatsDisplayService} from '../../../services/troops-and-spells-mapper/night/night-troops-display/troops-night-attack-stats-display.service';
 import {AgGridModule} from 'ag-grid-angular';
+import {TroopsAndSpellsComponent} from './troops-and-spells/troops-and-spells.component';
 
 describe('PlayerSearchStatsBodyComponent', () => {
   let component: PlayerSearchStatsBodyComponent;
@@ -38,18 +33,13 @@ describe('PlayerSearchStatsBodyComponent', () => {
       providers: [
         {provide: Router},
         {provide: AngularFireStorage, useClass: FirebaseStorageMock},
-        {provide: TroopsHomeAttackStatsService},
-        {provide: TroopsHomeAttackStatsDisplayService},
-        {provide: TroopsNightAttackStatsDisplayService},
-        {provide: SpellsHomeStatsDisplayService},
         BuilderInfoService
       ],
       declarations: [
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
         ClanModalComponent,
-        CurrentSeasonModalComponent,
-        TroopsAndSpellsModalComponent
+        TroopsAndSpellsComponent
       ]
     })
       .compileComponents();

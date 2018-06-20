@@ -9,6 +9,8 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {FirebaseStorageMock} from '../../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {Observable} from 'rxjs/Observable';
+import {RoleTypePipe} from '../../../../shared/pipes/role-type/role-type.pipe';
+import {TownhallNightPictureService} from '../../../../shared/services/townhall-picture/night/townhall-night-picture.service';
 
 describe('PlayerSearchStatsHeaderComponent', () => {
   let component: PlayerSearchStatsHeaderComponent;
@@ -28,9 +30,13 @@ describe('PlayerSearchStatsHeaderComponent', () => {
       providers: [
         {provide: AngularFireStorage, useClass: FirebaseStorageMock},
         {provide: TownhallHomePictureService, useValue: townhallSpy},
+        {provide: TownhallNightPictureService, useValue: townhallSpy},
         {provide: HeroMapperService, useValue: heroMapperSpy},
       ],
-      declarations: [PlayerSearchStatsHeaderComponent]
+      declarations: [
+        PlayerSearchStatsHeaderComponent,
+        RoleTypePipe
+      ]
     })
       .compileComponents();
   }));

@@ -177,27 +177,27 @@ export class Mocks {
       level: 23,
       maxLevel: 50,
       village: 'kjfsölksd',
-      heroImg: HeroesImg.BARBARIAN_KING
+      heroImg: 'heroes/' + HeroesImg.BARBARIAN_KING + '.png'
     },
     {
       name: Heroes.ARCHER_QUEEN,
       level: 45,
       maxLevel: 50,
       village: 'kjfsölksd',
-      heroImg: HeroesImg.ARCHER_QUEEN
+      heroImg: 'heroes/' + HeroesImg.ARCHER_QUEEN + '.png'
     },
     {
       name: Heroes.GRAND_WARDEN,
       level: 18,
       maxLevel: 50,
       village: 'kjfsölksd',
-      heroImg: HeroesImg.GRAND_WARDEN
+      heroImg: 'heroes/' + HeroesImg.GRAND_WARDEN + '.png'
     }, {
       name: Heroes.BATTLE_MACHINE,
       level: 25,
       maxLevel: 50,
       village: 'kjfsölksd',
-      heroImg: HeroesImg.BATTLE_MACHINE
+      heroImg: 'heroes/' + HeroesImg.BATTLE_MACHINE + '.png'
     }
   ];
 

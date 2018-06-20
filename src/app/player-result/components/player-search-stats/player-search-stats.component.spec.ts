@@ -11,6 +11,7 @@ import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {ClanModalComponent} from './player-search-stats-body/clan-modal/clan-modal.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {AgGridModule} from 'ag-grid-angular';
+import {TroopsAndSpellsComponent} from './player-search-stats-body/troops-and-spells/troops-and-spells.component';
 
 describe('PlayerSearchStatsComponent', () => {
   let component: PlayerSearchStatsComponent;
@@ -32,7 +33,8 @@ describe('PlayerSearchStatsComponent', () => {
         PlayerSearchStatsHeaderComponent,
         PlayerSearchStatsBodyComponent,
         AchievementModalComponent,
-        ClanModalComponent
+        ClanModalComponent,
+        TroopsAndSpellsComponent
       ]
     })
     .compileComponents();

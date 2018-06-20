@@ -41,7 +41,7 @@ export class HeroMapperService {
     const url = 'heroes/' + HeroesImg[heroesImgKey] + '.png';
     let heroObj: HeroDisplay;
     const singleHeroImgObservable =
-      this.storage.ref(url).getDownloadURL().map(data => {
+      this.storage.ref(url).getDownloadURL().map((data: string) => {
         return heroObj = {
           name: hero.name, level: hero.level, maxLevel: hero.maxLevel, village: hero.village, heroImg: data
         };

@@ -1,25 +1,21 @@
 <app-achievement-modal [playerResult]="playerResult"></app-achievement-modal>
 <app-clan-modal [playerResult]="playerResult" [clanInfo]="clanInfo"></app-clan-modal>
 
-<div class="row">
-  <div class="col-sm-3" *ngIf="hasTrophies()">
-    <div class="offset-xl-9 offset-lg-10 offset-md-10 offset-sm-10">
+<div class="container">
+  <div class="row">
+    <div class="mt-3 col-md-4 offset-md-1" *ngIf="hasTrophies()">
       <img *ngIf="trophyHomeImg" class="trophy-item" [src]="trophyHomeImg"/>
       <div class="trophy-panel border-left-0 rounded">
         <span class="trophy-text font-weight-bold">{{playerResult.trophies}}</span>
       </div>
     </div>
-  </div>
-  <div class="col-sm-3" *ngIf="hasVersusTrophies()">
-    <div class="offset-xl-9 offset-lg-10 offset-md-10 offset-sm-10">
+    <div class="mt-3 col-md-4" *ngIf="hasVersusTrophies()">
       <img *ngIf="trophyNightImg" class="trophy-item" [src]="trophyNightImg"/>
       <div class="trophy-panel border-left-0 rounded">
         <span class="trophy-text font-weight-bold">{{playerResult.versusTrophies}}</span>
       </div>
     </div>
-  </div>
-  <div class="col-sm-3" *ngIf="hasLegendLeagueExperienced()">
-    <div class="offset-xl-9 offset-lg-10 offset-md-10 offset-sm-10">
+    <div class="mt-3 col-md-3" *ngIf="hasLegendLeagueExperienced()">
       <img *ngIf="trophyLegendImg" class="trophy-item" [src]="trophyLegendImg"/>
       <div class="trophy-panel border-left-0 rounded">
         <span class="trophy-text font-weight-bold">{{playerResult.legendStatistics.legendTrophies}}</span>

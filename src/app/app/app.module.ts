@@ -17,6 +17,7 @@ import {AboutComponent} from './components/about/about.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {GestureConfig} from '@angular/material';
 import {SearchForAllModule} from '../search-for-all/search-for-all.module';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 const appRoutes: Routes = [
   {path: 'about', component: AboutComponent, data: {depth: 2}}
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
-    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }
+    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
     ],
   bootstrap: [AppComponent]
 })

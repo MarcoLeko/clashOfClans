@@ -1,17 +1,15 @@
-import {Component, Input, OnChanges, ViewChild} from '@angular/core';
-import {ModalDirective} from 'ngx-bootstrap';
-import {AchievementType, PlayerByPlayerTagType} from '../../../../../../../generated/types';
-import {BuilderInfoService} from '../../../../../services/builder-info/builder-info.service';
-import {BuilderInfoType} from '../../../../../services/builder-info/builder-info.type';
+import {Component, Input, OnChanges} from '@angular/core';
+import {AchievementType, PlayerByPlayerTagType} from '../../../../../../generated/types';
+import {BuilderInfoService} from '../../../../services/builder-info/builder-info.service';
+import {BuilderInfoType} from '../../../../services/builder-info/builder-info.type';
 
 @Component({
-  selector: 'app-achievement-modal',
-  templateUrl: './achievement-modal.component.html',
-  styleUrls: ['./achievement-modal.component.css']
+  selector: 'app-achievement',
+  templateUrl: './achievement.component.html',
+  styleUrls: ['./achievement.component.css']
 })
-export class AchievementModalComponent implements OnChanges {
+export class AchievementComponent implements OnChanges {
 
-  @ViewChild('childModal') childModal: ModalDirective;
   @Input() playerResult: PlayerByPlayerTagType;
 
   public achievement: AchievementType;
@@ -23,10 +21,6 @@ export class AchievementModalComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.chooseAchievement(this.playerResult.achievements[0].name);
-  }
-
-  open(): void {
-    this.childModal.show();
   }
 
   setActiveState(name: string): string {
@@ -46,7 +40,7 @@ export class AchievementModalComponent implements OnChanges {
   }
 
   calculateProgress(value, target): number {
-    let percentage: number = (value / target) * 100;
+    const percentage: number = (value / target) * 100;
     if (percentage > 100) {
       return 100;
     }
@@ -55,7 +49,7 @@ export class AchievementModalComponent implements OnChanges {
 
   calculateCompletedAchievements(): number {
     let completedAchievements: number = 0;
-    for (let achievement of this.playerResult.achievements) {
+    for (const achievement of this.playerResult.achievements) {
       if (achievement.value >= achievement.target) {
         completedAchievements++;
       }

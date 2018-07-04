@@ -1,5 +1,4 @@
 import {Component, Input, OnChanges, ViewChild} from '@angular/core';
-import {ModalDirective} from 'ngx-bootstrap';
 import {ClansByClantagType, PlayerByMemberListType, PlayerByPlayerTagType} from '../../../../../../generated/types';
 import {Router} from '@angular/router';
 import {AgGridNg2} from 'ag-grid-angular';
@@ -8,13 +7,12 @@ import {TrophiesNightCellRendererComponent} from '../../../../../shared/componen
 import {RoleCellRendererComponent} from '../../../../../shared/components/ag-grid-cell-renderer/role-cell-renderer-component';
 
 @Component({
-  selector: 'app-clan-modal',
-  templateUrl: './clan-modal.component.html',
-  styleUrls: ['./clan-modal.component.css']
+  selector: 'app-clan-stats',
+  templateUrl: './clan-stats.component.html',
+  styleUrls: ['./clan-stats.component.css']
 })
-export class ClanModalComponent implements OnChanges {
+export class ClanStatsComponent implements OnChanges {
 
-  @ViewChild('childModal') childModal: ModalDirective;
   @ViewChild('agGrid') agGrid: AgGridNg2;
 
   @Input() playerResult: PlayerByPlayerTagType;
@@ -43,14 +41,12 @@ export class ClanModalComponent implements OnChanges {
     }
   }
 
-  open() {
-    this.childModal.show();
-  }
-
   memberSearch() {
     const memberId: number = this.agGrid.api.getSelectedRows()[0].tag;
-    this.childModal.hide();
     this.router.navigate(['playerSearch/' + memberId]);
   }
 
+  public clanSearch() {
+    this.router.navigate(['clanSearch/' + this.playerResult.clan.tag]);
+  }
 }

@@ -44,31 +44,13 @@ p {
 }
 
 .form-control:focus{
-  border-color: #cccccc;
+  border-color: #ff9529;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
 .player-info-font {
   font-size: 2ch;
-}
-
-.clash-modal {
-  color: black;
-  background-color: rgb(103, 106, 102);
-}
-
-.modal-header {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: 1rem;
-  border-bottom: none;
-  border-top-left-radius: .3rem;
-  border-top-right-radius: .3rem;
 }
 
 progressbar {
@@ -85,9 +67,9 @@ button.list-group-item-dark {
   color: #1b1e21;
 }
 
-a.list-group-item-dark:focus, a.list-group-item-dark:hover,
-button.list-group-item-dark:focus,
-button.list-group-item-dark:hover {
+a.list-group-item.list-group-item-dark:focus, a.list-group-item.list-group-item-dark:hover,
+button.list-group-item.list-group-item-dark:focus,
+button.list-group-item.list-group-item-dark:hover {
   color: #1b1e21;
   background-color: #cc771d;
   cursor: pointer;
@@ -97,7 +79,7 @@ a.list-group-item-dark.active,
 a.list-group-item-dark.active:hover,
 button.list-group-item-dark.active,
 button.list-group-item-dark.active:hover {
-  color: #fff;
+  color: #ff9529;
   background-color: #1b1e21;
   border-color: #1b1e21;
 }

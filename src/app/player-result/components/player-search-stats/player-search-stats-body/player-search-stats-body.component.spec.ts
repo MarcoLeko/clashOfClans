@@ -4,10 +4,10 @@ import {PlayerSearchStatsBodyComponent} from './player-search-stats-body.compone
 import {Mocks} from '../../../../testing/mocks';
 import {By} from '@angular/platform-browser';
 import {SharedModule} from '../../../../shared/shared.module';
-import {AchievementModalComponent} from './achievement-modal/achievement-modal/achievement-modal.component';
+import {AchievementComponent} from './achievement/achievement.component';
 import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {BuilderInfoService} from '../../../services/builder-info/builder-info.service';
-import {ClanModalComponent} from './clan-modal/clan-modal.component';
+import {ClanStatsComponent} from './clan-stats/clan-stats.component';
 import {Router} from '@angular/router';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {FirebaseStorageMock} from '../../../../testing/firebase-storage-mock';
@@ -37,8 +37,8 @@ describe('PlayerSearchStatsBodyComponent', () => {
       ],
       declarations: [
         PlayerSearchStatsBodyComponent,
-        AchievementModalComponent,
-        ClanModalComponent,
+        AchievementComponent,
+        ClanStatsComponent,
         TroopsAndSpellsComponent
       ]
     })

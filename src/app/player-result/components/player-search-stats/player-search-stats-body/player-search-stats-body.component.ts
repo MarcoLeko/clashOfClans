@@ -1,7 +1,5 @@
-import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {ClansByClantagType, PlayerByMemberListType, PlayerByPlayerTagType} from '../../../../../generated/types';
-import {AchievementModalComponent} from './achievement-modal/achievement-modal/achievement-modal.component';
-import {ClanModalComponent} from './clan-modal/clan-modal.component';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireStorage} from 'angularfire2/storage';
@@ -16,9 +14,6 @@ export class PlayerSearchStatsBodyComponent implements OnInit, OnChanges {
 
   @Input() playerResult: PlayerByPlayerTagType;
   @Input() clanInfo: ClansByClantagType;
-
-  @ViewChild(AchievementModalComponent) achievementModal: AchievementModalComponent;
-  @ViewChild(ClanModalComponent) clanModal: ClanModalComponent;
 
   public trophyHomeRef = this.storage.ref('images/trophy_home.png');
   public trophyNightRef = this.storage.ref('images/trophy_night.png');
@@ -51,10 +46,6 @@ export class PlayerSearchStatsBodyComponent implements OnInit, OnChanges {
     }
   }
 
-  public clanSearch() {
-    this.router.navigate(['clanSearch/' + this.playerResult.clan.tag]);
-  }
-
   public hasLegendLeagueExperienced(): boolean {
     return this.playerResult.legendStatistics && !isUndefined(this.playerResult.legendStatistics.legendTrophies);
   }
@@ -67,12 +58,6 @@ export class PlayerSearchStatsBodyComponent implements OnInit, OnChanges {
     return this.playerResult.trophies !== 0;
   }
 
-  private getTrophiesUrl(): void {
-    this.trophyHomeRef.getDownloadURL().subscribe(url => this.trophyHomeImg = url);
-    this.trophyNightRef.getDownloadURL().subscribe(url => this.trophyNightImg = url);
-    this.trophyLegendRef.getDownloadURL().subscribe(url => this.trophyLegendImg = url);
-  }
-
   public routeToPlayerBefore() {
     if (this.playerBefore) {
       this.router.navigate(['playerSearch/' + this.playerBefore.tag]);
@@ -83,5 +68,11 @@ export class PlayerSearchStatsBodyComponent implements OnInit, OnChanges {
     if (this.playerNext) {
       this.router.navigate(['playerSearch/' + this.playerNext.tag]);
     }
+  }
+
+  private getTrophiesUrl(): void {
+    this.trophyHomeRef.getDownloadURL().subscribe(url => this.trophyHomeImg = url);
+    this.trophyNightRef.getDownloadURL().subscribe(url => this.trophyNightImg = url);
+    this.trophyLegendRef.getDownloadURL().subscribe(url => this.trophyLegendImg = url);
   }
 }

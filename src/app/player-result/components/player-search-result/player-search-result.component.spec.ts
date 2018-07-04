@@ -15,10 +15,10 @@ import {ActivatedRouteStub} from '../../../testing/activatedroute-stub';
 import {Mocks} from '../../../testing/mocks';
 import {PlayerSearchStatsHeaderComponent} from '../player-search-stats/player-search-stats-header/player-search-stats-header.component';
 import {PlayerSearchStatsBodyComponent} from '../player-search-stats/player-search-stats-body/player-search-stats-body.component';
-import {AchievementModalComponent} from '../player-search-stats/player-search-stats-body/achievement-modal/achievement-modal/achievement-modal.component';
+import {AchievementComponent} from '../player-search-stats/player-search-stats-body/achievement/achievement.component';
 import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
 import {ClanSearchService} from '../../../shared/services/clan-search/clan-search.service';
-import {ClanModalComponent} from '../player-search-stats/player-search-stats-body/clan-modal/clan-modal.component';
+import {ClanStatsComponent} from '../player-search-stats/player-search-stats-body/clan-stats/clan-stats.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {AgGridModule} from 'ag-grid-angular';
 import {RoleTypePipe} from '../../../shared/pipes/role-type/role-type.pipe';
@@ -58,9 +58,9 @@ describe('PlayerSearchResultComponent', () => {
         PlayerSearchStatsComponent,
         PlayerSearchStatsHeaderComponent,
         PlayerSearchStatsBodyComponent,
-        AchievementModalComponent,
+        AchievementComponent,
         TroopsAndSpellsComponent,
-        ClanModalComponent,
+        ClanStatsComponent,
         RoleTypePipe
       ]
     })

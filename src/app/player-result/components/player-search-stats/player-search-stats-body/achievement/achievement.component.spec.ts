@@ -1,16 +1,16 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {AchievementModalComponent} from './achievement-modal.component';
+import {AchievementComponent} from './achievement.component';
 import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
-import {BuilderInfoService} from '../../../../../services/builder-info/builder-info.service';
-import {Mocks} from '../../../../../../testing/mocks';
-import {FirebaseStorageMock} from '../../../../../../testing/firebase-storage-mock';
+import {BuilderInfoService} from '../../../../services/builder-info/builder-info.service';
+import {Mocks} from '../../../../../testing/mocks';
+import {FirebaseStorageMock} from '../../../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {Observable} from 'rxjs/Observable';
 
-describe('AchievementModalComponent', () => {
-  let component: AchievementModalComponent;
-  let fixture: ComponentFixture<AchievementModalComponent>;
+describe('AchievementComponent', () => {
+  let component: AchievementComponent;
+  let fixture: ComponentFixture<AchievementComponent>;
 
   const builderInfoSpy = {
     getBuilderInfoType: jasmine.createSpy('getBuilderInfoType')
@@ -26,13 +26,13 @@ describe('AchievementModalComponent', () => {
         {provide: BuilderInfoService, useValue: builderInfoSpy},
         {provide: AngularFireStorage, useClass: FirebaseStorageMock}
       ],
-      declarations: [AchievementModalComponent]
+      declarations: [AchievementComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AchievementModalComponent);
+    fixture = TestBed.createComponent(AchievementComponent);
     component = fixture.componentInstance;
   });
 
@@ -64,8 +64,8 @@ describe('AchievementModalComponent', () => {
   });
 
   it('should calculate prozentual portion', () => {
-    const value:number = 25;
-    const target:number = 40;
+    const value: number = 25;
+    const target: number = 40;
     const result: number = 62.5;
 
     expect(component.calculateProgress(value, target)).toBe(result);

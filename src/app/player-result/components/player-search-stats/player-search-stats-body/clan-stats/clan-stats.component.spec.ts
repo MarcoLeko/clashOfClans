@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ClanStatsComponent} from './clan-stats.component';
-import {ModalModule} from 'ngx-bootstrap';
 import {Router} from '@angular/router';
 import {FirebaseStorageMock} from '../../../../../testing/firebase-storage-mock';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {AgGridModule} from 'ag-grid-angular';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 describe('ClanStatsComponent', () => {
   let component: ClanStatsComponent;
@@ -18,7 +18,7 @@ describe('ClanStatsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        ModalModule.forRoot(),
+        Angular2FontawesomeModule,
         AgGridModule.withComponents([])
       ],
       providers: [

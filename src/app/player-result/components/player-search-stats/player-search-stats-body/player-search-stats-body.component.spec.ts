@@ -1,8 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PlayerSearchStatsBodyComponent} from './player-search-stats-body.component';
-import {Mocks} from '../../../../testing/mocks';
-import {By} from '@angular/platform-browser';
 import {SharedModule} from '../../../../shared/shared.module';
 import {AchievementComponent} from './achievement/achievement.component';
 import {AccordionModule, ModalModule, ProgressbarModule} from 'ngx-bootstrap';
@@ -52,15 +50,5 @@ describe('PlayerSearchStatsBodyComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should render card', () => {
-    component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
-    const debugElement = fixture.debugElement.query(By.css('#cardDescriptionAchievements'));
-
-    const expectedTextByFirstParagraph = 'Have a look about war stars, best trophies';
-    const nativeElement = debugElement.nativeElement;
-
-    expect(nativeElement.textContent).toMatch(expectedTextByFirstParagraph);
   });
 });

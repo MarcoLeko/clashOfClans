@@ -44,7 +44,7 @@ p {
 }
 
 .form-control:focus{
-  border-color: #ff9529;
+  border-color: #c7ccc7;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -101,4 +101,3 @@ span.switch.switch-medium {
   display: inline-block;
   position: relative;
 }
-

@@ -23,9 +23,9 @@
       [rowData]="rowData"
       [frameworkComponents]="frameworkComponents"
       rowSelection='single'
+      [gridOptions]="{rowStyle: {cursor: 'pointer'}}"
       [columnDefs]="columnDefs"
       (rowClicked)="memberSearch()">
     </ag-grid-angular>
-    <span><em>Click on a row, to see individual player stats.</em></span>
   </div>
 </div>

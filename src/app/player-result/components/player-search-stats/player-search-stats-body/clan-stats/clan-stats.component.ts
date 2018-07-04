@@ -23,12 +23,12 @@ export class ClanStatsComponent implements OnChanges {
   };
   public rowData: PlayerByMemberListType[];
   public columnDefs = [
-    {headerName: 'Tag', field: 'tag', width: 120},
-    {headerName: 'Name', field: 'name', width: 170},
+    {headerName: 'Tag', field: 'tag', width: 110},
+    {headerName: 'Name', field: 'name', width: 130},
     {headerName: 'Role', field: 'role', width: 100, cellRenderer: 'roleCellRendererComponent'},
-    {headerName: 'Level', field: 'expLevel', width: 90},
-    {headerName: 'Home', field: 'trophies', width: 110, headerComponentFramework: TrophiesHomeCellRendererComponent},
-    {headerName: 'Night', field: 'versusTrophies', width: 110, headerComponentFramework: TrophiesNightCellRendererComponent
+    {headerName: 'Level', field: 'expLevel', width: 80},
+    {headerName: 'Home', field: 'trophies', width: 100, headerComponentFramework: TrophiesHomeCellRendererComponent},
+    {headerName: 'Night', field: 'versusTrophies', width: 100, headerComponentFramework: TrophiesNightCellRendererComponent
     }
   ];
 

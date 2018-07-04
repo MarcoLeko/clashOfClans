@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AchievementComponent} from './achievement.component';
-import {ModalModule, ProgressbarModule} from 'ngx-bootstrap';
+import {ProgressbarModule} from 'ngx-bootstrap';
 import {BuilderInfoService} from '../../../../services/builder-info/builder-info.service';
 import {Mocks} from '../../../../../testing/mocks';
 import {FirebaseStorageMock} from '../../../../../testing/firebase-storage-mock';
@@ -19,7 +19,6 @@ describe('AchievementComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        ModalModule.forRoot(),
         ProgressbarModule.forRoot()
       ],
       providers: [
@@ -39,12 +38,6 @@ describe('AchievementComponent', () => {
   it('should create', () => {
     component.playerResult = Mocks.PLAYERSTATSBYPLAYERTAG;
     expect(component).toBeTruthy();
-  });
-
-  it('should show modal with open', () => {
-    const spy = spyOn(component.childModal, 'show').and.stub();
-    component.open();
-    expect(spy).toHaveBeenCalled();
   });
 
   it('should set achievement with first value of array', () => {
@@ -78,7 +71,7 @@ describe('AchievementComponent', () => {
 
     const result = 'active';
 
-    expect(component.setActiveState(component.achievement.name)).toEqual(result)
+    expect(component.setActiveState(component.achievement.name)).toEqual(result);
   });
 
   it('should return bootstrap active class', () => {
@@ -88,7 +81,7 @@ describe('AchievementComponent', () => {
 
     const result = 'active';
 
-    expect(component.setActiveState(component.achievement.name)).toEqual(result)
+    expect(component.setActiveState(component.achievement.name)).toEqual(result);
   });
 
   it('should return completed Achievements', () => {
